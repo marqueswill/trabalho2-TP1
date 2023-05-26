@@ -86,3 +86,6 @@ void CtrlIAInicializacao::executar() {
 };
 
 //--------------------------------------------------------------------------------------------
+void CtrlIATeste::executar(Matricula){
+
+};

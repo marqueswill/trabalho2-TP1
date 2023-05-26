@@ -55,7 +55,7 @@ class ISTeste {
     virtual bool visualizar(CasoDeTeste *) = 0;
     virtual bool cadastrar(CasoDeTeste) = 0;
     virtual bool editar(CasoDeTeste) = 0;
-    virtual bool descadastrar(Codigo) = 0;  // Desambiguidade feita na implementação das controladoras
+    virtual bool descadastrar(Codigo) = 0;
     virtual ~ISTeste(){};
 };
 
