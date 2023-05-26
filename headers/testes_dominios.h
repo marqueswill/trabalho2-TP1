@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 class TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -29,7 +29,6 @@ class TUDominios {
     const static bool SUCESSO = true;
     const static bool FALHA = false;
     bool run();
-    void showResult(bool, string);
 };
 
 inline bool TUDominios::run() {
@@ -40,13 +39,7 @@ inline bool TUDominios::run() {
     return estado;
 }
 
-inline void TUDominios::showResult(bool result, string nome_dominio) {
-    string resultado = result ? "\033[32mSUCESSO\033[0m" : "\033[31mFALHA\033[0m";
-    cout << setw(16) << left << setfill('.') << nome_dominio << resultado << endl;
-}
-
-//---------------------------------------------------------------------
-// Teste Unitário  Classe
+//--------------------------------------------------------------------------------------------
 class TUClasse : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -60,8 +53,7 @@ class TUClasse : public TUDominios {
     void testarValorInvalido();
 };
 
-//---------------------------------------------------------------------
-// Teste Unitário Codigo - 221006351
+//--------------------------------------------------------------------------------------------
 class TUCodigo : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -75,8 +67,7 @@ class TUCodigo : public TUDominios {
     void testarValorInvalido();
 };
 
-//---------------------------------------------------------------------
-// Teste Unitário Data
+//--------------------------------------------------------------------------------------------
 class TUData : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -90,8 +81,7 @@ class TUData : public TUDominios {
     void testarValorInvalido();
 };
 
-//---------------------------------------------------------------------
-// Teste Unitário Matricula
+//--------------------------------------------------------------------------------------------
 class TUMatricula : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -105,8 +95,7 @@ class TUMatricula : public TUDominios {
     void testarValorInvalido();
 };
 
-//---------------------------------------------------------------------
-// Teste Unitário  Resultado
+//--------------------------------------------------------------------------------------------
 class TUResultado : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -120,8 +109,7 @@ class TUResultado : public TUDominios {
     void testarValorInvalido();
 };
 
-//---------------------------------------------------------------------
-// Teste Unitário Senha
+//--------------------------------------------------------------------------------------------
 class TUSenha : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -135,8 +123,7 @@ class TUSenha : public TUDominios {
     void testarValorInvalido();
 };
 
-//---------------------------------------------------------------------};
-// Teste Unitário Telefone
+//--------------------------------------------------------------------------------------------};
 class TUTelefone : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -150,8 +137,7 @@ class TUTelefone : public TUDominios {
     void testarValorInvalido();
 };
 
-//---------------------------------------------------------------------
-// Teste Unitário  Texto
+//--------------------------------------------------------------------------------------------
 class TUTexto : public TUDominios {
    private:
     const static string VALOR_VALIDO;
