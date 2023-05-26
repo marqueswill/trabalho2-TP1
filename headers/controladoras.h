@@ -46,7 +46,17 @@ class CtrlIAAutenticacao : IAAutenticacao {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlIADesenvolvedor : IADesenvolvedor {
+
+class cntrlIADesenvolvedor: public IADesenvolvedor{
+private:
+ISDesenvolvedor *cntrlISDesenvolvedor;
+Matricula matricula;
+public:
+Matricula *matricula;
+Desenvolvedor *desenvolvedor;
+void cadastrar() throw(runtime_error);
+void executar(Matricula);
+~cntrlIADesenvolvedor();
 };
 
 //-----------------------------------------------------------------------------------
@@ -70,9 +80,13 @@ class CtrlISAutenticacao : ISAutenticacao {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlISDesenvolvedor : ISDesenvolvedor {
+class cntrlISDesenvolvedor: public ISDesenvolvedor{
+public:
+bool cadastrar(Desenvolvedor);
+bool visualizar(Desenvolvedor *);
+bool editar(Desenvolvedor);
+cntrlISDesenvolvedor();
 };
-
 //-----------------------------------------------------------------------------------
 class CtrlISTeste : ISTeste {
    public:

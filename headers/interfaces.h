@@ -28,7 +28,11 @@ class IAAutenticacao {
    public:
 };
 
-class IADesenvolvedor {
+class IADesenvolvedor{
+    public:
+    virtual void cadastrar() throw(runtime_error) = 0;
+    virtual void executar(Matricula) = 0;
+    virtual ~IADesenvolvedor(){}
 };
 
 class IATeste {
@@ -44,9 +48,15 @@ class IATeste {
 class ISAutenticacao {
 };
 
-class ISDesenvolvedor {
+class ISDesenvolvedor
+{
+    public:
+    virtual bool cadastrar(Desenvolvedor) throw(runtime_error) = 0;
+    virtual bool descadastrar(Matricula) throw(runtime_error) = 0;
+    virtual bool visualizar(Desenvolvedor *) throw(runtime_error) = 0;
+    virtual bool editar(Desenvolvedor) throw(runtime_error) = 0;
+    virtual ~ISDesenvolvedor(){}
 };
-
 class ISTeste {
    public:
     virtual bool visualizar(Teste *) = 0;
