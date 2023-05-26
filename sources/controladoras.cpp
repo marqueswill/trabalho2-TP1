@@ -139,7 +139,32 @@ desenvolvedor.setMatricula(matricula);
 desenvolvedor.setTelefone(telefone);
 desenvolvedor.setSenha(senha);
 }
-//--------------------------------------------------------------------------------------------
-void CtrlIATeste::executar(Matricula){
+void cntrlIADesenvolvedor::executar(Matricula){
+    char texto1[] = "Selecione o servico desejado : ";
+    char texto2[] = "1- Cadastrar novo desenvolvedor";
+    char texto3[] = "2- Editar dados de desenvolvedor";
+    char texto4[] = "3- Visualizar dados de desenvolvedor";
+    char texto5[] = "5- Descadastrar desenvolvedor";
+    int campo;
+    int linha, coluna;
+    getmaxyx(stdscr, linha, coluna);
+    bool apresentar = true;
+    echo();
+    while(apresentar){
+        clear();
+        mvprintw(linha/4, coluna/4, "%s", texto1);
+        mvprintw(linha/4 + 2, coluna/4, "%s", texto2);
+        mvprintw(linha/4+4, coluna/4, "%s", texto3);
+        noecho();
+        campo = getch() - 48;
+        echo();
+        switch(campo){
+            case 2: apresentar = false;
+            break;
+        }
+    }
+}
 
+//--------------------------------------------------------------------------------------------
+void CtrlIATeste::executar(Matricula matricula){
 };
