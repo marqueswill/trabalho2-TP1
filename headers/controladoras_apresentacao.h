@@ -17,10 +17,10 @@ class CtrlMAInicializacao : IAInicializacao {
    private:
     Matricula matricula;
 
-    IAAutenticacao *ctrlMAAutenticacao;    // referência para servidor
-    IADesenvolvedor *ctrlMADesenvolvedor;  // referência para servidor
-    IATeste *ctrlMATeste;                  // referência para servidor
-    IACasoDeTeste *ctrlMACasoDeTeste;      // referência para servidor
+    IAAutenticacao *ctrlMAAutenticacao;
+    IADesenvolvedor *ctrlMADesenvolvedor;
+    IATeste *ctrlMATeste;
+    IACasoDeTeste *ctrlMACasoDeTeste;
 
    public:
     void executar();
@@ -58,7 +58,7 @@ class CtrlMADesenvolvedor : IADesenvolvedor {
 //-----------------------------------------------------------------------------------
 class CtrlMATeste : IATeste {
    private:
-    ISTeste *ctrlMSTeste;  // referência para servidor
+    ISTeste *ctrlMSTeste;
 
    public:
     void executar(Matricula);
@@ -72,7 +72,7 @@ inline void CtrlMATeste::setCtrlMSTeste(ISTeste *ctrlMSTeste) {
 //-----------------------------------------------------------------------------------
 class CtrlMACasoDeTeste : IACasoDeTeste {
    private:
-    ISCasoDeTeste *ctrlMSCasoDeTeste;  // referência para servidor
+    ISCasoDeTeste *ctrlMSCasoDeTeste;
 
    public:
     void executar(Matricula);

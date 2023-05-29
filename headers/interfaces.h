@@ -19,9 +19,9 @@ class ISCasoDeTeste;
 class IAInicializacao {
    public:
     virtual void executar() = 0;
-    virtual void setCtrlIAAutenticacao(IAAutenticacao *) = 0;    // Método para estabelecer ligação com a controladora na camada de apresentação.
-    virtual void setCtrlIADesenvolvedor(IADesenvolvedor *) = 0;  // Método para estabelecer ligação com a controladora na camada de apresentação.
-    virtual void setCtrlIATeste(IATeste *) = 0;                  // Método para estabelecer ligação com a controladora na camada de apresentação.
+    virtual void setCtrlIAAutenticacao(IAAutenticacao *) = 0;
+    virtual void setCtrlIADesenvolvedor(IADesenvolvedor *) = 0;
+    virtual void setCtrlIATeste(IATeste *) = 0;
     virtual ~IAInicializacao(){};
 };
 
@@ -29,25 +29,25 @@ class IAAutenticacao {
    public:
 };
 
-class IADesenvolvedor{
-    public:
-    virtual void cadastrar() throw(runtime_error) = 0;
+class IADesenvolvedor {
+   public:
+    virtual void cadastrar() = 0;
     virtual void executar(Matricula) = 0;
-    virtual ~IADesenvolvedor(){}
+    virtual ~IADesenvolvedor() {}
 };
 
 class IATeste {
    public:
-    virtual void executar(Matricula) = 0;        // Método por meio do qual é solicitado o serviço.
-    virtual void setCtrlISTeste(ISTeste *) = 0;  // Método para estabelecer ligação com a controladora na camada de serviço.
-    virtual ~IATeste(){};                        // Método destrutor virtual.
+    virtual void executar(Matricula) = 0;
+    virtual void setCtrlISTeste(ISTeste *) = 0;
+    virtual ~IATeste(){};
 };
 
 class IACasoDeTeste {
    public:
-    virtual void executar(Matricula) = 0;              // Método por meio do qual é solicitado o serviço.
-    virtual void setCtrlISTeste(ISCasoDeTeste *) = 0;  // Método para estabelecer ligação com a controladora na camada de serviço.
-    virtual ~IACasoDeTeste(){};                        // Método destrutor virtual.
+    virtual void executar(Matricula) = 0;
+    virtual void setCtrlISTeste(ISCasoDeTeste *) = 0;
+    virtual ~IACasoDeTeste(){};
 };
 
 //--------------------------------------------------------------------------------------------
@@ -56,14 +56,13 @@ class IACasoDeTeste {
 class ISAutenticacao {
 };
 
-class ISDesenvolvedor
-{
-    public:
-    virtual bool cadastrar(Desenvolvedor) throw(runtime_error) = 0;
-    virtual bool descadastrar(Matricula) throw(runtime_error) = 0;
-    virtual bool visualizar(Desenvolvedor *) throw(runtime_error) = 0;
-    virtual bool editar(Desenvolvedor) throw(runtime_error) = 0;
-    virtual ~ISDesenvolvedor(){}
+class ISDesenvolvedor {
+   public:
+    virtual bool cadastrar(Desenvolvedor) = 0;
+    virtual bool descadastrar(Matricula) = 0;
+    virtual bool visualizar(Desenvolvedor *) = 0;
+    virtual bool editar(Desenvolvedor) = 0;
+    virtual ~ISDesenvolvedor() {}
 };
 class ISTeste {
    public:
