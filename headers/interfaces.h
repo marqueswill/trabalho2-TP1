@@ -11,6 +11,7 @@ using namespace std;
 class ISAutenticacao;
 class ISDesenvolvedor;
 class ISTeste;
+class ISCasoDeTeste;
 
 //--------------------------------------------------------------------------------------------
 // Declarações das interfaces da camada de apresentação.
