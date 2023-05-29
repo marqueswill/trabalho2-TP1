@@ -58,8 +58,11 @@ void CtrlMAInicializacao::executar() {
                                 break;                                     //
                             case 2:                                        //
                                 ctrlMATeste->executar(matricula);          // Solicita serviço de teste.
+                                break;                                     //
+                            case 3:                                        //
+                                ctrlMACasoDeTeste->executar(matricula);    // Solicita serviço de casodeteste.
                                 break;
-                            case 3:
+                            case 4:
                                 apresentar = false;
                                 break;
                         }

@@ -20,12 +20,14 @@ class CtrlMAInicializacao : IAInicializacao {
     IAAutenticacao *ctrlMAAutenticacao;    // referência para servidor
     IADesenvolvedor *ctrlMADesenvolvedor;  // referência para servidor
     IATeste *ctrlMATeste;                  // referência para servidor
+    IACasoDeTeste *ctrlMACasoDeTeste;      // referência para servidor
 
    public:
     void executar();
     void setCtrlMAAutenticacao(IAAutenticacao *);
     void setCtrlMADesenvolvedor(IADesenvolvedor *);
     void setCtrlMATeste(IATeste *);
+    void setCtrlMACasoDeTeste(IACasoDeTeste *);
 };
 
 inline void CtrlMAInicializacao::setCtrlMAAutenticacao(IAAutenticacao *ctrlMAAutenticacao) {
@@ -38,6 +40,10 @@ inline void CtrlMAInicializacao::setCtrlMADesenvolvedor(IADesenvolvedor *ctrlMAD
 
 inline void CtrlMAInicializacao::setCtrlMATeste(IATeste *ctrlMATeste) {
     this->ctrlMATeste = ctrlMATeste;
+}
+
+inline void CtrlMAInicializacao::setCtrlMACasoDeTeste(IACasoDeTeste *ctrlMACasoDeTeste) {
+    this->ctrlMACasoDeTeste = ctrlMACasoDeTeste;
 }
 
 //-----------------------------------------------------------------------------------
