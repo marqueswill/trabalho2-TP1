@@ -1,5 +1,5 @@
-#ifndef CONTROLADORAS_H_INCLUDED
-#define CONTROLADORAS_H_INCLUDED
+#ifndef CONTROLADORAS_APRESENTACAO_H_INCLUDED
+#define CONTROLADORAS_APRESENTACAO_H_INCLUDED
 
 #include <cstdlib>
 #include <iostream>
@@ -83,4 +83,4 @@ inline void CtrlMACasoDeTeste::setCtrlMSCasoDeTeste(ISCasoDeTeste *ctrlMSCasoDeT
     this->ctrlMSCasoDeTeste = ctrlMSCasoDeTeste;
 }
 
-#endif  // CONTROLADORAS_H_INCLUDED
+#endif  // CONTROLADORAS_APRESENTACAO_H_INCLUDED
