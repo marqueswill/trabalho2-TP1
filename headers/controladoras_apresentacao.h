@@ -77,31 +77,4 @@ inline void CtrlMACasoDeTeste::setCtrlMSCasoDeTeste(ISCasoDeTeste *ctrlMSCasoDeT
     this->ctrlMSCasoDeTeste = ctrlMSCasoDeTeste;
 }
 
-//-----------------------------------------------------------------------------------
-// Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
-
-class CtrlMSAutenticacao : ISAutenticacao {
-};
-
-//-----------------------------------------------------------------------------------
-class CtrlMSDesenvolvedor : ISDesenvolvedor {
-};
-
-//-----------------------------------------------------------------------------------
-class CtrlMSTeste : ISTeste {
-   public:
-    bool visualizar(Teste *);
-    bool cadastrar(Teste);
-    bool editar(Teste);
-    bool descadastrar(Codigo);
-};
-
-class CtrlMSCasoDeTeste : ISCasoDeTeste {
-   public:
-    bool visualizar(CasoDeTeste *);
-    bool cadastrar(CasoDeTeste);
-    bool editar(CasoDeTeste);
-    bool descadastrar(Codigo);
-};
-
 #endif  // CONTROLADORAS_H_INCLUDED
