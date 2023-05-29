@@ -38,6 +38,13 @@ class IATeste {
     virtual ~IATeste(){};                        // Método destrutor virtual.
 };
 
+class IACasoDeTeste {
+   public:
+    virtual void executar(Matricula) = 0;              // Método por meio do qual é solicitado o serviço.
+    virtual void setCtrlISTeste(ISCasoDeTeste *) = 0;  // Método para estabelecer ligação com a controladora na camada de serviço.
+    virtual ~IACasoDeTeste(){};                        // Método destrutor virtual.
+};
+
 //--------------------------------------------------------------------------------------------
 // Declarações das interfaces da camada de serviço.
 
@@ -52,11 +59,17 @@ class ISTeste {
     virtual bool visualizar(Teste *) = 0;
     virtual bool cadastrar(Teste) = 0;
     virtual bool editar(Teste) = 0;
+    virtual bool descadastrar(Codigo) = 0;
+    virtual ~ISTeste(){};
+};
+
+class ISCasoDeTeste {
+   public:
     virtual bool visualizar(CasoDeTeste *) = 0;
     virtual bool cadastrar(CasoDeTeste) = 0;
     virtual bool editar(CasoDeTeste) = 0;
     virtual bool descadastrar(Codigo) = 0;
-    virtual ~ISTeste(){};
+    virtual ~ISCasoDeTeste(){};
 };
 
 #endif  // INTERFACES_H_INCLUDED

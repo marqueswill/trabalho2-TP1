@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
 
-void CtrlIAInicializacao::executar() {
+void CtrlMAInicializacao::executar() {
     // Mensagens a serem apresentadas na tela inicial.
     string texto1 = "Selecione um dos servicos : ";
     string texto2 = "1 - Acessar sistema.";
@@ -38,7 +38,7 @@ void CtrlIAInicializacao::executar() {
 
         switch (campo) {
             case 1:
-                if (ctrlIAAutenticacao->autenticar(matricula*)) {  // Solicita autenticação.
+                if (ctrlMAAutenticacao->autenticar(matricula*)) {  // Solicita autenticação.
                     bool apresentar = true;                        // Controle de laço.
                     while (apresentar) {                           // Apresenta tela de seleção de serviço.
 
@@ -54,10 +54,10 @@ void CtrlIAInicializacao::executar() {
 
                         switch (campo) {
                             case 1:
-                                ctrlIADesenvolvedor->executar(matricula);  // Solicita serviço de desenvolvedor.
+                                ctrlMADesenvolvedor->executar(matricula);  // Solicita serviço de desenvolvedor.
                                 break;                                     //
                             case 2:                                        //
-                                ctrlIATeste->executar(matricula);          // Solicita serviço de teste.
+                                ctrlMATeste->executar(matricula);          // Solicita serviço de teste.
                                 break;
                             case 3:
                                 apresentar = false;
@@ -74,7 +74,7 @@ void CtrlIAInicializacao::executar() {
                 break;
 
             case 2:  // Solicitação de cadastro de desenvolvedor.
-                ctrlIADesenvolvedor->cadastrar();
+                ctrlMADesenvolvedor->cadastrar();
                 break;
 
             case 3:
@@ -86,6 +86,11 @@ void CtrlIAInicializacao::executar() {
 };
 
 //--------------------------------------------------------------------------------------------
-void CtrlIATeste::executar(Matricula){
+void CtrlMATeste::executar(Matricula){
+
+};
+
+//--------------------------------------------------------------------------------------------
+void CtrlMACasoDeTeste::executar(Matricula){
 
 };
