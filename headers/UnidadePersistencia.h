@@ -1,5 +1,7 @@
-#include "UnidadeTiposBasicos.h"
-#include "UnidadeEntidades.h"
+#include "entidades.h"
+#include "dominios.h"
+#include "../sources/dominios.cpp"
+
 
 #include <list>
 

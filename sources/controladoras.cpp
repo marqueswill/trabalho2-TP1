@@ -1,5 +1,6 @@
 #include "../headers/controladoras.h"
 #include "UnidadePersistencia.cpp"
+#include "../headers/entidades.h"
 using namespace std;
 //--------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
@@ -102,10 +103,7 @@ char campo1[80], campo2[80], campo3[80];
 char campo4[80], campo5[80], campo6[80];
 char campo7[80], campo8[80];
 
-Texto nome;
-Matricula matricula;
-Telefone telefone;
-Senha senha;
+
 
 int linha, coluna;
 getmaxyx(stdscr, linha, coluna);
@@ -122,17 +120,16 @@ mvprintw(linha/4,coluna/4,"%s",texto1);                                         
     mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                                // Imprime nome do campo.
     getstr(campo5);        
 
-try{
-    nome.setValor(string(campo1));
-    matricula.setValor(string(campo2));
-    telefone.setValor(string(campo3));
-    senha.setValor(string(campo4));
-}
-catch(invalid_argument &exp){
-    cout << texto6 << endl;
-    getchar();
-    return;
-}
+Texto nome;
+Matricula matricula;
+Telefone telefone;
+Senha senha;
+
+nome.setValor(string(campo1));
+matricula.setValor(string(campo2));
+telefone.setValor(string(campo3));
+senha.setValor(string(campo4));
+
 
 Desenvolvedor desenvolvedor;
 desenvolvedor.setNome(nome);
@@ -167,7 +164,7 @@ void cntrlIADesenvolvedor::executar(Matricula){
         }
     }
 }
-void cntrlISDesenvolvedor::descadastrar(){
+bool cntrlISDesenvolvedor::descadastrar(Matricula){
 char teste[20];
 Matricula matricula;
 int linha, coluna;
@@ -201,7 +198,7 @@ catch(EErroPersistencia exp){
 
 char texto4[] = "A operação foi efetuada com sucesso. Tecle algo";
 clear();
-mvprintw(linha/4,coluna/4,"%s", texto4);
+mvprintw(linha/4,coluna/4,"%s", texto);
 
 noecho();
 getch();

@@ -7,7 +7,7 @@
 #include "UnidadeTiposBasicos.h"
 
 //---------------------------------------------------------------------------
-// Declaração da classe Usuario.
+// Declaraï¿½ï¿½o da classe Usuario.
 
 class Usuario {
 private:
@@ -29,7 +29,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe Aluno.
+// Declaraï¿½ï¿½o da classe Aluno.
 
 class Aluno:public Usuario {
 private:
@@ -42,7 +42,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declaração da classe Disciplina.
+// Declaraï¿½ï¿½o da classe Disciplina.
 
 class Disciplina {
 private:
@@ -58,7 +58,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-//Implementações de métodos.
+//Implementaï¿½ï¿½es de mï¿½todos.
 
 inline Nome Usuario::getNome() const {
         return nome;

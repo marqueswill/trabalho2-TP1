@@ -9,7 +9,6 @@
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
-
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
 
@@ -87,10 +86,10 @@ const static unsigned int cadastrar_dev = 1;
 const static unsigned int descadastrar_dev = 2;
 const static unsigned int visualizar_dev = 3;
 const static unsigned int editar_dev = 4;
-void cadastrar(Desenvolvedor);
-void descadastrar()
-void visualizar(Desenvolvedor *);
-void editar(Desenvolvedor);
+bool cadastrar(Desenvolvedor);
+bool descadastrar(Matricula);
+bool visualizar(Desenvolvedor *);
+bool editar(Desenvolvedor);
 cntrlISDesenvolvedor();
 };
 //-----------------------------------------------------------------------------------
@@ -103,7 +102,7 @@ class CtrlISTeste : ISTeste {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlISTeste : ISTeste {
+class CtrlISCasoDeTeste : ISTeste {
    public:
     bool visualizar(CasoDeTeste *);
     bool cadastrar(CasoDeTeste);
