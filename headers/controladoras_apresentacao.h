@@ -49,6 +49,9 @@ inline void CtrlMAInicializacao::setCtrlMACasoDeTeste(IACasoDeTeste *ctrlMACasoD
 //-----------------------------------------------------------------------------------
 
 class CtrlMAAutenticacao : public IAAutenticacao {
+   private:
+   public:
+    bool autenticar(Matricula *);
 };
 
 //-----------------------------------------------------------------------------------

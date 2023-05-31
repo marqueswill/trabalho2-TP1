@@ -26,8 +26,9 @@ void CtrlMAInicializacao::executar() {
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
 
+        // Tela inicial
         clear();                                            // Limpa janela.
-        mvprintw(linha / 4, coluna / 4, "%s", texto1);      // Imprime nome do campo.
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);  // Imprime nome do campo.
         mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);  // Imprime nome do campo.
         mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);  // Imprime nome do campo.
         mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);  // Imprime nome do campo.
@@ -42,8 +43,9 @@ void CtrlMAInicializacao::executar() {
                     bool apresentar = true;                        // Controle de laço.
                     while (apresentar) {                           // Apresenta tela de seleção de serviço.
 
+                        // Tela de usuário logado
                         clear();                                            // Limpa janela.
-                        mvprintw(linha / 4, coluna / 4, "%s", texto6);      // Imprime nome do campo.
+                        mvprintw(linha / 4 + 0, coluna / 4, "%s", texto6);  // Imprime nome do campo.
                         mvprintw(linha / 4 + 2, coluna / 4, "%s", texto7);  // Imprime nome do campo.
                         mvprintw(linha / 4 + 4, coluna / 4, "%s", texto8);  // Imprime nome do campo.
                         mvprintw(linha / 4 + 6, coluna / 4, "%s", texto9);  // Imprime nome do campo.
@@ -68,20 +70,21 @@ void CtrlMAInicializacao::executar() {
                         }
                     }
                 } else {
-                    clear();                                         // Limpa janela.
-                    mvprintw(linha / 4, coluna / 4, "%s", texto10);  // Imprime mensagem.
-                    noecho();                                        // Desabilita eco.
-                    getch();                                         // Leitura de caracter digitado.
-                    echo();                                          // Habilita eco.
+                    // Falha na autenticação, reinicia o loop
+                    clear();                                             // Limpa janela.
+                    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto10);  // Imprime mensagem.
+                    noecho();                                            // Desabilita eco.
+                    getch();                                             // Leitura de caracter digitado.
+                    echo();                                              // Habilita eco.
                 }
                 break;
 
-            case 2:  // Solicitação de cadastro de desenvolvedor.
-                ctrlMADesenvolvedor->cadastrar();
+            case 2:                                // Solicitação de cadastro de desenvolvedor.
+                ctrlMADesenvolvedor->cadastrar();  // Abre a tela de cadastro.
                 break;
 
             case 3:
-                apresentar = false;
+                apresentar = false;  // Encerra o programa.
                 break;
         }
     }
@@ -112,8 +115,10 @@ void CtrlMADesenvolvedor::cadastrar() {
 
     int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
+
+    // Tela cadastramento
     clear();
-    mvprintw(linha / 4, coluna / 4, "%s", texto1);       // Imprime nome do campo.
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);   // Imprime nome do campo.
     mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);   // Imprime nome do campo.
     getstr(campo1);                                      // Lê valor do campo.
     mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);   // Imprime nome do campo.
@@ -145,10 +150,10 @@ void CtrlMADesenvolvedor::cadastrar() {
 
 void CtrlMADesenvolvedor::executar(Matricula) {
     char texto1[] = "Selecione o servico desejado : ";
-    char texto2[] = "1- Cadastrar novo desenvolvedor";
-    char texto3[] = "2- Editar dados de desenvolvedor";
-    char texto4[] = "3- Visualizar dados de desenvolvedor";
-    char texto5[] = "5- Descadastrar desenvolvedor";
+    char texto2[] = "1 - Cadastrar novo desenvolvedor";
+    char texto3[] = "2 - Editar dados de desenvolvedor";
+    char texto4[] = "3 - Visualizar dados de desenvolvedor";
+    char texto5[] = "4 - Descadastrar desenvolvedor";
     int campo;
     int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
@@ -156,7 +161,7 @@ void CtrlMADesenvolvedor::executar(Matricula) {
     echo();
     while (apresentar) {
         clear();
-        mvprintw(linha / 4, coluna / 4, "%s", texto1);
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
         mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
         mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
         noecho();

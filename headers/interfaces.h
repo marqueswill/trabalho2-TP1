@@ -27,6 +27,8 @@ class IAInicializacao {
 
 class IAAutenticacao {
    public:
+    virtual bool autenticar(Matricula *) = 0;
+    virtual ~IAAutenticacao(){};
 };
 
 class IADesenvolvedor {
