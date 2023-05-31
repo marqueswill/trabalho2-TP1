@@ -89,6 +89,90 @@ void CtrlMAInicializacao::executar() {
 };
 
 //--------------------------------------------------------------------------------------------
+CtrlMADesenvolvedor::CtrlMADesenvolvedor() {
+}
+
+void CtrlMADesenvolvedor::cadastrar() {
+    char texto1[] = "Por favor, preencha os espaços com os seus dados:";
+    char texto2[] = "Nome       :";
+    char texto3[] = "Matricula  :";
+    char texto4[] = "Telefone   :";
+    char texto5[] = "Senha      :";
+    char texto6[] = "O formato dos dados é inválido. Tecle algo.";
+    char texto7[] = "O cadastramento foi executado com sucesso. Tecle algo.";
+    char texto8[] = "O cadastramento falhou. Tecle algo";
+    char campo1[80], campo2[80], campo3[80];
+    char campo4[80], campo5[80], campo6[80];
+    char campo7[80], campo8[80];
+
+    Texto nome;
+    Matricula matricula;
+    Telefone telefone;
+    Senha senha;
+
+    int linha, coluna;
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+    mvprintw(linha / 4, coluna / 4, "%s", texto1);       // Imprime nome do campo.
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);   // Imprime nome do campo.
+    getstr(campo1);                                      // Lê valor do campo.
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);   // Imprime nome do campo.
+    getstr(campo2);                                      // Lê valor do campo.
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);   // Imprime nome do campo.
+    getstr(campo3);                                      // Lê valor do campo.
+    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);   // Imprime nome do campo.
+    getstr(campo4);                                      // Lê valor do campo.
+    mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);  // Imprime nome do campo.
+    getstr(campo5);
+
+    try {
+        nome.setValor(string(campo1));
+        matricula.setValor(string(campo2));
+        telefone.setValor(string(campo3));
+        senha.setValor(string(campo4));
+    } catch (invalid_argument &exp) {
+        cout << texto6 << endl;
+        getchar();
+        return;
+    }
+
+    Desenvolvedor desenvolvedor;
+    desenvolvedor.setNome(nome);
+    desenvolvedor.setMatricula(matricula);
+    desenvolvedor.setTelefone(telefone);
+    desenvolvedor.setSenha(senha);
+}
+
+void CtrlMADesenvolvedor::executar(Matricula) {
+    char texto1[] = "Selecione o servico desejado : ";
+    char texto2[] = "1- Cadastrar novo desenvolvedor";
+    char texto3[] = "2- Editar dados de desenvolvedor";
+    char texto4[] = "3- Visualizar dados de desenvolvedor";
+    char texto5[] = "5- Descadastrar desenvolvedor";
+    int campo;
+    int linha, coluna;
+    getmaxyx(stdscr, linha, coluna);
+    bool apresentar = true;
+    echo();
+    while (apresentar) {
+        clear();
+        mvprintw(linha / 4, coluna / 4, "%s", texto1);
+        mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
+        mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
+        noecho();
+        campo = getch() - 48;
+        echo();
+        switch (campo) {
+            // case 1:
+            // break;
+            case 2:
+                apresentar = false;
+                break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
 void CtrlMATeste::executar(Matricula){
 
 };
