@@ -38,7 +38,7 @@ void CtrlMAInicializacao::executar() {
 
         switch (campo) {
             case 1:
-                if (ctrlMAAutenticacao->autenticar(matricula*)) {  // Solicita autenticação.
+                if (ctrlMAAutenticacao->autenticar(&matricula)) {  // Solicita autenticação.
                     bool apresentar = true;                        // Controle de laço.
                     while (apresentar) {                           // Apresenta tela de seleção de serviço.
 

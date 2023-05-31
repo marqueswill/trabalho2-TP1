@@ -58,10 +58,10 @@ class ISAutenticacao {
 
 class ISDesenvolvedor {
    public:
-    virtual bool cadastrar(Desenvolvedor) = 0;
-    virtual bool descadastrar(Matricula) = 0;
     virtual bool visualizar(Desenvolvedor *) = 0;
+    virtual bool cadastrar(Desenvolvedor) = 0;
     virtual bool editar(Desenvolvedor) = 0;
+    virtual bool descadastrar(Matricula) = 0;
     virtual ~ISDesenvolvedor() {}
 };
 class ISTeste {

@@ -1,0 +1,4 @@
+#ifndef TELAS_H_INCLUDED
+#define TELAS_H_INCLUDED
+
+#endif  // TELAS_H_INCLUDED
