@@ -64,6 +64,7 @@ class ISDesenvolvedor {
     virtual void descadastrar(Matricula) = 0;
     virtual ~ISDesenvolvedor() {}
 };
+
 class ISTeste {
    public:
     virtual bool visualizar(Teste *) = 0;
