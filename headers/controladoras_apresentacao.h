@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
 
-class CtrlMAInicializacao : IAInicializacao {
+class CtrlMAInicializacao : public IAInicializacao {
    private:
     Matricula matricula;
 
@@ -48,15 +48,15 @@ inline void CtrlMAInicializacao::setCtrlMACasoDeTeste(IACasoDeTeste *ctrlMACasoD
 
 //-----------------------------------------------------------------------------------
 
-class CtrlMAAutenticacao : IAAutenticacao {
+class CtrlMAAutenticacao : public IAAutenticacao {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlMADesenvolvedor : IADesenvolvedor {
+class CtrlMADesenvolvedor : public IADesenvolvedor {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlMATeste : IATeste {
+class CtrlMATeste : public IATeste {
    private:
     ISTeste *ctrlMSTeste;
 
@@ -70,7 +70,7 @@ inline void CtrlMATeste::setCtrlMSTeste(ISTeste *ctrlMSTeste) {
 }
 
 //-----------------------------------------------------------------------------------
-class CtrlMACasoDeTeste : IACasoDeTeste {
+class CtrlMACasoDeTeste : public IACasoDeTeste {
    private:
     ISCasoDeTeste *ctrlMSCasoDeTeste;
 
