@@ -1,5 +1,6 @@
 #include "../headers/controladoras.h"
-
+#include "UnidadePersistencia.cpp"
+using namespace std;
 //--------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
 
@@ -159,12 +160,54 @@ void cntrlIADesenvolvedor::executar(Matricula){
         campo = getch() - 48;
         echo();
         switch(campo){
+            //case 1:
+            //break; 
             case 2: apresentar = false;
             break;
         }
     }
 }
+void cntrlISDesenvolvedor::descadastrar(){
+char teste[20];
+Matricula matricula;
+int linha, coluna;
+getmaxyx(stdscr,linha,coluna);
+char texto[] = "Escolha um número de matrícula para descadastrar uma conta";
+clear();
+mvprintw(linha/4,coluna/4,"%s", texto);
+getstr(teste);
+string m(teste);
+try{
+    matricula.setValor(m);
+}
+catch (invalid_argument & exp){
+    char texto2[] = "A matrícula digitada é inválida. Tente novamente";
+    clear();
+    mvprintw(linha/4,coluna/4,"%s", texto2);
+    return;
+}
 
-//--------------------------------------------------------------------------------------------
+ComandoDescadastrarDesenvolvedor comando(matricula);
+
+try{
+    comando.executar();
+}
+catch(EErroPersistencia exp){
+     char texto3[] = "Houve erro de acesso ao banco de dados. Tente novamente";
+    clear();
+    mvprintw(linha/4,coluna/4,"%s", texto3);
+    return;
+}
+
+char texto4[] = "A operação foi efetuada com sucesso. Tecle algo";
+clear();
+mvprintw(linha/4,coluna/4,"%s", texto4);
+
+noecho();
+getch();
+echo();
+}
+
+//------------------------------------------------------------------------------------------
 void CtrlIATeste::executar(Matricula matricula){
 };

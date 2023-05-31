@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-
+#include <conio.h>
 #include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
@@ -82,9 +82,15 @@ class CtrlISAutenticacao : ISAutenticacao {
 //-----------------------------------------------------------------------------------
 class cntrlISDesenvolvedor: public ISDesenvolvedor{
 public:
-bool cadastrar(Desenvolvedor);
-bool visualizar(Desenvolvedor *);
-bool editar(Desenvolvedor);
+const static unsigned int max = 5;
+const static unsigned int cadastrar_dev = 1;
+const static unsigned int descadastrar_dev = 2;
+const static unsigned int visualizar_dev = 3;
+const static unsigned int editar_dev = 4;
+void cadastrar(Desenvolvedor);
+void descadastrar()
+void visualizar(Desenvolvedor *);
+void editar(Desenvolvedor);
 cntrlISDesenvolvedor();
 };
 //-----------------------------------------------------------------------------------
