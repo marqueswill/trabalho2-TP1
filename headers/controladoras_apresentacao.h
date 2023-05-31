@@ -58,11 +58,10 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
     ISDesenvolvedor *ctrlISDesenvolvedor;
-    Matricula matricula;
-
-   public:
     Matricula *matricula;
     Desenvolvedor *desenvolvedor;
+
+   public:
     void cadastrar();
     void executar(Matricula);
 };

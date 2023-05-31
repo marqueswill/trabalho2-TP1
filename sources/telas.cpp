@@ -1,4 +1,4 @@
-#include "telas.h"
+#include "../headers/telas.h"
 
 void TelaMensagem::apresentar(string mensagem) {
     getmaxyx(stdscr, linha, coluna);
