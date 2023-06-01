@@ -15,12 +15,14 @@
 
 class CtrlIAInicializacao : public IAInicializacao {
    private:
-    Matricula matricula;
-
     IAAutenticacao *ctrlIAAutenticacao;
     IADesenvolvedor *ctrlIADesenvolvedor;
     IATeste *ctrlIATeste;
     IACasoDeTeste *ctrlIACasoDeTeste;
+
+    const static int AUTENTICAR = 1;
+    const static int CADASTRAR = 2;
+    const static int SAIR = 3;
 
    public:
     void executar();
@@ -70,6 +72,11 @@ class CtrlIADesenvolvedor : public IADesenvolvedor {
 class CtrlIATeste : public IATeste {
    private:
     ISTeste *ctrlISTeste;
+    const static int VISUALIZAR = 1;
+    const static int CADASTRAR = 2;
+    const static int EDITAR = 3;
+    const static int DESCADASTRAR = 4;
+    const static int RETORNAR = 5;
 
    public:
     void executar(Matricula);
@@ -84,6 +91,11 @@ inline void CtrlIATeste::setCtrlISTeste(ISTeste *ctrlISTeste) {
 class CtrlIACasoDeTeste : public IACasoDeTeste {
    private:
     ISCasoDeTeste *ctrlISCasoDeTeste;
+    const static int VISUALIZAR = 1;
+    const static int CADASTRAR = 2;
+    const static int EDITAR = 3;
+    const static int DESCADASTRAR = 4;
+    const static int RETORNAR = 5;
 
    public:
     void executar(Matricula);

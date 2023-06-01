@@ -1,5 +1,6 @@
 #include "../headers/controladoras_apresentacao.h"
 
+#include "../headers/comandos.h"
 #include "../headers/telas.h"
 
 //--------------------------------------------------------------------------------------------
@@ -8,20 +9,20 @@
 void CtrlIAInicializacao::executar() {
     initscr();  // Iniciar curses.
 
+    Matricula matricula;
     int campo, opcao;        // Campo de entrada.
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
 
-        // Tela inicial
-        //
         TelaInicial telaInicial;
         telaInicial.apresentar(&campo);
 
         switch (campo) {
-            case 1:
+            case AUTENTICAR:
                 if (ctrlIAAutenticacao->autenticar(&matricula)) {  // Solicita autenticação.
-                    bool apresentar = true;                        // Controle de laço.
-                    while (apresentar) {                           // Apresenta tela de seleção de serviço.
+
+                    bool apresentar = true;  // Controle de laço.
+                    while (apresentar) {     // Apresenta tela de seleção de serviço.
 
                         TelaUsuarioLogado telaUsuarioLogado;   // Tela de serviços após login.
                         telaUsuarioLogado.apresentar(&opcao);  // Pergunta e define o serviço.
@@ -41,21 +42,21 @@ void CtrlIAInicializacao::executar() {
                                 break;
                             default:
                                 TelaMensagem telaMensagem;  // Tela de serviços após login.
-                                telaMensagem.apresentar("Serviço inválido.");
+                                telaMensagem.apresentar("Opção inválida. Pressione qualquer teclar para retornar.");
                                 break;
                         }
                     }
                 } else {
                     TelaMensagem telaMensagem;
-                    telaMensagem.apresentar("Falha de autenticação.");
+                    telaMensagem.apresentar("Falha na autenticacao. Pressione qualquer teclar para retornar.");
                 }
                 break;
 
-            case 2:                                // Solicitação de cadastro de desenvolvedor.
+            case CADASTRAR:                        // Solicitação de cadastro de desenvolvedor.
                 ctrlIADesenvolvedor->cadastrar();  // Abre a tela de cadastro.
                 break;
 
-            case 3:
+            case SAIR:
                 apresentar = false;  // Encerra o programa.
                 break;
         }
@@ -71,11 +72,89 @@ void CtrlIADesenvolvedor::executar(Matricula) {
 }
 
 //--------------------------------------------------------------------------------------------
-void CtrlIATeste::executar(Matricula){
+void CtrlIATeste::executar(Matricula) {
+    int opcao;  // Campo de entrada.
+    CmdIATeste *comando;
 
+    bool apresentar = true;  // Controle de laço.
+    while (apresentar) {     // Apresenta tela inicial.
+
+        TelaTeste telaTeste;
+        telaTeste.apresentar(&opcao);
+
+        switch (opcao) {
+            case VISUALIZAR:
+                comando = new CmdIATesteVisualizar();
+                comando->executar(ctrlISTeste);
+                delete comando;
+                break;
+
+            case CADASTRAR:
+                comando = new CmdIATesteCadastrar;
+                comando->executar(ctrlISTeste);
+                delete comando;
+                break;
+
+            case EDITAR:
+                comando = new CmdIATesteEditar;
+                comando->executar(ctrlISTeste);
+                delete comando;
+                break;
+
+            case DESCADASTRAR:
+                comando = new CmdIATesteDescadastrar;
+                comando->executar(ctrlISTeste);
+                delete comando;
+                break;
+
+            case RETORNAR:
+                apresentar = false;
+                break;
+        }
+    }
+    return;
 };
 
 //--------------------------------------------------------------------------------------------
-void CtrlIACasoDeTeste::executar(Matricula){
+void CtrlIACasoDeTeste::executar(Matricula) {
+    int opcao;  // Campo de entrada.
+    CmdIACasoDeTeste *comando;
 
-};
+    bool apresentar = true;  // Controle de laço.
+    while (apresentar) {     // Apresenta tela inicial.
+
+        TelaCasoDeTeste telaCasoDeTeste;
+        telaCasoDeTeste.apresentar(&opcao);
+
+        switch (opcao) {
+            case VISUALIZAR:
+                comando = new CmdIACasoDeTesteVisualizar();
+                comando->executar(ctrlISCasoDeTeste);
+                delete comando;
+                break;
+
+            case CADASTRAR:
+                comando = new CmdIACasoDeTesteCadastrar;
+                comando->executar(ctrlISCasoDeTeste);
+                delete comando;
+                break;
+
+            case EDITAR:
+                comando = new CmdIACasoDeTesteEditar;
+                comando->executar(ctrlISCasoDeTeste);
+                delete comando;
+                break;
+
+            case DESCADASTRAR:
+                comando = new CmdIACasoDeTesteDescadastrar;
+                comando->executar(ctrlISCasoDeTeste);
+                delete comando;
+                break;
+
+            case RETORNAR:
+                apresentar = false;
+                break;
+        }
+    };
+    return;
+}

@@ -9,39 +9,55 @@
 #include "entidades.h"
 #include "interfaces.h"
 
-class Telas {
-   public:
-    int linha, coluna;
-    bool execucao = true;
-};
-
-class TelaMensagem : public Telas {
+//--------------------------------------------------------------------------------------------
+class TelaMensagem {
    public:
     void apresentar(string);
 };
 
-class TelaInicial : public Telas {
+//--------------------------------------------------------------------------------------------
+class TelaInicial {
    public:
-    void apresentar(int *campo);  // Método que retorna a opção escolhida.
+    void apresentar(int *);  // Método que retorna a opção escolhida.
 };
 
-class TelaUsuarioLogado : public Telas {
+//--------------------------------------------------------------------------------------------
+class TelaUsuarioLogado {
    public:
-    void apresentar(int *campo);  // Método que retorna a opção escolhida.
+    void apresentar(int *);
 };
 
-class TelaAutenticacao : public Telas {
-   private:
-    string texto1 = "Falha na autenticacao. Digite algo para continuar.";
-
+//--------------------------------------------------------------------------------------------
+class TelaAutenticacao {
    public:
     void apresentar(Matricula *, Senha *);
 };
 
-class TelaDesenvolvedor : public Telas {
+//--------------------------------------------------------------------------------------------
+class TelaDesenvolvedor {
    public:
     void apresentar(Desenvolvedor *);
-    void apresentar(int *campo);
+    void apresentar(int *);
+};
+
+//--------------------------------------------------------------------------------------------
+class TelaTeste {
+   public:
+    void apresentar(int *);
+    void visualizar(Teste *);
+    void cadastrar(Teste *);
+    void editar(Teste *);
+    void descadastrar(Teste *);
+};
+
+//--------------------------------------------------------------------------------------------
+class TelaCasoDeTeste {
+   public:
+    void apresentar(int *);
+    void visualizar(CasoDeTeste *);
+    void cadastrar(CasoDeTeste *);
+    void editar(CasoDeTeste *);
+    void descadastrar(CasoDeTeste *);
 };
 
 #endif  // TELAS_H_INCLUDED
