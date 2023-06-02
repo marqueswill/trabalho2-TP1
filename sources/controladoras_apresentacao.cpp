@@ -28,16 +28,16 @@ void CtrlIAInicializacao::executar() {
                         telaUsuarioLogado.apresentar(&opcao);  // Pergunta e define o serviço.
 
                         switch (opcao) {
-                            case 1:
+                            case DESENVOLVEDOR:
                                 ctrlIADesenvolvedor->executar(matricula);  // Solicita serviço de desenvolvedor.
                                 break;                                     //
-                            case 2:                                        //
+                            case TESTE:                                    //
                                 ctrlIATeste->executar(matricula);          // Solicita serviço de teste.
                                 break;                                     //
-                            case 3:                                        //
+                            case CASODETESTE:                              //
                                 ctrlIACasoDeTeste->executar(matricula);    // Solicita serviço de casodeteste.
                                 break;
-                            case 4:
+                            case VOLTAR:
                                 apresentar = false;
                                 break;
                             default:
@@ -65,8 +65,8 @@ void CtrlIAInicializacao::executar() {
 };
 
 //--------------------------------------------------------------------------------------------
-bool CtrlIAAutenticacao::autenticar(Matricula *) {
-}
+// bool CtrlIAAutenticacao::autenticar(Matricula *) {
+// }
 
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
@@ -76,7 +76,7 @@ void CtrlIADesenvolvedor::executar(Matricula) {
 }
 
 //--------------------------------------------------------------------------------------------
-void CtrlIATeste::executar(Matricula) {
+void CtrlIATeste::executar(Matricula matricula) {
     int opcao;  // Campo de entrada.
     CmdIATeste *comando;
 

@@ -24,6 +24,11 @@ class CtrlIAInicializacao : public IAInicializacao {
     const static int CADASTRAR = 2;
     const static int SAIR = 3;
 
+    const static int DESENVOLVEDOR = 1;
+    const static int TESTE = 2;
+    const static int CASODETESTE = 3;
+    const static int VOLTAR = 4;
+
    public:
     void executar();
     void setCtrlIAAutenticacao(IAAutenticacao *);
