@@ -13,12 +13,34 @@ class CmdIAAutenticacao {
     virtual ~CmdIAAutenticacao() {}
 };
 //--------------------------------------------------------------------------------------------
-class CmdIADesenvolvedor {
+class CmdIADev {
+    protected:
+    bool resultado;
+    Desenvolvedor dev;
+    Matricula matricula;
+    Telefone telefone;
+    Senha senha;
+    TelaDesenvolvedor TelaDev;
    public:
     virtual void executar(ISTeste*) = 0;
-    virtual ~CmdIADesenvolvedor() {}
+    virtual ~CmdIADev() {}
 };
-
+class CmdIADevCadastrar: public CmdIADev{
+public:
+void executar(ISDesenvolvedor*);
+};
+class CmdIADevVisualizar: public CmdIADev{
+public:
+void executar(ISDesenvolvedor*);
+};
+class CmdIADevEditar: public CmdIADev{
+    public:
+    void executar(ISDesenvolvedor*);
+};
+class CmdIaDevDescadastrar: public CmdIADev{
+    public:
+    void executar(ISDesenvolvedor*);
+};
 //--------------------------------------------------------------------------------------------
 class CmdIATeste {
    protected:
