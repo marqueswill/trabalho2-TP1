@@ -5,6 +5,7 @@
 
 //--------------------------------------------------------------------------------------------
 void TelaMensagem::apresentar(string mensagem) {
+    initscr();
     getmaxyx(stdscr, linha, coluna);
 
     clear();
@@ -23,18 +24,23 @@ void TelaInicial::apresentar(int *campo) {
     char texto2[] = "1 - Acessar sistema.";
     char texto3[] = "2 - Cadastrar desenvolvedor.";
     char texto4[] = "3 - Encerrar execução do sistema.";
+    char texto5[] = "Escolha uma opção: ";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
 
     noecho();
     *campo = getch() - 48;
     echo();
+
+    endwin();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -44,19 +50,24 @@ void TelaUsuarioLogado::apresentar(int *campo) {
     char texto3[] = "2 - Selecionar serviços relacionados a teste.";
     char texto4[] = "3 - Selecionar serviços relacionados a caso de teste.";
     char texto5[] = "4 - Encerrar sessão.";
+    char texto6[] = "Escolha uma opção: ";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6);
 
-    noecho();
-    *campo = getch() - 48;
     echo();
+    *campo = getch() - 48;
+    noecho();
+
+    endwin();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -69,27 +80,28 @@ void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
 
     char texto6[] = "Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
     echo();
     getstr(matriculaDesenvolvedor);
     noecho();
 
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
     echo();
     getstr(nomeDesenvolvedor);
     noecho();
 
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
     echo();
     getstr(telefoneDesenvolvedor);
     noecho();
 
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
     echo();
     getstr(senhaDesenvolvedor);
     noecho();
@@ -99,14 +111,18 @@ void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
         nome.setValor(nomeDesenvolvedor);
         telefone.setValor(telefoneDesenvolvedor);
         senha.setValor(senhaDesenvolvedor);
-
         desenvolvedor->setMatricula(matricula);
         desenvolvedor->setNome(nome);
         desenvolvedor->setTelefone(telefone);
         desenvolvedor->setSenha(senha);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 12, coluna / 4, "%s", texto6);
+        mvprintw(linha / 4 + 6, coluna / 4, "%s", texto6);
+        echo();
+        getch();
+        noecho();
     }
+
+    endwin();
 }
 
 void TelaDesenvolvedor::apresentar(int *campo) {
@@ -115,19 +131,24 @@ void TelaDesenvolvedor::apresentar(int *campo) {
     char texto3[] = "2 - Editar dados de desenvolvedor";
     char texto4[] = "3 - Descadastrar desenvolvedor";
     char texto5[] = "4 - Encerrar sessão.";
+    char texto6[] = "Escolha uma opção: ";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto4);
-    mvprintw(linha / 4 + 10, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6);
 
     echo();
-    scanw("%d", &campo);
+    *campo = getch() - 48;
     noecho();
+
+    endwin();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -138,20 +159,25 @@ void TelaTeste::apresentar(int *campo) {
     char texto4[] = "3 - Editar teste.";
     char texto5[] = "4 - Descadastrar teste.";
     char texto6[] = "5 - Encerrar sessão.";
+    char texto7[] = "Escolha uma opção: ";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
 
     clear();
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);
-    mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6);
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto7);
 
     echo();
     *campo = getch() - 48;
     noecho();
+
+    endwin();
 }
 
 void TelaTeste::visualizar(Teste *teste) {
@@ -160,12 +186,13 @@ void TelaTeste::visualizar(Teste *teste) {
 
     char texto3[] = "Código informado inválido. Pressione qualquer tecla para continuar.";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
     echo();
     getstr(codigoTeste);
     noecho();
@@ -174,8 +201,13 @@ void TelaTeste::visualizar(Teste *teste) {
         codigo.setValor(codigoTeste);
         teste->setCodigo(codigo);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 6, coluna / 4, "%s", texto3);
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", texto3);
+        echo();
+        getch();
+        noecho();
     };
+
+    endwin();
 }
 
 void TelaTeste::cadastrar(Teste *teste) {
@@ -186,22 +218,23 @@ void TelaTeste::cadastrar(Teste *teste) {
 
     char texto5[] = "Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
     echo();
     getstr(codigoTeste);
     noecho();
 
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
     echo();
     getstr(nomeTeste);
     noecho();
 
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
     echo();
     getstr(classeTeste);
     noecho();
@@ -214,8 +247,13 @@ void TelaTeste::cadastrar(Teste *teste) {
         teste->setNome(nome);
         teste->setClasse(classe);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 10, coluna / 4, "%s", texto5);
+        mvprintw(linha / 4 + 5, coluna / 4, "%s", texto5);
+        echo();
+        getch();
+        noecho();
     };
+
+    endwin();
 }
 
 void TelaTeste::editar(Teste *teste) {
@@ -236,20 +274,25 @@ void TelaCasoDeTeste::apresentar(int *campo) {
     char texto4[] = "3 - Editar caso de teste.";
     char texto5[] = "4 - Descadastrar caso de teste.";
     char texto6[] = "5 - Encerrar sessão.";
+    char texto7[] = "Escolha uma opção: ";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);
-    mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6);
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto7);
 
     noecho();
     *campo = getch() - 48;
     echo();
+
+    endwin();
 }
 
 void TelaCasoDeTeste::visualizar(CasoDeTeste *casodeteste) {
@@ -258,6 +301,7 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casodeteste) {
 
     char texto3[] = "Código informado inválido. Pressione qualquer tecla para continuar.";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
@@ -272,8 +316,13 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casodeteste) {
         codigo.setValor(codigoCasoDeTeste);
         casodeteste->setCodigo(codigo);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 6, coluna / 4, "%s", texto3);
+        mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
+        echo();
+        getch();
+        noecho();
     };
+
+    endwin();
 }
 
 void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
@@ -287,37 +336,38 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     char texto8[] = "Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.";
 
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
     echo();
     getstr(codigoCasoDeTeste);
     noecho();
 
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
     echo();
     getstr(nomeCasoDeTeste);
     noecho();
 
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
     echo();
     getstr(dataCasoDeTeste);
     noecho();
 
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
     echo();
     getstr(acaoCasoDeTeste);
     noecho();
 
-    mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);
+    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6);
     echo();
     getstr(respostaCasoDeTeste);
     noecho();
 
-    mvprintw(linha / 4 + 12, coluna / 4, "%s", texto7);
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto7);
     echo();
     getstr(resultadoCasoDeTeste);
     noecho();
@@ -334,8 +384,10 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
         casodeteste->setResposta(resposta);
         casodeteste->setResultado(resultado);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 16, coluna / 4, "%s", texto8);
+        mvprintw(linha / 4 + 8, coluna / 4, "%s", texto8);
     };
+
+    endwin();
 }
 
 void TelaCasoDeTeste::editar(CasoDeTeste *casodeteste) {
