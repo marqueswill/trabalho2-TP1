@@ -9,8 +9,5 @@
 using namespace std;
 
 int main() {
-    CtrlIAInicializacao ctrlIAInicializacao;
-    ctrlIAInicializacao.executar();
-
     return 0;
 }

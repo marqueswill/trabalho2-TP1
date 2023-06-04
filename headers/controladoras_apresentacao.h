@@ -13,7 +13,8 @@
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
 
-class CtrlIAInicializacao : public IAInicializacao {
+//-----------------------------------------------------------------------------------
+class CtrlIAInicializacao {
    private:
     IAAutenticacao *ctrlIAAutenticacao;
     IADesenvolvedor *ctrlIADesenvolvedor;
@@ -57,6 +58,8 @@ inline void CtrlIAInicializacao::setCtrlIACasoDeTeste(IACasoDeTeste *ctrlIACasoD
 
 class CtrlIAAutenticacao : public IAAutenticacao {
    private:
+    ISAutenticacao *ctrlISAutenticacao;
+
    public:
     bool autenticar(Matricula *);
 };
@@ -65,8 +68,6 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
     ISDesenvolvedor *ctrlISDesenvolvedor;
-    Matricula *matricula;
-    Desenvolvedor *desenvolvedor;
 
    public:
     void cadastrar();
@@ -77,6 +78,8 @@ class CtrlIADesenvolvedor : public IADesenvolvedor {
 class CtrlIATeste : public IATeste {
    private:
     ISTeste *ctrlISTeste;
+    CmdIATeste *comando;
+
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
     const static int EDITAR = 3;
@@ -96,6 +99,8 @@ inline void CtrlIATeste::setCtrlISTeste(ISTeste *ctrlISTeste) {
 class CtrlIACasoDeTeste : public IACasoDeTeste {
    private:
     ISCasoDeTeste *ctrlISCasoDeTeste;
+    CmdIACasoDeTeste *comando;
+
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
     const static int EDITAR = 3;

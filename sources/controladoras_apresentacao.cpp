@@ -7,10 +7,9 @@
 // Implementações dos métodos de classes controladoras.
 
 void CtrlIAInicializacao::executar() {
-    initscr();  // Iniciar curses.
-
     Matricula matricula;
-    int campo, opcao;        // Campo de entrada.
+    int campo, opcao;  // Campo de entrada.
+
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
 
@@ -42,13 +41,13 @@ void CtrlIAInicializacao::executar() {
                                 break;
                             default:
                                 TelaMensagem telaMensagem;  // Tela de serviços após login.
-                                telaMensagem.apresentar("Opção inválida. Pressione qualquer teclar para retornar.");
+                                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                                 break;
                         }
                     }
                 } else {
                     TelaMensagem telaMensagem;
-                    telaMensagem.apresentar("Falha na autenticacao. Pressione qualquer teclar para retornar.");
+                    telaMensagem.apresentar("Falha na autenticacao. Pressione qualquer tecla para continuar.");
                 }
                 break;
 
@@ -61,7 +60,6 @@ void CtrlIAInicializacao::executar() {
                 break;
         }
     }
-    return;
 };
 
 //--------------------------------------------------------------------------------------------
@@ -78,7 +76,6 @@ void CtrlIADesenvolvedor::executar(Matricula) {
 //--------------------------------------------------------------------------------------------
 void CtrlIATeste::executar(Matricula matricula) {
     int opcao;  // Campo de entrada.
-    CmdIATeste *comando;
 
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
@@ -94,19 +91,19 @@ void CtrlIATeste::executar(Matricula matricula) {
                 break;
 
             case CADASTRAR:
-                comando = new CmdIATesteCadastrar;
+                comando = new CmdIATesteCadastrar();
                 comando->executar(ctrlISTeste);
                 delete comando;
                 break;
 
             case EDITAR:
-                comando = new CmdIATesteEditar;
+                comando = new CmdIATesteEditar();
                 comando->executar(ctrlISTeste);
                 delete comando;
                 break;
 
             case DESCADASTRAR:
-                comando = new CmdIATesteDescadastrar;
+                comando = new CmdIATesteDescadastrar();
                 comando->executar(ctrlISTeste);
                 delete comando;
                 break;
@@ -114,15 +111,17 @@ void CtrlIATeste::executar(Matricula matricula) {
             case RETORNAR:
                 apresentar = false;
                 break;
+            default:
+                TelaMensagem telaMensagem;  // Tela de serviços após login.
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                break;
         }
     }
-    return;
 };
 
 //--------------------------------------------------------------------------------------------
 void CtrlIACasoDeTeste::executar(Matricula) {
     int opcao;  // Campo de entrada.
-    CmdIACasoDeTeste *comando;
 
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
@@ -138,19 +137,19 @@ void CtrlIACasoDeTeste::executar(Matricula) {
                 break;
 
             case CADASTRAR:
-                comando = new CmdIACasoDeTesteCadastrar;
+                comando = new CmdIACasoDeTesteCadastrar();
                 comando->executar(ctrlISCasoDeTeste);
                 delete comando;
                 break;
 
             case EDITAR:
-                comando = new CmdIACasoDeTesteEditar;
+                comando = new CmdIACasoDeTesteEditar();
                 comando->executar(ctrlISCasoDeTeste);
                 delete comando;
                 break;
 
             case DESCADASTRAR:
-                comando = new CmdIACasoDeTesteDescadastrar;
+                comando = new CmdIACasoDeTesteDescadastrar();
                 comando->executar(ctrlISCasoDeTeste);
                 delete comando;
                 break;
@@ -158,7 +157,10 @@ void CtrlIACasoDeTeste::executar(Matricula) {
             case RETORNAR:
                 apresentar = false;
                 break;
+            default:
+                TelaMensagem telaMensagem;  // Tela de serviços após login.
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                break;
         }
     };
-    return;
 }
