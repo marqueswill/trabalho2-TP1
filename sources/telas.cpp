@@ -347,3 +347,23 @@ void TelaCasoDeTeste::descadastrar(CasoDeTeste *casodeteste) {
     TelaCasoDeTeste telaCasoDeTeste;
     telaCasoDeTeste.visualizar(casodeteste);  // Chama tela para usuário informar o código do caso de teste.
 }
+
+void Tela_Servico_Desenvolvedor::descadastrar(Matricula *matricula){
+    initscr();
+    char teste[20];
+    getmaxyx(stdscr,linha,coluna);
+    char texto[]="Escolha um numero de matricula para descadastrar";
+    clear();
+    mvprintw(linha/4,coluna/4, "%s", texto);
+    getstr(teste);
+    string m(teste);
+    try{
+        matricula->setValor(m);
+    }
+    catch(invalid_argument & exp){
+        char texto2[] = "A matrícula digitada é inválida. Tente novamente.";
+        clear();
+        mvprintw(linha/4,coluna/4,"%s", texto2);
+        return;
+    }
+}
