@@ -17,31 +17,46 @@ class TelaMensagem {
 
 //--------------------------------------------------------------------------------------------
 class TelaInicial {
+   private:
+    TelaMensagem telaMensagem;
+
    public:
     void apresentar(int *);  // Método que retorna a opção escolhida.
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaUsuarioLogado {
+   private:
+    TelaMensagem telaMensagem;
+
    public:
     void apresentar(int *);
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaAutenticacao {
+   private:
+    TelaMensagem telaMensagem;
+
    public:
     void apresentar(Matricula *, Senha *);
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaDesenvolvedor {
+   private:
+    TelaMensagem telaMensagem;
+
    public:
-    void apresentar(Desenvolvedor *);
     void apresentar(int *);
+    void cadastrar(Desenvolvedor *);
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaTeste {
+   private:
+    TelaMensagem telaMensagem;
+
    public:
     void apresentar(int *);
     void visualizar(Teste *);
@@ -52,6 +67,9 @@ class TelaTeste {
 
 //--------------------------------------------------------------------------------------------
 class TelaCasoDeTeste {
+   private:
+    TelaMensagem telaMensagem;
+
    public:
     void apresentar(int *);
     void visualizar(CasoDeTeste *);

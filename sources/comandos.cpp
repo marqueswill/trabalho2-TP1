@@ -1,7 +1,5 @@
 #include "comandos.h"
 
-#include "telas.h"
-
 //--------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
@@ -10,12 +8,7 @@
 
 //--------------------------------------------------------------------------------------------
 void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
-    try {
-        telaTeste.visualizar(&teste);  // Pede o código do teste ao usuário.
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Código informado inválido. Pressione qualquer tecla para continuar.");
-    };
-
+    telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
@@ -25,12 +18,7 @@ void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
 }
 
 void CmdIATesteCadastrar::executar(ISTeste* ctrlISTeste) {
-    try {
-        telaTeste.cadastrar(&teste);  // Solicita dados do teste ao usuário. .
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.");
-    };
-
+    telaTeste.cadastrar(&teste);                // Solicita dados do teste ao usuário. .
     resultado = ctrlISTeste->cadastrar(teste);  // Registra no banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
@@ -40,12 +28,7 @@ void CmdIATesteCadastrar::executar(ISTeste* ctrlISTeste) {
 }
 
 void CmdIATesteEditar::executar(ISTeste* ctrlISTeste) {
-    try {
-        telaTeste.editar(&teste);  // Solicita novas informações ao usuário.
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.");
-    };
-
+    telaTeste.editar(&teste);                // Solicita novas informações ao usuário.
     resultado = ctrlISTeste->editar(teste);  // Substitui novas informaçoes no banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
@@ -55,13 +38,8 @@ void CmdIATesteEditar::executar(ISTeste* ctrlISTeste) {
 }
 
 void CmdIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
-    try {
-        telaTeste.descadastrar(&teste);  // Pede o código do teste ao usuário.
-        codigo = teste.getCodigo();
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Código informado inválido. Pressione qualquer tecla para continuar.");
-    };
-
+    telaTeste.descadastrar(&teste);  // Pede o código do teste ao usuário.
+    codigo = teste.getCodigo();
     resultado = ctrlISTeste->descadastrar(codigo);  // Socilita descadastramento do banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
@@ -72,12 +50,7 @@ void CmdIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
 
 //--------------------------------------------------------------------------------------------
 void CmdIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
-    try {
-        telaCasoDeTeste.visualizar(&casodeteste);  // Pede o código do teste ao usuário.
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Código informado inválido. Pressione qualquer tecla para continuar.");
-    };
-
+    telaCasoDeTeste.visualizar(&casodeteste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISCasoDeTeste->visualizar(&casodeteste);  // Pesquisa no banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
@@ -87,12 +60,7 @@ void CmdIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
 }
 
 void CmdIACasoDeTesteCadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
-    try {
-        telaCasoDeTeste.cadastrar(&casodeteste);  // Solicita dados do teste ao usuário. .
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.");
-    };
-
+    telaCasoDeTeste.cadastrar(&casodeteste);                // Solicita dados do teste ao usuário. .
     resultado = ctrlISCasoDeTeste->cadastrar(casodeteste);  // Registra no banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
@@ -102,12 +70,7 @@ void CmdIACasoDeTesteCadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
 }
 
 void CmdIACasoDeTesteEditar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
-    try {
-        telaCasoDeTeste.editar(&casodeteste);  // Solicita novas informações ao usuário.
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.");
-    };
-
+    telaCasoDeTeste.editar(&casodeteste);                // Solicita novas informações ao usuário.
     resultado = ctrlISCasoDeTeste->editar(casodeteste);  // Substitui novas informaçoes no banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
@@ -117,13 +80,8 @@ void CmdIACasoDeTesteEditar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
 }
 
 void CmdIACasoDeTesteDescadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
-    try {
-        telaCasoDeTeste.descadastrar(&casodeteste);  // Pede o código do teste ao usuário.
-        codigo = casodeteste.getCodigo();
-    } catch (invalid_argument& exp) {
-        telaMensagem.apresentar("Código informado inválido. Pressione qualquer tecla para continuar.");
-    };
-
+    telaCasoDeTeste.descadastrar(&casodeteste);  // Pede o código do teste ao usuário.
+    codigo = casodeteste.getCodigo();
     resultado = ctrlISCasoDeTeste->descadastrar(codigo);  // Socilita descadastramento do banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
