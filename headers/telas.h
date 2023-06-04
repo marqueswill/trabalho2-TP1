@@ -12,19 +12,18 @@
 //--------------------------------------------------------------------------------------------
 class Tela{
     public:
-    void apresentar(string generica);
     // Mensagens a serem apresentadas na tela de usuário logado.
     int campo;                        // Campo de entrada.
     int linha, coluna;              // Dados sobre tamanho da tela.
 };
 
-class TelaMensagem {
+class TelaMensagem: public Tela {
    public:
     void apresentar(string);
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaInicial {
+class TelaInicial: public Tela {
    private:
     TelaMensagem telaMensagem;
 
@@ -33,7 +32,7 @@ class TelaInicial {
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaUsuarioLogado {
+class TelaUsuarioLogado: public Tela {
    private:
     TelaMensagem telaMensagem;
 
@@ -42,7 +41,7 @@ class TelaUsuarioLogado {
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaAutenticacao {
+class TelaAutenticacao: public Tela {
    private:
     TelaMensagem telaMensagem;
 
@@ -51,7 +50,7 @@ class TelaAutenticacao {
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaDesenvolvedor {
+class TelaDesenvolvedor: public Tela {
    private:
     TelaMensagem telaMensagem;
 
@@ -61,7 +60,7 @@ class TelaDesenvolvedor {
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaTeste {
+class TelaTeste: public Tela {
    private:
     TelaMensagem telaMensagem;
 
@@ -74,7 +73,7 @@ class TelaTeste {
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaCasoDeTeste {
+class TelaCasoDeTeste: public Tela {
    private:
     TelaMensagem telaMensagem;
 

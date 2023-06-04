@@ -5,7 +5,6 @@
 
 //--------------------------------------------------------------------------------------------
 void TelaMensagem::apresentar(string mensagem) {
-    int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
     initscr();
     clear();
@@ -26,7 +25,6 @@ void TelaInicial::apresentar(int *campo) {
     string texto3 = "2 - Cadastrar desenvolvedor.";
     string texto4 = "3 - Encerrar execução do sistema.";
 
-    int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
     initscr();
     clear();
@@ -50,7 +48,6 @@ void TelaUsuarioLogado::apresentar(int *campo) {
     string texto4 = "3 - Selecionar serviços relacionados a caso de teste.";
     string texto5 = "4 - Encerrar sessão.";
 
-    int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
     initscr();
     clear();
@@ -88,7 +85,6 @@ void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
     char telefoneDesenvolvedor[80];
     char senhaDesenvolvedor[80];
 
-    int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
     clear();
 
@@ -131,7 +127,6 @@ void TelaDesenvolvedor::apresentar(int *campo) {
     char texto4[] = "3 - Descadastrar desenvolvedor";
     char texto5[] = "4 - Encerrar sessão.";
 
-    int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
     initscr();
     clear();
@@ -158,7 +153,6 @@ void TelaTeste::apresentar(int *campo) {
     string texto5 = "4 - Descadastrar teste.";
     string texto6 = "5 - Encerrar sessão.";
 
-    int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
 
     initscr();
@@ -186,7 +180,6 @@ void TelaTeste::visualizar(Teste *teste) {
 
     string codigoTeste;
 
-    int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
     initscr();
     clear();
@@ -219,7 +212,7 @@ void TelaTeste::cadastrar(Teste *teste) {
     string codigoTeste;
     string classeTeste;
 
-    int linha, coluna;
+
     getmaxyx(stdscr, linha, coluna);
     initscr();
     clear();
