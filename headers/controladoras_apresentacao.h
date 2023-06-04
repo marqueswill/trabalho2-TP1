@@ -67,7 +67,11 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
-    ISDesenvolvedor *ctrlISDesenvolvedor;
+   const static int cadastro = 1;
+   const static int editar = 2;
+   const static int visualizar = 3;
+   const static int descadastrar = 4;
+   ISDesenvolvedor *ctrlISDesenvolvedor;
 
    public:
     void cadastrar();
