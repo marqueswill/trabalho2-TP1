@@ -1,4 +1,3 @@
-w
 
 #include <cstdlib>
 #include <iostream>
@@ -46,5 +45,3 @@ class CtrlMSCasoDeTeste : public ISCasoDeTeste {
     bool editar(CasoDeTeste);
     bool descadastrar(Codigo);
 };
-
-#endif  // CONTROLADORAS_SERVICO_H_INCLUDED
