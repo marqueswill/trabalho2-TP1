@@ -10,42 +10,49 @@
 #include "interfaces.h"
 
 //--------------------------------------------------------------------------------------------
-class TelaMensagem {
+class Telas {
+   protected:
+   public:
+    int campo;
+    int linha, coluna;
+};
+
+//--------------------------------------------------------------------------------------------
+class TelaMensagem : public Telas {
    public:
     void apresentar(string);
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaInicial {
-   private:
-    TelaMensagem telaMensagem;
-
+class TelaInicial : public Telas {
    public:
     void apresentar(int *);  // Método que retorna a opção escolhida.
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaUsuarioLogado {
-   private:
-    TelaMensagem telaMensagem;
-
+class TelaUsuarioLogado : public Telas {
    public:
     void apresentar(int *);
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaAutenticacao {
-   private:
-    TelaMensagem telaMensagem;
-
+class TelaAutenticacao : public Telas {
    public:
     void apresentar(Matricula *, Senha *);
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaDesenvolvedor {
+class TelaDesenvolvedor : public Telas {
    private:
-    TelaMensagem telaMensagem;
+    Matricula matricula;
+    Texto nome;
+    Telefone telefone;
+    Senha senha;
+
+    char matriculaDesenvolvedor[80];
+    char nomeDesenvolvedor[80];
+    char telefoneDesenvolvedor[80];
+    char senhaDesenvolvedor[80];
 
    public:
     void apresentar(int *);
@@ -53,9 +60,15 @@ class TelaDesenvolvedor {
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaTeste {
+class TelaTeste : public Telas {
    private:
-    TelaMensagem telaMensagem;
+    Codigo codigo;
+    Texto nome;
+    Classe classe;
+
+    char codigoTeste[100];
+    char nomeTeste[100];
+    char classeTeste[100];
 
    public:
     void apresentar(int *);
@@ -66,9 +79,21 @@ class TelaTeste {
 };
 
 //--------------------------------------------------------------------------------------------
-class TelaCasoDeTeste {
+class TelaCasoDeTeste : public Telas {
    private:
-    TelaMensagem telaMensagem;
+    Codigo codigo;
+    Texto nome;
+    Data data;
+    Texto acao;
+    Texto resposta;
+    Resultado resultado;
+
+    char codigoCasoDeTeste[100];
+    char nomeCasoDeTeste[100];
+    char dataCasoDeTeste[100];
+    char acaoCasoDeTeste[100];
+    char respostaCasoDeTeste[100];
+    char resultadoCasoDeTeste[100];
 
    public:
     void apresentar(int *);

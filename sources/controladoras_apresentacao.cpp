@@ -23,7 +23,7 @@ void CtrlIAInicializacao::executar() {
                     bool apresentar = true;  // Controle de laço.
                     while (apresentar) {     // Apresenta tela de seleção de serviço.
 
-                        TelaUsuarioLogado telaUsuarioLogado;   // Tela de serviços após login.
+                        TelaUsuarioLogado telaUsuarioLogado;
                         telaUsuarioLogado.apresentar(&opcao);  // Pergunta e define o serviço.
 
                         switch (opcao) {
@@ -40,7 +40,7 @@ void CtrlIAInicializacao::executar() {
                                 apresentar = false;
                                 break;
                             default:
-                                TelaMensagem telaMensagem;  // Tela de serviços após login.
+                                TelaMensagem telaMensagem;
                                 telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                                 break;
                         }
@@ -68,12 +68,10 @@ void CtrlIAInicializacao::executar() {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
-Desenvolvedor Dev;
-TelaDesenvolvedor TelaDev;
-initscr();
-TelaDev.apresentar(&Dev);
-
-
+    Desenvolvedor Dev;
+    TelaDesenvolvedor TelaDev;
+    initscr();
+    TelaDev.apresentar(&Dev);
 }
 
 void CtrlIADesenvolvedor::executar(Matricula) {
@@ -81,14 +79,12 @@ void CtrlIADesenvolvedor::executar(Matricula) {
     int opcao;
     initscr();
     TelaDev.apresentar(&opcao);
-    switch(opcao){
+    switch (opcao) {
         case cadastro:
         case editar:
         case visualizar:
         case descadastrar:
-
     }
-
 }
 
 //--------------------------------------------------------------------------------------------
@@ -129,8 +125,9 @@ void CtrlIATeste::executar(Matricula matricula) {
             case RETORNAR:
                 apresentar = false;
                 break;
+
             default:
-                TelaMensagem telaMensagem;  // Tela de serviços após login.
+                TelaMensagem telaMensagem;
                 telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                 break;
         }
@@ -175,8 +172,9 @@ void CtrlIACasoDeTeste::executar(Matricula) {
             case RETORNAR:
                 apresentar = false;
                 break;
+
             default:
-                TelaMensagem telaMensagem;  // Tela de serviços após login.
+                TelaMensagem telaMensagem;
                 telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                 break;
         }
