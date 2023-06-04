@@ -1,4 +1,6 @@
 #include "../headers/telas.h"
+#include "../headers/dominios.h"
+#include "../headers/entidades.h"
 
 //--------------------------------------------------------------------------------------------
 void TelaMensagem::apresentar(string mensagem) {
@@ -289,3 +291,68 @@ void TelaCasoDeTeste::descadastrar(CasoDeTeste *casodeteste) {
     TelaCasoDeTeste telaCasoDeTeste;
     telaCasoDeTeste.visualizar(casodeteste);  // Chama tela para usuário informar o código do caso de teste.
 }
+
+void TelaDesenvolvedor::apresentar(Desenvolvedor *dev){
+char texto1[] = "Por favor, preencha os espaços com os seus dados:";
+char texto2[] = "Nome       :";
+char texto3[] = "Matricula  :";
+char texto4[] = "Telefone   :";
+char texto5[] = "Senha      :";
+char texto6[] = "O formato dos dados é inválido. Tecle algo.";
+char texto7[] = "O cadastramento foi executado com sucesso. Tecle algo.";
+char texto8[] = "O cadastramento falhou. Tecle algo";
+char campo1[80], campo2[80], campo3[80];
+char campo4[80], campo5[80], campo6[80];
+char campo7[80], campo8[80];
+getmaxyx(stdscr, linha, coluna);
+clear();
+mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
+mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
+getstr(campo1);                                                                             // L� valor do campo.
+mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
+getstr(campo2);                                                                             // L� valor do campo.
+mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
+getstr(campo3);                                                                             // L� valor do campo.
+mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
+getstr(campo4);                                                                             // L� valor do campo.
+mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                                // Imprime nome do campo.
+getstr(campo5);
+echo();
+endwin();
+Texto name;
+Matricula registernumber;
+Telefone telephone;
+Senha password; 
+name.setValor(campo1);
+registernumber.setValor(campo2);
+telephone.setValor(campo3);
+password.setValor(campo4);
+dev.setNome(name);
+dev.setMatricula(registernumber);
+dev.setTelefone(telephone);
+dev.setSenha(password);
+}
+
+void TelaDesenvolvedor::apresentar(int *opcao){
+     char texto1[] = "Selecione o servico desejado : ";
+    char texto2[] = "1- Cadastrar novo desenvolvedor";
+    char texto3[] = "2- Editar dados de desenvolvedor";
+    char texto4[] = "3- Visualizar dados de desenvolvedor";
+    char texto5[] = "4- Descadastrar desenvolvedor";
+    int campo;
+    int linha, coluna;
+    getmaxyx(stdscr, linha, coluna);
+    initscr();
+    echo();
+        clear();
+        mvprintw(linha/4, coluna/4, "%s", texto1);
+        mvprintw(linha/4 + 2, coluna/4, "%s", texto2);
+        mvprintw(linha/4 + 4, coluna/4, "%s", texto3);
+        mvprintw(linha/4 + 8, coluna/4, "%s", texto4);
+        mvprintw(linha/4 + 16, coluna/4,"%s",texto5);
+        scanw("%d", &opcao)
+        noecho();
+        campo = getch() - 48;
+        echo();
+        endwin();
+    }
