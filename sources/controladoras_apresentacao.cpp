@@ -71,9 +71,7 @@ void CtrlIADesenvolvedor::cadastrar() {
 Desenvolvedor Dev;
 TelaDesenvolvedor TelaDev;
 initscr();
-TelaDev.apresentar(&Dev);
-
-
+TelaDev.cadastrar(&Dev);
 }
 
 void CtrlIADesenvolvedor::executar(Matricula) {
