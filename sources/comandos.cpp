@@ -131,6 +131,3 @@ void CmdIACasoDeTesteDescadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
         telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }
-void CmdIADevCadastrar::executar(ISDesenvolvedor* ISDesenvolvedor){
-
-}
