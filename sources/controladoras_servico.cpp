@@ -5,10 +5,12 @@
 #include "telas.cpp"
 using namespace std;
 bool CtrlMSDesenvolvedor::descadastrar(Matricula){
-Matricula matricula;
+Matricula *matricula;
+matricula = new Matricula();
 Tela_Servico_Desenvolvedor TelaSd;
-TelaSd.descadastrar(*matricula);
-ComandoDescadastrarDesenvolvedor comando(matricula);
+TelaSd.descadastrar(matricula);
+Matricula registernumber = *matricula;
+ComandoDescadastrarDesenvolvedor comando(registernumber);
 
 try{
     comando.executar();
@@ -28,6 +30,7 @@ mvprintw(linha/4,coluna/4,"%s", texto);
 noecho();
 getch();
 echo();
+delete matricula;
 }
 
 //--------------------------------------------------------------------------------------------
