@@ -24,6 +24,7 @@ catch(EErroPersistencia exp){
 char texto4[] = "A operação foi efetuada com sucesso. Tecle algo";
 TelaMsg.apresentar(texto4);
 delete matricula;
+return true;
 }
 
 //--------------------------------------------------------------------------------------------
