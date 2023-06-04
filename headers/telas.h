@@ -14,7 +14,7 @@ class Tela{
     public:
     // Mensagens a serem apresentadas na tela de usuário logado.
     int campo;                        // Campo de entrada.
-    int linha, coluna;              // Dados sobre tamanho da tela.
+    int linha, coluna;            // Dados sobre tamanho da tela.
 };
 
 class TelaMensagem: public Tela {
@@ -95,4 +95,3 @@ class Tela_Servico_Desenvolvedor: public Tela{
     void descadastrar(Matricula *);
 };
 
-#endif  // TELAS_H_INCLUDED
