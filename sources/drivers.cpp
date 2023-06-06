@@ -45,6 +45,8 @@ void DriverDepuracao::executar() {
                 apresentar = false;
                 break;
             default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }
@@ -75,6 +77,8 @@ void DriverTestesUnitarios::executar() {
                 apresentar = false;
                 break;
             default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }

@@ -58,6 +58,11 @@ void CtrlIAInicializacao::executar() {
             case SAIR:
                 apresentar = false;  // Encerra o programa.
                 break;
+
+            default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                break;
         }
     }
 };
