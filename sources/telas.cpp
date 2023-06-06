@@ -99,34 +99,40 @@ void TelaDesenvolvedor::apresentar(int *campo) {
 
 void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
     char texto1[] = "Por favor, preencha os espaços com os seus dados:";
-    char texto2[] = "Nome       :";
-    char texto3[] = "Matricula  :";
-    char texto4[] = "Telefone   :";
-    char texto5[] = "Senha      :";
-    char texto6[] = "O formato dos dados é inválido. Tecle algo.";
-    char texto7[] = "O cadastramento foi executado com sucesso. Tecle algo.";
-    char texto8[] = "O cadastramento falhou. Tecle algo";
-    char campo1[80], campo2[80], campo3[80];
-    char campo4[80], campo5[80], campo6[80];
-    char campo7[80], campo8[80];
+    char texto2[] = "Nome      : ";
+    char texto3[] = "Matricula : ";
+    char texto4[] = "Telefone  : ";
+    char texto5[] = "Senha     : ";
+
+    initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
-    mvprintw(linha / 4, coluna / 4, "%s", texto1);       // Imprime nome do campo.
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);   // Imprime nome do campo.
-    getstr(campo1);                                      // L� valor do campo.
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);   // Imprime nome do campo.
-    getstr(campo2);                                      // L� valor do campo.
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);   // Imprime nome do campo.
-    getstr(campo3);                                      // L� valor do campo.
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);   // Imprime nome do campo.
-    getstr(campo4);                                      // L� valor do campo.
-    mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);  // Imprime nome do campo.
-    getstr(campo5);
-    Texto nome;
-    Matricula matricula;
-    Telefone telefone;
-    Senha senha;
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
+
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    echo();
+    getstr(nomeDesenvolvedor);
+    noecho();
+
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    echo();
+    getstr(matriculaDesenvolvedor);
+    noecho();
+
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    echo();
+    getstr(telefoneDesenvolvedor);
+    noecho();
+
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
+    echo();
+    getstr(senhaDesenvolvedor);
+    noecho();
+
     desenvolvedor->setNome(nome);
+
+    endwin();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -264,7 +270,7 @@ void TelaCasoDeTeste::apresentar(int *campo) {
 
 void TelaCasoDeTeste::apresentar(Codigo *codigo) {
     char texto1[] = "Preencha os seguintes campos: ";
-    char texto2[] = "Código: ";
+    char texto2[] = "Código : ";
 
     char texto3[] = "Código informado inválido. Pressione qualquer tecla para continuar.";
 

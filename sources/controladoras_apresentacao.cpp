@@ -67,11 +67,26 @@ void CtrlIAInicializacao::executar() {
 // }
 
 //--------------------------------------------------------------------------------------------
-void CtrlIADesenvolvedor::cadastrar() {
-}
+// void CtrlIADesenvolvedor::cadastrar() {
+//     Desenvolvedor Dev;
+//     TelaDesenvolvedor TelaDev;
+//     initscr();
+//     TelaDev.apresentar(&Dev);
+// }
+// }
 
-void CtrlIADesenvolvedor::executar(Matricula) {
-}
+// void CtrlIADesenvolvedor::executar(Matricula) {
+//     TelaDesenvolvedor TelaDev;
+//     int opcao;
+//     initscr();
+//     TelaDev.apresentar(&opcao);
+//     switch (opcao) {
+//         case cadastro:
+//         case editar:
+//         case visualizar:
+//         case descadastrar:
+//     }
+// }
 
 //--------------------------------------------------------------------------------------------
 void CtrlIATeste::executar(Matricula matricula) {

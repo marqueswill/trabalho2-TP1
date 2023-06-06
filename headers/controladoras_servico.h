@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 
-#include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
