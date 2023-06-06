@@ -5,6 +5,18 @@
 //--------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
+void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor *ctrlISDesenvolvedor){
+telaDesenvolvedor.apresentar(&desenvolvedor);
+resultado = ctrlISDesenvolvedor->cadastrar(desenvolvedor);
+if (resultado) {
+        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
+    } else {
+        telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
+    }
+}
+void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor *ctrlISDesenvolvedor){
+    
+}
 void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
     telaTeste.apresentar(&codigo);  // Pede o código do teste ao usuário.
     teste.setCodigo(codigo);
@@ -96,3 +108,4 @@ void CmdIACasoDeTesteDescadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
         telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }
+
