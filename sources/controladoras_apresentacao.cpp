@@ -1,219 +1,99 @@
 #include "../headers/controladoras_apresentacao.h"
 
-#include "../headers/comandos.h"
-#include "../headers/telas.h"
-
 //--------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
 
-void CtrlIAInicializacao::executar() {
-    Matricula matricula;
-    int campo1, campo2;  // Campo de entrada.
+void CtrlMAInicializacao::executar() {
+    // Mensagens a serem apresentadas na tela inicial.
+    string texto1 = "Selecione um dos servicos : ";
+    string texto2 = "1 - Acessar sistema.";
+    string texto3 = "2 - Cadastrar desenvolvedor.";
+    string texto4 = "3 - Encerrar execução do sistema.";
+
+    // Mensagens a serem apresentadas na tela de usuário logado.
+    string texto5 = "Selecione um dos servicos : ";
+    string texto6 = "1 - Selecionar serviços relacionados a desenvolvedor.";
+    string texto7 = "2 - Selecionar serviços relacionados a teste.";
+    string texto8 = "3 - Selecionar serviços relacionados a caso de teste.";
+    string texto9 = "4 - Encerrar sessão.";
+
+    string texto10 = "Falha na autenticacao. Digite algo para continuar.";
+
+    int campo;                        // Campo de entrada.
+    int linha, coluna;                // Dados sobre tamanho da tela.
+    getmaxyx(stdscr, linha, coluna);  // Armazena quantidade de linhas e colunas.
 
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
 
-        TelaInicial telaInicial;
-        telaInicial.apresentar(&campo1);
+        clear();                                            // Limpa janela.
+        mvprintw(linha / 4, coluna / 4, "%s", texto1);      // Imprime nome do campo.
+        mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);  // Imprime nome do campo.
+        mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);  // Imprime nome do campo.
+        mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);  // Imprime nome do campo.
 
-        switch (campo1) {
-            case AUTENTICAR:
-                if (ctrlIAAutenticacao->autenticar(&matricula)) {  // Solicita autenticação.
+        noecho();
+        campo = getch() - 48;  // Leitura do campo de entrada e conversão de ASCII.
+        echo();
 
-                    bool apresentar = true;  // Controle de laço.
-                    while (apresentar) {     // Apresenta tela de seleção de serviço.
+        switch (campo) {
+            case 1:
+                if (ctrlMAAutenticacao->autenticar(matricula*)) {  // Solicita autenticação.
+                    bool apresentar = true;                        // Controle de laço.
+                    while (apresentar) {                           // Apresenta tela de seleção de serviço.
 
-                        TelaUsuarioLogado telaUsuarioLogado;
-                        telaUsuarioLogado.apresentar(&campo2);  // Pergunta e define o serviço.
+                        clear();                                            // Limpa janela.
+                        mvprintw(linha / 4, coluna / 4, "%s", texto6);      // Imprime nome do campo.
+                        mvprintw(linha / 4 + 2, coluna / 4, "%s", texto7);  // Imprime nome do campo.
+                        mvprintw(linha / 4 + 4, coluna / 4, "%s", texto8);  // Imprime nome do campo.
+                        mvprintw(linha / 4 + 6, coluna / 4, "%s", texto9);  // Imprime nome do campo.
 
-                        switch (campo2) {
-                            case DESENVOLVEDOR:
-                                ctrlIADesenvolvedor->executar(matricula);  // Solicita serviço de desenvolvedor.
+                        noecho();
+                        campo = getch() - 48;  // Leitura do campo de entrada e conversão de ASCII.
+                        echo();
+
+                        switch (campo) {
+                            case 1:
+                                ctrlMADesenvolvedor->executar(matricula);  // Solicita serviço de desenvolvedor.
                                 break;                                     //
-                            case TESTE:                                    //
-                                ctrlIATeste->executar(matricula);          // Solicita serviço de teste.
+                            case 2:                                        //
+                                ctrlMATeste->executar(matricula);          // Solicita serviço de teste.
                                 break;                                     //
-                            case CASODETESTE:                              //
-                                ctrlIACasoDeTeste->executar(matricula);    // Solicita serviço de casodeteste.
+                            case 3:                                        //
+                                ctrlMACasoDeTeste->executar(matricula);    // Solicita serviço de casodeteste.
                                 break;
-                            case VOLTAR:
+                            case 4:
                                 apresentar = false;
-                                break;
-                            default:
-                                TelaMensagem telaMensagem;
-                                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                                 break;
                         }
                     }
                 } else {
-                    TelaMensagem telaMensagem;
-                    telaMensagem.apresentar("Falha na autenticacao. Pressione qualquer tecla para continuar.");
+                    clear();                                         // Limpa janela.
+                    mvprintw(linha / 4, coluna / 4, "%s", texto10);  // Imprime mensagem.
+                    noecho();                                        // Desabilita eco.
+                    getch();                                         // Leitura de caracter digitado.
+                    echo();                                          // Habilita eco.
                 }
                 break;
 
-            case CADASTRAR:                        // Solicitação de cadastro de desenvolvedor.
-                ctrlIADesenvolvedor->cadastrar();  // Abre a tela de cadastro.
+            case 2:  // Solicitação de cadastro de desenvolvedor.
+                ctrlMADesenvolvedor->cadastrar();
                 break;
 
-            case SAIR:
-                apresentar = false;  // Encerra o programa.
-                break;
-
-            default:
-                TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+            case 3:
+                apresentar = false;
                 break;
         }
     }
+    return;
 };
 
 //--------------------------------------------------------------------------------------------
-// bool CtrlIAAutenticacao::autenticar(Matricula *) {
-// }
+void CtrlMATeste::executar(Matricula){
 
-//--------------------------------------------------------------------------------------------
-void CtrlIADesenvolvedor::cadastrar() {
-    Desenvolvedor desenvolvedor;
-
-    TelaDesenvolvedor telaDesenvolvedor;
-    initscr();
-    telaDesenvolvedor.apresentar(&desenvolvedor);
-}
-
-void CtrlIADesenvolvedor::executar(Matricula) {
-    TelaDesenvolvedor telaDesenvolvedor;
-    int opcao;
-    initscr();
-    telaDesenvolvedor.apresentar(&opcao);
-    bool apresentar = true;
-    while (apresentar) {
-        switch (opcao) {
-            case CADASTRAR:
-                comando = new CmdIADesenvolvedorCadastrar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
-
-            case EDITAR:
-                comando = new CmdIADesenvolvedorEditar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
-            case VISUALIZAR:
-                comando = new CmdIADesenvolvedorVisualizar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
-            case DESCADASTRAR:
-                comando = new CmdIADesenvolvedorDescadastrar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
-
-            case RETORNAR:
-                apresentar = false;
-                break;
-
-            default:
-                TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
-                break;
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-void CtrlIATeste::executar(Matricula matricula) {
-    CmdIATeste *comando;
-    int opcao;  // Campo de entrada.
-
-    bool apresentar = true;  // Controle de laço.
-    while (apresentar) {     // Apresenta tela inicial.
-
-        TelaTeste telaTeste;
-        telaTeste.apresentar(&opcao);
-
-        switch (opcao) {
-            case VISUALIZAR:
-                comando = new CmdIATesteVisualizar();
-                comando->executar(ctrlISTeste);
-                delete comando;
-                break;
-
-            case CADASTRAR:
-                comando = new CmdIATesteCadastrar();
-                comando->executar(ctrlISTeste);
-                delete comando;
-                break;
-
-            case EDITAR:
-                comando = new CmdIATesteEditar();
-                comando->executar(ctrlISTeste);
-                delete comando;
-                break;
-
-            case DESCADASTRAR:
-                comando = new CmdIATesteDescadastrar();
-                comando->executar(ctrlISTeste);
-                delete comando;
-                break;
-
-            case RETORNAR:
-                apresentar = false;
-                break;
-
-            default:
-                TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
-                break;
-        }
-    }
 };
 
 //--------------------------------------------------------------------------------------------
-void CtrlIACasoDeTeste::executar(Matricula) {
-    CmdIACasoDeTeste *comando;
-    int opcao;  // Campo de entrada.
+void CtrlMACasoDeTeste::executar(Matricula){
 
-    bool apresentar = true;  // Controle de laço.
-    while (apresentar) {     // Apresenta tela inicial.
-
-        TelaCasoDeTeste telaCasoDeTeste;
-        telaCasoDeTeste.apresentar(&opcao);
-
-        switch (opcao) {
-            case VISUALIZAR:
-                comando = new CmdIACasoDeTesteVisualizar();
-                comando->executar(ctrlISCasoDeTeste);
-                delete comando;
-                break;
-
-            case CADASTRAR:
-                comando = new CmdIACasoDeTesteCadastrar();
-                comando->executar(ctrlISCasoDeTeste);
-                delete comando;
-                break;
-
-            case EDITAR:
-                comando = new CmdIACasoDeTesteEditar();
-                comando->executar(ctrlISCasoDeTeste);
-                delete comando;
-                break;
-
-            case DESCADASTRAR:
-                comando = new CmdIACasoDeTesteDescadastrar();
-                comando->executar(ctrlISCasoDeTeste);
-                delete comando;
-                break;
-
-            case RETORNAR:
-                apresentar = false;
-                break;
-
-            default:
-                TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
-                break;
-        }
-    };
-}
+};

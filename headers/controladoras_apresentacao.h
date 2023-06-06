@@ -1,121 +1,86 @@
 #ifndef CONTROLADORAS_APRESENTACAO_H_INCLUDED
 #define CONTROLADORAS_APRESENTACAO_H_INCLUDED
 
+#include <cstdlib>
+#include <iostream>
 #include <string>
 
-#include "comandos.h"
 #include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
 
-// Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
 //-----------------------------------------------------------------------------------
-class CtrlIAInicializacao {
+// Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
+
+class CtrlMAInicializacao : IAInicializacao {
    private:
-    IAAutenticacao *ctrlIAAutenticacao;
-    IADesenvolvedor *ctrlIADesenvolvedor;
-    IATeste *ctrlIATeste;
-    IACasoDeTeste *ctrlIACasoDeTeste;
+    Matricula matricula;
 
-    const static int AUTENTICAR = 1;
-    const static int CADASTRAR = 2;
-    const static int SAIR = 3;
-
-    const static int DESENVOLVEDOR = 1;
-    const static int TESTE = 2;
-    const static int CASODETESTE = 3;
-    const static int VOLTAR = 4;
+    IAAutenticacao *ctrlMAAutenticacao;
+    IADesenvolvedor *ctrlMADesenvolvedor;
+    IATeste *ctrlMATeste;
+    IACasoDeTeste *ctrlMACasoDeTeste;
 
    public:
     void executar();
-    void setCtrlIAAutenticacao(IAAutenticacao *);
-    void setCtrlIADesenvolvedor(IADesenvolvedor *);
-    void setCtrlIATeste(IATeste *);
-    void setCtrlIACasoDeTeste(IACasoDeTeste *);
+    void setCtrlMAAutenticacao(IAAutenticacao *);
+    void setCtrlMADesenvolvedor(IADesenvolvedor *);
+    void setCtrlMATeste(IATeste *);
+    void setCtrlMACasoDeTeste(IACasoDeTeste *);
 };
 
-inline void CtrlIAInicializacao::setCtrlIAAutenticacao(IAAutenticacao *ctrlIAAutenticacao) {
-    this->ctrlIAAutenticacao = ctrlIAAutenticacao;
+inline void CtrlMAInicializacao::setCtrlMAAutenticacao(IAAutenticacao *ctrlMAAutenticacao) {
+    this->ctrlMAAutenticacao = ctrlMAAutenticacao;
 }
 
-inline void CtrlIAInicializacao::setCtrlIADesenvolvedor(IADesenvolvedor *ctrlIADesenvolvedor) {
-    this->ctrlIADesenvolvedor = ctrlIADesenvolvedor;
+inline void CtrlMAInicializacao::setCtrlMADesenvolvedor(IADesenvolvedor *ctrlMADesenvolvedor) {
+    this->ctrlMADesenvolvedor = ctrlMADesenvolvedor;
 }
 
-inline void CtrlIAInicializacao::setCtrlIATeste(IATeste *ctrlIATeste) {
-    this->ctrlIATeste = ctrlIATeste;
+inline void CtrlMAInicializacao::setCtrlMATeste(IATeste *ctrlMATeste) {
+    this->ctrlMATeste = ctrlMATeste;
 }
 
-inline void CtrlIAInicializacao::setCtrlIACasoDeTeste(IACasoDeTeste *ctrlIACasoDeTeste) {
-    this->ctrlIACasoDeTeste = ctrlIACasoDeTeste;
+inline void CtrlMAInicializacao::setCtrlMACasoDeTeste(IACasoDeTeste *ctrlMACasoDeTeste) {
+    this->ctrlMACasoDeTeste = ctrlMACasoDeTeste;
 }
 
 //-----------------------------------------------------------------------------------
 
-class CtrlIAAutenticacao : public IAAutenticacao {
-   private:
-    ISAutenticacao *ctrlISAutenticacao;
-
-   public:
-    bool autenticar(Matricula *);
+class CtrlMAAutenticacao : IAAutenticacao {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlIADesenvolvedor : public IADesenvolvedor {
-   private:
-    const static int CADASTRAR = 1;
-    const static int EDITAR = 2;
-    const static int VISUALIZAR = 3;
-    const static int DESCADASTRAR = 4;
-    const static int RETORNAR = 5;
-
-    ISDesenvolvedor *ctrlISDesenvolvedor;
-    CmdIADesenvolvedor *comando;
-
-   public:
-    void cadastrar();
-    void executar(Matricula);
+class CtrlMADesenvolvedor : IADesenvolvedor {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlIATeste : public IATeste {
+class CtrlMATeste : IATeste {
    private:
-    ISTeste *ctrlISTeste;
-
-    const static int VISUALIZAR = 1;
-    const static int CADASTRAR = 2;
-    const static int EDITAR = 3;
-    const static int DESCADASTRAR = 4;
-    const static int RETORNAR = 5;
+    ISTeste *ctrlMSTeste;
 
    public:
     void executar(Matricula);
-    void setCtrlISTeste(ISTeste *);
+    void setCtrlMSTeste(ISTeste *);
 };
 
-inline void CtrlIATeste::setCtrlISTeste(ISTeste *ctrlISTeste) {
-    this->ctrlISTeste = ctrlISTeste;
+inline void CtrlMATeste::setCtrlMSTeste(ISTeste *ctrlMSTeste) {
+    this->ctrlMSTeste = ctrlMSTeste;
 }
 
 //-----------------------------------------------------------------------------------
-class CtrlIACasoDeTeste : public IACasoDeTeste {
+class CtrlMACasoDeTeste : IACasoDeTeste {
    private:
-    ISCasoDeTeste *ctrlISCasoDeTeste;
-
-    const static int VISUALIZAR = 1;
-    const static int CADASTRAR = 2;
-    const static int EDITAR = 3;
-    const static int DESCADASTRAR = 4;
-    const static int RETORNAR = 5;
+    ISCasoDeTeste *ctrlMSCasoDeTeste;
 
    public:
     void executar(Matricula);
-    void setCtrlISCasoDeTeste(ISCasoDeTeste *);
+    void setCtrlMSCasoDeTeste(ISCasoDeTeste *);
 };
 
-inline void CtrlIACasoDeTeste::setCtrlISCasoDeTeste(ISCasoDeTeste *ctrlISCasoDeTeste) {
-    this->ctrlISCasoDeTeste = ctrlISCasoDeTeste;
+inline void CtrlMACasoDeTeste::setCtrlMSCasoDeTeste(ISCasoDeTeste *ctrlMSCasoDeTeste) {
+    this->ctrlMSCasoDeTeste = ctrlMSCasoDeTeste;
 }
 
 #endif  // CONTROLADORAS_APRESENTACAO_H_INCLUDED

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+#include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
@@ -12,26 +13,15 @@
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
 
-class CtrlMSAutenticacao : public ISAutenticacao {
+class CtrlMSAutenticacao : ISAutenticacao {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlMSDesenvolvedor : public ISDesenvolvedor {
-   public:
-    const static int max = 5;
-    const static int cadastrar_dev = 1;
-    const static int descadastrar_dev = 2;
-    const static int visualizar_dev = 3;
-    const static int editar_dev = 4;
-
-    bool visualizar(Desenvolvedor *);
-    bool cadastrar(Desenvolvedor);
-    bool editar(Desenvolvedor);
-    bool descadastrar(Matricula);
+class CtrlMSDesenvolvedor : ISDesenvolvedor {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlMSTeste : public ISTeste {
+class CtrlMSTeste : ISTeste {
    public:
     bool visualizar(Teste *);
     bool cadastrar(Teste);
@@ -39,7 +29,7 @@ class CtrlMSTeste : public ISTeste {
     bool descadastrar(Codigo);
 };
 
-class CtrlMSCasoDeTeste : public ISCasoDeTeste {
+class CtrlMSCasoDeTeste : ISCasoDeTeste {
    public:
     bool visualizar(CasoDeTeste *);
     bool cadastrar(CasoDeTeste);
@@ -47,4 +37,4 @@ class CtrlMSCasoDeTeste : public ISCasoDeTeste {
     bool descadastrar(Codigo);
 };
 
-#endif CONTROLADORAS_SERVICO_H_INCLUDED
+#endif  // CONTROLADORAS_SERVICO_H_INCLUDED

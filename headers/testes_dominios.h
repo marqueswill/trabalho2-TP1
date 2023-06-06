@@ -2,6 +2,7 @@
 #define TESTES_DOMINIOS_H_INCLUDED
 
 #include <iomanip>
+#include <iostream>
 #include <string>
 
 #include "dominios.h"
