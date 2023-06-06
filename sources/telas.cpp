@@ -106,22 +106,18 @@ void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
     char texto6[] = "O formato dos dados é inválido. Tecle algo.";
     char texto7[] = "O cadastramento foi executado com sucesso. Tecle algo.";
     char texto8[] = "O cadastramento falhou. Tecle algo";
-    char campo1[80], campo2[80], campo3[80];
-    char campo4[80], campo5[80], campo6[80];
-    char campo7[80], campo8[80];
     getmaxyx(stdscr, linha, coluna);
     clear();
     mvprintw(linha / 4, coluna / 4, "%s", texto1);       // Imprime nome do campo.
     mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);   // Imprime nome do campo.
-    getstr(campo1);                                      // L� valor do campo.
+    getstr(nomeDesenvolvedor);                                      // L� valor do campo.
     mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);   // Imprime nome do campo.
-    getstr(campo2);                                      // L� valor do campo.
+    getstr(matriculaDesenvolvedor);                                      // L� valor do campo.
     mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);   // Imprime nome do campo.
-    getstr(campo3);                                      // L� valor do campo.
+    getstr(telefoneDesenvolvedor);                                      // L� valor do campo.
     mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);   // Imprime nome do campo.
-    getstr(campo4);                                      // L� valor do campo.
+    getstr(senhaDesenvolvedor);                                      // L� valor do campo.
     mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);  // Imprime nome do campo.
-    getstr(campo5);
     Texto nome;
     Matricula matricula;
     Telefone telefone;
