@@ -1,5 +1,4 @@
 #include "../headers/telas.h"
-
 #include "../headers/dominios.h"
 #include "../headers/entidades.h"
 
@@ -118,11 +117,15 @@ void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
     mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);   // Imprime nome do campo.
     getstr(senhaDesenvolvedor);                                      // L� valor do campo.
     mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);  // Imprime nome do campo.
-    Texto nome;
-    Matricula matricula;
-    Telefone telefone;
-    Senha senha;
+    nome.setValor(nomeDesenvolvedor);
+    matricula.setValor(matriculaDesenvolvedor);
+    telefone.setValor(telefoneDesenvolvedor);
+    senha.setValor(senhaDesenvolvedor);
     desenvolvedor->setNome(nome);
+    desenvolvedor->setMatricula(matricula);
+    desenvolvedor->setTelefone(telefone);
+    desenvolvedor->setSenha(senha);
+    return;
 }
 
 //--------------------------------------------------------------------------------------------
