@@ -8,15 +8,15 @@
 
 void CtrlIAInicializacao::executar() {
     Matricula matricula;
-    int campo, opcao;  // Campo de entrada.
+    int campo1, campo2;  // Campo de entrada.
 
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
 
         TelaInicial telaInicial;
-        telaInicial.apresentar(&campo);
+        telaInicial.apresentar(&campo1);
 
-        switch (campo) {
+        switch (campo1) {
             case AUTENTICAR:
                 if (ctrlIAAutenticacao->autenticar(&matricula)) {  // Solicita autenticação.
 
@@ -24,9 +24,9 @@ void CtrlIAInicializacao::executar() {
                     while (apresentar) {     // Apresenta tela de seleção de serviço.
 
                         TelaUsuarioLogado telaUsuarioLogado;
-                        telaUsuarioLogado.apresentar(&opcao);  // Pergunta e define o serviço.
+                        telaUsuarioLogado.apresentar(&campo2);  // Pergunta e define o serviço.
 
-                        switch (opcao) {
+                        switch (campo2) {
                             case DESENVOLVEDOR:
                                 ctrlIADesenvolvedor->executar(matricula);  // Solicita serviço de desenvolvedor.
                                 break;                                     //
@@ -95,6 +95,7 @@ void CtrlIAInicializacao::executar() {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIATeste::executar(Matricula matricula) {
+    CmdIATeste *comando;
     int opcao;  // Campo de entrada.
 
     bool apresentar = true;  // Controle de laço.
@@ -142,6 +143,7 @@ void CtrlIATeste::executar(Matricula matricula) {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIACasoDeTeste::executar(Matricula) {
+    CmdIACasoDeTeste *comando;
     int opcao;  // Campo de entrada.
 
     bool apresentar = true;  // Controle de laço.

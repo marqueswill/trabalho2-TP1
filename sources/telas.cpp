@@ -464,7 +464,7 @@ void TelaTestesUnitarios::apresentar(int *campo) {
     string texto2 = "1 - Executar testes domínios.";
     string texto3 = "2 - Executar testes entidades.";
     string texto4 = "3 - Executar testes modulos.";
-    string texto5 = "4 - Encerrar depuração.";
+    string texto5 = "4 - Retornar.";
     string texto6 = "Digite a opção: ";
 
     initscr();

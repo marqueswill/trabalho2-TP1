@@ -1,4 +1,4 @@
-#include "comandos.h"
+#include "../headers/comandos.h"
 
 //--------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ void CmdIATesteEditar::executar(ISTeste* ctrlISTeste) {
     telaTeste.apresentar(&teste);  // Solicita novas informações ao usuário.
 
     resultado = ctrlISTeste->editar(teste);  // Substitui novas informaçoes no banco de dados.
-    if (resultado) {
+    if (ctrlISTeste->visualizar(&teste)) {   // Obtem novos valores no BD.
         telaTeste.apresentar(teste);
     } else {
         telaMensagem.apresentar("Não foi possível editar teste. Pressione qualquer tecla para continuar.");

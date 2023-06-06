@@ -126,7 +126,7 @@ void DriverTestesEntidades::executar() {
     showResult(testeTeste.run(), "Teste", 2);
     showResult(testeCasoDeTeste.run(), "CasoDeTeste", 3);
 
-    mvprintw(linha / 4 + 9, coluna / 4, "%s", "");
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
     echo();
     getch();
     noecho();

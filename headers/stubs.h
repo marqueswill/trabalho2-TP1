@@ -15,6 +15,17 @@ class StubISDesenvolvedor : public ISDesenvolvedor {
 
 class StubISTeste : public ISTeste {
    private:
+    const static string TRIGGER_SUCESSO;
+    const static string TRIGGER_FALHA;
+
+    const static string VALOR_VALIDO_CODIGO;
+    const static string VALOR_VALIDO_NOME;
+    const static string VALOR_VALIDO_CLASSE;
+
+    Codigo codigo;
+    Texto nome;
+    Classe classe;
+
     bool resultado;
 
    public:
@@ -26,7 +37,9 @@ class StubISTeste : public ISTeste {
 
 class StubISCasoDeTeste : public ISCasoDeTeste {
    private:
+    const static string TRIGGER_FALHA;
     bool resultado;
+    CasoDeTeste casodetesteStub;
 
    public:
     bool visualizar(CasoDeTeste *);

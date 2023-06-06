@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+#include "comandos.h"
 #include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
@@ -80,7 +81,6 @@ class CtrlIADesenvolvedor : public IADesenvolvedor {
 class CtrlIATeste : public IATeste {
    private:
     ISTeste *ctrlISTeste;
-    CmdIATeste *comando;
 
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
@@ -101,7 +101,6 @@ inline void CtrlIATeste::setCtrlISTeste(ISTeste *ctrlISTeste) {
 class CtrlIACasoDeTeste : public IACasoDeTeste {
    private:
     ISCasoDeTeste *ctrlISCasoDeTeste;
-    CmdIACasoDeTeste *comando;
 
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
