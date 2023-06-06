@@ -8,6 +8,7 @@ bool CtrlMSDesenvolvedor::descadastrar(Matricula){
 Matricula *matricula;
 matricula = new Matricula();
 Tela_Servico_Desenvolvedor TelaSd;
+TelaMensagem TelaMsg;
 TelaSd.descadastrar(matricula);
 Matricula registernumber = *matricula;
 ComandoDescadastrarDesenvolvedor comando(registernumber);
@@ -17,20 +18,13 @@ try{
 }
 catch(EErroPersistencia exp){
      char texto3[] = "Houve erro de acesso ao banco de dados. Tente novamente";
-     TelaSd.apresentar(texto3);
-    clear();
-    mvprintw(linha/4,coluna/4,"%s", texto3);
-    return;
+     TelaMsg.apresentar(texto3);
 }
 
 char texto4[] = "A operação foi efetuada com sucesso. Tecle algo";
-clear();
-mvprintw(linha/4,coluna/4,"%s", texto);
-
-noecho();
-getch();
-echo();
+TelaMsg.apresentar(texto4);
 delete matricula;
+return true;
 }
 
 //--------------------------------------------------------------------------------------------

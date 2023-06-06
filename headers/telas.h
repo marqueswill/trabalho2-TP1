@@ -99,4 +99,17 @@ class TelaCasoDeTeste : public Telas {
     void apresentar(Codigo *);
 };
 
-#endif  // TELAS_H_INCLUDED
+class Tela_Apresentacao_Desenvolvedor: public Telas{
+    public:
+    void cadastrar_desenvolvedor(Desenvolvedor *desenvolvedor);
+    void executar_desenvolvedor();
+};
+
+class Tela_Servico_Desenvolvedor: public Telas{
+    public:
+    string texto5 = "Selecione um dos servicos : ";
+    string texto6 = "1 - Selecionar serviços relacionados a desenvolvedor.";
+    string texto7 = "2 - Selecionar serviços relacionados a teste.";
+    string texto8 = "3 - Selecionar serviços relacionados a caso de teste.";
+    string texto9 = "4 - Encerrar sessão.";
+};

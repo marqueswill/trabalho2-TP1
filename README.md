@@ -20,7 +20,6 @@ Repositório do primeiro trabalho de TP1.
    
  2. Formatação:  
    * Better C++ Syntax
-   * Prettier - Code formatter
     
  3. Git:
    * Git History
