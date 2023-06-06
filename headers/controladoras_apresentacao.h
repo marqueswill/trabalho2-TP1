@@ -3,8 +3,8 @@
 
 #include <cstdlib>
 #include <iostream>
+#include "comandos.h"
 #include <string>
-
 #include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
@@ -65,11 +65,12 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
-    const static int cadastro = 1;
-    const static int editar = 2;
-    const static int visualizar = 3;
-    const static int descadastrar = 4;
+    const static int CADASTRAR = 1;
+    const static int EDITAR = 2;
+    const static int VISUALIZAR = 3;
+    const static int DESCADASTRAR = 4;
     ISDesenvolvedor *ctrlISDesenvolvedor;
+    CmdIADesenvolvedor *comando;
 
    public:
     void cadastrar();

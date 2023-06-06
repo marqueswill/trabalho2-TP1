@@ -82,10 +82,23 @@ void CtrlIADesenvolvedor::executar(Matricula) {
     initscr();
     TelaDev.apresentar(&opcao);
     switch(opcao){
-        case cadastro:
-        case editar:
-        case visualizar:
-        case descadastrar:
+        case CADASTRAR:
+        comando = new CmdIADesenvolvedorCadastrar();
+        comando->executar(ctrlISDesenvolvedor);
+        delete comando;
+        break;
+
+        case EDITAR:
+        comando = new CmdIADesenvolvedorEditar();
+        comando->executar(ctrlISDesenvolvedor);
+        delete comando;
+        break;
+        case VISUALIZAR:
+        case DESCADASTRAR:
+        comando = new CmdIADesenvolvedorDescadastrar();
+        comando->executar(ctrlISDesenvolvedor);
+        delete comando;
+        break;
 
     }
 
