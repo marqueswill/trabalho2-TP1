@@ -115,8 +115,8 @@ void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
     mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);   // Imprime nome do campo.
     getstr(telefoneDesenvolvedor);                                      // L� valor do campo.
     mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);   // Imprime nome do campo.
-    getstr(senhaDesenvolvedor);                                      // L� valor do campo.
-    mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);  // Imprime nome do campo.
+    getstr(senhaDesenvolvedor);                                      // L� valor do campo. // Imprime nome do campo.
+    try{
     nome.setValor(nomeDesenvolvedor);
     matricula.setValor(matriculaDesenvolvedor);
     telefone.setValor(telefoneDesenvolvedor);
@@ -125,7 +125,38 @@ void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
     desenvolvedor->setMatricula(matricula);
     desenvolvedor->setTelefone(telefone);
     desenvolvedor->setSenha(senha);
+    } 
+    catch(invalid_argument &exp){
+        mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);
+        echo();
+        getch();
+        noecho();
+    }
+    endwin();
     return;
+}
+
+void TelaDesenvolvedor::apresentar(Matricula *matricula){
+    char texto1[] = "Preencha os seguintes campos: ";
+    char texto2[] = "Matrícula: ";
+    char texto3[] = "Matrícula informada inválida. Pressione qualquer tecla para continuar.";
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+    mvprintw(linha/4, coluna/4, "%s", texto1);
+    mvprintw(linha/4+1, coluna/4, "%s", texto2);
+    echo();
+    getstr(matriculaDesenvolvedor);
+    noecho();
+    try{
+        matricula->setValor(matriculaDesenvolvedor);
+    }catch(invalid_argument &exp){
+        mvprintw(linha/4+3, coluna/4,"%s",texto3);
+        echo();
+        getch();
+        noecho();
+    };
+    endwin();
 }
 
 //--------------------------------------------------------------------------------------------
@@ -273,7 +304,7 @@ void TelaCasoDeTeste::apresentar(Codigo *codigo) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
     echo();
     getstr(codigoCasoDeTeste);
     noecho();
