@@ -8,7 +8,7 @@ void Drivers::showResult(bool resultado, string nome, int l) {
     int linha, coluna;
     getmaxyx(stdscr, linha, coluna);
 
-    static int linha_atual = linha / 4 + l;
+    int linha_atual = linha / 4 + l;
 
     texto1 = nome + string(16 - nome.length(), '.') + texto1;
     texto2 = nome + string(16 - nome.length(), '.') + texto2;
