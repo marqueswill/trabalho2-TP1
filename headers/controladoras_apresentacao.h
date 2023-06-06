@@ -10,9 +10,7 @@
 #include "entidades.h"
 #include "interfaces.h"
 
-//-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
-
 //-----------------------------------------------------------------------------------
 class CtrlIAInicializacao {
    private:
@@ -67,11 +65,11 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
-   const static int cadastro = 1;
-   const static int editar = 2;
-   const static int visualizar = 3;
-   const static int descadastrar = 4;
-   ISDesenvolvedor *ctrlISDesenvolvedor;
+    const static int cadastro = 1;
+    const static int editar = 2;
+    const static int visualizar = 3;
+    const static int descadastrar = 4;
+    ISDesenvolvedor *ctrlISDesenvolvedor;
 
    public:
     void cadastrar();

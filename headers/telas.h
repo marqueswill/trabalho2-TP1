@@ -99,4 +99,16 @@ class TelaCasoDeTeste : public Telas {
     void apresentar(Codigo *);
 };
 
+//--------------------------------------------------------------------------------------------
+class TelaDepuracao : public Telas {
+   private:
+   public:
+    void apresentar(int *);
+};
+
+class TelaTestesUnitarios : public Telas {
+   private:
+   public:
+    void apresentar(int *);
+};
 #endif  // TELAS_H_INCLUDED

@@ -10,7 +10,7 @@ void TelaMensagem::apresentar(string mensagem) {
 
     clear();
 
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", mensagem);
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", mensagem.c_str());
 
     echo();
     getch();
@@ -352,6 +352,61 @@ void TelaCasoDeTeste::apresentar(CasoDeTeste *casodeteste) {
     } catch (invalid_argument &exp) {
         mvprintw(linha / 4 + 8, coluna / 4, "%s", texto8);
     };
+
+    endwin();
+}
+
+//--------------------------------------------------------------------------------------------
+void TelaDepuracao::apresentar(int *campo) {
+    char texto1[] = "Selecione tipo de teste a ser executado : ";
+    char texto2[] = "1 - Executar testes unitários.";
+    char texto3[] = "2 - Executar testes de integração.";
+    char texto4[] = "3 - Executar testes fumaça.";
+    char texto5[] = "4 - Executar testes sistema.";
+    char texto6[] = "5 - Encerrar depuração.";
+    char texto7[] = "Digite a opção: ";
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6);
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto7);
+
+    echo();
+    *campo = getch() - 48;
+    noecho();
+
+    endwin();
+}
+
+void TelaTestesUnitarios::apresentar(int *campo) {
+    char texto1[] = "Selecione unidades de teste: ";
+    char texto2[] = "1 - Executar testes domínios.";
+    char texto3[] = "2 - Executar testes entidades.";
+    char texto4[] = "3 - Executar testes modulos.";
+    char texto5[] = "4 - Encerrar depuração.";
+    char texto6[] = "Digite a opção: ";
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3);
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4);
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5);
+    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6);
+
+    echo();
+    *campo = getch() - 48;
+    noecho();
 
     endwin();
 }
