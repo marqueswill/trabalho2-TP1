@@ -1,5 +1,4 @@
 #include "../headers/telas.h"
-
 #include "../headers/dominios.h"
 #include "../headers/entidades.h"
 
@@ -98,40 +97,65 @@ void TelaDesenvolvedor::apresentar(int *campo) {
 }
 
 void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
-    string texto1 = "Por favor, preencha os espaços com os seus dados:";
-    string texto2 = "Nome      : ";
-    string texto3 = "Matricula : ";
-    string texto4 = "Telefone  : ";
-    string texto5 = "Senha     : ";
+    char texto1[] = "Por favor, preencha os espaços com os seus dados:";
+    char texto2[] = "Nome       :";
+    char texto3[] = "Matricula  :";
+    char texto4[] = "Telefone   :";
+    char texto5[] = "Senha      :";
+    char texto6[] = "O formato dos dados é inválido. Tecle algo.";
+    char texto7[] = "O cadastramento foi executado com sucesso. Tecle algo.";
+    char texto8[] = "O cadastramento falhou. Tecle algo";
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+    mvprintw(linha / 4, coluna / 4, "%s", texto1);       // Imprime nome do campo.
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2);   // Imprime nome do campo.
+    getstr(nomeDesenvolvedor);                                      // L� valor do campo.
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);   // Imprime nome do campo.
+    getstr(matriculaDesenvolvedor);                                      // L� valor do campo.
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4);   // Imprime nome do campo.
+    getstr(telefoneDesenvolvedor);                                      // L� valor do campo.
+    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5);   // Imprime nome do campo.
+    getstr(senhaDesenvolvedor);                                      // L� valor do campo. // Imprime nome do campo.
+    try{
+    nome.setValor(nomeDesenvolvedor);
+    matricula.setValor(matriculaDesenvolvedor);
+    telefone.setValor(telefoneDesenvolvedor);
+    senha.setValor(senhaDesenvolvedor);
+    desenvolvedor->setNome(nome);
+    desenvolvedor->setMatricula(matricula);
+    desenvolvedor->setTelefone(telefone);
+    desenvolvedor->setSenha(senha);
+    } 
+    catch(invalid_argument &exp){
+        mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6);
+        echo();
+        getch();
+        noecho();
+    }
+    endwin();
+    return;
+}
 
+void TelaDesenvolvedor::apresentar(Matricula *matricula){
+    char texto1[] = "Preencha os seguintes campos: ";
+    char texto2[] = "Matrícula: ";
+    char texto3[] = "Matrícula informada inválida. Pressione qualquer tecla para continuar.";
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
-
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
-    echo();
-    getstr(nomeDesenvolvedor);
-    noecho();
-
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
+    mvprintw(linha/4, coluna/4, "%s", texto1);
+    mvprintw(linha/4+1, coluna/4, "%s", texto2);
     echo();
     getstr(matriculaDesenvolvedor);
     noecho();
-
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
-    echo();
-    getstr(telefoneDesenvolvedor);
-    noecho();
-
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5.c_str());
-    echo();
-    getstr(senhaDesenvolvedor);
-    noecho();
-
-    desenvolvedor->setNome(nome);
-
+    try{
+        matricula->setValor(matriculaDesenvolvedor);
+    }catch(invalid_argument &exp){
+        mvprintw(linha/4+3, coluna/4,"%s",texto3);
+        echo();
+        getch();
+        noecho();
+    };
     endwin();
 }
 
@@ -309,7 +333,7 @@ void TelaCasoDeTeste::apresentar(Codigo *codigo) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2.c_str());
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
     echo();
     getstr(codigoCasoDeTeste);
     noecho();

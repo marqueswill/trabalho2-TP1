@@ -72,26 +72,55 @@ void CtrlIAInicializacao::executar() {
 // }
 
 //--------------------------------------------------------------------------------------------
-// void CtrlIADesenvolvedor::cadastrar() {
-//     Desenvolvedor Dev;
-//     TelaDesenvolvedor TelaDev;
-//     initscr();
-//     TelaDev.apresentar(&Dev);
-// }
-// }
+void CtrlIADesenvolvedor::cadastrar() {
+    Desenvolvedor desenvolvedor;
 
-// void CtrlIADesenvolvedor::executar(Matricula) {
-//     TelaDesenvolvedor TelaDev;
-//     int opcao;
-//     initscr();
-//     TelaDev.apresentar(&opcao);
-//     switch (opcao) {
-//         case cadastro:
-//         case editar:
-//         case visualizar:
-//         case descadastrar:
-//     }
-// }
+    TelaDesenvolvedor telaDesenvolvedor;
+    initscr();
+    telaDesenvolvedor.apresentar(&desenvolvedor);
+}
+
+void CtrlIADesenvolvedor::executar(Matricula) {
+    TelaDesenvolvedor telaDesenvolvedor;
+    int opcao;
+    initscr();
+    telaDesenvolvedor.apresentar(&opcao);
+    bool apresentar = true;
+    while (apresentar) {
+        switch (opcao) {
+            case CADASTRAR:
+                comando = new CmdIADesenvolvedorCadastrar();
+                comando->executar(ctrlISDesenvolvedor);
+                delete comando;
+                break;
+
+            case EDITAR:
+                comando = new CmdIADesenvolvedorEditar();
+                comando->executar(ctrlISDesenvolvedor);
+                delete comando;
+                break;
+            case VISUALIZAR:
+                comando = new CmdIADesenvolvedorVisualizar();
+                comando->executar(ctrlISDesenvolvedor);
+                delete comando;
+                break;
+            case DESCADASTRAR:
+                comando = new CmdIADesenvolvedorDescadastrar();
+                comando->executar(ctrlISDesenvolvedor);
+                delete comando;
+                break;
+
+            case RETORNAR:
+                apresentar = false;
+                break;
+
+            default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                break;
+        }
+    }
+}
 
 //--------------------------------------------------------------------------------------------
 void CtrlIATeste::executar(Matricula matricula) {

@@ -1,8 +1,6 @@
 #ifndef CONTROLADORAS_APRESENTACAO_H_INCLUDED
 #define CONTROLADORAS_APRESENTACAO_H_INCLUDED
 
-#include <cstdlib>
-#include <iostream>
 #include <string>
 
 #include "comandos.h"
@@ -66,11 +64,14 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
-    const static int cadastro = 1;
-    const static int editar = 2;
-    const static int visualizar = 3;
-    const static int descadastrar = 4;
+    const static int CADASTRAR = 1;
+    const static int EDITAR = 2;
+    const static int VISUALIZAR = 3;
+    const static int DESCADASTRAR = 4;
+    const static int RETORNAR = 5;
+
     ISDesenvolvedor *ctrlISDesenvolvedor;
+    CmdIADesenvolvedor *comando;
 
    public:
     void cadastrar();

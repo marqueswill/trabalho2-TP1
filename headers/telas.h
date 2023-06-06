@@ -53,6 +53,7 @@ class TelaDesenvolvedor : public Telas {
    public:
     void apresentar(int *);
     void apresentar(Desenvolvedor *);
+    void apresentar(Matricula *);
 };
 
 //--------------------------------------------------------------------------------------------
