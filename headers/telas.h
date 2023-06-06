@@ -72,10 +72,8 @@ class TelaTeste : public Telas {
 
    public:
     void apresentar(int *);
-    void visualizar(Teste *);
-    void cadastrar(Teste *);
-    void editar(Teste *);
-    void descadastrar(Teste *);
+    void apresentar(Teste *);
+    void apresentar(Codigo *);
 };
 
 //--------------------------------------------------------------------------------------------
@@ -97,10 +95,8 @@ class TelaCasoDeTeste : public Telas {
 
    public:
     void apresentar(int *);
-    void visualizar(CasoDeTeste *);
-    void cadastrar(CasoDeTeste *);
-    void editar(CasoDeTeste *);
-    void descadastrar(CasoDeTeste *);
+    void apresentar(CasoDeTeste *);
+    void apresentar(Codigo *);
 };
 
 #endif  // TELAS_H_INCLUDED

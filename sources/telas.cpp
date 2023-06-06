@@ -180,7 +180,7 @@ void TelaTeste::apresentar(int *campo) {
     endwin();
 }
 
-void TelaTeste::visualizar(Teste *teste) {
+void TelaTeste::apresentar(Codigo *codigo) {
     char texto1[] = "Preencha os seguintes campos: ";
     char texto2[] = "Código : ";
 
@@ -198,8 +198,7 @@ void TelaTeste::visualizar(Teste *teste) {
     noecho();
 
     try {
-        codigo.setValor(codigoTeste);
-        teste->setCodigo(codigo);
+        codigo->setValor(codigoTeste);
     } catch (invalid_argument &exp) {
         mvprintw(linha / 4 + 3, coluna / 4, "%s", texto3);
         echo();
@@ -210,7 +209,7 @@ void TelaTeste::visualizar(Teste *teste) {
     endwin();
 }
 
-void TelaTeste::cadastrar(Teste *teste) {
+void TelaTeste::apresentar(Teste *teste) {
     char texto1[] = "Preencha os seguintes campos: ";
     char texto2[] = "Código : ";
     char texto3[] = "Nome   : ";
@@ -256,16 +255,6 @@ void TelaTeste::cadastrar(Teste *teste) {
     endwin();
 }
 
-void TelaTeste::editar(Teste *teste) {
-    TelaTeste telaTeste;
-    telaTeste.cadastrar(teste);  // Chama tela para usuário informar dados do novo teste.
-}
-
-void TelaTeste::descadastrar(Teste *teste) {
-    TelaTeste telaTeste;
-    telaTeste.visualizar(teste);  // Chama tela para usuário informar o código do teste.
-}
-
 //--------------------------------------------------------------------------------------------
 void TelaCasoDeTeste::apresentar(int *campo) {
     char texto1[] = "Selecione um dos servicos : ";
@@ -295,7 +284,7 @@ void TelaCasoDeTeste::apresentar(int *campo) {
     endwin();
 }
 
-void TelaCasoDeTeste::visualizar(CasoDeTeste *casodeteste) {
+void TelaCasoDeTeste::apresentar(Codigo *codigo) {
     char texto1[] = "Preencha os seguintes campos: ";
     char texto2[] = "Código: ";
 
@@ -313,8 +302,7 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casodeteste) {
     noecho();
 
     try {
-        codigo.setValor(codigoCasoDeTeste);
-        casodeteste->setCodigo(codigo);
+        codigo->setValor(codigoCasoDeTeste);
     } catch (invalid_argument &exp) {
         mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3);
         echo();
@@ -325,7 +313,7 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casodeteste) {
     endwin();
 }
 
-void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
+void TelaCasoDeTeste::apresentar(CasoDeTeste *casodeteste) {
     char texto1[] = "Preencha os seguintes campos: ";
     char texto2[] = "Código    : ";
     char texto3[] = "Nome      : ";
@@ -388,14 +376,4 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
     };
 
     endwin();
-}
-
-void TelaCasoDeTeste::editar(CasoDeTeste *casodeteste) {
-    TelaCasoDeTeste telaCasoDeTeste;
-    telaCasoDeTeste.cadastrar(casodeteste);  // Chama tela para usuário informar dados do novo caso de teste.
-}
-
-void TelaCasoDeTeste::descadastrar(CasoDeTeste *casodeteste) {
-    TelaCasoDeTeste telaCasoDeTeste;
-    telaCasoDeTeste.visualizar(casodeteste);  // Chama tela para usuário informar o código do caso de teste.
 }
