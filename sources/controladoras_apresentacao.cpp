@@ -94,12 +94,15 @@ void CtrlIADesenvolvedor::executar(Matricula) {
         delete comando;
         break;
         case VISUALIZAR:
+        comando = new CmdIADesenvolvedorVisualizar();
+        comando->executar(ctrlISDesenvolvedor);
+        delete comando;
+        break;
         case DESCADASTRAR:
         comando = new CmdIADesenvolvedorDescadastrar();
         comando->executar(ctrlISDesenvolvedor);
         delete comando;
         break;
-
     }
 
 }

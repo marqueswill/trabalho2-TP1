@@ -15,7 +15,15 @@ if (resultado) {
     }
 }
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor *ctrlISDesenvolvedor){
-    
+telaDesenvolvedor.apresentar(&matricula);
+desenvolvedor.setMatricula(matricula);
+resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
+if (
+        resultado) {
+        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
+    } else {
+        telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
+    }
 }
 void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
     telaTeste.apresentar(&codigo);  // Pede o código do teste ao usuário.
