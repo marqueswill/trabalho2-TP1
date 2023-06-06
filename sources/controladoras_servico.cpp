@@ -1,31 +1,11 @@
-#include "../headers/controladoras_servico.h"
-#include "UnidadePersistencia.cpp"
-#include "../headers/entidades.h"
-#include "../headers/telas.h"
-#include "telas.cpp"
-using namespace std;
-bool CtrlMSDesenvolvedor::descadastrar(Matricula){
-Matricula *matricula;
-matricula = new Matricula();
-Tela_Servico_Desenvolvedor TelaSd;
-TelaMensagem TelaMsg;
-TelaSd.descadastrar(matricula);
-Matricula registernumber = *matricula;
-ComandoDescadastrarDesenvolvedor comando(registernumber);
+// #include "../headers/controladoras_servico.h"
 
-try{
-    comando.executar();
-}
-catch(EErroPersistencia exp){
-     char texto3[] = "Houve erro de acesso ao banco de dados. Tente novamente";
-     TelaMsg.apresentar(texto3);
-}
+// #include "../headers/entidades.h"
+// #include "../headers/telas.h"
+// // #include "UnidadePersistencia.cpp"
+// #include "telas.cpp"
 
-char texto4[] = "A operação foi efetuada com sucesso. Tecle algo";
-TelaMsg.apresentar(texto4);
-delete matricula;
-return true;
-}
+// using namespace std;
 
-//--------------------------------------------------------------------------------------------
-// Implementações dos métodos de classes controladoras da camada de serviço.
+// //--------------------------------------------------------------------------------------------
+// // Implementações dos métodos de classes controladoras da camada de serviço.

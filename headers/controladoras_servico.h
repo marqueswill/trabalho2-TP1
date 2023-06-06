@@ -1,3 +1,5 @@
+#ifndef CONTROLADORAS_SERVICO_H_INCLUDED
+#define CONTROLADORAS_SERVICO_H_INCLUDED
 
 #include <cstdlib>
 #include <iostream>
@@ -45,3 +47,5 @@ class CtrlMSCasoDeTeste : public ISCasoDeTeste {
     bool editar(CasoDeTeste);
     bool descadastrar(Codigo);
 };
+
+#endif CONTROLADORAS_SERVICO_H_INCLUDED

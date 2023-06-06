@@ -1,10 +1,7 @@
-#include <iostream>
-#include <telas.h>
-#include "controladoras.h"
-
 #ifndef COMANDOS_H_INCLUDED
 #define COMANDOS_H_INCLUDED
 
+#include "controladoras_apresentacao.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
@@ -13,7 +10,7 @@
 //--------------------------------------------------------------------------------------------
 class CmdIAAutenticacao {
    public:
-    virtual void executar(ISTeste*) = 0;
+    virtual void executar(ISAutenticacao*) = 0;
     virtual ~CmdIAAutenticacao() {}
 };
 
@@ -23,13 +20,11 @@ class CmdIADesenvolvedor {
     bool resultado;
     Desenvolvedor desenvolvedor;
     Matricula matricula;
-    Telefone telefone;
-    Senha senha;
-    TelaDesenvolvedor elaDesenvolvedor;
+    TelaDesenvolvedor telaDesenvolvedor;
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISTeste*) = 0;
+    virtual void executar(ISDesenvolvedor*) = 0;
     virtual ~CmdIADesenvolvedor() {}
 };
 
@@ -113,13 +108,5 @@ class CmdIACasoDeTesteEditar : public CmdIACasoDeTeste {
 class CmdIACasoDeTesteDescadastrar : public CmdIACasoDeTeste {
     void executar(ISCasoDeTeste*);
 };
-;
-class Comandos_Desenvolvedor{
-    public:
-    Texto nome;
-    Matricula matricula;
-    Telefone telefone;
-    Senha senha;
-    void Cadastrar_Desenvolvedor(Desenvolvedor*,string, string, string, string);
-};
+
 #endif  // COMANDOS_H_INCLUDED
