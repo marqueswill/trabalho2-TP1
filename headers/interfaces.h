@@ -16,17 +16,10 @@ class ISCasoDeTeste;
 //--------------------------------------------------------------------------------------------
 // Declarações das interfaces da camada de apresentação.
 
-class IAInicializacao {
-   public:
-    virtual void executar() = 0;
-    virtual void setCtrlIAAutenticacao(IAAutenticacao *) = 0;
-    virtual void setCtrlIADesenvolvedor(IADesenvolvedor *) = 0;
-    virtual void setCtrlIATeste(IATeste *) = 0;
-    virtual ~IAInicializacao(){};
-};
-
 class IAAutenticacao {
    public:
+    virtual bool autenticar(Matricula *) = 0;
+    virtual ~IAAutenticacao(){};
 };
 
 class IADesenvolvedor {
@@ -58,12 +51,13 @@ class ISAutenticacao {
 
 class ISDesenvolvedor {
    public:
-    virtual bool cadastrar(Desenvolvedor) = 0;
-    virtual bool descadastrar(Matricula) = 0;
     virtual bool visualizar(Desenvolvedor *) = 0;
+    virtual bool cadastrar(Desenvolvedor) = 0;
     virtual bool editar(Desenvolvedor) = 0;
+    virtual bool descadastrar(Matricula) = 0;
     virtual ~ISDesenvolvedor() {}
 };
+
 class ISTeste {
    public:
     virtual bool visualizar(Teste *) = 0;

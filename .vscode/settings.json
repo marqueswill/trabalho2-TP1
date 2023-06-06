@@ -1,10 +1,7 @@
 {
-  "files.associations": {
-    "iostream": "cpp",
-    "ostream": "cpp",
-    "functional": "cpp",
-    "stdexcept": "cpp"
-    "algorithm": "cpp"
-  },
-  "githubPullRequests.ignoredPullRequestBranches": ["main"]
+    "files.associations": {
+        "iostream": "cpp",
+        "stdexcept": "cpp",
+        "new": "cpp"
+    }
 }
