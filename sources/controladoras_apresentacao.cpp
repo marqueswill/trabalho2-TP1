@@ -1,5 +1,6 @@
 #include "../headers/controladoras_apresentacao.h"
 
+#include "../headers/comandos.h"
 //--------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
 
@@ -70,22 +71,16 @@ void CtrlIAInicializacao::executar() {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
-    CmdIADesenvolvedor *comando;
-
-    Desenvolvedor desenvolvedor;
-
-    TelaDesenvolvedor telaDesenvolvedor;
-    initscr();
-    telaDesenvolvedor.apresentar(&desenvolvedor);
 }
 
 void CtrlIADesenvolvedor::executar(Matricula) {
-    TelaDesenvolvedor telaDesenvolvedor;
     int opcao;
-    initscr();
-    telaDesenvolvedor.apresentar(&opcao);
+
     bool apresentar = true;
     while (apresentar) {
+        TelaDesenvolvedor telaDesenvolvedor;
+        telaDesenvolvedor.apresentar(&opcao);
+
         switch (opcao) {
             case CADASTRAR:
                 comando = new CmdIADesenvolvedorCadastrar();
@@ -129,7 +124,6 @@ void CtrlIATeste::executar(Matricula matricula) {
 
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
-
         TelaTeste telaTeste;
         telaTeste.selecionar(&opcao);
 

@@ -1,9 +1,6 @@
 #ifndef COMANDOS_H_INCLUDED
 #define COMANDOS_H_INCLUDED
 
-#include "controladoras_apresentacao.h"
-#include "dominios.h"
-#include "entidades.h"
 #include "interfaces.h"
 #include "telas.h"
 

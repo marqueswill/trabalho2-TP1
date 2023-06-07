@@ -5,61 +5,53 @@
 //--------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
-const string StubISTeste::TRIGGER_SUCESSO = "UNB123";
-const string StubISTeste::TRIGGER_FALHA = "XYZ123";
-
-const string StubISTeste::VALOR_VALIDO_CODIGO = "VSC021";
+const string StubISTeste::VALOR_VALIDO_CODIGO = "UNB123";
 const string StubISTeste::VALOR_VALIDO_NOME = "Alexandre2";
 const string StubISTeste::VALOR_VALIDO_CLASSE = "FUMACA";
 
-bool StubISTeste::visualizar(Teste* teste) {
-    if (teste->getCodigo().getValor() == TRIGGER_SUCESSO) {  // Achou no BD.
-        codigo.setValor(VALOR_VALIDO_CODIGO);
-        nome.setValor(VALOR_VALIDO_NOME);
-        classe.setValor(VALOR_VALIDO_CLASSE);
+Teste StubISTeste::testeStub;
 
+Codigo StubISTeste::codigo;
+Texto StubISTeste::nome;
+Classe StubISTeste::classe;
+
+const string StubISTeste::TRIGGER_SUCESSO = VALOR_VALIDO_CODIGO;
+
+bool StubISTeste::visualizar(Teste* teste) {                 // Passado apenas com o código
+    if (teste->getCodigo().getValor() != TRIGGER_SUCESSO) {  // Não achou no BD
+        resultado = false;
+    } else {
         teste->setCodigo(codigo);
         teste->setNome(nome);
         teste->setClasse(classe);
-        resultado = true;
-    } else if (teste->getCodigo().getValor() == TRIGGER_FALHA) {  // Não achou no BD.
-        resultado = false;
     }
 
     return resultado;
 }
 
 bool StubISTeste::cadastrar(Teste teste) {
-    if (teste.getCodigo().getValor() == TRIGGER_SUCESSO) {
-        resultado = true;
-    } else if (teste.getCodigo().getValor() == TRIGGER_FALHA) {
-        resultado = false;
-    }
-
-    return resultado;
+    return resultado;  // Verificação dos dados já é feita nas telas
 }
 
 bool StubISTeste::editar(Teste teste) {
-    codigo = teste.getCodigo();
-    nome = teste.getNome();
-    classe = teste.getClasse();
-
-    if (codigo.getValor() == TRIGGER_SUCESSO) {  // Achou no BD.
-        resultado = true;
-    } else if (codigo.getValor() == TRIGGER_FALHA) {  // Não achou no BD.
+    try {
+        if (teste.getNome().getValor() != "") {
+            StubISTeste::nome.setValor(teste.getNome().getValor());
+            StubISTeste::testeStub.setNome(StubISTeste::nome);
+        }
+        if (teste.getClasse().getValor() != "") {
+            StubISTeste::classe.setValor(teste.getClasse().getValor());
+            StubISTeste::testeStub.setClasse(StubISTeste::classe);
+        }
+    } catch (invalid_argument& exp) {
         resultado = false;
     }
+
     return resultado;
 }
 
 bool StubISTeste::descadastrar(Codigo codigo) {
-    if (codigo.getValor() == TRIGGER_SUCESSO) {
-        resultado = true;
-    } else if (codigo.getValor() == TRIGGER_FALHA) {
-        resultado = false;
-    }
-
-    return resultado;
+    return resultado;  // Verificação dos dados já é feita nas telas
 }
 
 // //--------------------------------------------------------------------------------------------

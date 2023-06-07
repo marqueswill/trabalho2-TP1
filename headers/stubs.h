@@ -15,20 +15,31 @@ class StubISDesenvolvedor : public ISDesenvolvedor {
 
 class StubISTeste : public ISTeste {
    private:
-    const static string TRIGGER_SUCESSO;
-    const static string TRIGGER_FALHA;
+    static Teste testeStub;
+
+    static Codigo codigo;
+    static Texto nome;
+    static Classe classe;
 
     const static string VALOR_VALIDO_CODIGO;
     const static string VALOR_VALIDO_NOME;
     const static string VALOR_VALIDO_CLASSE;
 
-    Codigo codigo;
-    Texto nome;
-    Classe classe;
+    const static string TRIGGER_SUCESSO;
 
-    bool resultado;
+    bool resultado = true;
 
    public:
+    StubISTeste() {
+        codigo.setValor(VALOR_VALIDO_CODIGO);
+        nome.setValor(VALOR_VALIDO_NOME);
+        classe.setValor(VALOR_VALIDO_CLASSE);
+
+        testeStub.setCodigo(codigo);
+        testeStub.setNome(nome);
+        testeStub.setClasse(classe);
+    };
+
     bool visualizar(Teste *);
     bool cadastrar(Teste);
     bool editar(Teste);

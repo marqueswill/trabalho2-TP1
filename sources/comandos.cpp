@@ -23,9 +23,14 @@ void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor
     }
 }
 
+void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+}
+
+void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+}
 //--------------------------------------------------------------------------------------------
 void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
-    telaTeste.visualizar(&teste);  // Pede o código do teste ao usuário.
+    telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
     if (resultado) {
         telaTeste.mostrar(teste);  // Mostra os valores.
@@ -35,7 +40,7 @@ void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
 }
 
 void CmdIATesteCadastrar::executar(ISTeste* ctrlISTeste) {
-    telaTeste.cadastrar(&teste);  // Solicita dados do teste ao usuário. .
+    telaTeste.cadastrar(&teste);                // Solicita dados do teste ao usuário. .
     resultado = ctrlISTeste->cadastrar(teste);  // Registra no banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Teste cadastrado com sucesso. Pressione qualquer tecla para continuar.");
@@ -45,17 +50,25 @@ void CmdIATesteCadastrar::executar(ISTeste* ctrlISTeste) {
 }
 
 void CmdIATesteEditar::executar(ISTeste* ctrlISTeste) {
-    telaTeste.editar(&teste);  // Solicita novas informações ao usuário.
-    resultado = ctrlISTeste->editar(teste);  // Substitui novas informaçoes no banco de dados.
-    if (ctrlISTeste->visualizar(&teste)) {   // Obtem novos valores no BD.
-        telaTeste.mostrar(teste);
+    telaTeste.visualizar(&teste);                 // Obtém código do teste que será editado
+    resultado = ctrlISTeste->visualizar(&teste);  // Verifica se está no banco de dados e coloca os valores.
+
+    if (resultado) {
+        telaTeste.editar(&teste);  // Solicita novos dados ao usuário.
+
+        if (ctrlISTeste->editar(teste)) {                 // Substitui novas informaçoes no banco de dados.
+            resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
+            telaTeste.mostrar(teste);
+        } else {
+            telaMensagem.apresentar("Não foi possível editar teste. Pressione qualquer tecla para continuar.");
+        }
     } else {
-        telaMensagem.apresentar("Não foi possível editar teste. Pressione qualquer tecla para continuar.");
+        telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }
 
 void CmdIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
-    telaTeste.descadastrar(&codigo);  // Pede o código do teste ao usuário.
+    telaTeste.descadastrar(&codigo);                // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->descadastrar(codigo);  // Socilita descadastramento do banco de dados.
     if (resultado) {
         telaMensagem.apresentar("Teste descadastrado com sucesso. Pressione qualquer tecla para continuar.");

@@ -3,8 +3,6 @@
 
 #include <ncurses.h>
 
-#include "dominios.h"
-#include "entidades.h"
 #include "interfaces.h"
 
 class TelaMensagem;
