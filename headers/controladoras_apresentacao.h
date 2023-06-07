@@ -1,13 +1,11 @@
 #ifndef CONTROLADORAS_APRESENTACAO_H_INCLUDED
 #define CONTROLADORAS_APRESENTACAO_H_INCLUDED
 
-#include <string>
-
 #include "comandos.h"
-#include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
+#include "telas.h"
 
 // Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
 //-----------------------------------------------------------------------------------
@@ -81,13 +79,14 @@ class CtrlIADesenvolvedor : public IADesenvolvedor {
 //-----------------------------------------------------------------------------------
 class CtrlIATeste : public IATeste {
    private:
-    ISTeste *ctrlISTeste;
-
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
     const static int EDITAR = 3;
     const static int DESCADASTRAR = 4;
     const static int RETORNAR = 5;
+
+    ISTeste *ctrlISTeste;
+    CmdIATeste *comando;
 
    public:
     void executar(Matricula);

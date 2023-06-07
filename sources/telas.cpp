@@ -12,15 +12,17 @@ void TelaMensagem::apresentar(string mensagem) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", mensagem.c_str());
 
-    echo();
-    getch();
     noecho();
+    getch();
+    echo();
+
+    endwin();
 }
 
 //--------------------------------------------------------------------------------------------
 void TelaInicial::apresentar(int *campo) {
     // Mensagens a serem apresentadas na tela inicial
-    string texto1 = "Selecione um dos servicos : ";
+    string texto1 = "Selecione um dos serviços: ";
     string texto2 = "1 - Acessar sistema.";
     string texto3 = "2 - Cadastrar desenvolvedor.";
     string texto4 = "3 - Encerrar execução do sistema.";
@@ -46,9 +48,9 @@ void TelaInicial::apresentar(int *campo) {
 //--------------------------------------------------------------------------------------------
 void TelaUsuarioLogado::apresentar(int *campo) {
     string texto1 = "Selecione um dos servicos : ";
-    string texto2 = "1 - Selecionar serviços relacionados a desenvolvedor.";
-    string texto3 = "2 - Selecionar serviços relacionados a teste.";
-    string texto4 = "3 - Selecionar serviços relacionados a caso de teste.";
+    string texto2 = "1 - Serviços relacionados a desenvolvedor.";
+    string texto3 = "2 - Serviços relacionados a teste.";
+    string texto4 = "3 - Serviços relacionados a caso de teste.";
     string texto5 = "4 - Encerrar sessão.";
     string texto6 = "Escolha uma opção: ";
 
@@ -99,24 +101,31 @@ void TelaDesenvolvedor::apresentar(int *campo) {
 
 void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
     string texto1 = "Por favor, preencha os espaços com os seus dados:";
-    string texto2 = "Nome       :";
-    string texto3 = "Matricula  :";
-    string texto4 = "Telefone   :";
-    string texto5 = "Senha      :";
-    string texto6 = "O formato dos dados é inválido. Tecle algo.";
-    string texto7 = "O cadastramento foi executado com sucesso. Tecle algo.";
-    string texto8 = "O cadastramento falhou. Tecle algo";
+    string texto2 = "NOME      : ";
+    string texto3 = "MATRÍCULA : ";
+    string texto4 = "TELEFONE  : ";
+    string texto5 = "SENHA     : ";
+
     getmaxyx(stdscr, linha, coluna);
     clear();
+
     mvprintw(linha / 4, coluna / 4, "%s", texto1.c_str());
+    echo();
+
     mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2.c_str());
     getstr(nomeDesenvolvedor);
+
     mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3.c_str());
     getstr(matriculaDesenvolvedor);
+
     mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4.c_str());
     getstr(telefoneDesenvolvedor);
+
     mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5.c_str());
     getstr(senhaDesenvolvedor);
+
+    noecho();
+
     try {
         nome.setValor(nomeDesenvolvedor);
         matricula.setValor(matriculaDesenvolvedor);
@@ -127,18 +136,16 @@ void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
         desenvolvedor->setTelefone(telefone);
         desenvolvedor->setSenha(senha);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 10, coluna / 4, "%s", texto6.c_str());
-        echo();
-        getch();
         noecho();
+        getch();
     }
+
     endwin();
-    return;
 }
 
 void TelaDesenvolvedor::apresentar(Matricula *matricula) {
     string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Matrícula: ";
+    string texto2 = "MATRÍCULA: ";
     string texto3 = "Matrícula informada inválida. Pressione qualquer tecla para continuar.";
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -160,7 +167,7 @@ void TelaDesenvolvedor::apresentar(Matricula *matricula) {
 }
 
 //--------------------------------------------------------------------------------------------
-void TelaTeste::apresentar(int *campo) {
+void TelaTeste::selecionar(int *campo) {
     string texto1 = "Selecione um dos servicos : ";
     string texto2 = "1 - Visualizar teste.";
     string texto3 = "2 - Cadastrar teste.";
@@ -188,11 +195,35 @@ void TelaTeste::apresentar(int *campo) {
     endwin();
 }
 
-void TelaTeste::apresentar(Codigo *codigo) {
-    string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Código : ";
+void TelaTeste::mostrar(Teste teste) {
+    string texto1 = "Valores atuais do teste.";
+    string texto2 = "CÓDIGO : ";
+    string texto3 = "NOME   : ";
+    string texto4 = "CLASSE : ";
 
-    string texto3 = "Código informado inválido. Pressione qualquer tecla para continuar.";
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    texto1 += teste.getCodigo().getValor();
+    texto2 += teste.getNome().getValor();
+    texto3 += teste.getClasse().getValor();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
+
+    noecho();
+    getch();
+
+    endwin();
+}
+
+void TelaTeste::visualizar(Teste *teste) {
+    string texto1 = "Informe código do teste para descadastramento.";
+    string texto2 = "CÓDIGO: ";
+    string textoErro;
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -201,6 +232,171 @@ void TelaTeste::apresentar(Codigo *codigo) {
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
 
     mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
+
+    mvprintw(linha / 4 + 1, coluna / 4 + texto2.size(), ": ");
+    echo();
+    getstr(codigoTeste);
+    noecho();
+
+    try {
+        codigo.setValor(codigoTeste);
+        teste->setCodigo(codigo);
+    } catch (invalid_argument &exp) {
+        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+    };
+
+    endwin();
+}
+
+void TelaTeste::cadastrar(Teste *teste) {
+    string texto1 = "Preencha os seguintes campos: ";
+    string texto2 = "CÓDIGO : ";
+    string texto3 = "NOME   : ";
+    string texto4 = "CLASSE : ";
+    string textoErro;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
+    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
+    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
+
+    echo();
+
+    mvprintw(linha / 4 + 1, coluna / 4 + texto2.size(), ": ");
+    getstr(codigoTeste);
+
+    mvprintw(linha / 4 + 2, coluna / 4 + texto3.size(), ": ");
+    getstr(nomeTeste);
+
+    mvprintw(linha / 4 + 3, coluna / 4 + texto4.size(), ": ");
+    getstr(classeTeste);
+
+    noecho();
+
+    try {
+        codigo.setValor(codigoTeste);
+        teste->setCodigo(codigo);
+    } catch (invalid_argument &exp) {
+        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar";
+        mvprintw(linha / 4 + 5, coluna / 4, "%s", textoErro.c_str());
+    }
+
+    try {
+        nome.setValor(nomeTeste);
+        teste->setNome(nome);
+    } catch (invalid_argument &exp) {
+        textoErro = "Valor de nome inválido. Pressione qualquer tecla para continuar";
+        mvprintw(linha / 4 + 5, coluna / 4, "%s", textoErro.c_str());
+    }
+
+    try {
+        classe.setValor(classeTeste);
+        teste->setClasse(classe);
+    } catch (invalid_argument &exp) {
+        textoErro = "Valor de classe inválido. Pressione qualquer tecla para continuar";
+        mvprintw(linha / 4 + 5, coluna / 4, "%s", textoErro.c_str());
+    }
+
+    endwin();
+}
+
+void TelaTeste::editar(Teste *teste) {
+    string texto1 = "Informe campo do teste para ser editado.";
+    string texto2 = "1 - NOME.";
+    string texto3 = "2 - CLASSE.";
+    string texto4 = "3 - SALVAR.";
+    string texto5 = "4 - CANCELAR.";
+
+    string texto6 = "Informe novo valor.";
+    string texto7 = "NOME   : ";
+    string texto8 = "CLASSE :";
+
+    string textoErro;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+
+    bool apresentar = true;
+    while (apresentar) {
+        int campo;
+
+        clear();
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
+        mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
+        mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
+        mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5.c_str());
+
+        echo();
+        campo = getch() - 48;
+        noecho();
+
+        clear();
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", texto6.c_str());
+        switch (campo) {
+            case 1:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto7.c_str());
+                echo();
+                getstr(nomeTeste);
+                noecho();
+
+                try {
+                    nome.setValor(nomeTeste);
+                } catch (invalid_argument &exp) {
+                    textoErro = "Valor de nome inválido. Pressione qualquer tecla para continuar";
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+                }
+                break;
+
+            case 2:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto8.c_str());
+                echo();
+                getstr(classeTeste);
+                noecho();
+
+                try {
+                    classe.setValor(classeTeste);
+                } catch (invalid_argument &exp) {
+                    textoErro = "Valor de classe inválido. Pressione qualquer tecla para continuar";
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+                }
+                break;
+
+            case 3:
+                teste->setNome(nome);
+                teste->setClasse(classe);
+                apresentar = false;
+                break;
+
+            case 4:
+                apresentar = false;
+                break;
+
+            default:
+                break;
+        }
+    }
+};
+
+void TelaTeste::descadastrar(Codigo *codigo) {
+    string texto1 = "Informe código do teste para descadastramento.";
+    string texto2 = "CÓDIGO: ";
+    string textoErro;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
+
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
+
+    mvprintw(linha / 4 + 1, coluna / 4 + texto2.size(), ": ");
     echo();
     getstr(codigoTeste);
     noecho();
@@ -208,86 +404,9 @@ void TelaTeste::apresentar(Codigo *codigo) {
     try {
         codigo->setValor(codigoTeste);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", texto3.c_str());
-        echo();
-        getch();
-        noecho();
+        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
     };
-
-    endwin();
-}
-
-void TelaTeste::apresentar(Teste *teste) {
-    string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Código : ";
-    string texto3 = "Nome   : ";
-    string texto4 = "Classe : ";
-
-    string texto5 = "Dados informado(s) inválido(s). Pressione qualquer tecla para continuar.";
-
-    initscr();
-    getmaxyx(stdscr, linha, coluna);
-    clear();
-
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
-    echo();
-    getstr(codigoTeste);
-    noecho();
-
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
-    echo();
-    getstr(nomeTeste);
-    noecho();
-
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
-    echo();
-    getstr(classeTeste);
-    noecho();
-
-    try {
-        codigo.setValor(codigoTeste);
-        nome.setValor(nomeTeste);
-        classe.setValor(classeTeste);
-        teste->setCodigo(codigo);
-        teste->setNome(nome);
-        teste->setClasse(classe);
-    } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 5, coluna / 4, "%s", texto5.c_str());
-        echo();
-        getch();
-        noecho();
-    };
-
-    endwin();
-}
-
-void TelaTeste::apresentar(Teste teste) {
-    string texto1 = "Valores atuais do teste: ";
-    string texto2 = "Código : ";
-    string texto3 = "Nome   : ";
-    string texto4 = "Classe : ";
-
-    string texto5 = "Pressione qualquer tecla para continuar.";
-
-    initscr();
-    getmaxyx(stdscr, linha, coluna);
-    clear();
-
-    texto2 += teste.getCodigo().getValor();
-    texto3 += teste.getNome().getValor();
-    texto4 += teste.getClasse().getValor();
-
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
-
-    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto5.c_str());
-    echo();
-    getch();
-    noecho();
 
     endwin();
 }
@@ -323,7 +442,7 @@ void TelaCasoDeTeste::apresentar(int *campo) {
 
 void TelaCasoDeTeste::apresentar(Codigo *codigo) {
     string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Código : ";
+    string texto2 = "CÓDIGO: ";
 
     string texto3 = "Código informado inválido. Pressione qualquer tecla para continuar.";
 
@@ -333,7 +452,7 @@ void TelaCasoDeTeste::apresentar(Codigo *codigo) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2);
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
     echo();
     getstr(codigoCasoDeTeste);
     noecho();

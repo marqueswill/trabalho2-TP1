@@ -3,7 +3,6 @@
 
 // #include <ncurses.h>
 
-#include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "telas.h"
