@@ -30,6 +30,10 @@ bool StubISTeste::visualizar(Teste* teste) {                 // Passado apenas c
 }
 
 bool StubISTeste::cadastrar(Teste teste) {
+    if (teste.getCodigo().getValor() == TRIGGER_SUCESSO) {
+        resultado = false;
+    }
+
     return resultado;  // Verificação dos dados já é feita nas telas
 }
 
@@ -51,6 +55,10 @@ bool StubISTeste::editar(Teste teste) {
 }
 
 bool StubISTeste::descadastrar(Codigo codigo) {
+    if (codigo.getValor() != TRIGGER_SUCESSO) {
+        resultado = false;
+    }
+
     return resultado;  // Verificação dos dados já é feita nas telas
 }
 
