@@ -1,7 +1,8 @@
 #ifndef TELAS_H_INCLUDED
 #define TELAS_H_INCLUDED
 
-#include "curses.h"
+#include <ncurses.h>
+
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
