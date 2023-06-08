@@ -37,11 +37,11 @@ int main() {
 
 #endif  // SISTEMA
 
-    TUIATeste TUMAT;
-    TUMAT.executar();
+    // TUIATeste TUMAT;
+    // TUMAT.executar();
 
-    // TUIACasoDeTeste TUMACT;
-    // TUMACT.executar();
+    TUIACasoDeTeste TUMACT;
+    TUMACT.executar();
 
     return 0;
 }
