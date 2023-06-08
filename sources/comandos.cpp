@@ -58,7 +58,6 @@ void CmdIATesteEditar::executar(ISTeste* ctrlISTeste) {
 
         if (ctrlISTeste->editar(teste)) {                 // Substitui novas informaçoes no banco de dados.
             resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
-            telaTeste.mostrar(teste);
         } else {
             telaMensagem.apresentar("Não foi possível editar teste. Pressione qualquer tecla para continuar.");
         }
@@ -108,7 +107,6 @@ void CmdIACasoDeTesteEditar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
 
         if (ctrlISCasoDeTeste->editar(casoDeTeste)) {                 // Substitui novas informaçoes no banco de dados.
             resultado = ctrlISCasoDeTeste->visualizar(&casoDeTeste);  // Pesquisa no banco de dados e coloca os valores.
-            telaCasoDeTeste.mostrar(casoDeTeste);
         } else {
             telaMensagem.apresentar("Não foi possível editar caso de teste. Pressione qualquer tecla para continuar.");
         }

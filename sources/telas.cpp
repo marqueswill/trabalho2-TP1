@@ -220,7 +220,7 @@ void TelaTeste::selecionar(int *campo) {
 
 void TelaTeste::visualizar(Teste *teste) {
     string titulo1 = "Informe código do teste.";
-    string texto1 = "Código";
+    string texto1 = "Codigo";
     string textoErro;
 
     initscr();
@@ -231,7 +231,7 @@ void TelaTeste::visualizar(Teste *teste) {
 
     mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), ": ");
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), " : ");
 
     echo();
     getstr(codigoTeste);
@@ -249,8 +249,8 @@ void TelaTeste::visualizar(Teste *teste) {
 }
 
 void TelaTeste::cadastrar(Teste *teste) {
-    string titulo1 = "Preencha os seguintes campos: ";
-    vector<string> texto1{"Código",
+    string titulo1 = "Preencha os seguintes campos.";
+    vector<string> texto1{"Codigo",
                           "Nome",
                           "Classe"};
     string textoErro = "Valor inválido para atributo ";
@@ -267,40 +267,45 @@ void TelaTeste::cadastrar(Teste *teste) {
 
     echo();
 
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1[0].size(), " : ");
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1[2].size() + 1, " : ");
     getstr(codigoTeste);
 
-    mvprintw(linha / 4 + 2, coluna / 4 + texto1[1].size(), " : ");
+    mvprintw(linha / 4 + 2, coluna / 4 + texto1[2].size() + 1, " : ");
     getstr(nomeTeste);
 
-    mvprintw(linha / 4 + 3, coluna / 4 + texto1[2].size(), " : ");
+    mvprintw(linha / 4 + 3, coluna / 4 + texto1[2].size() + 1, " : ");
     getstr(classeTeste);
 
     noecho();
 
+    int l = 5;
     try {
         codigo.setValor(codigoTeste);
         teste->setCodigo(codigo);
     } catch (invalid_argument &exp) {
-        textoErro += texto1[0];
-        mvprintw(linha / 4 + 5, coluna / 4, "%s", textoErro.c_str());
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+        l++;
     }
 
     try {
         nome.setValor(nomeTeste);
         teste->setNome(nome);
     } catch (invalid_argument &exp) {
-        textoErro += texto1[1];
-        mvprintw(linha / 4 + 5, coluna / 4, "%s", textoErro.c_str());
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+        l++;
     }
 
     try {
         classe.setValor(classeTeste);
         teste->setClasse(classe);
     } catch (invalid_argument &exp) {
-        textoErro += texto1[2];
-        mvprintw(linha / 4 + 5, coluna / 4, "%s", textoErro.c_str());
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[2]).c_str());
+        l++;
     }
+
+    echo();
+    getch();
+    noecho();
 
     endwin();
 }
@@ -309,6 +314,7 @@ void TelaTeste::editar(Teste *teste) {
     string titulo1 = "Informe o campo do teste para ser editado:";
     vector<string> texto1{"1 - Nome.",
                           "2 - Classe.",
+                          "",
                           "3 - Salvar.",
                           "4 - Cancelar.",
                           "Escolha uma opção: "};
@@ -383,6 +389,8 @@ void TelaTeste::editar(Teste *teste) {
                 break;
 
             default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }
@@ -422,10 +430,10 @@ void TelaTeste::descadastrar(Codigo *codigo) {
 //--------------------------------------------------------------------------------------------
 void TelaCasoDeTeste::mostrar(CasoDeTeste casoDeTeste) {
     string titulo1 = "Valores atuais do caso de teste.";
-    vector<string> texto1{"Código    : ",
+    vector<string> texto1{"Codigo    : ",
                           "Nome      : ",
                           "Data      : ",
-                          "Ação      : ",
+                          "Acao      : ",
                           "Resposta  : ",
                           "Resultado : "};
 
@@ -509,10 +517,10 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
 
 void TelaCasoDeTeste::cadastrar(CasoDeTeste *casoDeTeste) {
     string titulo1 = "Preencha os seguintes campos.";
-    vector<string> texto1{"Código",
+    vector<string> texto1{"Codigo",
                           "Nome",
                           "Data",
-                          "Ação",
+                          "Acao",
                           "Resposta",
                           "Resultado"};
     string textoErro = "Valor inválido para atributo ";
@@ -529,22 +537,22 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casoDeTeste) {
 
     echo();
 
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1[0].size(), " : ");
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1[5].size() + 1, " : ");
     getstr(codigoCasoDeTeste);
 
-    mvprintw(linha / 4 + 2, coluna / 4 + texto1[1].size(), " : ");
+    mvprintw(linha / 4 + 2, coluna / 4 + texto1[5].size() + 1, " : ");
     getstr(nomeCasoDeTeste);
 
-    mvprintw(linha / 4 + 3, coluna / 4 + texto1[2].size(), " : ");
+    mvprintw(linha / 4 + 3, coluna / 4 + texto1[5].size() + 1, " : ");
     getstr(dataCasoDeTeste);
 
-    mvprintw(linha / 4 + 4, coluna / 4 + texto1[3].size(), " : ");
+    mvprintw(linha / 4 + 4, coluna / 4 + texto1[5].size() + 1, " : ");
     getstr(acaoCasoDeTeste);
 
-    mvprintw(linha / 4 + 5, coluna / 4 + texto1[4].size(), " : ");
+    mvprintw(linha / 4 + 5, coluna / 4 + texto1[5].size() + 1, " : ");
     getstr(respostaCasoDeTeste);
 
-    mvprintw(linha / 4 + 6, coluna / 4 + texto1[5].size(), " : ");
+    mvprintw(linha / 4 + 6, coluna / 4 + texto1[5].size() + 1, " : ");
     getstr(resultadoCasoDeTeste);
 
     noecho();
@@ -604,9 +612,10 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
     string titulo1 = "Informe o campo do teste para ser editado:";
     vector<string> texto1{"1 - Nome.",
                           "2 - Data.",
-                          "3 - Ação.",
+                          "3 - Acao.",
                           "4 - Resposta.",
                           "5 - Resultado.",
+                          "",
                           "6 - Salvar.",
                           "7 - Cancelar.",
                           "Escolha uma opção: "};
@@ -614,7 +623,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
     string titulo2 = "Informe novo valor.";
     vector<string> texto2{"Nome : ",
                           "Data : ",
-                          "Ação : ",
+                          "Acao : ",
                           "Resposta : ",
                           "Resultado : "};
     string textoErro = "Valor inválido para atributo ";
@@ -739,6 +748,8 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 break;
 
             default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }

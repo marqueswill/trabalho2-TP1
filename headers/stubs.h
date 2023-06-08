@@ -28,9 +28,10 @@ class StubISTeste : public ISTeste {
     const static string VALOR_VALIDO_NOME;
     const static string VALOR_VALIDO_CLASSE;
 
-    const static string TRIGGER_SUCESSO;
+    const static bool SUCESSO = true;
+    const static bool FALHA = false;
 
-    bool resultado = true;
+    bool resultado;
 
    public:
     StubISTeste() {
@@ -68,9 +69,8 @@ class StubISCasoDeTeste : public ISCasoDeTeste {
     const static string VALOR_VALIDO_RESPOSTA;
     const static string VALOR_VALIDO_RESULTADO;
 
-    const static string TRIGGER_SUCESSO;
-
-    bool resultado = true;
+    const static bool SUCESSO = true;
+    const static bool FALHA = false;
 
    public:
     StubISCasoDeTeste() {
