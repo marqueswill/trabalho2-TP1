@@ -20,9 +20,9 @@ class StubISTeste : public ISTeste {
    private:
     static Teste testeStub;
 
-    static Codigo codigo;
-    static Texto nome;
-    static Classe classe;
+    static Codigo codigoTeste;
+    static Texto nomeTeste;
+    static Classe classeTeste;
 
     const static string VALOR_VALIDO_CODIGO;
     const static string VALOR_VALIDO_NOME;
@@ -34,13 +34,13 @@ class StubISTeste : public ISTeste {
 
    public:
     StubISTeste() {
-        codigo.setValor(VALOR_VALIDO_CODIGO);
-        nome.setValor(VALOR_VALIDO_NOME);
-        classe.setValor(VALOR_VALIDO_CLASSE);
+        codigoTeste.setValor(VALOR_VALIDO_CODIGO);
+        nomeTeste.setValor(VALOR_VALIDO_NOME);
+        classeTeste.setValor(VALOR_VALIDO_CLASSE);
 
-        testeStub.setCodigo(codigo);
-        testeStub.setNome(nome);
-        testeStub.setClasse(classe);
+        testeStub.setCodigo(codigoTeste);
+        testeStub.setNome(nomeTeste);
+        testeStub.setClasse(classeTeste);
     };
 
     bool visualizar(Teste *);
@@ -52,11 +52,43 @@ class StubISTeste : public ISTeste {
 //--------------------------------------------------------------------------------------------
 class StubISCasoDeTeste : public ISCasoDeTeste {
    private:
-    const static string TRIGGER_FALHA;
-    bool resultado;
-    CasoDeTeste casoDeTesteStub;
+    static CasoDeTeste casoDeTesteStub;
+
+    static Codigo codigoCasoDeTeste;
+    static Texto nomeCasoDeTeste;
+    static Data dataCasoDeTeste;
+    static Texto acaoCasoDeTeste;
+    static Texto respostaCasoDeTeste;
+    static Resultado resultadoCasoDeTeste;
+
+    const static string VALOR_VALIDO_CODIGO;
+    const static string VALOR_VALIDO_NOME;
+    const static string VALOR_VALIDO_DATA;
+    const static string VALOR_VALIDO_ACAO;
+    const static string VALOR_VALIDO_RESPOSTA;
+    const static string VALOR_VALIDO_RESULTADO;
+
+    const static string TRIGGER_SUCESSO;
+
+    bool resultado = true;
 
    public:
+    StubISCasoDeTeste() {
+        codigoCasoDeTeste.setValor(VALOR_VALIDO_CODIGO);
+        nomeCasoDeTeste.setValor(VALOR_VALIDO_NOME);
+        dataCasoDeTeste.setValor(VALOR_VALIDO_DATA);
+        acaoCasoDeTeste.setValor(VALOR_VALIDO_ACAO);
+        respostaCasoDeTeste.setValor(VALOR_VALIDO_RESPOSTA);
+        resultadoCasoDeTeste.setValor(VALOR_VALIDO_RESULTADO);
+
+        casoDeTesteStub.setCodigo(codigoCasoDeTeste);
+        casoDeTesteStub.setNome(nomeCasoDeTeste);
+        casoDeTesteStub.setData(dataCasoDeTeste);
+        casoDeTesteStub.setAcao(acaoCasoDeTeste);
+        casoDeTesteStub.setResposta(respostaCasoDeTeste);
+        casoDeTesteStub.setResultado(resultadoCasoDeTeste);
+    }
+
     bool visualizar(CasoDeTeste *);
     bool cadastrar(CasoDeTeste);
     bool editar(CasoDeTeste);

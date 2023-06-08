@@ -251,7 +251,7 @@ void TelaTeste::visualizar(Teste *teste) {
 void TelaTeste::cadastrar(Teste *teste) {
     string titulo1 = "Preencha os seguintes campos: ";
     vector<string> texto1{"Código",
-                          "Nome  ",
+                          "Nome",
                           "Classe"};
     string textoErro = "Valor inválido para atributo ";
 
@@ -314,8 +314,8 @@ void TelaTeste::editar(Teste *teste) {
                           "Escolha uma opção: "};
 
     string titulo2 = "Informe novo valor.";
-    vector<string> texto2{"Nome   : ",
-                          "Classe : "};
+    vector<string> texto2{"Nome: ",
+                          "Classe: "};
     string textoErro;
 
     initscr();
@@ -420,34 +420,33 @@ void TelaTeste::descadastrar(Codigo *codigo) {
 }
 
 //--------------------------------------------------------------------------------------------
-void TelaCasoDeTeste::mostrar(CasoDeTeste casodeteste) {
-    string titulo1 = "Valores atuais do teste: ";
-    vector<string> texto1{"Código   ",
-                          "Nome     ",
-                          "Data     ",
-                          "Ação     ",
-                          "Resposta ",
-                          "Resultado"};
+void TelaCasoDeTeste::mostrar(CasoDeTeste casoDeTeste) {
+    string titulo1 = "Valores atuais do caso de teste.";
+    vector<string> texto1{"Código    : ",
+                          "Nome      : ",
+                          "Data      : ",
+                          "Ação      : ",
+                          "Resposta  : ",
+                          "Resultado : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
-    texto1[0] += casodeteste.getCodigo().getValor();
-    texto1[1] += casodeteste.getNome().getValor();
-    texto1[2] += casodeteste.getData().getValor();
-    texto1[3] += casodeteste.getAcao().getValor();
-    texto1[4] += casodeteste.getResposta().getValor();
-    texto1[5] += casodeteste.getResultado().getValor();
+    texto1[0] += casoDeTeste.getCodigo().getValor();
+    texto1[1] += casoDeTeste.getNome().getValor();
+    texto1[2] += casoDeTeste.getData().getValor();
+    texto1[3] += casoDeTeste.getAcao().getValor();
+    texto1[4] += casoDeTeste.getResposta().getValor();
+    texto1[5] += casoDeTeste.getResultado().getValor();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
-    for (int i = 1; i < texto1.size(); i++) {
-        mvprintw(linha / 4 + i, coluna / 4, "%s", texto1[i].c_str());
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
     }
 
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", "");
+    mvprintw(linha / 4 + 8, coluna / 4, "%s", "");
     noecho();
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
     getch();
 
     endwin();
@@ -508,13 +507,13 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
     endwin();
 }
 
-void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
+void TelaCasoDeTeste::cadastrar(CasoDeTeste *casoDeTeste) {
     string titulo1 = "Preencha os seguintes campos.";
-    vector<string> texto1{"Código   ",
-                          "Nome     ",
-                          "Data     ",
-                          "Ação     ",
-                          "Resposta ",
+    vector<string> texto1{"Código",
+                          "Nome",
+                          "Data",
+                          "Ação",
+                          "Resposta",
                           "Resultado"};
     string textoErro = "Valor inválido para atributo ";
 
@@ -552,7 +551,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     try {
         codigo.setValor(codigoCasoDeTeste);
-        casodeteste->setCodigo(codigo);
+        casoDeTeste->setCodigo(codigo);
     } catch (invalid_argument &exp) {
         textoErro += texto1[0];
         mvprintw(linha / 4 + 8, coluna / 4, "%s", textoErro.c_str());
@@ -560,7 +559,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     try {
         nome.setValor(nomeCasoDeTeste);
-        casodeteste->setNome(nome);
+        casoDeTeste->setNome(nome);
     } catch (invalid_argument &exp) {
         textoErro += texto1[1];
         mvprintw(linha / 4 + 8, coluna / 4, "%s", textoErro.c_str());
@@ -568,7 +567,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     try {
         data.setValor(dataCasoDeTeste);
-        casodeteste->setData(data);
+        casoDeTeste->setData(data);
     } catch (invalid_argument &exp) {
         textoErro += texto1[2];
         mvprintw(linha / 4 + 8, coluna / 4, "%s", textoErro.c_str());
@@ -576,7 +575,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     try {
         acao.setValor(acaoCasoDeTeste);
-        casodeteste->setAcao(acao);
+        casoDeTeste->setAcao(acao);
     } catch (invalid_argument &exp) {
         textoErro += texto1[3];
         mvprintw(linha / 4 + 8, coluna / 4, "%s", textoErro.c_str());
@@ -584,7 +583,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     try {
         resposta.setValor(respostaCasoDeTeste);
-        casodeteste->setResposta(resposta);
+        casoDeTeste->setResposta(resposta);
     } catch (invalid_argument &exp) {
         textoErro += texto1[4];
         mvprintw(linha / 4 + 8, coluna / 4, "%s", textoErro.c_str());
@@ -592,7 +591,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     try {
         resultado.setValor(resultadoCasoDeTeste);
-        casodeteste->setResultado(resultado);
+        casoDeTeste->setResultado(resultado);
     } catch (invalid_argument &exp) {
         textoErro += texto1[5];
         mvprintw(linha / 4 + 8, coluna / 4, "%s", textoErro.c_str());
@@ -613,11 +612,11 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                           "Escolha uma opção: "};
 
     string titulo2 = "Informe novo valor.";
-    vector<string> texto2{"Nome      :",
-                          "Data      :",
-                          "Ação      :",
-                          "Resposta  :",
-                          "Resultado :"};
+    vector<string> texto2{"Nome : ",
+                          "Data : ",
+                          "Ação : ",
+                          "Resposta : ",
+                          "Resultado : "};
     string textoErro = "Valor inválido para atributo ";
 
     initscr();

@@ -10,9 +10,23 @@ void TUIATeste::executar() {
     ctrlIATeste->setCtrlISTeste(stubISTeste);
 
     Matricula matricula;
-
     ctrlIATeste->executar(matricula);
 
     delete ctrlIATeste;
     delete stubISTeste;
+}
+void TUIACasoDeTeste::executar() {
+    IACasoDeTeste *ctrlIACasoDeTeste;
+    StubISCasoDeTeste *stubISCasoDeTeste;
+
+    ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
+    stubISCasoDeTeste = new StubISCasoDeTeste();
+
+    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(stubISCasoDeTeste);
+
+    Matricula matricula;
+    ctrlIACasoDeTeste->executar(matricula);
+
+    delete ctrlIACasoDeTeste;
+    delete stubISCasoDeTeste;
 }

@@ -166,7 +166,6 @@ void CtrlIATeste::executar(Matricula matricula) {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIACasoDeTeste::executar(Matricula) {
-    CmdIACasoDeTeste *comando;
     int opcao;  // Campo de entrada.
 
     bool apresentar = true;  // Controle de laço.

@@ -11,9 +11,9 @@ const string StubISTeste::VALOR_VALIDO_CLASSE = "FUMACA";
 
 Teste StubISTeste::testeStub;
 
-Codigo StubISTeste::codigo;
-Texto StubISTeste::nome;
-Classe StubISTeste::classe;
+Codigo StubISTeste::codigoTeste;
+Texto StubISTeste::nomeTeste;
+Classe StubISTeste::classeTeste;
 
 const string StubISTeste::TRIGGER_SUCESSO = VALOR_VALIDO_CODIGO;
 
@@ -21,9 +21,9 @@ bool StubISTeste::visualizar(Teste* teste) {                 // Passado apenas c
     if (teste->getCodigo().getValor() != TRIGGER_SUCESSO) {  // Não achou no BD
         resultado = false;
     } else {
-        teste->setCodigo(codigo);
-        teste->setNome(nome);
-        teste->setClasse(classe);
+        teste->setCodigo(codigoTeste);
+        teste->setNome(nomeTeste);
+        teste->setClasse(classeTeste);
     }
 
     return resultado;
@@ -40,12 +40,12 @@ bool StubISTeste::cadastrar(Teste teste) {
 bool StubISTeste::editar(Teste teste) {
     try {
         if (teste.getNome().getValor() != "") {
-            StubISTeste::nome.setValor(teste.getNome().getValor());
-            StubISTeste::testeStub.setNome(StubISTeste::nome);
+            StubISTeste::nomeTeste.setValor(teste.getNome().getValor());
+            StubISTeste::testeStub.setNome(StubISTeste::nomeTeste);
         }
         if (teste.getClasse().getValor() != "") {
-            StubISTeste::classe.setValor(teste.getClasse().getValor());
-            StubISTeste::testeStub.setClasse(StubISTeste::classe);
+            StubISTeste::classeTeste.setValor(teste.getClasse().getValor());
+            StubISTeste::testeStub.setClasse(StubISTeste::classeTeste);
         }
     } catch (invalid_argument& exp) {
         resultado = false;
@@ -63,44 +63,80 @@ bool StubISTeste::descadastrar(Codigo codigo) {
 }
 
 // //--------------------------------------------------------------------------------------------
-// const string StubISCasoDeTeste::TRIGGER_FALHA = "UNB123";
+const string StubISCasoDeTeste::VALOR_VALIDO_CODIGO = "UNB123";
+const string StubISCasoDeTeste::VALOR_VALIDO_NOME = "mariazinha1";
+const string StubISCasoDeTeste::VALOR_VALIDO_DATA = "14/AGO/2003";
+const string StubISCasoDeTeste::VALOR_VALIDO_ACAO = "correr uma maratona";
+const string StubISCasoDeTeste::VALOR_VALIDO_RESPOSTA = "Chorar muito";
+const string StubISCasoDeTeste::VALOR_VALIDO_RESULTADO = "APROVADO";
 
-// bool StubISCasoDeTeste::visualizar(CasoDeTeste* casodeteste) {
-//     if (casodeteste->getCodigo().getValor() == TRIGGER_FALHA) {
-//         resultado = false;
-//     } else if (casodeteste->getCodigo().getValor() == TRIGGER_ERRO) {
-//         throw runtime_error("Erro de sistema");
-//     }
+CasoDeTeste StubISCasoDeTeste::casoDeTesteStub;
 
-//     return resultado;
-// }
+Codigo StubISCasoDeTeste::codigoCasoDeTeste;
+Texto StubISCasoDeTeste::nomeCasoDeTeste;
+Data StubISCasoDeTeste::dataCasoDeTeste;
+Texto StubISCasoDeTeste::acaoCasoDeTeste;
+Texto StubISCasoDeTeste::respostaCasoDeTeste;
+Resultado StubISCasoDeTeste::resultadoCasoDeTeste;
 
-// bool StubISCasoDeTeste::cadastrar(CasoDeTeste casodeteste) {
-//     if (casodeteste.getCodigo().getValor() == TRIGGER_FALHA) {
-//         resultado = false;
-//     } else if (casodeteste.getCodigo().getValor() == TRIGGER_ERRO) {
-//         throw runtime_error("Erro de sistema");
-//     }
+const string StubISCasoDeTeste::TRIGGER_SUCESSO = VALOR_VALIDO_CODIGO;
 
-//     return resultado;
-// }
+bool StubISCasoDeTeste::visualizar(CasoDeTeste* casoDeTeste) {     // Passado apenas com o código
+    if (casoDeTeste->getCodigo().getValor() != TRIGGER_SUCESSO) {  // Não achou no BD
+        resultado = false;
+    } else {
+        casoDeTeste->setCodigo(codigoCasoDeTeste);
+        casoDeTeste->setNome(nomeCasoDeTeste);
+        casoDeTeste->setAcao(acaoCasoDeTeste);
+        casoDeTeste->setData(dataCasoDeTeste);
+        casoDeTeste->setResposta(respostaCasoDeTeste);
+        casoDeTeste->setResultado(resultadoCasoDeTeste);
+    }
 
-// bool StubISCasoDeTeste::editar(CasoDeTeste casodeteste) {
-//     if (casodeteste.getCodigo().getValor() == TRIGGER_FALHA) {
-//         resultado = false;
-//     } else if (casodeteste.getCodigo().getValor() == TRIGGER_ERRO) {
-//         throw runtime_error("Erro de sistema");
-//     }
+    return resultado;
+}
 
-//     return resultado;
-// }
+bool StubISCasoDeTeste::cadastrar(CasoDeTeste casoDeTeste) {
+    if (casoDeTeste.getCodigo().getValor() == TRIGGER_SUCESSO) {
+        resultado = false;
+    }
 
-// bool StubISCasoDeTeste::descadastrar(Codigo codigo) {
-//     if (codigo.getValor() == TRIGGER_FALHA) {
-//         resultado = false;
-//     } else if (codigo.getValor() == TRIGGER_ERRO) {
-//         throw runtime_error("Erro de sistema");
-//     }
+    return resultado;  // Verificação dos dados já é feita nas telas
+}
 
-//     return resultado;
-// }
+bool StubISCasoDeTeste::editar(CasoDeTeste casoDeTeste) {
+    try {
+        if (casoDeTeste.getNome().getValor() != "") {
+            StubISCasoDeTeste::nomeCasoDeTeste.setValor(casoDeTeste.getNome().getValor());
+            StubISCasoDeTeste::casoDeTesteStub.setNome(StubISCasoDeTeste::nomeCasoDeTeste);
+        }
+        if (casoDeTeste.getData().getValor() != "") {
+            StubISCasoDeTeste::dataCasoDeTeste.setValor(casoDeTeste.getData().getValor());
+            StubISCasoDeTeste::casoDeTesteStub.setData(StubISCasoDeTeste::dataCasoDeTeste);
+        }
+        if (casoDeTeste.getAcao().getValor() != "") {
+            StubISCasoDeTeste::acaoCasoDeTeste.setValor(casoDeTeste.getAcao().getValor());
+            StubISCasoDeTeste::casoDeTesteStub.setAcao(StubISCasoDeTeste::acaoCasoDeTeste);
+        }
+        if (casoDeTeste.getResposta().getValor() != "") {
+            StubISCasoDeTeste::respostaCasoDeTeste.setValor(casoDeTeste.getResposta().getValor());
+            StubISCasoDeTeste::casoDeTesteStub.setResposta(StubISCasoDeTeste::respostaCasoDeTeste);
+        }
+        if (casoDeTeste.getResultado().getValor() != "") {
+            StubISCasoDeTeste::resultadoCasoDeTeste.setValor(casoDeTeste.getResultado().getValor());
+            StubISCasoDeTeste::casoDeTesteStub.setResultado(StubISCasoDeTeste::resultadoCasoDeTeste);
+        }
+    } catch (invalid_argument& exp) {
+        resultado = false;
+    }
+
+    return resultado;
+}
+
+bool StubISCasoDeTeste::descadastrar(Codigo codigo) {
+    if (codigo.getValor() != TRIGGER_SUCESSO) {
+        resultado = false;
+    }
+
+    return resultado;  // Verificação dos dados já é feita nas telas
+}

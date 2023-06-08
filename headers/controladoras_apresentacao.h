@@ -102,13 +102,14 @@ inline void CtrlIATeste::setCtrlISTeste(ISTeste *ctrlISTeste) {
 //-----------------------------------------------------------------------------------
 class CtrlIACasoDeTeste : public IACasoDeTeste {
    private:
-    ISCasoDeTeste *ctrlISCasoDeTeste;
-
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
     const static int EDITAR = 3;
     const static int DESCADASTRAR = 4;
     const static int RETORNAR = 5;
+
+    ISCasoDeTeste *ctrlISCasoDeTeste;
+    CmdIACasoDeTeste *comando;
 
    public:
     void executar(Matricula);

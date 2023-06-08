@@ -39,7 +39,7 @@ class IATeste {
 class IACasoDeTeste {
    public:
     virtual void executar(Matricula) = 0;
-    virtual void setCtrlISTeste(ISCasoDeTeste *) = 0;
+    virtual void setCtrlISCasoDeTeste(ISCasoDeTeste *) = 0;
     virtual ~IACasoDeTeste(){};
 };
 
