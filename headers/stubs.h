@@ -3,16 +3,19 @@
 
 #include "interfaces.h"
 
+//--------------------------------------------------------------------------------------------
 class StubISAutenticacao : public ISAutenticacao {
    private:
    public:
 };
 
+//--------------------------------------------------------------------------------------------
 class StubISDesenvolvedor : public ISDesenvolvedor {
    private:
    public:
 };
 
+//--------------------------------------------------------------------------------------------
 class StubISTeste : public ISTeste {
    private:
     static Teste testeStub;
@@ -46,6 +49,7 @@ class StubISTeste : public ISTeste {
     bool descadastrar(Codigo);
 };
 
+//--------------------------------------------------------------------------------------------
 class StubISCasoDeTeste : public ISCasoDeTeste {
    private:
     const static string TRIGGER_FALHA;
