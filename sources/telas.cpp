@@ -349,9 +349,9 @@ void TelaTeste::editar(Teste *teste) {
                 } catch (invalid_argument &exp) {
                     textoErro = "Valor de nome inválido. Pressione qualquer tecla para continuar";
                     mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
-                    echo();
-                    getstr(nomeTeste);
+
                     noecho();
+                    getch();
                 }
                 break;
 
@@ -366,9 +366,9 @@ void TelaTeste::editar(Teste *teste) {
                 } catch (invalid_argument &exp) {
                     textoErro = "Valor de classe inválido. Pressione qualquer tecla para continuar";
                     mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
-                    echo();
-                    getstr(nomeTeste);
+
                     noecho();
+                    getch();
                 }
                 break;
 
@@ -478,6 +478,36 @@ void TelaCasoDeTeste::selecionar(int *campo) {
     endwin();
 }
 
+void TelaCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
+    string titulo1 = "Informe código do caso de teste.";
+    string texto1 = "Código";
+    string textoErro;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
+
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), ": ");
+
+    echo();
+    getstr(codigoCasoDeTeste);
+    noecho();
+
+    try {
+        codigo.setValor(codigoCasoDeTeste);
+        casoDeTeste->setCodigo(codigo);
+    } catch (invalid_argument &exp) {
+        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+    };
+
+    endwin();
+}
+
 void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
     string titulo1 = "Preencha os seguintes campos.";
     vector<string> texto1{"Código   ",
@@ -487,7 +517,6 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
                           "Resposta ",
                           "Resultado"};
     string textoErro = "Valor inválido para atributo ";
-    string textoErro;
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -571,6 +600,150 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casodeteste) {
 
     endwin();
 }
+
+void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
+    string titulo1 = "Informe o campo do teste para ser editado:";
+    vector<string> texto1{"1 - Nome.",
+                          "2 - Data.",
+                          "3 - Ação.",
+                          "4 - Resposta.",
+                          "5 - Resultado.",
+                          "6 - Salvar.",
+                          "7 - Cancelar.",
+                          "Escolha uma opção: "};
+
+    string titulo2 = "Informe novo valor.";
+    vector<string> texto2{"Nome      :",
+                          "Data      :",
+                          "Ação      :",
+                          "Resposta  :",
+                          "Resultado :"};
+    string textoErro = "Valor inválido para atributo ";
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+
+    bool apresentar = true;
+    while (apresentar) {
+        int campo;
+
+        clear();
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+        for (int i = 0; i < texto1.size(); i++) {
+            mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+        }
+
+        echo();
+        campo = getch() - 48;
+        noecho();
+
+        clear();
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo2.c_str());
+        switch (campo) {
+            case 1:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[0].c_str());
+                echo();
+                getstr(nomeCasoDeTeste);
+                noecho();
+
+                try {
+                    nome.setValor(nomeCasoDeTeste);
+                } catch (invalid_argument &exp) {
+                    textoErro += texto2[0];
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+
+                    noecho();
+                    getch();
+                }
+                break;
+
+            case 2:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[1].c_str());
+                echo();
+                getstr(dataCasoDeTeste);
+                noecho();
+
+                try {
+                    data.setValor(dataCasoDeTeste);
+                } catch (invalid_argument &exp) {
+                    textoErro += texto2[1];
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+
+                    noecho();
+                    getch();
+                }
+                break;
+
+            case 3:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[2].c_str());
+                echo();
+                getstr(acaoCasoDeTeste);
+                noecho();
+
+                try {
+                    acao.setValor(acaoCasoDeTeste);
+                } catch (invalid_argument &exp) {
+                    textoErro += texto2[2];
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+
+                    noecho();
+                    getch();
+                }
+                break;
+                break;
+
+            case 4:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[3].c_str());
+                echo();
+                getstr(respostaCasoDeTeste);
+                noecho();
+
+                try {
+                    resposta.setValor(respostaCasoDeTeste);
+                } catch (invalid_argument &exp) {
+                    textoErro += texto2[3];
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+
+                    noecho();
+                    getch();
+                }
+                break;
+
+            case 5:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[4].c_str());
+                echo();
+                getstr(resultadoCasoDeTeste);
+                noecho();
+
+                try {
+                    resultado.setValor(resultadoCasoDeTeste);
+                } catch (invalid_argument &exp) {
+                    textoErro += texto2[4];
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+
+                    noecho();
+                    getch();
+                }
+                break;
+
+            case 6:
+                casoDeTeste->setNome(nome);
+                casoDeTeste->setAcao(acao);
+                casoDeTeste->setData(data);
+                casoDeTeste->setResposta(resposta);
+                casoDeTeste->setResultado(resultado);
+                apresentar = false;
+                break;
+
+            case 7:
+                apresentar = false;
+                break;
+
+            default:
+                break;
+        }
+    }
+};
 
 void TelaCasoDeTeste::descadastrar(Codigo *codigo) {
     string titulo1 = "Informe código do caso de teste para descadastramento.";

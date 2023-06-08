@@ -85,7 +85,7 @@ void CmdIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     if (resultado) {
         telaCasoDeTeste.mostrar(casoDeTeste);  // Mostra os valores.
     } else {
-        telaMensagem.apresentar("Caso de teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
+        telaMensagem.apresentar("Caso deeste informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }
 

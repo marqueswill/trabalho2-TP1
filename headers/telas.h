@@ -70,8 +70,8 @@ class TelaTeste : public Telas {
     char classeTeste[100] = "";
 
    public:
-    void selecionar(int *);
     void mostrar(Teste);          // mostrar valores
+    void selecionar(int *);       // tela de seleção
     void visualizar(Teste *);     // obter codigo
     void cadastrar(Teste *);      // defnir  valores teste
     void editar(Teste *);         // definir novos valores
@@ -96,8 +96,8 @@ class TelaCasoDeTeste : public Telas {
     char resultadoCasoDeTeste[100] = "";
 
    public:
-    void selecionar(int *);
     void mostrar(CasoDeTeste);       // mostrar valores
+    void selecionar(int *);          // tela de seleção
     void visualizar(CasoDeTeste *);  // obter codigo
     void cadastrar(CasoDeTeste *);   // defnir  valores teste
     void editar(CasoDeTeste *);      // definir novos valores
