@@ -96,22 +96,24 @@ class TelaCasoDeTeste : public Telas {
     char resultadoCasoDeTeste[100] = "";
 
    public:
-    void apresentar(int *);
-    void apresentar(CasoDeTeste *);
-    void apresentar(CasoDeTeste);
-    void apresentar(Codigo *);
+    void selecionar(int *);
+    void mostrar(CasoDeTeste);       // mostrar valores
+    void visualizar(CasoDeTeste *);  // obter codigo
+    void cadastrar(CasoDeTeste *);   // defnir  valores teste
+    void editar(CasoDeTeste *);      // definir novos valores
+    void descadastrar(Codigo *);     // definir codigo
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaDepuracao : public Telas {
    private:
    public:
-    void apresentar(int *);
+    void selecionar(int *);
 };
 
 class TelaTestesUnitarios : public Telas {
    private:
    public:
-    void apresentar(int *);
+    void selecionar(int *);
 };
 #endif  // TELAS_H_INCLUDED

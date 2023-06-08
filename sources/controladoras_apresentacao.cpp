@@ -173,7 +173,7 @@ void CtrlIACasoDeTeste::executar(Matricula) {
     while (apresentar) {     // Apresenta tela inicial.
 
         TelaCasoDeTeste telaCasoDeTeste;
-        telaCasoDeTeste.apresentar(&opcao);
+        telaCasoDeTeste.selecionar(&opcao);
 
         switch (opcao) {
             case VISUALIZAR:

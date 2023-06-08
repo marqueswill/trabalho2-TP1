@@ -50,7 +50,7 @@ class StubISCasoDeTeste : public ISCasoDeTeste {
    private:
     const static string TRIGGER_FALHA;
     bool resultado;
-    CasoDeTeste casodetesteStub;
+    CasoDeTeste casoDeTesteStub;
 
    public:
     bool visualizar(CasoDeTeste *);

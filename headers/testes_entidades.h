@@ -63,7 +63,7 @@ class TUCasoDeTeste : public TUEntidades {
     void setUp();
     void tearDown();
     void testarValorValido();
-    CasoDeTeste *casodeteste;
+    CasoDeTeste *casoDeTeste;
 };
 
 #endif  // TESTES_ENTIDADES_H_INCLUDED

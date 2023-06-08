@@ -80,7 +80,7 @@ class CmdIATesteDescadastrar : public CmdIATeste {
 class CmdIACasoDeTeste {
    protected:
     bool resultado;
-    CasoDeTeste casodeteste;
+    CasoDeTeste casoDeTeste;
     Codigo codigo;
     TelaCasoDeTeste telaCasoDeTeste;
     TelaMensagem telaMensagem;
