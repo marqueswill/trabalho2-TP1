@@ -125,56 +125,56 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
     endwin();
 }    
 
-void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
-    string texto1 = "Por favor, preencha os espaços com os seus dados:";
-    string texto2 = "Nome      : ";
-    string texto3 = "Matrícula : ";
-    string texto4 = "Telefone  : ";
-    string texto5 = "Senha     : ";
+// void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
+//     string texto1 = "Por favor, preencha os espaços com os seus dados:";
+//     string texto2 = "Nome      : ";
+//     string texto3 = "Matrícula : ";
+//     string texto4 = "Telefone  : ";
+//     string texto5 = "Senha     : ";
 
-    getmaxyx(stdscr, linha, coluna);
-    clear();
+//     getmaxyx(stdscr, linha, coluna);
+//     clear();
 
-    mvprintw(linha / 4, coluna / 4, "%s", texto1.c_str());
-    echo();
+//     mvprintw(linha / 4, coluna / 4, "%s", texto1.c_str());
+//     echo();
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2.c_str());
-    getstr(nomeDesenvolvedor);
+//     mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2.c_str());
+//     getstr(nomeDesenvolvedor);
 
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3.c_str());
-    getstr(matriculaDesenvolvedor);
+//     mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3.c_str());
+//     getstr(matriculaDesenvolvedor);
 
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4.c_str());
-    getstr(telefoneDesenvolvedor);
+//     mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4.c_str());
+//     getstr(telefoneDesenvolvedor);
 
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5.c_str());
-    getstr(senhaDesenvolvedor);
+//     mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5.c_str());
+//     getstr(senhaDesenvolvedor);
 
-    noecho();
+//     noecho();
 
-    try {
-        nome.setValor(nomeDesenvolvedor);}
-        catch(invalid_argument &exp){
-            noecho();
-            getch();
-        }
-        try{matricula.setValor(matriculaDesenvolvedor);}
-        catch(invalid_argument &exp){
-            noecho();
-            getch();
-        }
-        try{telefone.setValor(telefoneDesenvolvedor);}
-        catch(invalid_argument &exp){
-            noecho();
-            getch();
-        }
-        senha.setValor(senhaDesenvolvedor);
-        desenvolvedor->setNome(nome);
-        desenvolvedor->setMatricula(matricula);
-        desenvolvedor->setTelefone(telefone);
-        desenvolvedor->setSenha(senha);
-    endwin();
-}
+//     try {
+//         nome.setValor(nomeDesenvolvedor);}
+//         catch(invalid_argument &exp){
+//             noecho();
+//             getch();
+//         }
+//         try{matricula.setValor(matriculaDesenvolvedor);}
+//         catch(invalid_argument &exp){
+//             noecho();
+//             getch();
+//         }
+//         try{telefone.setValor(telefoneDesenvolvedor);}
+//         catch(invalid_argument &exp){
+//             noecho();
+//             getch();
+//         }
+//         senha.setValor(senhaDesenvolvedor);
+//         desenvolvedor->setNome(nome);
+//         desenvolvedor->setMatricula(matricula);
+//         desenvolvedor->setTelefone(telefone);
+//         desenvolvedor->setSenha(senha);
+//     endwin();
+// }
 void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     string titulo1 = "Valores atuais do desenvolvedor.";
     vector<string> texto1{"Matricula : ",

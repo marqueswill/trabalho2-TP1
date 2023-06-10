@@ -25,10 +25,10 @@ class CmdIADesenvolvedor {
     virtual ~CmdIADesenvolvedor() {}
 };
 
-class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
-   public:
-    void executar(ISDesenvolvedor*);
-};
+// class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
+//    public:
+//     void executar(ISDesenvolvedor*);
+// };
 
 class CmdIADesenvolvedorVisualizar : public CmdIADesenvolvedor {
    public:

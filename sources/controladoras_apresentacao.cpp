@@ -70,8 +70,7 @@ void CtrlIAInicializacao::executar() {
 // }
 
 //--------------------------------------------------------------------------------------------
-void CtrlIADesenvolvedor::cadastrar() {
-}
+
 
 void CtrlIADesenvolvedor::executar(Matricula) {
     int opcao;
@@ -82,11 +81,11 @@ void CtrlIADesenvolvedor::executar(Matricula) {
         telaDesenvolvedor.selecionar(&opcao);
 
         switch (opcao) {
-            case CADASTRAR:
-                comando = new CmdIADesenvolvedorCadastrar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
+            // case CADASTRAR:
+            //     comando = new CmdIADesenvolvedorCadastrar();
+            //     comando->executar(ctrlISDesenvolvedor);
+            //     delete comando;
+            //     break;
 
             case EDITAR:
                 comando = new CmdIADesenvolvedorEditar();
