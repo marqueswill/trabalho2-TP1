@@ -8,7 +8,8 @@
 #include "..\headers\controladoras_servico.h"
 using namespace std;
 //-----------------------------------------------------------------------------------------------------------------------//
-bool CtrlMSDesenvolvedor::visualizar(Matricula matricula){
+bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
+Matricula matricula = desenvolvedor->getMatricula();
 ComandoVisualizarDesenvolvedor comando(matricula);
 try{
     comando.executar();

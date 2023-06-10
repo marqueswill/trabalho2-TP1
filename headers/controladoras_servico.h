@@ -25,7 +25,7 @@ class CtrlMSDesenvolvedor : public ISDesenvolvedor {
     const static int EDITAR = 2;
     const static int DESCADASTRAR = 3;
 
-    bool visualizar(Matricula);
+    bool visualizar(Desenvolvedor*);
     bool editar(Desenvolvedor);
     bool descadastrar(Matricula);
 };
