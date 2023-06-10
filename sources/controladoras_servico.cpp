@@ -7,6 +7,27 @@
 #include "telas.cpp"
 #include "..\headers\controladoras_servico.h"
 using namespace std;
+//-----------------------------------------------------------------------------------------------------------------------//
+bool CtrlMSDesenvolvedor::visualizar(Matricula matricula){
+ComandoVisualizarDesenvolvedor comando(matricula);
+try{
+    comando.executar();
+}
+catch(EErroPersistencia exp){
+    telaMsg.apresentar("Houve erro de acesso ao banco de dados. Tente novamente");
+}
+telaMsg.apresentar("A operação foi efetuada com sucesso. Tecle algo");
+}
+bool CtrlMSDesenvolvedor::editar(Desenvolvedor desenvolvedor){
+ComandoEditarDesenvolvedor comando(desenvolvedor);
+try{
+    comando.executar();
+}
+catch(EErroPersistencia exp){
+    telaMsg.apresentar("Houve erro de acesso ao banco de dados. Tente novamente");
+}
+telaMsg.apresentar("A operação foi efetuada com sucesso. Tecle algo");
+}
 bool CtrlMSDesenvolvedor::descadastrar(Matricula matricula){
 ComandoDescadastrarDesenvolvedor comando(matricula);
 
@@ -14,9 +35,9 @@ try{
     comando.executar();
 }
 catch(EErroPersistencia exp){
-    TelaMsg.apresentar("Houve erro de acesso ao banco de dados. Tente novamente");
+    telaMsg.apresentar("Houve erro de acesso ao banco de dados. Tente novamente");
 }
-TelaMsg.apresentar("A operação foi efetuada com sucesso. Tecle algo");
+telaMsg.apresentar("A operação foi efetuada com sucesso. Tecle algo");
 }
 
 // //--------------------------------------------------------------------------------------------

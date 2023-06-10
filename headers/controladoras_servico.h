@@ -18,13 +18,14 @@ class CtrlMSAutenticacao : public ISAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlMSDesenvolvedor : public ISDesenvolvedor {
    public:
-    TelaMensagem TelaMsg;
+    TelaMensagem telaMsg;
+    TelaDesenvolvedor telaDesenvolvedor;
     const static int MAX = 4;
     const static int VISUALIZAR = 1;
     const static int EDITAR = 2;
     const static int DESCADASTRAR = 3;
 
-    bool visualizar(Desenvolvedor *);
+    bool visualizar(Matricula);
     bool editar(Desenvolvedor);
     bool descadastrar(Matricula);
 };

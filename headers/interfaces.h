@@ -24,7 +24,7 @@ class IAAutenticacao {
 
 class IADesenvolvedor {
    public:
-    virtual void cadastrar() = 0;
+    // virtual void cadastrar() = 0;
     virtual void executar(Matricula) = 0;
     virtual void setCtrlISDesenvolvedor(ISDesenvolvedor *) = 0;
     virtual ~IADesenvolvedor() {}
@@ -53,7 +53,7 @@ class ISAutenticacao {
 class ISDesenvolvedor {
    public:
     virtual bool visualizar(Desenvolvedor *) = 0;
-    virtual bool cadastrar(Desenvolvedor) = 0;
+    // virtual bool cadastrar(Desenvolvedor) = 0;
     virtual bool editar(Desenvolvedor) = 0;
     virtual bool descadastrar(Matricula) = 0;
     virtual ~ISDesenvolvedor() {}

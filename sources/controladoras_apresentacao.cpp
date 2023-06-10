@@ -49,9 +49,9 @@ void CtrlIAInicializacao::executar() {
                 }
                 break;
 
-            case CADASTRAR:                        // Solicitação de cadastro de desenvolvedor.
-                ctrlIADesenvolvedor->cadastrar();  // Abre a tela de cadastro.
-                break;
+            // case CADASTRAR:                        // Solicitação de cadastro de desenvolvedor.
+            //     ctrlIADesenvolvedor->cadastrar();  // Abre a tela de cadastro.
+            //     break;
 
             case SAIR:
                 apresentar = false;  // Encerra o programa.
