@@ -1,7 +1,6 @@
 #ifndef TELAS_H_INCLUDED
 #define TELAS_H_INCLUDED
-
-#include <curses.h>
+#include "curses.h"
 
 #include "interfaces.h"
 
