@@ -1,5 +1,4 @@
 #include "../headers/telas.h"
-
 //--------------------------------------------------------------------------------------------
 void TelaMensagem::apresentar(string mensagem) {
     initscr();
