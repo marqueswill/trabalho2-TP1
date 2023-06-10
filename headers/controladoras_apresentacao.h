@@ -4,10 +4,10 @@
 #include <string>
 
 #include "comandos.h"
-#include "curses.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
+#include "telas.h"
 
 // Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
 //-----------------------------------------------------------------------------------
@@ -64,30 +64,36 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
-    const static int CADASTRAR = 1;
+    const static int CADASTRAR = 8;
     const static int EDITAR = 2;
-    const static int VISUALIZAR = 3;
-    const static int DESCADASTRAR = 4;
-    const static int RETORNAR = 5;
+    const static int VISUALIZAR = 1;
+    const static int DESCADASTRAR = 3;
+    const static int RETORNAR = 4;
 
     ISDesenvolvedor *ctrlISDesenvolvedor;
     CmdIADesenvolvedor *comando;
 
    public:
+    void setCtrlISDesenvolvedor(ISDesenvolvedor *);
     void cadastrar();
     void executar(Matricula);
 };
 
+inline void CtrlIADesenvolvedor::setCtrlISDesenvolvedor(ISDesenvolvedor *ctrlISDesenvolvedor) {
+    this->ctrlISDesenvolvedor = ctrlISDesenvolvedor;
+}
+
 //-----------------------------------------------------------------------------------
 class CtrlIATeste : public IATeste {
    private:
-    ISTeste *ctrlISTeste;
-
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
     const static int EDITAR = 3;
     const static int DESCADASTRAR = 4;
     const static int RETORNAR = 5;
+
+    ISTeste *ctrlISTeste;
+    CmdIATeste *comando;
 
    public:
     void executar(Matricula);
@@ -101,13 +107,14 @@ inline void CtrlIATeste::setCtrlISTeste(ISTeste *ctrlISTeste) {
 //-----------------------------------------------------------------------------------
 class CtrlIACasoDeTeste : public IACasoDeTeste {
    private:
-    ISCasoDeTeste *ctrlISCasoDeTeste;
-
     const static int VISUALIZAR = 1;
     const static int CADASTRAR = 2;
     const static int EDITAR = 3;
     const static int DESCADASTRAR = 4;
     const static int RETORNAR = 5;
+
+    ISCasoDeTeste *ctrlISCasoDeTeste;
+    CmdIACasoDeTeste *comando;
 
    public:
     void executar(Matricula);

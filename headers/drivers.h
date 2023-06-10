@@ -3,12 +3,10 @@
 
 // #include <ncurses.h>
 
-#include "curses.h"
-#include "dominios.h"
-#include "entidades.h"
-#include "telas.h"
 #include "testes_dominios.h"
 #include "testes_entidades.h"
+#include "testes_integracao.h"
+#include "testes_modulos.h"
 
 //--------------------------------------------------------------------------------------------
 class Drivers {

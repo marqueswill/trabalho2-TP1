@@ -1,9 +1,6 @@
 #ifndef TESTES_DOMINIOS_H_INCLUDED
 #define TESTES_DOMINIOS_H_INCLUDED
 
-#include <iomanip>
-#include <string>
-
 #include "dominios.h"
 
 using namespace std;

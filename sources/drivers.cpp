@@ -29,7 +29,7 @@ void DriverDepuracao::executar() {
     bool apresentar = true;
     while (apresentar) {
         TelaDepuracao telaDepuracao;
-        telaDepuracao.apresentar(&campo);
+        telaDepuracao.selecionar(&campo);
 
         switch (campo) {
             case TESTE_UNITARIO:
@@ -62,7 +62,7 @@ void DriverTestesUnitarios::executar() {
     bool apresentar = true;
     while (apresentar) {
         TelaTestesUnitarios telaTestesUnitarios;
-        telaTestesUnitarios.apresentar(&campo);
+        telaTestesUnitarios.selecionar(&campo);
 
         switch (campo) {
             case DOMINIOS:

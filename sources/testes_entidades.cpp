@@ -55,47 +55,47 @@ const string TUCasoDeTeste::VALOR_VALIDO_RESPOSTA = "Chorar muito";
 const string TUCasoDeTeste::VALOR_VALIDO_RESULTADO = "APROVADO";
 
 void TUCasoDeTeste::setUp() {
-    casodeteste = new CasoDeTeste();
+    casoDeTeste = new CasoDeTeste();
     estado = SUCESSO;
 }
 
 void TUCasoDeTeste::tearDown() {
-    delete casodeteste;
+    delete casoDeTeste;
 }
 
 void TUCasoDeTeste::testarValorValido() {
     Texto nome;
     nome.setValor(VALOR_VALIDO_NOME);
-    casodeteste->setNome(nome);
-    if (casodeteste->getNome().getValor() != VALOR_VALIDO_NOME) {
+    casoDeTeste->setNome(nome);
+    if (casoDeTeste->getNome().getValor() != VALOR_VALIDO_NOME) {
         estado = FALHA;
     }
 
     Data data;
     data.setValor(VALOR_VALIDO_DATA);
-    casodeteste->setData(data);
-    if (casodeteste->getData().getValor() != VALOR_VALIDO_DATA) {
+    casoDeTeste->setData(data);
+    if (casoDeTeste->getData().getValor() != VALOR_VALIDO_DATA) {
         estado = FALHA;
     }
 
     Texto acao;
     acao.setValor(VALOR_VALIDO_ACAO);
-    casodeteste->setAcao(acao);
-    if (casodeteste->getAcao().getValor() != VALOR_VALIDO_ACAO) {
+    casoDeTeste->setAcao(acao);
+    if (casoDeTeste->getAcao().getValor() != VALOR_VALIDO_ACAO) {
         estado = FALHA;
     }
 
     Texto resposta;
     resposta.setValor(VALOR_VALIDO_RESPOSTA);
-    casodeteste->setResposta(resposta);
-    if (casodeteste->getResposta().getValor() != VALOR_VALIDO_RESPOSTA) {
+    casoDeTeste->setResposta(resposta);
+    if (casoDeTeste->getResposta().getValor() != VALOR_VALIDO_RESPOSTA) {
         estado = FALHA;
     }
 
     Resultado resultado;
     resultado.setValor(VALOR_VALIDO_RESULTADO);
-    casodeteste->setResultado(resultado);
-    if (casodeteste->getResultado().getValor() != VALOR_VALIDO_RESULTADO) {
+    casoDeTeste->setResultado(resultado);
+    if (casoDeTeste->getResultado().getValor() != VALOR_VALIDO_RESULTADO) {
         estado = FALHA;
     }
 }

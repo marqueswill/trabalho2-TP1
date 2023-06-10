@@ -1,4 +1,5 @@
 #include <locale.h>
+#include <curses.h>
 
 #include "../headers/comandos.h"
 #include "../headers/controladoras_apresentacao.h"
@@ -35,8 +36,13 @@ int main() {
 #ifdef SISTEMA
 
 #endif  // SISTEMA
-    TUIATeste TUMAT;
-    TUMAT.executar();
+    TUIADesenvolvedor TUMAD;
+    TUMAD.executar();
+    // TUIATeste TUMAT;
+    // TUMAT.executar();
+
+    //TUIACasoDeTeste TUMACT;
+    //TUMACT.executar();
 
     return 0;
 }

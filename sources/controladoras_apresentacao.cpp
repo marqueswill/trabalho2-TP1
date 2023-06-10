@@ -1,8 +1,6 @@
 #include "../headers/controladoras_apresentacao.h"
 
 #include "../headers/comandos.h"
-#include "../headers/telas.h"
-
 //--------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
 
@@ -73,20 +71,16 @@ void CtrlIAInicializacao::executar() {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
-    Desenvolvedor desenvolvedor;
-
-    TelaDesenvolvedor telaDesenvolvedor;
-    initscr();
-    telaDesenvolvedor.apresentar(&desenvolvedor);
 }
 
 void CtrlIADesenvolvedor::executar(Matricula) {
-    TelaDesenvolvedor telaDesenvolvedor;
     int opcao;
-    initscr();
-    telaDesenvolvedor.apresentar(&opcao);
+
     bool apresentar = true;
     while (apresentar) {
+        TelaDesenvolvedor telaDesenvolvedor;
+        telaDesenvolvedor.selecionar(&opcao);
+
         switch (opcao) {
             case CADASTRAR:
                 comando = new CmdIADesenvolvedorCadastrar();
@@ -99,11 +93,13 @@ void CtrlIADesenvolvedor::executar(Matricula) {
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
+
             case VISUALIZAR:
                 comando = new CmdIADesenvolvedorVisualizar();
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
+
             case DESCADASTRAR:
                 comando = new CmdIADesenvolvedorDescadastrar();
                 comando->executar(ctrlISDesenvolvedor);
@@ -124,14 +120,12 @@ void CtrlIADesenvolvedor::executar(Matricula) {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIATeste::executar(Matricula matricula) {
-    CmdIATeste *comando;
     int opcao;  // Campo de entrada.
 
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
-
         TelaTeste telaTeste;
-        telaTeste.apresentar(&opcao);
+        telaTeste.selecionar(&opcao);
 
         switch (opcao) {
             case VISUALIZAR:
@@ -172,14 +166,13 @@ void CtrlIATeste::executar(Matricula matricula) {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIACasoDeTeste::executar(Matricula) {
-    CmdIACasoDeTeste *comando;
     int opcao;  // Campo de entrada.
 
     bool apresentar = true;  // Controle de laço.
     while (apresentar) {     // Apresenta tela inicial.
 
         TelaCasoDeTeste telaCasoDeTeste;
-        telaCasoDeTeste.apresentar(&opcao);
+        telaCasoDeTeste.selecionar(&opcao);
 
         switch (opcao) {
             case VISUALIZAR:
