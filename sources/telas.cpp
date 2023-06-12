@@ -322,7 +322,7 @@ void TelaTeste::editar(Teste *teste) {
     string titulo2 = "Informe novo valor.";
     vector<string> texto2{"Nome: ",
                           "Classe: "};
-    string textoErro;
+    string textoErro = "Valor inválido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -354,7 +354,7 @@ void TelaTeste::editar(Teste *teste) {
                     nome.setValor(nomeTeste);
                 } catch (invalid_argument &exp) {
                     textoErro = "Valor de nome inválido. Pressione qualquer tecla para continuar";
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[0]).c_str());
 
                     noecho();
                     getch();
@@ -362,7 +362,7 @@ void TelaTeste::editar(Teste *teste) {
                 break;
 
             case 2:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[1].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (textoErro + texto2[1]).c_str());
                 echo();
                 getstr(classeTeste);
                 noecho();
@@ -660,7 +660,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 try {
                     nome.setValor(nomeCasoDeTeste);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[0]).c_str());
                     noecho();
                     getch();
                 }
@@ -675,7 +675,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 try {
                     data.setValor(dataCasoDeTeste);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[1]).c_str());
                     noecho();
                     getch();
                 }
@@ -690,7 +690,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 try {
                     acao.setValor(acaoCasoDeTeste);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[2]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[2]).c_str());
                     noecho();
                     getch();
                     noecho();
@@ -707,7 +707,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 try {
                     resposta.setValor(respostaCasoDeTeste);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[3]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[3]).c_str());
                     noecho();
                     getch();
                 }
@@ -722,7 +722,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 try {
                     resultado.setValor(resultadoCasoDeTeste);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[4]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[4]).c_str());
                     noecho();
                     getch();
                     noecho();

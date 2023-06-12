@@ -13,32 +13,42 @@ Telefone StubISDesenvolvedor::telefoneDesenvolvedor;
 Matricula StubISDesenvolvedor::matriculaDesenvolvedor;
 Texto StubISDesenvolvedor::nomeDesenvolvedor;
 
-bool StubISDesenvolvedor::visualizar(Desenvolvedor* desenvolvedor){
-    if(desenvolvedor->getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()){
+bool StubISDesenvolvedor::visualizar(Desenvolvedor* desenvolvedor) {
+    if (desenvolvedor->getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()) {
         desenvolvedor->setNome(nomeDesenvolvedor);
         desenvolvedor->setSenha(senhaDesenvolvedor);
         desenvolvedor->setTelefone(telefoneDesenvolvedor);
-    } else{
+    } else {
         return FALHA;
     }
     return SUCESSO;
 }
 
-bool StubISDesenvolvedor::editar(Desenvolvedor desenvolvedor){
-    try{
-        if(desenvolvedor.getNome().getValor() != ""){
+bool StubISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
+    if (desenvolvedor.getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()) {
+        return FALHA;
+    } else if (desenvolvedor.getMatricula().getValor() == "") {
+        return FALHA;
+    }
+
+    return SUCESSO;  // Verificação dos dados já é feita nas telas
+}
+
+bool StubISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
+    try {
+        if (desenvolvedor.getNome().getValor() != "") {
             StubISDesenvolvedor::nomeDesenvolvedor.setValor(desenvolvedor.getNome().getValor());
             StubISDesenvolvedor::desenvolvedorStub.setNome(StubISDesenvolvedor::nomeDesenvolvedor);
         }
-        if(desenvolvedor.getSenha().getValor() != ""){
+        if (desenvolvedor.getSenha().getValor() != "") {
             StubISDesenvolvedor::senhaDesenvolvedor.setValor(desenvolvedor.getSenha().getValor());
             StubISDesenvolvedor::desenvolvedorStub.setSenha(StubISDesenvolvedor::senhaDesenvolvedor);
         }
-        if(desenvolvedor.getTelefone().getValor() != ""){
+        if (desenvolvedor.getTelefone().getValor() != "") {
             StubISDesenvolvedor::telefoneDesenvolvedor.setValor(desenvolvedor.getTelefone().getValor());
             StubISDesenvolvedor::desenvolvedorStub.setTelefone(StubISDesenvolvedor::telefoneDesenvolvedor);
         }
-    } catch(invalid_argument& exp){
+    } catch (invalid_argument& exp) {
         return FALHA;
     }
     return SUCESSO;

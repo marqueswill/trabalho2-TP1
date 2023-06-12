@@ -12,36 +12,38 @@ class StubISAutenticacao : public ISAutenticacao {
 //--------------------------------------------------------------------------------------------
 class StubISDesenvolvedor : public ISDesenvolvedor {
    private:
-   static Desenvolvedor desenvolvedorStub;
-   static Matricula matriculaDesenvolvedor;
-   static Texto nomeDesenvolvedor;
-   static Senha senhaDesenvolvedor;
-   static Telefone telefoneDesenvolvedor;
+    static Desenvolvedor desenvolvedorStub;
+    static Matricula matriculaDesenvolvedor;
+    static Texto nomeDesenvolvedor;
+    static Senha senhaDesenvolvedor;
+    static Telefone telefoneDesenvolvedor;
 
-   const static string VALOR_VALIDO_MATRICULA;
-   const static string VALOR_VALIDO_NOME;
-   const static string VALOR_VALIDO_SENHA;
-   const static string VALOR_VALIDO_TELEFONE;
+    const static string VALOR_VALIDO_MATRICULA;
+    const static string VALOR_VALIDO_NOME;
+    const static string VALOR_VALIDO_SENHA;
+    const static string VALOR_VALIDO_TELEFONE;
 
-   const static bool SUCESSO = true;
-   const static bool FALHA = false;
+    const static bool SUCESSO = true;
+    const static bool FALHA = false;
 
-   bool resultado;
+    bool resultado;
+
    public:
-   StubISDesenvolvedor(){
-    matriculaDesenvolvedor.setValor(VALOR_VALIDO_MATRICULA);
-    nomeDesenvolvedor.setValor(VALOR_VALIDO_NOME);
-    senhaDesenvolvedor.setValor(VALOR_VALIDO_SENHA);
-    telefoneDesenvolvedor.setValor(VALOR_VALIDO_TELEFONE);
+    StubISDesenvolvedor() {
+        matriculaDesenvolvedor.setValor(VALOR_VALIDO_MATRICULA);
+        nomeDesenvolvedor.setValor(VALOR_VALIDO_NOME);
+        senhaDesenvolvedor.setValor(VALOR_VALIDO_SENHA);
+        telefoneDesenvolvedor.setValor(VALOR_VALIDO_TELEFONE);
 
-    desenvolvedorStub.setMatricula(matriculaDesenvolvedor);
-    desenvolvedorStub.setNome(nomeDesenvolvedor);
-    desenvolvedorStub.setSenha(senhaDesenvolvedor);
-    desenvolvedorStub.setTelefone(telefoneDesenvolvedor);
-   }
-   bool visualizar(Desenvolvedor *);
-   bool editar(Desenvolvedor);
-   bool descadastrar(Matricula);
+        desenvolvedorStub.setMatricula(matriculaDesenvolvedor);
+        desenvolvedorStub.setNome(nomeDesenvolvedor);
+        desenvolvedorStub.setSenha(senhaDesenvolvedor);
+        desenvolvedorStub.setTelefone(telefoneDesenvolvedor);
+    }
+    bool visualizar(Desenvolvedor *);
+    bool cadastrar(Desenvolvedor);
+    bool editar(Desenvolvedor);
+    bool descadastrar(Matricula);
 };
 
 //--------------------------------------------------------------------------------------------

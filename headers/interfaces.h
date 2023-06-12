@@ -26,6 +26,7 @@ class IADesenvolvedor {
    public:
     virtual void cadastrar() = 0;
     virtual void executar(Matricula) = 0;
+    virtual void setCtrlISDesenvolvedor(ISDesenvolvedor *) = 0;
     virtual ~IADesenvolvedor() {}
 };
 

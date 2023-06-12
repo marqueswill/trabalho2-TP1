@@ -76,7 +76,12 @@ class CtrlIADesenvolvedor : public IADesenvolvedor {
    public:
     void cadastrar();
     void executar(Matricula);
+    void setCtrlISDesenvolvedor(ISDesenvolvedor *);
 };
+
+inline void CtrlIADesenvolvedor::setCtrlISDesenvolvedor(ISDesenvolvedor *ctrlISDesenvolvedor) {
+    this->ctrlISDesenvolvedor = ctrlISDesenvolvedor;
+}
 
 //-----------------------------------------------------------------------------------
 class CtrlIATeste : public IATeste {
