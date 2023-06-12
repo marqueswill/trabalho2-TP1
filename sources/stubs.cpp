@@ -15,7 +15,7 @@ Texto StubISTeste::nomeTeste;
 Classe StubISTeste::classeTeste;
 
 bool StubISTeste::visualizar(Teste* teste) {                                  // Passado apenas com o código
-    if (teste->getCodigo().getValor() == testeStub.getCodigo().getValor()) {  // Não achou no BD
+    if (teste->getCodigo().getValor() == testeStub.getCodigo().getValor()) {  // Procura no BD e passa os valores pra cima
         teste->setCodigo(codigoTeste);
         teste->setNome(nomeTeste);
         teste->setClasse(classeTeste);
@@ -24,7 +24,6 @@ bool StubISTeste::visualizar(Teste* teste) {                                  //
     }
 
     return SUCESSO;
-    ;
 }
 
 bool StubISTeste::cadastrar(Teste teste) {
