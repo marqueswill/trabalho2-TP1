@@ -70,7 +70,7 @@ void TelaUsuarioLogado::apresentar(int *campo) {
 }
 
 //--------------------------------------------------------------------------------------------
-void TelaDesenvolvedor::apresentar(int *campo) {
+void TelaDesenvolvedor::selecionar(int *campo) {
     string texto1 = "Selecione o servico desejado : ";
     string texto2 = "1 - Visualizar dados de desenvolvedor";
     string texto3 = "2 - Editar dados de desenvolvedor";
@@ -95,8 +95,37 @@ void TelaDesenvolvedor::apresentar(int *campo) {
 
     endwin();
 }
+void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
+    string titulo1 = "Informe matricula do desenvolvedor.";
+    string texto1 = "Matricula";
+    string textoErro;
 
-void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
+
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), " : ");
+
+    echo();
+    getstr(matriculaDesenvolvedor);
+    noecho();
+
+    try {
+        matricula.setValor(matriculaDesenvolvedor);
+        desenvolvedor->setMatricula(matricula);
+    } catch (invalid_argument &exp) {
+        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+    };
+
+    endwin();
+}
+
+void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
     string texto1 = "Por favor, preencha os espaços com os seus dados:";
     string texto2 = "Nome      : ";
     string texto3 = "Matrícula : ";
@@ -125,22 +154,161 @@ void TelaDesenvolvedor::apresentar(Desenvolvedor *desenvolvedor) {
 
     try {
         nome.setValor(nomeDesenvolvedor);
-        matricula.setValor(matriculaDesenvolvedor);
-        telefone.setValor(telefoneDesenvolvedor);
-        senha.setValor(senhaDesenvolvedor);
-        desenvolvedor->setNome(nome);
-        desenvolvedor->setMatricula(matricula);
-        desenvolvedor->setTelefone(telefone);
-        desenvolvedor->setSenha(senha);
     } catch (invalid_argument &exp) {
         noecho();
         getch();
     }
+    try {
+        matricula.setValor(matriculaDesenvolvedor);
+    } catch (invalid_argument &exp) {
+        noecho();
+        getch();
+    }
+    try {
+        telefone.setValor(telefoneDesenvolvedor);
+    } catch (invalid_argument &exp) {
+        noecho();
+        getch();
+    }
+    senha.setValor(senhaDesenvolvedor);
+    desenvolvedor->setNome(nome);
+    desenvolvedor->setMatricula(matricula);
+    desenvolvedor->setTelefone(telefone);
+    desenvolvedor->setSenha(senha);
+    endwin();
+}
+void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
+    string titulo1 = "Valores atuais do desenvolvedor.";
+    vector<string> texto1{"Matricula : ",
+                          "Nome   : ",
+                          "Telefone : ",
+                          "Senha: "};
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    texto1[0] += desenvolvedor.getMatricula().getValor();
+    texto1[1] += desenvolvedor.getNome().getValor();
+    texto1[2] += desenvolvedor.getTelefone().getValor();
+    texto1[3] += desenvolvedor.getSenha().getValor();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
+
+    noecho();
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
+    getch();
 
     endwin();
 }
 
-void TelaDesenvolvedor::apresentar(Matricula *matricula) {
+void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
+    string titulo1 = "Informe o campo do desenvolvedor para ser editado:";
+    vector<string> texto1{"1 - Nome.",
+                          "2 - Telefone.",
+                          "3 - Senha.",
+                          "",
+                          "4 - Salvar.",
+                          "5 - Cancelar.",
+                          "Escolha uma opção: "};
+
+    string titulo2 = "Informe novo valor.";
+    vector<string> texto2{"Nome : ",
+                          "Telefone : ",
+                          "Senha : "};
+    string textoErro = "Valor inválido para atributo ";
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+
+    bool apresentar = true;
+    while (apresentar) {
+        int campo;
+
+        clear();
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+        for (int i = 0; i < texto1.size(); i++) {
+            mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+        }
+
+        echo();
+        campo = getch() - 48;
+        noecho();
+
+        clear();
+        mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo2.c_str());
+        switch (campo) {
+            case 1:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[0].c_str());
+                echo();
+                getstr(nomeDesenvolvedor);
+                noecho();
+
+                try {
+                    nome.setValor(nomeDesenvolvedor);
+                } catch (invalid_argument &exp) {
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+                    noecho();
+                    getch();
+                }
+                break;
+
+            case 2:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[1].c_str());
+                echo();
+                getstr(telefoneDesenvolvedor);
+                noecho();
+
+                try {
+                    telefone.setValor(telefoneDesenvolvedor);
+                } catch (invalid_argument &exp) {
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+                    noecho();
+                    getch();
+                }
+                break;
+
+            case 3:
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[2].c_str());
+                echo();
+                getstr(senhaDesenvolvedor);
+                noecho();
+
+                try {
+                    senha.setValor(senhaDesenvolvedor);
+                } catch (invalid_argument &exp) {
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[2]).c_str());
+                    noecho();
+                    getch();
+                    noecho();
+                    getch();
+                }
+                break;
+
+            case 4:
+                desenvolvedor->setNome(nome);
+                desenvolvedor->setTelefone(telefone);
+                desenvolvedor->setSenha(senha);
+                apresentar = false;
+                break;
+
+            case 5:
+                apresentar = false;
+                break;
+
+            default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                break;
+        }
+    }
+};
+
+void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
     string texto1 = "Preencha os seguintes campos: ";
     string texto2 = "Matrícula: ";
     string texto3 = "Matrícula informada inválida. Pressione qualquer tecla para continuar.";

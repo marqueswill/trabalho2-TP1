@@ -64,16 +64,17 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
-    const static int CADASTRAR = 1;
+    const static int CADASTRAR = 8;
     const static int EDITAR = 2;
-    const static int VISUALIZAR = 3;
-    const static int DESCADASTRAR = 4;
-    const static int RETORNAR = 5;
+    const static int VISUALIZAR = 1;
+    const static int DESCADASTRAR = 3;
+    const static int RETORNAR = 4;
 
     ISDesenvolvedor *ctrlISDesenvolvedor;
     CmdIADesenvolvedor *comando;
 
    public:
+    void setCtrlISDesenvolvedor(ISDesenvolvedor *);
     void cadastrar();
     void executar(Matricula);
     void setCtrlISDesenvolvedor(ISDesenvolvedor *);

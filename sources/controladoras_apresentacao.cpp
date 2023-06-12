@@ -79,7 +79,7 @@ void CtrlIADesenvolvedor::executar(Matricula) {
     bool apresentar = true;
     while (apresentar) {
         TelaDesenvolvedor telaDesenvolvedor;
-        telaDesenvolvedor.apresentar(&opcao);
+        telaDesenvolvedor.selecionar(&opcao);
 
         switch (opcao) {
             case CADASTRAR:
