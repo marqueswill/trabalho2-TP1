@@ -2,7 +2,6 @@
 #define CONTROLADORAS_SERVICO_H_INCLUDED
 
 #include <cstdlib>
-#include <iostream>
 #include <string>
 
 #include "dominios.h"

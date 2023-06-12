@@ -88,12 +88,6 @@ void CtrlIADesenvolvedor::executar(Matricula) {
                 delete comando;
                 break;
 
-            case CADASTRAR:
-                comando = new CmdIADesenvolvedorCadastrar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
-
             case EDITAR:
                 comando = new CmdIADesenvolvedorEditar();
                 comando->executar(ctrlISDesenvolvedor);
