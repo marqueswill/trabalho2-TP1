@@ -70,6 +70,35 @@ void TelaUsuarioLogado::apresentar(int *campo) {
 }
 
 //--------------------------------------------------------------------------------------------
+void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
+    string titulo1 = "Valores atuais do desenvolvedor.";
+    vector<string> texto1{"Matricula : ",
+                          "Nome   : ",
+                          "Telefone : ",
+                          "Senha: "};
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    texto1[0] += desenvolvedor.getMatricula().getValor();
+    texto1[1] += desenvolvedor.getNome().getValor();
+    texto1[2] += desenvolvedor.getTelefone().getValor();
+    texto1[3] += desenvolvedor.getSenha().getValor();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
+
+    noecho();
+    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
+    getch();
+
+    endwin();
+}
+
 void TelaDesenvolvedor::selecionar(int *campo) {
     string texto1 = "Selecione o servico desejado : ";
     string texto2 = "1 - Visualizar dados de desenvolvedor";
@@ -95,6 +124,7 @@ void TelaDesenvolvedor::selecionar(int *campo) {
 
     endwin();
 }
+
 void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
     string titulo1 = "Informe matricula do desenvolvedor.";
     string texto1 = "Matricula";
@@ -175,34 +205,6 @@ void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
     desenvolvedor->setMatricula(matricula);
     desenvolvedor->setTelefone(telefone);
     desenvolvedor->setSenha(senha);
-    endwin();
-}
-void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
-    string titulo1 = "Valores atuais do desenvolvedor.";
-    vector<string> texto1{"Matricula : ",
-                          "Nome   : ",
-                          "Telefone : ",
-                          "Senha: "};
-
-    initscr();
-    getmaxyx(stdscr, linha, coluna);
-    clear();
-
-    texto1[0] += desenvolvedor.getMatricula().getValor();
-    texto1[1] += desenvolvedor.getNome().getValor();
-    texto1[2] += desenvolvedor.getTelefone().getValor();
-    texto1[3] += desenvolvedor.getSenha().getValor();
-
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
-
-    for (int i = 0; i < texto1.size(); i++) {
-        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
-    }
-
-    noecho();
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
-    getch();
-
     endwin();
 }
 

@@ -82,6 +82,12 @@ void CtrlIADesenvolvedor::executar(Matricula) {
         telaDesenvolvedor.selecionar(&opcao);
 
         switch (opcao) {
+            case VISUALIZAR:
+                comando = new CmdIADesenvolvedorVisualizar();
+                comando->executar(ctrlISDesenvolvedor);
+                delete comando;
+                break;
+
             case CADASTRAR:
                 comando = new CmdIADesenvolvedorCadastrar();
                 comando->executar(ctrlISDesenvolvedor);
@@ -90,12 +96,6 @@ void CtrlIADesenvolvedor::executar(Matricula) {
 
             case EDITAR:
                 comando = new CmdIADesenvolvedorEditar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
-
-            case VISUALIZAR:
-                comando = new CmdIADesenvolvedorVisualizar();
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;

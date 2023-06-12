@@ -1,22 +1,21 @@
 #include "../headers/comandos.h"
 
 //--------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------
-void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    telaDesenvolvedor.cadastrar(&desenvolvedor);
-    resultado = ctrlISDesenvolvedor->cadastrar(desenvolvedor);
-    if (resultado) {
-        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
-    } else {
-        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
-    }
-}
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.visualizar(&desenvolvedor);
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);
+    } else {
+        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
+    }
+}
+
+void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+    telaDesenvolvedor.cadastrar(&desenvolvedor);
+    resultado = ctrlISDesenvolvedor->cadastrar(desenvolvedor);
+    if (resultado) {
+        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
         telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
@@ -43,12 +42,14 @@ void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolved
         telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }
+
+//--------------------------------------------------------------------------------------------
 void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
     telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
     if (resultado) {
-        telaTeste.apresentar(teste);  // Mostra os valores.
+        telaTeste.mostrar(teste);  // Mostra os valores.
     } else {
         telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
@@ -92,7 +93,6 @@ void CmdIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
 }
 
 //--------------------------------------------------------------------------------------------
-
 void CmdIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     telaCasoDeTeste.visualizar(&casoDeTeste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISCasoDeTeste->visualizar(&casoDeTeste);  // Pesquisa no banco de dados e coloca os valores.
