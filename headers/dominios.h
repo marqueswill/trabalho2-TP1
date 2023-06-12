@@ -1,9 +1,11 @@
 #ifndef DOMINIOS_H_INCLUDED
 #define DOMINIOS_H_INCLUDED
 
+#include <iomanip>
 #include <stdexcept>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 //---------------------------------------------------------------------
@@ -11,20 +13,20 @@ using namespace std;
 
 /**
  * @brief  Padrão de representação para a superclasse Dominios.
- * 
+ *
  * Essa classe é usada para representar um domínio genérico.
- * 
+ *
  * Superclasse é uma classe que servirá de forma a servir de herança para os métodos e atributos das classes derivadas.
  *
  * As classes derivadas devem implementar o método de validação de acordo com suas respectivas regras de formato.
  *
- * As classes derivadas desta biblioteca herdarão no modo public, ou seja: 
+ * As classes derivadas desta biblioteca herdarão no modo public, ou seja:
  * - Os atributos e métodos públicos serão herdados normalmente pelas classes derivadas.
  * - Os atributos e métodos privados só serão herdados se declarados nas classes derivadas.
  * - Métodos ou atributos protected serão herdados no modo public permanecem protected.
- * 
+ *
  * Os métodos das classes derivadas devem tratar do armazenamento, retorno e validação de seus atributos.
- *  
+ *
  *  Implementado por 221020940.
  */
 class Dominios {
@@ -56,7 +58,6 @@ class Dominios {
     string getValor() const;
 };
 
-
 inline void Dominios::setValor(string valor) {
     validar(valor);
     this->valor = valor;
@@ -70,9 +71,9 @@ inline string Dominios::getValor() const {
 // DOMINIO CLASSE
 /**
  * @brief Padrão de representação para a classe Classe.
- * 
+ *
  * Herda métodos e atributos no modo public da classe Dominios.
- * 
+ *
  * Classe que representa 6 palavras - strings - pré-definidas.
  *
  * Regras de formato:
@@ -98,9 +99,9 @@ class Classe : public Dominios {
 
 /**
  * @brief Padrão de representação da classe Codigo.
- * 
+ *
  * Herda métodos e atributos no modo public da classe Dominios.
- * 
+ *
  * É uma classe que representa um codigo padronizado.
  *
  * Regras de formato:
@@ -124,9 +125,9 @@ class Codigo : public Dominios {
  * @brief Padrão de representação para a classe Data.
  *
  * Herda métodos e atributos no modo public da classe Dominios.
- *  
+ *
  * É uma classe que representa uma data padronizada.
- * 
+ *
  * Regras de formato:
  * - Formato: DD/MMM/AAAA.
  * - DD é um valor inteiro entre 1 e 31 (depende do mês e do ano).
@@ -147,9 +148,9 @@ class Data : public Dominios {
 
 /**
  * @brief Padrão de representação para a classe Matricula.
- * 
+ *
  * Herda métodos e atributos no modo public da classe Dominios.
- * 
+ *
  * É uma classe que representa uma matricula seguindo uma série de regras.
  *
  * Regras de formato:
@@ -157,7 +158,7 @@ class Data : public Dominios {
  * - Os caracteres são números inteiros de 0 a 9
  * - O último dígito da string é o dígito verificador de módulo 10.
  * - O dígito verificador define se a string é válida ou não.
- * 
+ *
  * Implementado por 221006351.
  */
 class Matricula : public Dominios {
@@ -188,7 +189,7 @@ class Matricula : public Dominios {
  * @brief Padrão de representação para a classe Resultado.
  *
  * Herda métodos e atributos no modo public da classe Dominios.
- *  
+ *
  * É uma classe que representa um resultado "APROVADO" ou um resultado "REPROVADO".
  *
  * Regras de formato:
@@ -211,7 +212,7 @@ class Resultado : public Dominios {
  * @brief Padrão de representação para a classe Senha.
  *
  * Herda métodos e atributos no modo public da classe Dominios.
- * 
+ *
  * É uma classe usada para representar uma senha de formato válido.
  *
  * Regras de formato:
@@ -231,9 +232,9 @@ class Senha : public Dominios {
 
 /**
  * @brief Padrão de representação da classe Telefone.
- * 
+ *
  * Herda métodos e atributos no modo public da classe Dominios.
- * 
+ *
  * É uma classe que representa um número de telefone.
  *
  * Regras de formato:
@@ -257,9 +258,9 @@ class Telefone : public Dominios {
 
 /**
  * @brief Padrão de representação para a classe Texto.
- * 
+ *
  * Herda métodos e atributos no modo public da classe Dominios.
- * 
+ *
  * É uma classe que representa um texto padronizado.
  *
  * Padrão de representação de um texto:
