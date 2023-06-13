@@ -46,7 +46,6 @@ void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolved
 //--------------------------------------------------------------------------------------------
 void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
     telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
-    telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
     if (resultado) {
         telaTeste.mostrar(teste);  // Mostra os valores.

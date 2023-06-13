@@ -11,7 +11,7 @@ void CtrlIAInicializacao::executar() {
     while (apresentar) {     // Apresenta tela inicial.
 
         TelaInicial telaInicial;
-        telaInicial.apresentar(&campo1);
+        telaInicial.selecionar(&campo1);
 
         switch (campo1) {
             case AUTENTICAR:
@@ -21,7 +21,7 @@ void CtrlIAInicializacao::executar() {
                     while (apresentar) {     // Apresenta tela de seleção de serviço.
 
                         TelaUsuarioLogado telaUsuarioLogado;
-                        telaUsuarioLogado.apresentar(&campo2);  // Pergunta e define o serviço.
+                        telaUsuarioLogado.selecionar(&campo2);  // Pergunta e define o serviço.
 
                         switch (campo2) {
                             case DESENVOLVEDOR:

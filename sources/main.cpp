@@ -38,11 +38,11 @@ int main() {
 
 #endif  // SISTEMA
 
-    TUIADesenvolvedor TUMAD;
-    TUMAD.executar();
+    // TUIADesenvolvedor TUMAD;
+    // TUMAD.executar();
 
-    // TUIATeste TUMAT;
-    // TUMAT.executar();
+    TUIATeste TUMAT;
+    TUMAT.executar();
 
     // TUIACasoDeTeste TUMACT;
     // TUMACT.executar();

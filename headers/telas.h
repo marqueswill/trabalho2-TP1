@@ -24,19 +24,19 @@ class TelaMensagem : public Telas {
 //--------------------------------------------------------------------------------------------
 class TelaInicial : public Telas {
    public:
-    void apresentar(int *);  // Método que retorna a opção escolhida.
+    void selecionar(int *);  // Método que retorna a opção escolhida.
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaUsuarioLogado : public Telas {
    public:
-    void apresentar(int *);
+    void selecionar(int *);
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaAutenticacao : public Telas {
    public:
-    void apresentar(Matricula *, Senha *);
+    void autenticar(Matricula *, Senha *);
 };
 
 //--------------------------------------------------------------------------------------------
