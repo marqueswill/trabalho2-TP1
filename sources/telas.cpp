@@ -253,7 +253,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     nome.setValor(nomeDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[0]).c_str());
                     noecho();
                     getch();
                 }
@@ -268,7 +268,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     telefone.setValor(telefoneDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[1]).c_str());
                     noecho();
                     getch();
                 }
@@ -283,7 +283,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     senha.setValor(senhaDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[2]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[2]).c_str());
                     noecho();
                     getch();
                     noecho();
