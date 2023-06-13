@@ -1,11 +1,12 @@
 #include "../headers/testes_modulos.h"
-void TUIADesenvolvedor::executar(){
+//--------------------------------------------------------------------------------------------
+void TUIADesenvolvedor::executar() {
     IADesenvolvedor *ctrlIADesenvolvedor;
     StubISDesenvolvedor *stubISDesenvolvedor;
 
     ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
     stubISDesenvolvedor = new StubISDesenvolvedor();
-    
+
     ctrlIADesenvolvedor->setCtrlISDesenvolvedor(stubISDesenvolvedor);
 
     Matricula matricula;
@@ -14,6 +15,8 @@ void TUIADesenvolvedor::executar(){
     delete ctrlIADesenvolvedor;
     delete stubISDesenvolvedor;
 }
+
+//--------------------------------------------------------------------------------------------
 void TUIATeste::executar() {
     IATeste *ctrlIATeste;
     StubISTeste *stubISTeste;
@@ -29,6 +32,8 @@ void TUIATeste::executar() {
     delete ctrlIATeste;
     delete stubISTeste;
 }
+
+//--------------------------------------------------------------------------------------------
 void TUIACasoDeTeste::executar() {
     IACasoDeTeste *ctrlIACasoDeTeste;
     StubISCasoDeTeste *stubISCasoDeTeste;

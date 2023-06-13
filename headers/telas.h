@@ -1,7 +1,8 @@
 #ifndef TELAS_H_INCLUDED
 #define TELAS_H_INCLUDED
 
-#include "curses.h"
+#include <ncurses.h>
+
 #include "interfaces.h"
 
 class TelaMensagem;

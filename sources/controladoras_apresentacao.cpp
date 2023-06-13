@@ -49,9 +49,6 @@ void CtrlIAInicializacao::executar() {
                 }
                 break;
 
-            // case CADASTRAR:                        // Solicitação de cadastro de desenvolvedor.
-            //     ctrlIADesenvolvedor->cadastrar();  // Abre a tela de cadastro.
-            //     break;
 
             case SAIR:
                 apresentar = false;  // Encerra o programa.
@@ -71,7 +68,6 @@ void CtrlIAInicializacao::executar() {
 
 //--------------------------------------------------------------------------------------------
 
-
 void CtrlIADesenvolvedor::executar(Matricula) {
     int opcao;
 
@@ -81,11 +77,6 @@ void CtrlIADesenvolvedor::executar(Matricula) {
         telaDesenvolvedor.selecionar(&opcao);
 
         switch (opcao) {
-            // case CADASTRAR:
-            //     comando = new CmdIADesenvolvedorCadastrar();
-            //     comando->executar(ctrlISDesenvolvedor);
-            //     delete comando;
-            //     break;
 
             case EDITAR:
                 comando = new CmdIADesenvolvedorEditar();

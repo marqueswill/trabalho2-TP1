@@ -3,64 +3,6 @@
 //--------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
-const string StubISDesenvolvedor::VALOR_VALIDO_MATRICULA = "1234567";
-const string StubISDesenvolvedor::VALOR_VALIDO_NOME = "joazinho123";
-const string StubISDesenvolvedor::VALOR_VALIDO_SENHA = "abc123";
-const string StubISDesenvolvedor::VALOR_VALIDO_TELEFONE = "+12345678";
-Desenvolvedor StubISDesenvolvedor::desenvolvedorStub;
-Senha StubISDesenvolvedor::senhaDesenvolvedor;
-Telefone StubISDesenvolvedor::telefoneDesenvolvedor;
-Matricula StubISDesenvolvedor::matriculaDesenvolvedor;
-Texto StubISDesenvolvedor::nomeDesenvolvedor;
-
-bool StubISDesenvolvedor::visualizar(Desenvolvedor* desenvolvedor){
-    if(desenvolvedor->getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()){
-        desenvolvedor->setNome(nomeDesenvolvedor);
-        desenvolvedor->setSenha(senhaDesenvolvedor);
-        desenvolvedor->setTelefone(telefoneDesenvolvedor);
-    } else{
-        return FALHA;
-    }
-    return SUCESSO;
-}
-
-bool StubISDesenvolvedor::editar(Desenvolvedor desenvolvedor){
-    try{
-        if(desenvolvedor.getNome().getValor() != ""){
-            StubISDesenvolvedor::nomeDesenvolvedor.setValor(desenvolvedor.getNome().getValor());
-            StubISDesenvolvedor::desenvolvedorStub.setNome(StubISDesenvolvedor::nomeDesenvolvedor);
-        }
-        if(desenvolvedor.getSenha().getValor() != ""){
-            StubISDesenvolvedor::senhaDesenvolvedor.setValor(desenvolvedor.getSenha().getValor());
-            StubISDesenvolvedor::desenvolvedorStub.setSenha(StubISDesenvolvedor::senhaDesenvolvedor);
-        }
-        if(desenvolvedor.getTelefone().getValor() != ""){
-            StubISDesenvolvedor::telefoneDesenvolvedor.setValor(desenvolvedor.getTelefone().getValor());
-            StubISDesenvolvedor::desenvolvedorStub.setTelefone(StubISDesenvolvedor::telefoneDesenvolvedor);
-        }
-    } catch(invalid_argument& exp){
-        return FALHA;
-    }
-    return SUCESSO;
-}
-
-bool StubISDesenvolvedor::descadastrar(Matricula matricula) {
-    if (matricula.getValor() != desenvolvedorStub.getMatricula().getValor()) {
-        return FALHA;
-    }
-
-    return SUCESSO;  // Verificação dos dados já é feita nas telas
-}
-
-bool StubISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor){
-    if (desenvolvedor.getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()) {
-        return FALHA;
-    } else if (desenvolvedor.getMatricula().getValor() == "") {
-        return FALHA;
-    }
-
-    return SUCESSO;  // Verificação dos dados já é feita nas telas
-}
 
 //--------------------------------------------------------------------------------------------
 const string StubISTeste::VALOR_VALIDO_CODIGO = "UNB123";
@@ -72,17 +14,21 @@ Codigo StubISTeste::codigoTeste;
 Texto StubISTeste::nomeTeste;
 Classe StubISTeste::classeTeste;
 
-bool StubISTeste::visualizar(Teste* teste) {                                  // Passado apenas com o código
-    if (teste->getCodigo().getValor() == testeStub.getCodigo().getValor()) {  // Não achou no BD
-        teste->setCodigo(codigoTeste);
-        teste->setNome(nomeTeste);
-        teste->setClasse(classeTeste);
-    } else {
-        return FALHA;
+bool StubISTeste::visualizar(Teste* teste) {
+    if (teste->getCodigo().getValor() == TRIGGER_SUCESSO) {  // Achou no BD.
+        codigo.setValor(VALOR_VALIDO_CODIGO);
+        nome.setValor(VALOR_VALIDO_NOME);
+        classe.setValor(VALOR_VALIDO_CLASSE);
+
+        teste->setCodigo(codigo);
+        teste->setNome(nome);
+        teste->setClasse(classe);
+        resultado = true;
+    } else if (teste->getCodigo().getValor() == TRIGGER_FALHA) {  // Não achou no BD.
+        resultado = false;
     }
 
-    return SUCESSO;
-    ;
+    return resultado;
 }
 
 bool StubISTeste::cadastrar(Teste teste) {

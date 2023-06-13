@@ -2,16 +2,6 @@
 
 //--------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------
-// void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-//     telaDesenvolvedor.cadastrar(&desenvolvedor);
-//     resultado = ctrlISDesenvolvedor->cadastrar(desenvolvedor);
-//     if (resultado) {
-//         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
-//     } else {
-//         telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
-//     }
-// }
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.visualizar(&desenvolvedor);
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
@@ -20,7 +10,9 @@ void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor
     } else {
         telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
-}
+}        
+
+
 
 void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.editar(&desenvolvedor);
