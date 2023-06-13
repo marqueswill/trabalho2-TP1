@@ -2,6 +2,7 @@
 #define TELAS_H_INCLUDED
 
 #include <ncurses.h>
+// #include "curses.h"
 
 #include "interfaces.h"
 

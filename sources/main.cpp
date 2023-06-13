@@ -1,5 +1,4 @@
 #include <locale.h>
-#include <ncurses.h>
 
 #include "../headers/comandos.h"
 #include "../headers/controladoras_apresentacao.h"
