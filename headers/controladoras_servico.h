@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-
+#include "telas.h"
 #include "dominios.h"
 #include "entidades.h"
 #include "interfaces.h"
