@@ -1,5 +1,5 @@
-#ifndef COMANDOS_H_INCLUDED
-#define COMANDOS_H_INCLUDED
+#ifndef COMANDOS_APRESENTACAO_H_INCLUDED
+#define COMANDOS_APRESENTACAO_H_INCLUDED
 
 #include "interfaces.h"
 #include "telas.h"
@@ -106,4 +106,4 @@ class CmdIACasoDeTesteDescadastrar : public CmdIACasoDeTeste {
     void executar(ISCasoDeTeste*);
 };
 
-#endif  // COMANDOS_H_INCLUDED
+#endif  // COMANDOS_APRESENTACAO_H_INCLUDED

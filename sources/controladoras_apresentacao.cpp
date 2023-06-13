@@ -1,6 +1,5 @@
 #include "../headers/controladoras_apresentacao.h"
 
-#include "../headers/comandos.h"
 //--------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
 

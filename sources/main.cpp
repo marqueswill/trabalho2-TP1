@@ -1,6 +1,6 @@
 #include <locale.h>
 
-#include "../headers/comandos.h"
+#include "../headers/comandos_apresentacao.h"
 #include "../headers/controladoras_apresentacao.h"
 #include "../headers/dominios.h"
 #include "../headers/drivers.h"
@@ -11,7 +11,7 @@
 #include "../headers/testes_dominios.h"
 #include "../headers/testes_entidades.h"
 #include "../headers/testes_modulos.h"
-#include "comandos.cpp"
+#include "comandos_apresentacao.cpp"
 #include "controladoras_apresentacao.cpp"
 #include "dominios.cpp"
 #include "drivers.cpp"
