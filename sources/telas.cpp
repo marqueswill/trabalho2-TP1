@@ -84,7 +84,6 @@ void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     texto1[3] += desenvolvedor.getSenha().getValor();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
-
     for (int i = 0; i < texto1.size(); i++) {
         mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
     }
@@ -98,23 +97,21 @@ void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
 
 //--------------------------------------------------------------------------------------------
 void TelaDesenvolvedor::selecionar(int *campo) {
-    string texto1 = "Selecione o servico desejado : ";
-    string texto2 = "1 - Visualizar dados de desenvolvedor";
-    string texto3 = "2 - Editar dados de desenvolvedor";
-    string texto4 = "3 - Descadastrar desenvolvedor";
-    string texto5 = "4 - Encerrar sessao.";
-    string texto6 = "Escolha uma opcao : ";
+    string titulo1 = "Selecione o servico desejado : ";
+    vector<string> texto1{"1 - Visualizar dados de desenvolvedor",
+                          "2 - Editar dados de desenvolvedor",
+                          "3 - Descadastrar desenvolvedor",
+                          "4 - Encerrar sessao.",
+                          "Escolha uma opcao : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5.c_str());
-    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6.c_str());
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
 
     echo();
     *campo = getch() - 48;
@@ -154,35 +151,43 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
 }
 
 void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
-    string texto1 = "Por favor, preencha os espacos com os seus dados:";
-    string texto2 = "Nome      : ";
-    string texto3 = "Matricula : ";
-    string texto4 = "Telefone  : ";
-    string texto5 = "Senha     : ";
+    string titulo1 = "Por favor, preencha os espacos com os seus dados:";
+    vector<string> texto1{"Matricula",
+                          "Nome",
+                          "Telefone",
+                          "Senha"};
 
     getmaxyx(stdscr, linha, coluna);
     clear();
 
-    mvprintw(linha / 4, coluna / 4, "%s", texto1.c_str());
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
+
     echo();
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2.c_str());
-    getstr(nomeDesenvolvedor);
-
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3.c_str());
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(matriculaDesenvolvedor);
 
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4.c_str());
+    mvprintw(linha / 4 + 2, coluna / 4 + texto1[1].size() + 1, " : ");
+    getstr(nomeDesenvolvedor);
+
+    mvprintw(linha / 4 + 3, coluna / 4 + texto1[2].size() + 1, " : ");
     getstr(telefoneDesenvolvedor);
 
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5.c_str());
+    mvprintw(linha / 4 + 4, coluna / 4 + texto1[3].size() + 1, " : ");
     getstr(senhaDesenvolvedor);
 
     noecho();
 
+    int l = 5;
     try {
         nome.setValor(nomeDesenvolvedor);
     } catch (invalid_argument &exp) {
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+        l++;
         noecho();
         getch();
     }

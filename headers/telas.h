@@ -68,7 +68,6 @@ class TelaTeste : public Telas {
     Texto nome;
     Classe classe;
 
-    char valorGenerico[100] = "";
     char codigoTeste[100] = "";
     char nomeTeste[100] = "";
     char classeTeste[100] = "";
