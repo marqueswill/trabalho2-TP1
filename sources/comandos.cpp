@@ -26,8 +26,11 @@ void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     desenvolvedor.setMatricula(matricula);
     resultado = ctrlISDesenvolvedor->editar(desenvolvedor);
     if (resultado) {
-        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
-    } else {
+        if (ctrlISDesenvolvedor->editar(desenvolvedor)){
+            resultado = ctrlISDesenvolvedor->editar(desenvolvedor);          
+    }else{
+        telaMensagem.apresentar("Nao foi possivel editar desenvolvedor. Pressione qualquer tecla para continuar");
+    } } else {
         telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }

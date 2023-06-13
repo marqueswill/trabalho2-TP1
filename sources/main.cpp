@@ -1,6 +1,5 @@
 #include <locale.h>
-#include <ncurses.h>
-
+#include "../headers/curses.h"
 #include "../headers/comandos.h"
 #include "../headers/controladoras_apresentacao.h"
 #include "../headers/dominios.h"
@@ -39,14 +38,14 @@ int main() {
 
 #endif  // SISTEMA
 
-    TUIADesenvolvedor TUMAD;
-    TUMAD.executar();
+     TUIADesenvolvedor TUMAD;
+     TUMAD.executar();
 
     // TUIATeste TUMAT;
     // TUMAT.executar();
 
-    // TUIACasoDeTeste TUMACT;
-    // TUMACT.executar();
+    //   TUIACasoDeTeste TUMACT;
+    //  TUMACT.executar();
 
     return 0;
 }
