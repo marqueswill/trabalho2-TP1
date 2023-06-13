@@ -9,6 +9,8 @@
 #include "../headers/interfaces.h"
 #include "../headers/stubs.h"
 #include "../headers/telas.h"
+#include "../headers/testes_dominios.h"
+#include "../headers/testes_entidades.h"
 #include "../headers/testes_modulos.h"
 #include "comandos.cpp"
 #include "controladoras_apresentacao.cpp"

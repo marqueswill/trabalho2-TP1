@@ -79,23 +79,17 @@ void CtrlIADesenvolvedor::executar(Matricula) {
     bool apresentar = true;
     while (apresentar) {
         TelaDesenvolvedor telaDesenvolvedor;
-        telaDesenvolvedor.apresentar(&opcao);
+        telaDesenvolvedor.selecionar(&opcao);
 
         switch (opcao) {
-            case CADASTRAR:
-                comando = new CmdIADesenvolvedorCadastrar();
+            case VISUALIZAR:
+                comando = new CmdIADesenvolvedorVisualizar();
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
 
             case EDITAR:
                 comando = new CmdIADesenvolvedorEditar();
-                comando->executar(ctrlISDesenvolvedor);
-                delete comando;
-                break;
-
-            case VISUALIZAR:
-                comando = new CmdIADesenvolvedorVisualizar();
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;

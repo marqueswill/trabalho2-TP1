@@ -52,9 +52,12 @@ class TelaDesenvolvedor : public Telas {
     char senhaDesenvolvedor[100] = "";
 
    public:
-    void apresentar(int *);
-    void apresentar(Desenvolvedor *);
-    void apresentar(Matricula *);
+    void selecionar(int *);
+    void mostrar(Desenvolvedor);
+    void visualizar(Desenvolvedor *);
+    void descadastrar(Matricula *);
+    void cadastrar(Desenvolvedor *);
+    void editar(Desenvolvedor *);
 };
 
 //--------------------------------------------------------------------------------------------

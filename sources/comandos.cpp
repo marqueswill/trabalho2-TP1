@@ -1,35 +1,51 @@
 #include "../headers/comandos.h"
 
 //--------------------------------------------------------------------------------------------
+void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+    telaDesenvolvedor.visualizar(&desenvolvedor);
+    resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
+    if (resultado) {
+        telaDesenvolvedor.mostrar(desenvolvedor);
+    } else {
+        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
+    }
+}
 
-//--------------------------------------------------------------------------------------------
 void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    telaDesenvolvedor.apresentar(&desenvolvedor);
+    telaDesenvolvedor.cadastrar(&desenvolvedor);
     resultado = ctrlISDesenvolvedor->cadastrar(desenvolvedor);
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
-        telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
-    }
-}
-void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    telaDesenvolvedor.apresentar(&matricula);
-    desenvolvedor.setMatricula(matricula);
-    resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
-    if (resultado) {
-        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
-    } else {
-        telaMensagem.apresentar("Teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
+        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }
 
 void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+    telaDesenvolvedor.editar(&desenvolvedor);
+    desenvolvedor.setMatricula(matricula);
+    resultado = ctrlISDesenvolvedor->editar(desenvolvedor);
+    if (resultado) {
+        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
+    } else {
+        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
+    }
 }
 
 void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+    telaDesenvolvedor.descadastrar(&matricula);
+    desenvolvedor.setMatricula(matricula);
+    resultado = ctrlISDesenvolvedor->descadastrar(matricula);
+    if (resultado) {
+        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
+    } else {
+        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
+    }
 }
+
 //--------------------------------------------------------------------------------------------
 void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
+    telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
     if (resultado) {
@@ -77,7 +93,6 @@ void CmdIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
 }
 
 //--------------------------------------------------------------------------------------------
-
 void CmdIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     telaCasoDeTeste.visualizar(&casoDeTeste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISCasoDeTeste->visualizar(&casoDeTeste);  // Pesquisa no banco de dados e coloca os valores.

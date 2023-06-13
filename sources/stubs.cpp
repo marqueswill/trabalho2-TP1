@@ -1,8 +1,6 @@
 #include "../headers/stubs.h"
 
 //--------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------
 const string StubISDesenvolvedor::VALOR_VALIDO_MATRICULA = "1234567";
 const string StubISDesenvolvedor::VALOR_VALIDO_NOME = "joazinho123";
 const string StubISDesenvolvedor::VALOR_VALIDO_SENHA = "abc123";
@@ -89,8 +87,12 @@ bool StubISTeste::cadastrar(Teste teste) {
         return FALHA;
     } else if (teste.getCodigo().getValor() == "") {
         return FALHA;
+        if (teste.getCodigo().getValor() == testeStub.getCodigo().getValor()) {
+            return FALHA;
+        } else if (teste.getCodigo().getValor() == "") {
+            return FALHA;
+        }
     }
-
     return SUCESSO;  // Verificação dos dados já é feita nas telas
 }
 
@@ -119,7 +121,7 @@ bool StubISTeste::descadastrar(Codigo codigo) {
     return SUCESSO;  // Verificação dos dados já é feita nas telas
 }
 
-// //--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 const string StubISCasoDeTeste::VALOR_VALIDO_CODIGO = "UNB123";
 const string StubISCasoDeTeste::VALOR_VALIDO_NOME = "Metodo validar";
 const string StubISCasoDeTeste::VALOR_VALIDO_DATA = "14/AGO/2003";
