@@ -19,11 +19,11 @@ void TelaMensagem::apresentar(string mensagem) {
 //--------------------------------------------------------------------------------------------
 void TelaInicial::apresentar(int *campo) {
     // Mensagens a serem apresentadas na tela inicial
-    string texto1 = "Selecione um dos serviços: ";
+    string texto1 = "Selecione um dos servicos: ";
     string texto2 = "1 - Acessar sistema.";
     string texto3 = "2 - Cadastrar desenvolvedor.";
-    string texto4 = "3 - Encerrar execução do sistema.";
-    string texto5 = "Escolha uma opção: ";
+    string texto4 = "3 - Encerrar execucaoo do sistema.";
+    string texto5 = "Escolha uma opcao: ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -45,11 +45,11 @@ void TelaInicial::apresentar(int *campo) {
 //--------------------------------------------------------------------------------------------
 void TelaUsuarioLogado::apresentar(int *campo) {
     string texto1 = "Selecione um dos servicos : ";
-    string texto2 = "1 - Serviços relacionados a desenvolvedor.";
-    string texto3 = "2 - Serviços relacionados a teste.";
-    string texto4 = "3 - Serviços relacionados a caso de teste.";
-    string texto5 = "4 - Encerrar sessão.";
-    string texto6 = "Escolha uma opção: ";
+    string texto2 = "1 - Servicos relacionados a desenvolvedor.";
+    string texto3 = "2 - Servicos relacionados a teste.";
+    string texto4 = "3 - Servicos relacionados a caso de teste.";
+    string texto5 = "4 - Encerrar sessao.";
+    string texto6 = "Escolha uma opcao: ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -73,9 +73,9 @@ void TelaUsuarioLogado::apresentar(int *campo) {
 void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     string titulo1 = "Valores atuais do desenvolvedor.";
     vector<string> texto1{"Matricula : ",
-                          "Nome   : ",
-                          "Telefone : ",
-                          "Senha: "};
+                          "Nome      : ",
+                          "Telefone  : ",
+                          "Senha     : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -93,7 +93,7 @@ void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     }
 
     noecho();
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", "");
     getch();
 
     endwin();
@@ -104,8 +104,8 @@ void TelaDesenvolvedor::selecionar(int *campo) {
     string texto2 = "1 - Visualizar dados de desenvolvedor";
     string texto3 = "2 - Editar dados de desenvolvedor";
     string texto4 = "3 - Descadastrar desenvolvedor";
-    string texto5 = "4 - Encerrar sessão.";
-    string texto6 = "Escolha uma opção: ";
+    string texto5 = "4 - Encerrar sessao.";
+    string texto6 = "Escolha uma opcao: ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -148,7 +148,7 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
         matricula.setValor(matriculaDesenvolvedor);
         desenvolvedor->setMatricula(matricula);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
+        textoErro = "Valor de matricula invalido. Pressione qualquer tecla para continuar.";
         mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
     };
 
@@ -158,7 +158,7 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
 void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
     string texto1 = "Por favor, preencha os espaços com os seus dados:";
     string texto2 = "Nome      : ";
-    string texto3 = "Matrícula : ";
+    string texto3 = "Matricula : ";
     string texto4 = "Telefone  : ";
     string texto5 = "Senha     : ";
 
@@ -222,7 +222,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
     vector<string> texto2{"Nome : ",
                           "Telefone : ",
                           "Senha : "};
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -312,8 +312,8 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
 
 void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
     string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Matrícula: ";
-    string texto3 = "Matrícula informada inválida. Pressione qualquer tecla para continuar.";
+    string texto2 = "Matricula: ";
+    string texto3 = "Matricula informada invalida. Pressione qualquer tecla para continuar.";
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
@@ -336,7 +336,7 @@ void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
 //--------------------------------------------------------------------------------------------
 void TelaTeste::mostrar(Teste teste) {
     string titulo1 = "Valores atuais do teste.";
-    vector<string> texto1{"Código : ",
+    vector<string> texto1{"Codigo : ",
                           "Nome   : ",
                           "Classe : "};
 
@@ -367,8 +367,8 @@ void TelaTeste::selecionar(int *campo) {
                           "2 - Cadastrar teste.",
                           "3 - Editar teste.",
                           "4 - Descadastrar teste.",
-                          "5 - Encerrar sessão."};
-    string texto2 = "Escolha uma opção: ";
+                          "5 - Encerrar sessao."};
+    string texto2 = "Escolha uma opcao: ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -411,7 +411,7 @@ void TelaTeste::visualizar(Teste *teste) {
         codigo.setValor(codigoTeste);
         teste->setCodigo(codigo);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
+        textoErro = "Valor de código invalido. Pressione qualquer tecla para continuar.";
         mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
     };
 
@@ -423,7 +423,7 @@ void TelaTeste::cadastrar(Teste *teste) {
     vector<string> texto1{"Codigo",
                           "Nome",
                           "Classe"};
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -492,7 +492,7 @@ void TelaTeste::editar(Teste *teste) {
     string titulo2 = "Informe novo valor.";
     vector<string> texto2{"Nome: ",
                           "Classe: "};
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -523,7 +523,7 @@ void TelaTeste::editar(Teste *teste) {
                 try {
                     nome.setValor(nomeTeste);
                 } catch (invalid_argument &exp) {
-                    textoErro = "Valor de nome inválido. Pressione qualquer tecla para continuar";
+                    textoErro = "Valor de nome invalido. Pressione qualquer tecla para continuar";
                     mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[0]).c_str());
 
                     noecho();
@@ -540,7 +540,7 @@ void TelaTeste::editar(Teste *teste) {
                 try {
                     classe.setValor(classeTeste);
                 } catch (invalid_argument &exp) {
-                    textoErro = "Valor de classe inválido. Pressione qualquer tecla para continuar";
+                    textoErro = "Valor de classe invalido. Pressione qualquer tecla para continuar";
                     mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
 
                     noecho();
@@ -560,15 +560,15 @@ void TelaTeste::editar(Teste *teste) {
 
             default:
                 TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                telaMensagem.apresentar("Opção invalida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }
 };
 
 void TelaTeste::descadastrar(Codigo *codigo) {
-    string titulo1 = "Informe código do teste para descadastramento.";
-    string texto1 = "Código";
+    string titulo1 = "Informe codigo do teste para descadastramento.";
+    string texto1 = "Codigo";
     string textoErro;
 
     initscr();
@@ -587,7 +587,7 @@ void TelaTeste::descadastrar(Codigo *codigo) {
     try {
         codigo->setValor(codigoTeste);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
+        textoErro = "Valor de codigo invalido. Pressione qualquer tecla para continuar.";
         mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
         echo();
         getch();
@@ -637,7 +637,7 @@ void TelaCasoDeTeste::selecionar(int *campo) {
                           "3 - Editar caso de teste.",
                           "4 - Descadastrar caso de teste.",
                           "5 - Encerrar sessão.",
-                          "Escolha uma opção: "};
+                          "Escolha uma opcao: "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -656,9 +656,9 @@ void TelaCasoDeTeste::selecionar(int *campo) {
 }
 
 void TelaCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
-    string titulo1 = "Informe código do caso de teste.";
+    string titulo1 = "Informe codigo do caso de teste.";
     string texto1 = "Codigo";
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -692,7 +692,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casoDeTeste) {
                           "Acao",
                           "Resposta",
                           "Resultado"};
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -791,7 +791,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                           "",
                           "6 - Salvar.",
                           "7 - Cancelar.",
-                          "Escolha uma opção: "};
+                          "Escolha uma opcao: "};
 
     string titulo2 = "Informe novo valor.";
     vector<string> texto2{"Nome : ",
@@ -799,7 +799,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                           "Acao : ",
                           "Resposta : ",
                           "Resultado : "};
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -915,16 +915,16 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
 
             default:
                 TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                telaMensagem.apresentar("Opção invalida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }
 };
 
 void TelaCasoDeTeste::descadastrar(Codigo *codigo) {
-    string titulo1 = "Informe código do caso de teste para descadastramento.";
-    string texto1 = "Código";
-    string textoErro = "Valor inválido para atributo ";
+    string titulo1 = "Informe codigo do caso de teste para descadastramento.";
+    string texto1 = "Codigo";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -952,12 +952,12 @@ void TelaCasoDeTeste::descadastrar(Codigo *codigo) {
 //--------------------------------------------------------------------------------------------
 void TelaDepuracao::selecionar(int *campo) {
     string titulo1 = "Selecione tipo de teste a ser executado : ";
-    vector<string> texto1{"1 - Executar testes unitários.",
-                          "2 - Executar testes de integração.",
-                          "3 - Executar testes fumaça.",
+    vector<string> texto1{"1 - Executar testes unitarios.",
+                          "2 - Executar testes de integracao.",
+                          "3 - Executar testes fumaca.",
                           "4 - Executar testes sistema.",
-                          "5 - Encerrar depuração.",
-                          "Digite a opção: "};
+                          "5 - Encerrar depuracao.",
+                          "Digite a opcao: "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -977,9 +977,9 @@ void TelaDepuracao::selecionar(int *campo) {
 
 void TelaTestesUnitarios::selecionar(int *campo) {
     string titulo1 = "Selecione unidades de teste: ";
-    vector<string> textos{"1 - Executar testes domínios.",
+    vector<string> textos{"1 - Executar testes dominios.",
                           "2 - Executar testes entidades.",
-                          "3 - Executar testes módulos.",
+                          "3 - Executar testes modulos.",
                           "4 - Retornar.",
                           "Digite a opção: "};
 
