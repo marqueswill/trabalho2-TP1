@@ -1,11 +1,6 @@
 #ifndef CONTROLADORAS_SERVICO_H_INCLUDED
 #define CONTROLADORAS_SERVICO_H_INCLUDED
 
-#include <cstdlib>
-#include <string>
-
-#include "dominios.h"
-#include "entidades.h"
 #include "interfaces.h"
 
 //-----------------------------------------------------------------------------------
@@ -17,12 +12,6 @@ class CtrlMSAutenticacao : public ISAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlMSDesenvolvedor : public ISDesenvolvedor {
    public:
-    const static int max = 5;
-    const static int cadastrar_dev = 1;
-    const static int descadastrar_dev = 2;
-    const static int visualizar_dev = 3;
-    const static int editar_dev = 4;
-
     bool visualizar(Desenvolvedor *);
     bool cadastrar(Desenvolvedor);
     bool editar(Desenvolvedor);
@@ -46,4 +35,4 @@ class CtrlMSCasoDeTeste : public ISCasoDeTeste {
     bool descadastrar(Codigo);
 };
 
-#endif CONTROLADORAS_SERVICO_H_INCLUDED
+#endif  // CONTROLADORAS_SERVICO_H_INCLUDED

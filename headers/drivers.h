@@ -34,7 +34,7 @@ class DriverTestesUnitarios : public Drivers {
     const static int DOMINIOS = 1;
     const static int ENTIDADES = 2;
     const static int MODULOS = 3;
-    const static int SAIR = 4;
+    const static int RETORNAR = 4;
 
    public:
     void executar();
@@ -70,6 +70,12 @@ class DriverTestesEntidades : public Drivers {
 //--------------------------------------------------------------------------------------------
 class DriverTestesModulos : public Drivers {
    private:
+    const static int AUTENTICACAO = 1;
+    const static int DESENVOLVEDOR = 2;
+    const static int TESTE = 3;
+    const static int CASODETESTE = 4;
+    const static int RETORNAR = 5;
+
    public:
     void executar();
 };

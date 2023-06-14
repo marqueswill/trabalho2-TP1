@@ -1,7 +1,6 @@
 #include <locale.h>
-#include <ncurses.h>
 
-#include "../headers/comandos.h"
+#include "../headers/comandos_apresentacao.h"
 #include "../headers/controladoras_apresentacao.h"
 #include "../headers/dominios.h"
 #include "../headers/drivers.h"
@@ -12,7 +11,7 @@
 #include "../headers/testes_dominios.h"
 #include "../headers/testes_entidades.h"
 #include "../headers/testes_modulos.h"
-#include "comandos.cpp"
+#include "comandos_apresentacao.cpp"
 #include "controladoras_apresentacao.cpp"
 #include "dominios.cpp"
 #include "drivers.cpp"
@@ -23,8 +22,8 @@
 #include "testes_entidades.cpp"
 #include "testes_modulos.cpp"
 
-// #define TESTE
-#define SISTEMA
+#define TESTE
+// #define SISTEMA
 using namespace std;
 
 int main() {
@@ -35,18 +34,10 @@ int main() {
 
 #endif  // TESTE
 
+//--------------------------------------------------------------------------------------------
 #ifdef SISTEMA
 
 #endif  // SISTEMA
-
-    TUIADesenvolvedor TUMAD;
-    TUMAD.executar();
-
-    // TUIATeste TUMAT;
-    // TUMAT.executar();
-
-    // TUIACasoDeTeste TUMACT;
-    // TUMACT.executar();
 
     return 0;
 }

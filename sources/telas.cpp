@@ -17,53 +17,50 @@ void TelaMensagem::apresentar(string mensagem) {
 }
 
 //--------------------------------------------------------------------------------------------
-void TelaInicial::apresentar(int *campo) {
+void TelaInicial::selecionar(int *campo) {
     // Mensagens a serem apresentadas na tela inicial
-    string texto1 = "Selecione um dos serviços: ";
-    string texto2 = "1 - Acessar sistema.";
-    string texto3 = "2 - Cadastrar desenvolvedor.";
-    string texto4 = "3 - Encerrar execução do sistema.";
-    string texto5 = "Escolha uma opção: ";
+    string titulo1 = "Selecione um dos servicos : ";
+    vector<string> texto1 = {"1 - Acessar sistema.",
+                             "2 - Cadastrar desenvolvedor.",
+                             "3 - Encerrar execucao do sistema.",
+                             "Escolha uma opcao : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5.c_str());
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
 
-    noecho();
-    *campo = getch() - 48;
     echo();
+    *campo = getch() - '0';
+    noecho();
 
     endwin();
 }
 
 //--------------------------------------------------------------------------------------------
-void TelaUsuarioLogado::apresentar(int *campo) {
-    string texto1 = "Selecione um dos servicos : ";
-    string texto2 = "1 - Serviços relacionados a desenvolvedor.";
-    string texto3 = "2 - Serviços relacionados a teste.";
-    string texto4 = "3 - Serviços relacionados a caso de teste.";
-    string texto5 = "4 - Encerrar sessão.";
-    string texto6 = "Escolha uma opção: ";
+void TelaUsuarioLogado::selecionar(int *campo) {
+    string titulo1 = "Selecione um dos servicos : ";
+    vector<string> texto1{"1 - Servicos relacionados a desenvolvedor.",
+                          "2 - Servicos relacionados a teste.",
+                          "3 - Servicos relacionados a caso de teste.",
+                          "4 - Encerrar sessao.",
+                          "Escolha uma opcao : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5.c_str());
-    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6.c_str());
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -73,9 +70,9 @@ void TelaUsuarioLogado::apresentar(int *campo) {
 void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     string titulo1 = "Valores atuais do desenvolvedor.";
     vector<string> texto1{"Matricula : ",
-                          "Nome   : ",
-                          "Telefone : ",
-                          "Senha: "};
+                          "Nome      : ",
+                          "Telefone  : ",
+                          "Senha     : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -87,39 +84,36 @@ void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     texto1[3] += desenvolvedor.getSenha().getValor();
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
-
     for (int i = 0; i < texto1.size(); i++) {
         mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
     }
 
     noecho();
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", "");
     getch();
 
     endwin();
 }
 
 void TelaDesenvolvedor::selecionar(int *campo) {
-    string texto1 = "Selecione o servico desejado : ";
-    string texto2 = "1 - Visualizar dados de desenvolvedor";
-    string texto3 = "2 - Editar dados de desenvolvedor";
-    string texto4 = "3 - Descadastrar desenvolvedor";
-    string texto5 = "4 - Encerrar sessão.";
-    string texto6 = "Escolha uma opção: ";
+    string titulo1 = "Selecione o servico desejado : ";
+    vector<string> texto1{"1 - Visualizar dados de desenvolvedor",
+                          "2 - Editar dados de desenvolvedor",
+                          "3 - Descadastrar desenvolvedor",
+                          "4 - Encerrar sessao.",
+                          "Escolha uma opcao : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
 
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", texto1.c_str());
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto3.c_str());
-    mvprintw(linha / 4 + 3, coluna / 4, "%s", texto4.c_str());
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto5.c_str());
-    mvprintw(linha / 4 + 5, coluna / 4, "%s", texto6.c_str());
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -128,7 +122,7 @@ void TelaDesenvolvedor::selecionar(int *campo) {
 void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
     string titulo1 = "Informe matricula do desenvolvedor.";
     string texto1 = "Matricula";
-    string textoErro;
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -136,9 +130,7 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), " : ");
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
     echo();
     getstr(matriculaDesenvolvedor);
@@ -148,63 +140,78 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
         matricula.setValor(matriculaDesenvolvedor);
         desenvolvedor->setMatricula(matricula);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
     };
 
     endwin();
 }
 
 void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
-    string texto1 = "Por favor, preencha os espaços com os seus dados:";
-    string texto2 = "Nome      : ";
-    string texto3 = "Matrícula : ";
-    string texto4 = "Telefone  : ";
-    string texto5 = "Senha     : ";
+    string titulo1 = "Por favor, preencha os espacos com os seus dados:";
+    vector<string> texto1{"Matricula",
+                          "Nome",
+                          "Telefone",
+                          "Senha"};
+
+    string textoErro = "Valor invalido para atributo ";
 
     getmaxyx(stdscr, linha, coluna);
     clear();
 
-    mvprintw(linha / 4, coluna / 4, "%s", texto1.c_str());
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
+
     echo();
 
-    mvprintw(linha / 4 + 2, coluna / 4, "%s", texto2.c_str());
-    getstr(nomeDesenvolvedor);
-
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", texto3.c_str());
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(matriculaDesenvolvedor);
 
-    mvprintw(linha / 4 + 6, coluna / 4, "%s", texto4.c_str());
+    mvprintw(linha / 4 + 2, coluna / 4 + texto1[0].size() + 1, " : ");
+    getstr(nomeDesenvolvedor);
+
+    mvprintw(linha / 4 + 3, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(telefoneDesenvolvedor);
 
-    mvprintw(linha / 4 + 8, coluna / 4, "%s", texto5.c_str());
+    mvprintw(linha / 4 + 4, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(senhaDesenvolvedor);
 
     noecho();
 
-    try {
-        nome.setValor(nomeDesenvolvedor);
-    } catch (invalid_argument &exp) {
-        noecho();
-        getch();
-    }
+    int l = 5;
     try {
         matricula.setValor(matriculaDesenvolvedor);
+        desenvolvedor->setMatricula(matricula);
     } catch (invalid_argument &exp) {
-        noecho();
-        getch();
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+        l++;
+    }
+    try {
+        nome.setValor(nomeDesenvolvedor);
+        desenvolvedor->setNome(nome);
+    } catch (invalid_argument &exp) {
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+        l++;
     }
     try {
         telefone.setValor(telefoneDesenvolvedor);
+        desenvolvedor->setTelefone(telefone);
     } catch (invalid_argument &exp) {
-        noecho();
-        getch();
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[2]).c_str());
+        l++;
     }
-    senha.setValor(senhaDesenvolvedor);
-    desenvolvedor->setNome(nome);
-    desenvolvedor->setMatricula(matricula);
-    desenvolvedor->setTelefone(telefone);
-    desenvolvedor->setSenha(senha);
+    try {
+        senha.setValor(senhaDesenvolvedor);
+        desenvolvedor->setSenha(senha);
+    } catch (invalid_argument &exp) {
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[3]).c_str());
+        l++;
+    }
+
+    noecho;
+    getch();
     endwin();
 }
 
@@ -216,13 +223,13 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                           "",
                           "4 - Salvar.",
                           "5 - Cancelar.",
-                          "Escolha uma opção: "};
+                          "Escolha uma opcao : "};
 
     string titulo2 = "Informe novo valor.";
-    vector<string> texto2{"Nome : ",
-                          "Telefone : ",
-                          "Senha : "};
-    string textoErro = "Valor inválido para atributo ";
+    vector<string> texto2{"Nome",
+                          "Telefone",
+                          "Senha"};
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -238,14 +245,14 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
         }
 
         echo();
-        campo = getch() - 48;
+        campo = getch() - '0';
         noecho();
 
         clear();
         mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo2.c_str());
         switch (campo) {
             case 1:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[0].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[0] + " : ").c_str());
                 echo();
                 getstr(nomeDesenvolvedor);
                 noecho();
@@ -253,14 +260,14 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     nome.setValor(nomeDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[0]).c_str());
                     noecho();
                     getch();
                 }
                 break;
 
             case 2:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[1].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[1] + " : ").c_str());
                 echo();
                 getstr(telefoneDesenvolvedor);
                 noecho();
@@ -268,14 +275,14 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     telefone.setValor(telefoneDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[1]).c_str());
                     noecho();
                     getch();
                 }
                 break;
 
             case 3:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[2].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[2] + " : ").c_str());
                 echo();
                 getstr(senhaDesenvolvedor);
                 noecho();
@@ -283,9 +290,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     senha.setValor(senhaDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[2]).c_str());
-                    noecho();
-                    getch();
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[2]).c_str());
                     noecho();
                     getch();
                 }
@@ -304,31 +309,34 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
 
             default:
                 TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                telaMensagem.apresentar("Opcao invalida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }
 };
 
 void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
-    string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Matrícula: ";
-    string texto3 = "Matrícula informada inválida. Pressione qualquer tecla para continuar.";
+    string titulo1 = "Preencha os seguintes campos: ";
+    string texto1 = "Matricula";
+    string textoErro = "Valor invalido para atributo ";
+
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
-    mvprintw(linha / 4, coluna / 4, "%s", texto1.c_str());
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", (titulo1).c_str());
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
+
     echo();
     getstr(matriculaDesenvolvedor);
     noecho();
+
     try {
         matricula->setValor(matriculaDesenvolvedor);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", texto3.c_str());
-        echo();
-        getch();
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
         noecho();
+        getch();
     };
     endwin();
 }
@@ -336,7 +344,7 @@ void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
 //--------------------------------------------------------------------------------------------
 void TelaTeste::mostrar(Teste teste) {
     string titulo1 = "Valores atuais do teste.";
-    vector<string> texto1{"Código : ",
+    vector<string> texto1{"Codigo : ",
                           "Nome   : ",
                           "Classe : "};
 
@@ -367,8 +375,8 @@ void TelaTeste::selecionar(int *campo) {
                           "2 - Cadastrar teste.",
                           "3 - Editar teste.",
                           "4 - Descadastrar teste.",
-                          "5 - Encerrar sessão."};
-    string texto2 = "Escolha uma opção: ";
+                          "5 - Encerrar sessao."};
+    string texto2 = "Escolha uma opcao : ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -382,16 +390,16 @@ void TelaTeste::selecionar(int *campo) {
     mvprintw(linha / 4 + 7, coluna / 4, "%s", texto2.c_str());
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
 }
 
 void TelaTeste::visualizar(Teste *teste) {
-    string titulo1 = "Informe código do teste.";
+    string titulo1 = "Informe codigo do teste.";
     string texto1 = "Codigo";
-    string textoErro;
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -399,9 +407,7 @@ void TelaTeste::visualizar(Teste *teste) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), " : ");
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
     echo();
     getstr(codigoTeste);
@@ -411,8 +417,7 @@ void TelaTeste::visualizar(Teste *teste) {
         codigo.setValor(codigoTeste);
         teste->setCodigo(codigo);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
     };
 
     endwin();
@@ -423,7 +428,7 @@ void TelaTeste::cadastrar(Teste *teste) {
     vector<string> texto1{"Codigo",
                           "Nome",
                           "Classe"};
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -473,10 +478,8 @@ void TelaTeste::cadastrar(Teste *teste) {
         l++;
     }
 
-    echo();
+    noecho;
     getch();
-    noecho();
-
     endwin();
 }
 
@@ -487,12 +490,12 @@ void TelaTeste::editar(Teste *teste) {
                           "",
                           "3 - Salvar.",
                           "4 - Cancelar.",
-                          "Escolha uma opção: "};
+                          "Escolha uma opcao : "};
 
     string titulo2 = "Informe novo valor.";
-    vector<string> texto2{"Nome: ",
-                          "Classe: "};
-    string textoErro = "Valor inválido para atributo ";
+    vector<string> texto2{"Nome",
+                          "Classe"};
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -508,14 +511,14 @@ void TelaTeste::editar(Teste *teste) {
         }
 
         echo();
-        campo = getch() - 48;
+        campo = getch() - '0';
         noecho();
 
         clear();
         mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo2.c_str());
         switch (campo) {
             case 1:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[0].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[0] + " : ").c_str());
                 echo();
                 getstr(nomeTeste);
                 noecho();
@@ -523,7 +526,6 @@ void TelaTeste::editar(Teste *teste) {
                 try {
                     nome.setValor(nomeTeste);
                 } catch (invalid_argument &exp) {
-                    textoErro = "Valor de nome inválido. Pressione qualquer tecla para continuar";
                     mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[0]).c_str());
 
                     noecho();
@@ -532,7 +534,7 @@ void TelaTeste::editar(Teste *teste) {
                 break;
 
             case 2:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", (textoErro + texto2[1]).c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[1] + " : ").c_str());
                 echo();
                 getstr(classeTeste);
                 noecho();
@@ -540,8 +542,7 @@ void TelaTeste::editar(Teste *teste) {
                 try {
                     classe.setValor(classeTeste);
                 } catch (invalid_argument &exp) {
-                    textoErro = "Valor de classe inválido. Pressione qualquer tecla para continuar";
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[1]).c_str());
 
                     noecho();
                     getch();
@@ -560,16 +561,16 @@ void TelaTeste::editar(Teste *teste) {
 
             default:
                 TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                telaMensagem.apresentar("Opcao invalida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }
 };
 
 void TelaTeste::descadastrar(Codigo *codigo) {
-    string titulo1 = "Informe código do teste para descadastramento.";
-    string texto1 = "Código";
-    string textoErro;
+    string titulo1 = "Informe codigo do teste para descadastramento.";
+    string texto1 = "Codigo";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -577,9 +578,8 @@ void TelaTeste::descadastrar(Codigo *codigo) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), " : ");
     echo();
     getstr(codigoTeste);
     noecho();
@@ -587,8 +587,7 @@ void TelaTeste::descadastrar(Codigo *codigo) {
     try {
         codigo->setValor(codigoTeste);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de código inválido. Pressione qualquer tecla para continuar.";
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
         echo();
         getch();
         noecho();
@@ -636,8 +635,8 @@ void TelaCasoDeTeste::selecionar(int *campo) {
                           "2 - Cadastrar caso de teste.",
                           "3 - Editar caso de teste.",
                           "4 - Descadastrar caso de teste.",
-                          "5 - Encerrar sessão.",
-                          "Escolha uma opção: "};
+                          "5 - Encerrar sessao.",
+                          "Escolha uma opcao : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -649,16 +648,16 @@ void TelaCasoDeTeste::selecionar(int *campo) {
     }
 
     noecho();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     echo();
 
     endwin();
 }
 
 void TelaCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
-    string titulo1 = "Informe código do caso de teste.";
+    string titulo1 = "Informe codigo do caso de teste.";
     string texto1 = "Codigo";
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -666,9 +665,7 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), ": ");
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
     echo();
     getstr(codigoCasoDeTeste);
@@ -692,7 +689,7 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casoDeTeste) {
                           "Acao",
                           "Resposta",
                           "Resultado"};
-    string textoErro = "Valor inválido para atributo ";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -775,9 +772,8 @@ void TelaCasoDeTeste::cadastrar(CasoDeTeste *casoDeTeste) {
         l++;
     };
 
-    noecho();
+    noecho;
     getch();
-
     endwin();
 }
 
@@ -791,15 +787,15 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                           "",
                           "6 - Salvar.",
                           "7 - Cancelar.",
-                          "Escolha uma opção: "};
+                          "Escolha uma opcao : "};
 
     string titulo2 = "Informe novo valor.";
-    vector<string> texto2{"Nome : ",
-                          "Data : ",
-                          "Acao : ",
-                          "Resposta : ",
-                          "Resultado : "};
-    string textoErro = "Valor inválido para atributo ";
+    vector<string> texto2{"Nome",
+                          "Data",
+                          "Acao",
+                          "Resposta",
+                          "Resultado"};
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -815,14 +811,14 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
         }
 
         echo();
-        campo = getch() - 48;
+        campo = getch() - '0';
         noecho();
 
         clear();
         mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo2.c_str());
         switch (campo) {
             case 1:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[0].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[0] + " : ").c_str());
                 echo();
                 getstr(nomeCasoDeTeste);
                 noecho();
@@ -837,7 +833,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 break;
 
             case 2:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[1].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[1] + " : ").c_str());
                 echo();
                 getstr(dataCasoDeTeste);
                 noecho();
@@ -852,7 +848,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 break;
 
             case 3:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[2].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[2] + " : ").c_str());
                 echo();
                 getstr(acaoCasoDeTeste);
                 noecho();
@@ -869,7 +865,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 break;
 
             case 4:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[3].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[3] + " : ").c_str());
                 echo();
                 getstr(respostaCasoDeTeste);
                 noecho();
@@ -884,7 +880,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
                 break;
 
             case 5:
-                mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2[4].c_str());
+                mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto2[4] + " : ").c_str());
                 echo();
                 getstr(resultadoCasoDeTeste);
                 noecho();
@@ -915,16 +911,16 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
 
             default:
                 TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                telaMensagem.apresentar("Opcao invalida. Pressione qualquer tecla para continuar.");
                 break;
         }
     }
 };
 
 void TelaCasoDeTeste::descadastrar(Codigo *codigo) {
-    string titulo1 = "Informe código do caso de teste para descadastramento.";
-    string texto1 = "Código";
-    string textoErro = "Valor inválido para atributo ";
+    string titulo1 = "Informe codigo do caso de teste para descadastramento.";
+    string texto1 = "Codigo";
+    string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -952,12 +948,12 @@ void TelaCasoDeTeste::descadastrar(Codigo *codigo) {
 //--------------------------------------------------------------------------------------------
 void TelaDepuracao::selecionar(int *campo) {
     string titulo1 = "Selecione tipo de teste a ser executado : ";
-    vector<string> texto1{"1 - Executar testes unitários.",
-                          "2 - Executar testes de integração.",
-                          "3 - Executar testes fumaça.",
+    vector<string> texto1{"1 - Executar testes unitarios.",
+                          "2 - Executar testes de integracao.",
+                          "3 - Executar testes fumaca.",
                           "4 - Executar testes sistema.",
-                          "5 - Encerrar depuração.",
-                          "Digite a opção: "};
+                          "5 - Encerrar depuracao.",
+                          "Digite a opcao : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -969,7 +965,7 @@ void TelaDepuracao::selecionar(int *campo) {
     }
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -977,11 +973,63 @@ void TelaDepuracao::selecionar(int *campo) {
 
 void TelaTestesUnitarios::selecionar(int *campo) {
     string titulo1 = "Selecione unidades de teste: ";
-    vector<string> textos{"1 - Executar testes domínios.",
+    vector<string> textos{"1 - Executar testes dominios.",
                           "2 - Executar testes entidades.",
-                          "3 - Executar testes módulos.",
+                          "3 - Executar testes modulos.",
                           "4 - Retornar.",
-                          "Digite a opção: "};
+                          "Digite a opcao : "};
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < textos.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", textos[i].c_str());
+    }
+
+    echo();
+    *campo = getch() - '0';
+    noecho();
+
+    endwin();
+}
+
+void TelaTestesModulos::selecionar(int *campo) {
+    string titulo1 = "Selecione modulo a ser testado :";
+    vector<string> textos{"1 - Modulo Apresentacao Autenticacao.",
+                          "2 - Modulo Apresentacao Desenvolvedor.",
+                          "3 - Modulo Apresentacao Teste.",
+                          "4 - Modulo Apresentacao CasoDeTeste.",
+                          "5 - Retornar.",
+                          "Digite a opcao : "};
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < textos.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", textos[i].c_str());
+    }
+
+    echo();
+    *campo = getch() - '0';
+    noecho();
+
+    endwin();
+}
+
+void TelaTestesIntegracao::selecionar(int *campo) {
+    string titulo1 = "Selecione teste integração :";
+    vector<string> textos{"1 - Integração entre modulos da camada de apresentacao.",
+                          "2 - Integração entre modulos do subsistema Desenvolvedor.",
+                          "3 - Integração entre modulos do subsistema Teste.",
+                          "4 - Integração entre modulos do subsistema CasoDeTeste.",
+                          "5 - Retornar.",
+                          "Digite a opcao : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);

@@ -7,6 +7,8 @@
 // Aqui vão ficar os testes de cada um dos módulos de apresentação
 //-----------------------------------------------------------------------------------
 class TUIAAutenticacao {
+   public:
+    void executar();
 };
 
 //-----------------------------------------------------------------------------------

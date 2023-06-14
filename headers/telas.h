@@ -1,7 +1,9 @@
 #ifndef TELAS_H_INCLUDED
 #define TELAS_H_INCLUDED
 
+// Mudar o include quando for compilar
 #include <ncurses.h>
+// #include "curses.h"
 
 #include "interfaces.h"
 
@@ -23,19 +25,19 @@ class TelaMensagem : public Telas {
 //--------------------------------------------------------------------------------------------
 class TelaInicial : public Telas {
    public:
-    void apresentar(int *);  // Método que retorna a opção escolhida.
+    void selecionar(int *);  // Método que retorna a opção escolhida.
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaUsuarioLogado : public Telas {
    public:
-    void apresentar(int *);
+    void selecionar(int *);
 };
 
 //--------------------------------------------------------------------------------------------
 class TelaAutenticacao : public Telas {
    public:
-    void apresentar(Matricula *, Senha *);
+    void autenticar(Matricula *, Senha *);
 };
 
 //--------------------------------------------------------------------------------------------
@@ -67,7 +69,6 @@ class TelaTeste : public Telas {
     Texto nome;
     Classe classe;
 
-    char valorGenerico[100] = "";
     char codigoTeste[100] = "";
     char nomeTeste[100] = "";
     char classeTeste[100] = "";
@@ -109,14 +110,23 @@ class TelaCasoDeTeste : public Telas {
 
 //--------------------------------------------------------------------------------------------
 class TelaDepuracao : public Telas {
-   private:
    public:
     void selecionar(int *);
 };
 
 class TelaTestesUnitarios : public Telas {
-   private:
    public:
     void selecionar(int *);
 };
+
+class TelaTestesModulos : public Telas {
+   public:
+    void selecionar(int *);
+};
+
+class TelaTestesIntegracao : public Telas {
+   public:
+    void selecionar(int *);
+};
+
 #endif  // TELAS_H_INCLUDED
