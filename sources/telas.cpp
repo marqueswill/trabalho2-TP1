@@ -70,9 +70,9 @@ void TelaUsuarioLogado::selecionar(int *campo) {
 void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     string titulo1 = "Valores atuais do desenvolvedor.";
     vector<string> texto1{"Matricula : ",
-                          "Nome   : ",
-                          "Telefone : ",
-                          "Senha: "};
+                          "Nome      : ",
+                          "Telefone  : ",
+                          "Senha     : "};
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -89,7 +89,7 @@ void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     }
 
     noecho();
-    mvprintw(linha / 4 + 4, coluna / 4, "%s", "");
+    mvprintw(linha / 4 + 6, coluna / 4, "%s", "");
     getch();
 
     endwin();
@@ -143,7 +143,7 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
         matricula.setValor(matriculaDesenvolvedor);
         desenvolvedor->setMatricula(matricula);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de codigo invalido. Pressione qualquer tecla para continuar.";
+        textoErro = "Valor de matricula invalido. Pressione qualquer tecla para continuar.";
         mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
     };
 
@@ -263,7 +263,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     nome.setValor(nomeDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[0]).c_str());
                     noecho();
                     getch();
                 }
@@ -278,7 +278,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     telefone.setValor(telefoneDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[1]).c_str());
                     noecho();
                     getch();
                 }
@@ -293,7 +293,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
                 try {
                     senha.setValor(senhaDesenvolvedor);
                 } catch (invalid_argument &exp) {
-                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1[2]).c_str());
+                    mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto2[2]).c_str());
                     noecho();
                     getch();
                 }

@@ -128,13 +128,3 @@ void CmdIACasoDeTesteEditar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
         telaMensagem.apresentar("Caso de teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
     }
 }
-
-void CmdIACasoDeTesteDescadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
-    telaCasoDeTeste.descadastrar(&codigo);                // Pede o código do teste ao usuário.
-    resultado = ctrlISCasoDeTeste->descadastrar(codigo);  // Socilita descadastramento do banco de dados.
-    if (resultado) {
-        telaMensagem.apresentar("Caso de teste descadastrado com sucesso. Pressione qualquer tecla para continuar.");
-    } else {
-        telaMensagem.apresentar("Caso de teste informado não foi encontrado. Pressione qualquer tecla para continuar.");
-    }
-}
