@@ -61,8 +61,8 @@ void DriverTestesUnitarios::executar() {
     int campo;
     bool apresentar = true;
     while (apresentar) {
-        TelaTestesUnitarios telaTesteUnitario;
-        telaTesteUnitario.selecionar(&campo);
+        TelaTestesUnitarios telaTestesUnitarios;
+        telaTestesUnitarios.selecionar(&campo);
 
         switch (campo) {
             case DOMINIOS:
