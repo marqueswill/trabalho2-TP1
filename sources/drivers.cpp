@@ -56,13 +56,13 @@ void DriverDepuracao::executar() {
 void DriverTestesUnitarios::executar() {
     DriverTestesDominios testesDominios;
     DriverTestesEntidades testesEntidades;
+    DriverTestesModulos testesModulos;
 
     int campo;
-
     bool apresentar = true;
     while (apresentar) {
-        TelaTestesUnitarios telaTestesUnitarios;
-        telaTestesUnitarios.selecionar(&campo);
+        TelaTestesUnitarios telaTesteUnitario;
+        telaTesteUnitario.selecionar(&campo);
 
         switch (campo) {
             case DOMINIOS:
@@ -72,8 +72,9 @@ void DriverTestesUnitarios::executar() {
                 testesEntidades.executar();
                 break;
             case MODULOS:
+                testesModulos.executar();
                 break;
-            case SAIR:
+            case RETORNAR:
                 apresentar = false;
                 break;
             default:
@@ -132,4 +133,41 @@ void DriverTestesEntidades::executar() {
     noecho();
 
     endwin();
+}
+
+//--------------------------------------------------------------------------------------------
+void DriverTestesModulos::executar() {
+    TUIAAutenticacao testeAutenticacao;
+    TUIADesenvolvedor testeDesenvolvedor;
+    TUIATeste testeTeste;
+    TUIACasoDeTeste testeCasoDeTeste;
+
+    int campo;
+    bool apresentar = true;
+    while (apresentar) {
+        TelaTestesModulos telaTestesModulos;
+        telaTestesModulos.selecionar(&campo);
+
+        switch (campo) {
+            case AUTENTICACAO:
+                // testeAutenticacao.executar();
+                break;
+            case DESENVOLVEDOR:
+                testeDesenvolvedor.executar();
+                break;
+            case TESTE:
+                testeTeste.executar();
+                break;
+            case CASODETESTE:
+                testeCasoDeTeste.executar();
+                break;
+            case RETORNAR:
+                apresentar = false;
+                break;
+            default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                break;
+        }
+    }
 }

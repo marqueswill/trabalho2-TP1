@@ -22,8 +22,8 @@
 #include "testes_entidades.cpp"
 #include "testes_modulos.cpp"
 
-// #define TESTE
-#define SISTEMA
+#define TESTE
+// #define SISTEMA
 using namespace std;
 
 int main() {
@@ -34,18 +34,10 @@ int main() {
 
 #endif  // TESTE
 
+//--------------------------------------------------------------------------------------------
 #ifdef SISTEMA
 
 #endif  // SISTEMA
-
-    // TUIADesenvolvedor TUMAD;
-    // TUMAD.executar();
-
-    TUIATeste TUMAT;
-    TUMAT.executar();
-
-    //   TUIACasoDeTeste TUMACT;
-    //   TUMACT.executar();
 
     return 0;
 }

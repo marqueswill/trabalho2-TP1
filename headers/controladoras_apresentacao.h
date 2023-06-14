@@ -2,8 +2,6 @@
 #define CONTROLADORAS_APRESENTACAO_H_INCLUDED
 
 #include "comandos_apresentacao.h"
-#include "dominios.h"
-#include "entidades.h"
 #include "interfaces.h"
 #include "telas.h"
 

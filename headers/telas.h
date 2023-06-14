@@ -1,6 +1,7 @@
 #ifndef TELAS_H_INCLUDED
 #define TELAS_H_INCLUDED
 
+// Mudar o include quando for compilar
 #include <ncurses.h>
 // #include "curses.h"
 
@@ -109,14 +110,23 @@ class TelaCasoDeTeste : public Telas {
 
 //--------------------------------------------------------------------------------------------
 class TelaDepuracao : public Telas {
-   private:
    public:
     void selecionar(int *);
 };
 
 class TelaTestesUnitarios : public Telas {
-   private:
    public:
     void selecionar(int *);
 };
+
+class TelaTestesModulos : public Telas {
+   public:
+    void selecionar(int *);
+};
+
+class TelaTestesIntegracao : public Telas {
+   public:
+    void selecionar(int *);
+};
+
 #endif  // TELAS_H_INCLUDED

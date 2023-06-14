@@ -19,7 +19,7 @@ void TelaMensagem::apresentar(string mensagem) {
 //--------------------------------------------------------------------------------------------
 void TelaInicial::selecionar(int *campo) {
     // Mensagens a serem apresentadas na tela inicial
-    string titulo1 = "Selecione um dos servicos: ";
+    string titulo1 = "Selecione um dos servicos : ";
     vector<string> texto1 = {"1 - Acessar sistema.",
                              "2 - Cadastrar desenvolvedor.",
                              "3 - Encerrar execucao do sistema.",
@@ -35,7 +35,7 @@ void TelaInicial::selecionar(int *campo) {
     }
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -60,7 +60,7 @@ void TelaUsuarioLogado::selecionar(int *campo) {
     }
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -95,7 +95,6 @@ void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
 void TelaDesenvolvedor::selecionar(int *campo) {
     string titulo1 = "Selecione o servico desejado : ";
     vector<string> texto1{"1 - Visualizar dados de desenvolvedor",
@@ -114,7 +113,7 @@ void TelaDesenvolvedor::selecionar(int *campo) {
     }
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -131,9 +130,7 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), " : ");
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
     echo();
     getstr(matriculaDesenvolvedor);
@@ -143,8 +140,7 @@ void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
         matricula.setValor(matriculaDesenvolvedor);
         desenvolvedor->setMatricula(matricula);
     } catch (invalid_argument &exp) {
-        textoErro = "Valor de matricula invalido. Pressione qualquer tecla para continuar.";
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", textoErro.c_str());
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
     };
 
     endwin();
@@ -156,6 +152,7 @@ void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
                           "Nome",
                           "Telefone",
                           "Senha"};
+
     string textoErro = "Valor invalido para atributo ";
 
     getmaxyx(stdscr, linha, coluna);
@@ -172,13 +169,13 @@ void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
     mvprintw(linha / 4 + 1, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(matriculaDesenvolvedor);
 
-    mvprintw(linha / 4 + 2, coluna / 4 + texto1[1].size() + 1, " : ");
+    mvprintw(linha / 4 + 2, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(nomeDesenvolvedor);
 
-    mvprintw(linha / 4 + 3, coluna / 4 + texto1[2].size() + 1, " : ");
+    mvprintw(linha / 4 + 3, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(telefoneDesenvolvedor);
 
-    mvprintw(linha / 4 + 4, coluna / 4 + texto1[3].size() + 1, " : ");
+    mvprintw(linha / 4 + 4, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(senhaDesenvolvedor);
 
     noecho();
@@ -248,7 +245,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
         }
 
         echo();
-        campo = getch() - 48;
+        campo = getch() - '0';
         noecho();
 
         clear();
@@ -319,24 +316,27 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
 };
 
 void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
-    string texto1 = "Preencha os seguintes campos: ";
-    string texto2 = "Matricula: ";
-    string texto3 = "Matricula informada invalida. Pressione qualquer tecla para continuar.";
+    string titulo1 = "Preencha os seguintes campos: ";
+    string texto1 = "Matricula";
+    string textoErro = "Valor invalido para atributo ";
+
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
-    mvprintw(linha / 4, coluna / 4, "%s", texto1.c_str());
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto2.c_str());
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", (titulo1).c_str());
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
+
     echo();
     getstr(matriculaDesenvolvedor);
     noecho();
+
     try {
         matricula->setValor(matriculaDesenvolvedor);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", texto3.c_str());
-        echo();
-        getch();
+        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
         noecho();
+        getch();
     };
     endwin();
 }
@@ -390,7 +390,7 @@ void TelaTeste::selecionar(int *campo) {
     mvprintw(linha / 4 + 7, coluna / 4, "%s", texto2.c_str());
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -511,7 +511,7 @@ void TelaTeste::editar(Teste *teste) {
         }
 
         echo();
-        campo = getch() - 48;
+        campo = getch() - '0';
         noecho();
 
         clear();
@@ -578,9 +578,8 @@ void TelaTeste::descadastrar(Codigo *codigo) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), " : ");
     echo();
     getstr(codigoTeste);
     noecho();
@@ -649,7 +648,7 @@ void TelaCasoDeTeste::selecionar(int *campo) {
     }
 
     noecho();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     echo();
 
     endwin();
@@ -666,9 +665,7 @@ void TelaCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
 
     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", texto1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4 + texto1.size(), ": ");
+    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
     echo();
     getstr(codigoCasoDeTeste);
@@ -814,7 +811,7 @@ void TelaCasoDeTeste::editar(CasoDeTeste *casoDeTeste) {
         }
 
         echo();
-        campo = getch() - 48;
+        campo = getch() - '0';
         noecho();
 
         clear();
@@ -968,7 +965,7 @@ void TelaDepuracao::selecionar(int *campo) {
     }
 
     echo();
-    *campo = getch() - 48;
+    *campo = getch() - '0';
     noecho();
 
     endwin();
@@ -980,6 +977,58 @@ void TelaTestesUnitarios::selecionar(int *campo) {
                           "2 - Executar testes entidades.",
                           "3 - Executar testes modulos.",
                           "4 - Retornar.",
+                          "Digite a opcao : "};
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < textos.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", textos[i].c_str());
+    }
+
+    echo();
+    *campo = getch() - '0';
+    noecho();
+
+    endwin();
+}
+
+void TelaTestesModulos::selecionar(int *campo) {
+    string titulo1 = "Selecione modulo a ser testado :";
+    vector<string> textos{"1 - Modulo Apresentacao Autenticacao.",
+                          "2 - Modulo Apresentacao Desenvolvedor.",
+                          "3 - Modulo Apresentacao Teste.",
+                          "4 - Modulo Apresentacao CasoDeTeste.",
+                          "5 - Retornar.",
+                          "Digite a opcao : "};
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < textos.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", textos[i].c_str());
+    }
+
+    echo();
+    *campo = getch() - '0';
+    noecho();
+
+    endwin();
+}
+
+void TelaTestesIntegracao::selecionar(int *campo) {
+    string titulo1 = "Selecione teste integração :";
+    vector<string> textos{"1 - Integração entre modulos da camada de apresentacao.",
+                          "2 - Integração entre modulos do subsistema Desenvolvedor.",
+                          "3 - Integração entre modulos do subsistema Teste.",
+                          "4 - Integração entre modulos do subsistema CasoDeTeste.",
+                          "5 - Retornar.",
                           "Digite a opcao : "};
 
     initscr();

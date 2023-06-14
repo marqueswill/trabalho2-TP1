@@ -1,11 +1,6 @@
 #ifndef CONTROLADORAS_SERVICO_H_INCLUDED
 #define CONTROLADORAS_SERVICO_H_INCLUDED
 
-#include <cstdlib>
-#include <string>
-
-#include "dominios.h"
-#include "entidades.h"
 #include "interfaces.h"
 
 //-----------------------------------------------------------------------------------
@@ -46,4 +41,4 @@ class CtrlMSCasoDeTeste : public ISCasoDeTeste {
     bool descadastrar(Codigo);
 };
 
-#endif CONTROLADORAS_SERVICO_H_INCLUDED
+#endif  // CONTROLADORAS_SERVICO_H_INCLUDED
