@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 // Incluir cabe�alhos.
-#include "../headers/UnidadePersistencia.h"
+#include "../headers/comandos_servicos.h"
+
 // Atributo est�tico.
 
 list<ElementoResultado> ComandoSQL::listaResultado;
