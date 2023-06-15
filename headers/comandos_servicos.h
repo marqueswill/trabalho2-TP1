@@ -161,5 +161,3 @@ class ComandoDescadastrarCasoDeTeste:public ComandoSQL {
 public:
         ComandoDescadastrarCasoDeTeste(Codigo);
 };
-//---------------------------------------------------------------------------
-// Classe ComandoCadastrarCasoDeTeste
