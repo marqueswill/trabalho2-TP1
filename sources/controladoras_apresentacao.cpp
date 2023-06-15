@@ -70,6 +70,9 @@ void CtrlIAInicializacao::executar() {
 
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
+    comando = new CmdIADesenvolvedorCadastrar();
+    comando->executar(ctrlISDesenvolvedor);
+    delete comando;
 }
 
 void CtrlIADesenvolvedor::executar(Matricula) {

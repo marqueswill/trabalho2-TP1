@@ -80,7 +80,7 @@ string ComandoLerMatricula::getResultado() {
 
         //Remover senha;
         if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
+                return "";
         resultado = listaResultado.back();
         listaResultado.pop_back();
         matricula = resultado.getValorColuna();

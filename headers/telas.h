@@ -16,12 +16,20 @@ class Telas {
     int linha, coluna;
 };
 
+
+
 //--------------------------------------------------------------------------------------------
 class TelaMensagem : public Telas {
    public:
     void apresentar(string);
 };
-
+class EErroPersistencia: public TelaMensagem {
+private:
+        string mensagem;
+public:
+        EErroPersistencia(string);
+        string what();
+};
 //--------------------------------------------------------------------------------------------
 class TelaInicial : public Telas {
    public:
