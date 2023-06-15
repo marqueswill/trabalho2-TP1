@@ -244,3 +244,90 @@ ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
         comandoSQL = "DELETE FROM testes WHERE codigo = ";
         comandoSQL += codigo.getValor();
 }
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoVisualizarTeste
+ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo){
+        comandoSQL = "SELECT * from casodetestes where codigo = ";
+        comandoSQL += codigo.getValor();        
+}
+
+Codigo ComandoVisualizarTeste::getResultado(){
+        ElementoResultado resultado;
+        CasoDeTeste casoDeTeste;
+        Texto nome;
+        Data data;
+        Texto acao;
+        Texto resposta;
+        Resultado resultadoct;
+        // Remover nome;
+        if(listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        nome.setValor(resultado.getValorColuna());
+        casoDeTeste.setNome(nome);
+
+        // Remover data;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        data.setValor(resultado.getValorColuna());
+        casoDeTeste.setData(data);
+        
+        // Remover acao;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        acao.setValor(resultado.getValorColuna());
+        casoDeTeste.setAcao(acao);
+
+        // Remover resposta;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resposta.setValor(resultado.getValorColuna());
+        casoDeTeste.setResposta(resposta);
+
+        // Remover resultado;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultadoct.setValor(resultado.getValorColuna());
+        casoDeTeste.setResultado(resultadoct);
+}
+//---------------------------------------------------------------------------
+// Implementacao para ComandoCadastrarCasoDeTeste
+ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
+        comandoSQL = "INSERT INTO casodetestes VALUES (";
+        comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
+        comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
+        comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
+        comandoSQL += "'" + casoDeTeste.getAcao().getValor();
+        comandoSQL += "'" + casoDeTeste.getResposta().getValor();
+        comandoSQL += "'" + casoDeTeste.getResultado().getValor();
+}
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoEditarCasoDeTeste
+ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
+        comandoSQL = "UPDATE casodetestes ";
+        comandoSQL += "SET nome = '" + casoDeTeste.getNome().getValor();
+        comandoSQL += "', senha = '" + casoDeTeste.getData().getValor();
+        comandoSQL += "', telefone = '" + casoDeTeste.getData().getValor();
+        comandoSQL += "', acao = '" + casoDeTeste.getAcao().getValor();
+        comandoSQL += "', resposta = '" + casoDeTeste.getResposta().getValor();
+        comandoSQL += "', resultado = '" + casoDeTeste.getResultado().getValor();
+        comandoSQL += "' WHERE codigo = " + casoDeTeste.getCodigo().getValor();
+}
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoDescadastrarCasoDeTeste
+ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
+        comandoSQL = "DELETE FROM casodetestes WHERE codigo = ";
+        comandoSQL += codigo.getValor();
+}

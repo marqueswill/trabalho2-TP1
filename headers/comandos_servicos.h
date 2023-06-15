@@ -111,7 +111,6 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Classe ComandoDescadastrarDesenvolvedor
 // Classe ComandoVisualizarTeste
 
 class ComandoVisualizarTeste: public ComandoSQL {
@@ -119,17 +118,48 @@ public:
         ComandoVisualizarTeste(Codigo);
         Codigo getResultado();
 };
-
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarTeste
 class ComandoCadastrarTeste:public ComandoSQL {
 public:
         ComandoCadastrarTeste(Teste);
 };
-
+//---------------------------------------------------------------------------
+// Classe ComandoEditarTeste
 class ComandoEditarTeste:public ComandoSQL {
 public:
         ComandoEditarTeste(Teste);
 };
+//---------------------------------------------------------------------------
+// Classe ComandoDescadastrarTeste
 class ComandoDescadastrarTeste:public ComandoSQL {
 public:
         ComandoDescadastrarTeste(Codigo);
 };
+//---------------------------------------------------------------------------
+// Classe ComandoVisualizarCasoDeTeste
+class ComandoVisualizarCasoDeTeste: public ComandoSQL {
+public:
+        ComandoVisualizarCasoDeTeste(Codigo);
+        Codigo getResultado();
+};
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarCasoDeTeste
+class ComandoCadastrarCasoDeTeste:public ComandoSQL {
+public:
+        ComandoCadastrarCasoDeTeste(CasoDeTeste);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoEditarCasoDeTeste
+class ComandoEditarCasoDeTeste:public ComandoSQL {
+public:
+        ComandoEditarCasoDeTeste(CasoDeTeste);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoDescadastrarTeste
+class ComandoDescadastrarCasoDeTeste:public ComandoSQL {
+public:
+        ComandoDescadastrarCasoDeTeste(Codigo);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarCasoDeTeste
