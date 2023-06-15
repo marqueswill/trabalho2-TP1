@@ -1,13 +1,13 @@
 //---------------------------------------------------------------------------
-// Incluir cabe�alhos.
+
 #include "../headers/comandos_servicos.h"
 
-// Atributo est�tico.
+// Atributo estatico.
 
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ErroPersistencia.
+// Implementacao para classe EErroPersistencia
 
 EErroPersistencia::EErroPersistencia(string mensagem){
         this->mensagem = mensagem;
@@ -18,7 +18,7 @@ string EErroPersistencia::what() {
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ElementoResultado.
+// Implmentacao para classe ElementoResultado
 
 void ElementoResultado::setNomeColuna(const string& nomeColuna) {
         this->nomeColuna = nomeColuna;
@@ -29,7 +29,7 @@ void ElementoResultado::setValorColuna(const string& valorColuna){
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoSQL.
+// Implementacao para classe ComandoSQL
 
 void ComandoSQL::conectar() {
       rc = sqlite3_open(nomeBancoDados, &bd);
@@ -67,7 +67,7 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoLerSenha.
+// Implementacao para classe ComandoLerMatricula
 
 ComandoLerMatricula::ComandoLerMatricula(Matricula matricula) {
         comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
@@ -78,7 +78,7 @@ string ComandoLerMatricula::getResultado() {
         ElementoResultado resultado;
         string matricula;
 
-        //Remover senha;
+        //Remover matricula;
         if (listaResultado.empty())
                 return "";
         resultado = listaResultado.back();
@@ -89,7 +89,7 @@ string ComandoLerMatricula::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoPesquisarAluno.
+// Implementacao para ComandoVisualizarDesenvolvedor
 
 ComandoVisualizarDesenvolvedor::ComandoVisualizarDesenvolvedor(Matricula matricula) {
         comandoSQL = "SELECT * FROM desenvolvedores WHERE matricula = ";
@@ -141,7 +141,7 @@ Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoCadastrarAluno.
+// Implementacao para ComandoCadastrarDesenvolvedor
 
 ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor dev) {
         comandoSQL = "INSERT INTO desenvolvedores VALUES (";
@@ -152,7 +152,7 @@ ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor dev) 
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoRemoverAluno.
+// Implementacao para ComandoDescadastrarDesenvolvedor
 
 ComandoDescadastrarDesenvolvedor::ComandoDescadastrarDesenvolvedor(Matricula matricula) {
         comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
@@ -160,7 +160,7 @@ ComandoDescadastrarDesenvolvedor::ComandoDescadastrarDesenvolvedor(Matricula mat
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoEditarAluno.
+// Implementacao para ComandoEditarDesenvolvedor
 
 ComandoEditarDesenvolvedor::ComandoEditarDesenvolvedor(Desenvolvedor dev) {
         comandoSQL = "UPDATE desenvolvedores ";

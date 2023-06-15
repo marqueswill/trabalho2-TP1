@@ -38,7 +38,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoSQL.
+// Classe ComandoSQL.
 
 class ComandoSQL {
 private:
@@ -61,7 +61,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoLerSenha.
+// Classe ComandoLerMatricula.
 
 class ComandoLerMatricula:public ComandoSQL {
 public:
@@ -70,7 +70,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-//Classe ComandoPesquisarAluno.
+//Classe ComandoVisualizarDesenvolvedor.
 
 class ComandoVisualizarDesenvolvedor:public ComandoSQL {
 public:
@@ -79,7 +79,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarAluno.
+//Classe ComandoCadastrarDesenvolvedor
 
 class ComandoCadastrarDesenvolvedor:public ComandoSQL {
 public:
@@ -87,7 +87,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-//Classe ComandoAtualizarAluno.
+//Classe ComandoEditarDesenvolvedor
 
 class ComandoEditarDesenvolvedor:public ComandoSQL {
 public:
@@ -95,7 +95,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoRemoverAluno.
+// Classe ComandoDescadastrarDesenvolvedor
 
 class ComandoDescadastrarDesenvolvedor:public ComandoSQL {
 public:

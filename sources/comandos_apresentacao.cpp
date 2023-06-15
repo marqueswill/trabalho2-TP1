@@ -3,11 +3,7 @@
 //--------------------------------------------------------------------------------------------
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.visualizar(&desenvolvedor);
-    try{
-    resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);}
-    catch(invalid_argument &exp){
-        //;
-    }
+    resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);
     } else {
