@@ -101,4 +101,35 @@ class ComandoDescadastrarDesenvolvedor:public ComandoSQL {
 public:
         ComandoDescadastrarDesenvolvedor(Matricula);
 };
+//---------------------------------------------------------------------------
+// Classe ComandoLerCodigo
 
+class ComandoLerCodigo: public ComandoSQL {
+public:
+        ComandoLerCodigo(Codigo);
+        string getResultado();
+};
+
+//---------------------------------------------------------------------------
+// Classe ComandoDescadastrarDesenvolvedor
+// Classe ComandoVisualizarTeste
+
+class ComandoVisualizarTeste: public ComandoSQL {
+public:
+        ComandoVisualizarTeste(Codigo);
+        Codigo getResultado();
+};
+
+class ComandoCadastrarTeste:public ComandoSQL {
+public:
+        ComandoCadastrarTeste(Teste);
+};
+
+class ComandoEditarTeste:public ComandoSQL {
+public:
+        ComandoEditarTeste(Teste);
+};
+class ComandoDescadastrarTeste:public ComandoSQL {
+public:
+        ComandoDescadastrarTeste(Codigo);
+};
