@@ -52,6 +52,7 @@ inline void CtrlIAInicializacao::setCtrlIACasoDeTeste(IACasoDeTeste *ctrlIACasoD
 class CtrlIAAutenticacao : public IAAutenticacao {
    private:
     ISAutenticacao *ctrlISAutenticacao;
+    CmdIAAutenticacao *comando;
 
    public:
     bool autenticar(Matricula *);
