@@ -1,7 +1,7 @@
 #include "../headers/comandos_apresentacao.h"
 
 //--------------------------------------------------------------------------------------------
-bool CmdIAAutenticacao::executa(ISAutenticacao* ctrlISAutenticacao) {
+bool CmdIAAutenticacao::executar(ISAutenticacao* ctrlISAutenticacao) {
     telaAutenticacao.autenticar(&matricula, &senha);
     resultado = ctrlISAutenticao->autenticar(matricula, senha);
     return resultado;
