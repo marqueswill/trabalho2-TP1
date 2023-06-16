@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------------
 bool CmdIAAutenticacao::executar(ISAutenticacao* ctrlISAutenticacao) {
     telaAutenticacao.autenticar(&matricula, &senha);
-    resultado = ctrlISAutenticao->autenticar(matricula, senha);
+    resultado = ctrlISAutenticaoAutenticar->autenticar(matricula, senha);
     return resultado;
 }
 
