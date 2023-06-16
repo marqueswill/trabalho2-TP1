@@ -42,6 +42,55 @@ void TelaInicial::selecionar(int *campo) {
 }
 
 //--------------------------------------------------------------------------------------------
+void TelaAutenticacao::autenticar(Matricula* matricula, Senha* senha) {
+    string titulo1 = "Preencha os seguintes campos.";
+    vector<string> texto1{"Matricula",
+                          "Senha",
+                          };
+    string textoErro = "Valor inválido para atributo ";
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
+
+    echo();
+
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1[0].size() + 1, " : ");
+    getstr(matriculaAutenticacao);
+
+    mvprintw(linha / 4 + 2, coluna / 4 + texto1[0].size() + 1, " : ");
+    getstr(senhaAutenticacao);
+
+
+    noecho();
+
+    int l = 4;
+    try {
+        matricula->setValor(matriculaAutenticacao);
+    } catch (invalid_argument &exp) {
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+        l++;
+    }
+
+    try {
+        senha->setValor(senhaAutenticacao);
+    } catch (invalid_argument &exp) {
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+        l++;
+    }
+
+    echo();
+    getch();
+    noecho();
+    endwin();
+}
+//--------------------------------------------------------------------------------------------
 void TelaUsuarioLogado::selecionar(int *campo) {
     string titulo1 = "Selecione um dos servicos : ";
     vector<string> texto1{"1 - Servicos relacionados a desenvolvedor.",
