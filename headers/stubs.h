@@ -18,11 +18,9 @@ class StubISAutenticacao : public ISAutenticacao {
     bool resultado;
    public:
    StubISAutenticacao() {
-    matriculaDesenvolvedor.setValor(VALOR_VALIDO_MATRICULA);
-    senhaDesenvolvedor.setValor(VALOR_VALIDO_SENHA);
+    matriculaStub.setValor(VALOR_VALIDO_MATRICULA);
+    senhaStub.setValor(VALOR_VALIDO_SENHA);
 
-    desenvolvedorStub.setMatricula(matriculaDesenvolvedor);
-    desenvolvedorStub.setSenha(senhaDesenvolvedor);
    }
    bool autenticar(Matricula, Senha);
 };
