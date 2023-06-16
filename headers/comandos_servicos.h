@@ -38,7 +38,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoSQL.
+// Classe ComandoSQL.
 
 class ComandoSQL {
 private:
@@ -61,7 +61,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoLerSenha.
+// Classe ComandoLerMatricula.
 
 class ComandoLerMatricula:public ComandoSQL {
 public:
@@ -70,7 +70,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-//Classe ComandoPesquisarAluno.
+//Classe ComandoVisualizarDesenvolvedor.
 
 class ComandoVisualizarDesenvolvedor:public ComandoSQL {
 public:
@@ -79,7 +79,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoCadastrarAluno.
+//Classe ComandoCadastrarDesenvolvedor
 
 class ComandoCadastrarDesenvolvedor:public ComandoSQL {
 public:
@@ -87,7 +87,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-//Classe ComandoAtualizarAluno.
+//Classe ComandoEditarDesenvolvedor
 
 class ComandoEditarDesenvolvedor:public ComandoSQL {
 public:
@@ -95,10 +95,69 @@ public:
 };
 
 //---------------------------------------------------------------------------
-// Declara��o da classe ComandoRemoverAluno.
+// Classe ComandoDescadastrarDesenvolvedor
 
 class ComandoDescadastrarDesenvolvedor:public ComandoSQL {
 public:
         ComandoDescadastrarDesenvolvedor(Matricula);
 };
+//---------------------------------------------------------------------------
+// Classe ComandoLerCodigo
 
+class ComandoLerCodigo: public ComandoSQL {
+public:
+        ComandoLerCodigo(Codigo);
+        string getResultado();
+};
+
+//---------------------------------------------------------------------------
+// Classe ComandoVisualizarTeste
+
+class ComandoVisualizarTeste: public ComandoSQL {
+public:
+        ComandoVisualizarTeste(Codigo);
+        Codigo getResultado();
+};
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarTeste
+class ComandoCadastrarTeste:public ComandoSQL {
+public:
+        ComandoCadastrarTeste(Teste);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoEditarTeste
+class ComandoEditarTeste:public ComandoSQL {
+public:
+        ComandoEditarTeste(Teste);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoDescadastrarTeste
+class ComandoDescadastrarTeste:public ComandoSQL {
+public:
+        ComandoDescadastrarTeste(Codigo);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoVisualizarCasoDeTeste
+class ComandoVisualizarCasoDeTeste: public ComandoSQL {
+public:
+        ComandoVisualizarCasoDeTeste(Codigo);
+        Codigo getResultado();
+};
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarCasoDeTeste
+class ComandoCadastrarCasoDeTeste:public ComandoSQL {
+public:
+        ComandoCadastrarCasoDeTeste(CasoDeTeste);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoEditarCasoDeTeste
+class ComandoEditarCasoDeTeste:public ComandoSQL {
+public:
+        ComandoEditarCasoDeTeste(CasoDeTeste);
+};
+//---------------------------------------------------------------------------
+// Classe ComandoDescadastrarTeste
+class ComandoDescadastrarCasoDeTeste:public ComandoSQL {
+public:
+        ComandoDescadastrarCasoDeTeste(Codigo);
+};

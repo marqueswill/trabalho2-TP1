@@ -1,13 +1,13 @@
 //---------------------------------------------------------------------------
-// Incluir cabe�alhos.
+
 #include "../headers/comandos_servicos.h"
 
-// Atributo est�tico.
+// Atributo estatico.
 
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ErroPersistencia.
+// Implementacao para classe EErroPersistencia
 
 EErroPersistencia::EErroPersistencia(string mensagem){
         this->mensagem = mensagem;
@@ -18,7 +18,7 @@ string EErroPersistencia::what() {
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ElementoResultado.
+// Implmentacao para classe ElementoResultado
 
 void ElementoResultado::setNomeColuna(const string& nomeColuna) {
         this->nomeColuna = nomeColuna;
@@ -29,7 +29,7 @@ void ElementoResultado::setValorColuna(const string& valorColuna){
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoSQL.
+// Implementacao para classe ComandoSQL
 
 void ComandoSQL::conectar() {
       rc = sqlite3_open(nomeBancoDados, &bd);
@@ -67,7 +67,7 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoLerSenha.
+// Implementacao para classe ComandoLerMatricula
 
 ComandoLerMatricula::ComandoLerMatricula(Matricula matricula) {
         comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
@@ -78,9 +78,9 @@ string ComandoLerMatricula::getResultado() {
         ElementoResultado resultado;
         string matricula;
 
-        //Remover senha;
+        //Remover matricula;
         if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
+                throw EErroPersistencia("Lista de resultados vazia.");;
         resultado = listaResultado.back();
         listaResultado.pop_back();
         matricula = resultado.getValorColuna();
@@ -89,7 +89,7 @@ string ComandoLerMatricula::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoPesquisarAluno.
+// Implementacao para ComandoVisualizarDesenvolvedor
 
 ComandoVisualizarDesenvolvedor::ComandoVisualizarDesenvolvedor(Matricula matricula) {
         comandoSQL = "SELECT * FROM desenvolvedores WHERE matricula = ";
@@ -141,18 +141,18 @@ Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoCadastrarAluno.
+// Implementacao para ComandoCadastrarDesenvolvedor
 
-ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor dev) {
+ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor desenvolvedor) {
         comandoSQL = "INSERT INTO desenvolvedores VALUES (";
-        comandoSQL += "'" + dev.getNome().getValor() + "', ";
-        comandoSQL += "'" + dev.getMatricula().getValor() + "', ";
-        comandoSQL += "'" + dev.getSenha().getValor() + "', ";
-        comandoSQL += "'" + dev.getTelefone().getValor() + "', ";
+        comandoSQL += "'" + desenvolvedor.getNome().getValor() + "', ";
+        comandoSQL += "'" + desenvolvedor.getMatricula().getValor() + "', ";
+        comandoSQL += "'" + desenvolvedor.getSenha().getValor() + "', ";
+        comandoSQL += "'" + desenvolvedor.getTelefone().getValor() + "', ";
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoRemoverAluno.
+// Implementacao para ComandoDescadastrarDesenvolvedor
 
 ComandoDescadastrarDesenvolvedor::ComandoDescadastrarDesenvolvedor(Matricula matricula) {
         comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
@@ -160,14 +160,174 @@ ComandoDescadastrarDesenvolvedor::ComandoDescadastrarDesenvolvedor(Matricula mat
 }
 
 //---------------------------------------------------------------------------
-// Implementa��es de m�todos da classe ComandoEditarAluno.
+// Implementacao para ComandoEditarDesenvolvedor
 
-ComandoEditarDesenvolvedor::ComandoEditarDesenvolvedor(Desenvolvedor dev) {
+ComandoEditarDesenvolvedor::ComandoEditarDesenvolvedor(Desenvolvedor desenvolvedor) {
         comandoSQL = "UPDATE desenvolvedores ";
-        comandoSQL += "SET nome = '" + dev.getNome().getValor();
-        comandoSQL += "', senha = '" + dev.getSenha().getValor();
-        comandoSQL += "', telefone = '" + dev.getTelefone().getValor();
-        comandoSQL += "' WHERE matricula = " + dev.getMatricula().getValor();
+        comandoSQL += "SET nome = '" + desenvolvedor.getNome().getValor();
+        comandoSQL += "', senha = '" + desenvolvedor.getSenha().getValor();
+        comandoSQL += "', telefone = '" + desenvolvedor.getTelefone().getValor();
+        comandoSQL += "' WHERE matricula = " + desenvolvedor.getMatricula().getValor();
+}
+//---------------------------------------------------------------------------
+// Implementacao para ComandoLerCodigo
+ComandoLerCodigo::ComandoLerCodigo(Codigo codigo){
+        comandoSQL = "SELECT codigo FROM testes WHERE codigo = ";
+        comandoSQL += codigo.getValor();
 }
 
+string ComandoLerCodigo::getResultado(){
+        ElementoResultado resultado;
+        string codigo;
 
+        //Remover matricula;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");;
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        codigo = resultado.getValorColuna();
+
+        return codigo;
+}
+//---------------------------------------------------------------------------
+// Implementacao para ComandoVisualizarTeste
+
+ComandoVisualizarTeste::ComandoVisualizarTeste(Codigo codigo){
+        comandoSQL = "SELECT * from testes where codigo = ";
+        comandoSQL += codigo.getValor();        
+}
+
+Codigo ComandoVisualizarTeste::getResultado(){
+        ElementoResultado resultado;
+        Teste teste;
+        Texto nome;
+        Classe classe;
+        // Remover nome;
+        if(listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        nome.setValor(resultado.getValorColuna());
+        teste.setNome(nome);
+
+        // Remover classe;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        classe.setValor(resultado.getValorColuna());
+        teste.setClasse(classe);
+}
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoCadastrarTeste
+
+ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
+        comandoSQL = "INSERT INTO testes VALUES (";
+        comandoSQL += "'" + teste.getNome().getValor() + "', ";
+        comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
+        comandoSQL += "'" + teste.getClasse().getValor() + "', ";
+}
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoEditarTeste
+ComandoEditarTeste::ComandoEditarTeste(Teste teste) {
+        comandoSQL = "UPDATE testes ";
+        comandoSQL += "SET nome = '" + teste.getNome().getValor();
+        comandoSQL += "', classe = '" + teste.getClasse().getValor();
+        comandoSQL += "' WHERE codigo = " + teste.getCodigo().getValor();
+}
+//---------------------------------------------------------------------------
+// Implementacao para ComandoDescadastrarTeste
+
+ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
+        comandoSQL = "DELETE FROM testes WHERE codigo = ";
+        comandoSQL += codigo.getValor();
+}
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoVisualizarTeste
+ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo){
+        comandoSQL = "SELECT * from casodetestes where codigo = ";
+        comandoSQL += codigo.getValor();        
+}
+
+Codigo ComandoVisualizarTeste::getResultado(){
+        ElementoResultado resultado;
+        CasoDeTeste casoDeTeste;
+        Texto nome;
+        Data data;
+        Texto acao;
+        Texto resposta;
+        Resultado resultadoct;
+        // Remover nome;
+        if(listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        nome.setValor(resultado.getValorColuna());
+        casoDeTeste.setNome(nome);
+
+        // Remover data;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        data.setValor(resultado.getValorColuna());
+        casoDeTeste.setData(data);
+        
+        // Remover acao;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        acao.setValor(resultado.getValorColuna());
+        casoDeTeste.setAcao(acao);
+
+        // Remover resposta;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resposta.setValor(resultado.getValorColuna());
+        casoDeTeste.setResposta(resposta);
+
+        // Remover resultado;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        resultadoct.setValor(resultado.getValorColuna());
+        casoDeTeste.setResultado(resultadoct);
+}
+//---------------------------------------------------------------------------
+// Implementacao para ComandoCadastrarCasoDeTeste
+ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
+        comandoSQL = "INSERT INTO casodetestes VALUES (";
+        comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
+        comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
+        comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
+        comandoSQL += "'" + casoDeTeste.getAcao().getValor();
+        comandoSQL += "'" + casoDeTeste.getResposta().getValor();
+        comandoSQL += "'" + casoDeTeste.getResultado().getValor();
+}
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoEditarCasoDeTeste
+ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
+        comandoSQL = "UPDATE casodetestes ";
+        comandoSQL += "SET nome = '" + casoDeTeste.getNome().getValor();
+        comandoSQL += "', senha = '" + casoDeTeste.getData().getValor();
+        comandoSQL += "', telefone = '" + casoDeTeste.getData().getValor();
+        comandoSQL += "', acao = '" + casoDeTeste.getAcao().getValor();
+        comandoSQL += "', resposta = '" + casoDeTeste.getResposta().getValor();
+        comandoSQL += "', resultado = '" + casoDeTeste.getResultado().getValor();
+        comandoSQL += "' WHERE codigo = " + casoDeTeste.getCodigo().getValor();
+}
+
+//---------------------------------------------------------------------------
+// Implementacao para ComandoDescadastrarCasoDeTeste
+ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
+        comandoSQL = "DELETE FROM casodetestes WHERE codigo = ";
+        comandoSQL += codigo.getValor();
+}
