@@ -147,7 +147,7 @@ void TelaDesenvolvedor::selecionar(int *campo) {
     vector<string> texto1{"1 - Visualizar dados de desenvolvedor",
                           "2 - Editar dados de desenvolvedor",
                           "3 - Descadastrar desenvolvedor",
-                          "4 - Encerrar sessao.",
+                          "4 - Retornar.",
                           "Escolha uma opcao : "};
 
     initscr();
@@ -422,7 +422,7 @@ void TelaTeste::selecionar(int *campo) {
                           "2 - Cadastrar teste.",
                           "3 - Editar teste.",
                           "4 - Descadastrar teste.",
-                          "5 - Encerrar sessao."};
+                          "5 - Retornar."};
     string texto2 = "Escolha uma opcao : ";
 
     initscr();
@@ -682,7 +682,7 @@ void TelaCasoDeTeste::selecionar(int *campo) {
                           "2 - Cadastrar caso de teste.",
                           "3 - Editar caso de teste.",
                           "4 - Descadastrar caso de teste.",
-                          "5 - Encerrar sessao.",
+                          "5 - Retornar.",
                           "Escolha uma opcao : "};
 
     initscr();

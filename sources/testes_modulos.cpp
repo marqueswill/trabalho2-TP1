@@ -14,9 +14,9 @@ void TUIAAutenticacao::executar() {
     TelaMensagem telaMensagem;
 
     if (ctrlIAAutenticacao->executar(matricula)) {
-        telaMensagem.apresentar("Sucesso na autenticacao");
+        telaMensagem.apresentar("Sucesso na autenticacao.");
     } else {
-        telaMensagem.apresentar("Erro de autenticacao");
+        telaMensagem.apresentar("Erro de autenticacao.");
     }
 
     delete ctrlIAAutenticacao;
