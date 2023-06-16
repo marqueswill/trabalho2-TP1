@@ -23,6 +23,7 @@ void Drivers::showResult(bool resultado, string nome, int l) {
 //--------------------------------------------------------------------------------------------
 void DriverDepuracao::executar() {
     DriverTestesUnitarios testesUnitarios;
+    DriverTestesIntegracao testesIntegracao;
 
     int campo;
 
@@ -36,6 +37,7 @@ void DriverDepuracao::executar() {
                 testesUnitarios.executar();
                 break;
             case TESTE_INTEGRACAO:
+                testesIntegracao.executar();
                 break;
             case TESTE_FUMACA:
                 break;
@@ -160,6 +162,38 @@ void DriverTestesModulos::executar() {
                 break;
             case CASODETESTE:
                 testeCasoDeTeste.executar();
+                break;
+            case RETORNAR:
+                apresentar = false;
+                break;
+            default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opção inválida. Pressione qualquer tecla para continuar.");
+                break;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+void DriverTestesIntegracao::executar() {
+    TIApresentacao testeApresentacao;
+
+    int campo;
+    bool apresentar = true;
+    while (apresentar) {
+        TelaTestesIntegracao telaTestesIntegracao;
+        telaTestesIntegracao.selecionar(&campo);
+
+        switch (campo) {
+            case CAMADA_APRESENTACAO:
+                testeApresentacao.executar();
+                break;
+            case SUBSISTEMA_DESENVOLVEDOR:
+                /* code */
+                break;
+            case SUBSISTEMA_TESTE:
+                break;
+            case SUBSISTEMA_CASODETESTE:
                 break;
             case RETORNAR:
                 apresentar = false;

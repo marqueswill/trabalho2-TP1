@@ -1,8 +1,6 @@
 #ifndef DRIVERS_H_INCLUDED
 #define DRIVERS_H_INCLUDED
 
-// #include <ncurses.h>
-
 #include "testes_dominios.h"
 #include "testes_entidades.h"
 #include "testes_integracao.h"
@@ -82,6 +80,13 @@ class DriverTestesModulos : public Drivers {
 
 //--------------------------------------------------------------------------------------------
 class DriverTestesIntegracao : public Drivers {
+   private:
+    const static int CAMADA_APRESENTACAO = 1;
+    const static int SUBSISTEMA_DESENVOLVEDOR = 2;
+    const static int SUBSISTEMA_TESTE = 3;
+    const static int SUBSISTEMA_CASODETESTE = 4;
+    const static int RETORNAR = 5;
+
    public:
     void executar();
 };
