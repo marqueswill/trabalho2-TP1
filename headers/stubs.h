@@ -6,8 +6,8 @@
 //--------------------------------------------------------------------------------------------
 class StubISAutenticacao : public ISAutenticacao {
    private:
-    static Matricula matriculaDesenvolvedor;
-    static Senha senhaDesenvolvedor;
+    static Matricula matriculaStub;
+    static Senha senhaStub;
 
     const static string VALOR_VALIDO_MATRICULA;
     const static string VALOR_VALIDO_SENHA;
