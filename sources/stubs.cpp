@@ -7,14 +7,15 @@ const string StubISAutenticacao::VALOR_VALIDO_MATRICULA = "1234567";
 Senha StubISAutenticacao::senhaAutenticacao;
 Matricula StubISAutenticacao::matriculaAutenticacao;
 bool StubISAutenticacao::autenticar(Matricula matrciula, Senha senha) {
-    if (matricula.getValor() == desenvolvedorStub.getMatricula().getValor()) {
-        desenvolvedor->setNome(nomeDesenvolvedor);
-        desenvolvedor->setSenha(senhaDesenvolvedor);
-        desenvolvedor->setTelefone(telefoneDesenvolvedor);
+    if (matricula.getValor() == matriculaStub.getValor()) {
+        if (senha.getValor() == senhaStub.getValor()){
+            return SUCESSO
+                } else {
+            return FALHA;
+        }
     } else {
         return FALHA;
     }
-    return SUCESSO;
 }
 //--------------------------------------------------------------------------------------------
 const string StubISDesenvolvedor::VALOR_VALIDO_MATRICULA = "1234567";
