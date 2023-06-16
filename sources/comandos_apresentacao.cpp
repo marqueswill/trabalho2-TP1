@@ -1,6 +1,16 @@
 #include "../headers/comandos_apresentacao.h"
 
 //--------------------------------------------------------------------------------------------
+void CmdIAAutenticacao::executa(ISAutenticacao* ctrlISAutenticacao) {
+    telaAutenticacao.autenticar(&matricula);
+    resultado = ctrlISAutenticao->visualizar(&matricula);
+    if (resultado) {
+        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
+    } else {
+        telaMensagem.apresentar("Falha na Autenticacao. Pressione qualquer tecla para continuar.");
+    }
+}
+
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.visualizar(&desenvolvedor);
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
