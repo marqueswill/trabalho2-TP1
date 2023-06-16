@@ -6,7 +6,25 @@
 //--------------------------------------------------------------------------------------------
 class StubISAutenticacao : public ISAutenticacao {
    private:
+    static Matricula matriculaDesenvolvedor;
+    static Senha senhaDesenvolvedor;
+
+    const static string VALOR_VALIDO_MATRICULA;
+    const static string VALOR_VALIDO_SENHA;
+
+    const static bool SUCESSO = true;
+    const static bool FALHA = false;
+
+    bool resultado;
    public:
+   StubISAutenticacao() {
+    matriculaDesenvolvedor.setValor(VALOR_VALIDO_MATRICULA);
+    senhaDesenvolvedor.setValor(VALOR_VALIDO_SENHA);
+
+    desenvolvedorStub.setMatricula(matriculaDesenvolvedor);
+    desenvolvedorStub.setSenha(senhaDesenvolvedor);
+   }
+   bool autenticar(Matricula, Senha);
 };
 
 //--------------------------------------------------------------------------------------------
