@@ -55,7 +55,13 @@ class CtrlIAAutenticacao : public IAAutenticacao {
 
    public:
     bool autenticar(Matricula *);
+    void setCtrlISAutenticacao(ISAutenticacao *ctrlISAutenticacao);
+    
 };
+
+ inline void CtrlIAAutenticacao::setCtrlISAutenticacao(ISAutenticacao *ctrlISAutenticacao) {
+    this->ctrlISAutenticacao = ctrlISAutenticacao;
+}
 
 //-----------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
