@@ -1,14 +1,10 @@
 #include "../headers/comandos_apresentacao.h"
 
 //--------------------------------------------------------------------------------------------
-void CmdIAAutenticacao::executa(ISAutenticacao* ctrlISAutenticacao) {
+bool CmdIAAutenticacao::executa(ISAutenticacao* ctrlISAutenticacao) {
     telaAutenticacao.autenticar(&matricula, &senha);
     resultado = ctrlISAutenticao->autenticar(matricula, senha);
-    if (resultado) {
-        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
-    } else {
-        telaMensagem.apresentar("Falha na Autenticacao. Pressione qualquer tecla para continuar.");
-    }
+    return resultado;
 }
 
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
