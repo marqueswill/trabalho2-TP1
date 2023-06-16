@@ -20,6 +20,7 @@
 #include "telas.cpp"
 #include "testes_dominios.cpp"
 #include "testes_entidades.cpp"
+#include "testes_integracao.cpp"
 #include "testes_modulos.cpp"
 
 #define TESTE
