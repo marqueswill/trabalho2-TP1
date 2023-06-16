@@ -29,7 +29,9 @@ Matricula StubISDesenvolvedor::matriculaDesenvolvedor;
 Texto StubISDesenvolvedor::nomeDesenvolvedor;
 
 bool StubISDesenvolvedor::visualizar(Desenvolvedor* desenvolvedor) {
-    if (desenvolvedor->getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()) {
+    //if (desenvolvedor->getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()) {
+      if(true){
+        desenvolvedor->setMatricula(matriculaDesenvolvedor);
         desenvolvedor->setNome(nomeDesenvolvedor);
         desenvolvedor->setSenha(senhaDesenvolvedor);
         desenvolvedor->setTelefone(telefoneDesenvolvedor);

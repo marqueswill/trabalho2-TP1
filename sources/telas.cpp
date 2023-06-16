@@ -166,33 +166,6 @@ void TelaDesenvolvedor::selecionar(int *campo) {
     endwin();
 }
 
-void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
-    string titulo1 = "Informe matricula do desenvolvedor.";
-    string texto1 = "Matricula";
-    string textoErro = "Valor invalido para atributo ";
-
-    initscr();
-    getmaxyx(stdscr, linha, coluna);
-    clear();
-
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
-
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
-
-    echo();
-    getstr(matriculaDesenvolvedor);
-    noecho();
-
-    try {
-        matricula.setValor(matriculaDesenvolvedor);
-        desenvolvedor->setMatricula(matricula);
-    } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
-    };
-
-    endwin();
-}
-
 void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
     string titulo1 = "Por favor, preencha os espacos com os seus dados:";
     vector<string> texto1{"Matricula",
@@ -363,29 +336,35 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
 };
 
 void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
-    string titulo1 = "Preencha os seguintes campos: ";
+    string titulo1 = "Confirme com seus dados para descadastrar: ";
     string texto1 = "Matricula";
+    string texto2 = "Cuidado: descadastramento de conta resulta em descadastramento de todos testes e casos de testes associados.";
     string textoErro = "Valor invalido para atributo ";
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
     clear();
-
+    char confirmacao[4];
     mvprintw(linha / 4 + 0, coluna / 4, "%s", (titulo1).c_str());
     mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
-
     echo();
     getstr(matriculaDesenvolvedor);
     noecho();
-
     try {
         matricula->setValor(matriculaDesenvolvedor);
     } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
+        mvprintw(linha / 4 + 4, coluna / 4, "%s", (textoErro + texto1).c_str());
         noecho();
         getch();
     };
-    endwin();
+    // mvprintw(linha/ 4 + 2, coluna / 2, "%s", texto2.c_str());
+    // getstr(confirmacao);
+    // if(confirmacao == "SIM"){
+        endwin();
+    // }
+    // else{
+    //     descadastrar(matricula);
+    // }
 }
 
 //--------------------------------------------------------------------------------------------

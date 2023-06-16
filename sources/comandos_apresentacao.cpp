@@ -9,7 +9,6 @@ bool CmdIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {
 
 //--------------------------------------------------------------------------------------------
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    telaDesenvolvedor.visualizar(&desenvolvedor);
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);
