@@ -14,7 +14,7 @@ class CmdIAAutenticacao {
     
    public:
     virtual void executar(ISAutenticacao*) = 0;
-    virtual ~CmdIAAutenticacao() {}
+    virtual ~CmdIAAutenticacao() {};
 };
 class CmdIAutenticacaoAutenticar : public CmdIAAutenticacao {
     public:
