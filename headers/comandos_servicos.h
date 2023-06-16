@@ -58,7 +58,8 @@ public:
         ComandoSQL() {
              nomeBancoDados = "testedb.db";                             // Nome do banco de dados.
         }
-        void executar();
+        ComandoSQL *Comandosql;
+        void executar(string);
 };
 
 //---------------------------------------------------------------------------
