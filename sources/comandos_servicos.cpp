@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
 
 #include "../headers/comandos_servicos.h"
-
 // Atributo estatico.
 
 list<ElementoResultado> ComandoSQL::listaResultado;
@@ -144,7 +143,7 @@ Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
 // Implementacao para ComandoCadastrarDesenvolvedor
 
 ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor desenvolvedor) {
-        comandoSQL = "INSERT INTO desenvolvedores VALUES (";
+        comandoSQL = "INSERT INTO desenvolvedores(nome,matricula,senha,telefone) VALUES (";
         comandoSQL += "'" + desenvolvedor.getNome().getValor() + "', ";
         comandoSQL += "'" + desenvolvedor.getMatricula().getValor() + "', ";
         comandoSQL += "'" + desenvolvedor.getSenha().getValor() + "', ";
@@ -223,7 +222,7 @@ Codigo ComandoVisualizarTeste::getResultado(){
 // Implementacao para ComandoCadastrarTeste
 
 ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
-        comandoSQL = "INSERT INTO testes VALUES (";
+        comandoSQL = "INSERT INTO testes(nome,codigo,classe) VALUES (";
         comandoSQL += "'" + teste.getNome().getValor() + "', ";
         comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
         comandoSQL += "'" + teste.getClasse().getValor() + "', ";
@@ -303,7 +302,7 @@ Codigo ComandoVisualizarTeste::getResultado(){
 //---------------------------------------------------------------------------
 // Implementacao para ComandoCadastrarCasoDeTeste
 ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
-        comandoSQL = "INSERT INTO casodetestes VALUES (";
+        comandoSQL = "INSERT INTO casodetestes(nome,codigo,data,acao,resposta,resultado) VALUES (";
         comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
         comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
         comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
