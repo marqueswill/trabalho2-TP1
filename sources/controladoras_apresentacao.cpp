@@ -65,8 +65,13 @@ void CtrlIAInicializacao::executar() {
 };
 
 //--------------------------------------------------------------------------------------------
-// bool CtrlIAAutenticacao::autenticar(Matricula *) {
-// }
+bool CtrlIAAutenticacao::autenticar(Matricula *) {
+    bool resultado;
+    comando = new CmdIAAutenticacaoAutenticar();
+    resultado = comando->executar(ctrlISAutenticacao);
+    delete comando;
+    return resultado;
+}
 
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
