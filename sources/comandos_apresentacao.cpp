@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------------------------------------
 void CmdIAAutenticacao::executa(ISAutenticacao* ctrlISAutenticacao) {
-    telaAutenticacao.autenticar(&matricula);
-    resultado = ctrlISAutenticao->visualizar(&matricula);
+    telaAutenticacao.autenticar(&matricula, &senha);
+    resultado = ctrlISAutenticao->autenticar(matricula, senha);
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
