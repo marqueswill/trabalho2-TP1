@@ -9,9 +9,7 @@
 #include <conio.h>
 #include <string>
 #include <stdio.h>
-#include "../estrutura/casodetestes.sql"
-#include "../estrutura/desenvolvedores.sql"
-#include "../estrutura/testes.sql"
+#include "../sources/database.db.sql"
 #include "../headers/entidades.h"
 #include "sqlite3.h"            // Incluir cabe�alho da biblioteca SQLite.
 
