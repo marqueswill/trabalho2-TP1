@@ -155,6 +155,7 @@ ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor desen
         comandoSQL += "'" + desenvolvedor.getMatricula().getValor() + "', ";
         comandoSQL += "'" + desenvolvedor.getSenha().getValor() + "', ";
         comandoSQL += "'" + desenvolvedor.getTelefone().getValor() + "', ";
+        comandoSQL += ")";
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
 }
@@ -243,6 +244,7 @@ ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
         comandoSQL += "'" + teste.getNome().getValor() + "', ";
         comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
         comandoSQL += "'" + teste.getClasse().getValor() + "', ";
+        comandoSQL += ")";
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
         
