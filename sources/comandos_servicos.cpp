@@ -1,5 +1,6 @@
 //---------------------------------------------------------------------------
-
+#include "database.db"
+#include "database.db.sql"
 #include "../headers/comandos_servicos.h"
 // Atributo estatico.
 
@@ -30,7 +31,9 @@ void ElementoResultado::setValorColuna(const string& valorColuna){
 //---------------------------------------------------------------------------
 // Implementacao para classe ComandoSQL
 
+
 void ComandoSQL::conectar() {
+      nomeBancoDados = "database.db";
       rc = sqlite3_open(nomeBancoDados, &bd);
       if( rc != SQLITE_OK )
         throw EErroPersistencia("Erro na conexao ao banco de dados");
@@ -226,6 +229,7 @@ ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
         comandoSQL += "'" + teste.getNome().getValor() + "', ";
         comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
         comandoSQL += "'" + teste.getClasse().getValor() + "', ";
+        
 }
 
 //---------------------------------------------------------------------------
