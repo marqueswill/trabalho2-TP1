@@ -6,9 +6,19 @@
 
 //--------------------------------------------------------------------------------------------
 class CmdIAAutenticacao {
+   protected:
+    bool resultado;
+    Matricula *matricula;
+    Senha senha;
+    TelaAutenticacao telaAutenticacao;
+    
    public:
     virtual void executar(ISAutenticacao*) = 0;
     virtual ~CmdIAAutenticacao() {}
+};
+class CmdIAutenticacaoAutenticar : public CmdIAAutenticacao {
+    public:
+    void executar(ISDesenvolvedor*);
 };
 
 //--------------------------------------------------------------------------------------------
