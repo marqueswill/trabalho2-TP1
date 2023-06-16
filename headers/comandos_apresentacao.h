@@ -8,17 +8,18 @@
 class CmdIAAutenticacao {
    protected:
     bool resultado;
-    Matricula *matricula;
+    Matricula matricula;
     Senha senha;
     TelaAutenticacao telaAutenticacao;
-    
+
    public:
-    virtual void executar(ISAutenticacao*) = 0;
-    virtual ~CmdIAAutenticacao() {};
+    virtual bool executar(ISAutenticacao *) = 0;
+    virtual ~CmdIAAutenticacao(){};
 };
-class CmdIAutenticacaoAutenticar : public CmdIAAutenticacao {
-    public:
-    void executar(ISDesenvolvedor*);
+
+class CmdIAAutenticacaoAutenticar : public CmdIAAutenticacao {
+   public:
+    bool executar(ISAutenticacao *);
 };
 
 //--------------------------------------------------------------------------------------------
@@ -31,28 +32,28 @@ class CmdIADesenvolvedor {
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISDesenvolvedor*) = 0;
+    virtual void executar(ISDesenvolvedor *) = 0;
     virtual ~CmdIADesenvolvedor() {}
 };
 
 class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(ISDesenvolvedor *);
 };
 
 class CmdIADesenvolvedorVisualizar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(ISDesenvolvedor *);
 };
 
 class CmdIADesenvolvedorEditar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(ISDesenvolvedor *);
 };
 
 class CmdIADesenvolvedorDescadastrar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(ISDesenvolvedor *);
 };
 
 //--------------------------------------------------------------------------------------------
@@ -65,25 +66,25 @@ class CmdIATeste {
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISTeste*) = 0;
+    virtual void executar(ISTeste *) = 0;
     virtual ~CmdIATeste() {}
 };
 
 class CmdIATesteVisualizar : public CmdIATeste {
    public:
-    void executar(ISTeste*);
+    void executar(ISTeste *);
 };
 
 class CmdIATesteCadastrar : public CmdIATeste {
-    void executar(ISTeste*);
+    void executar(ISTeste *);
 };
 
 class CmdIATesteEditar : public CmdIATeste {
-    void executar(ISTeste*);
+    void executar(ISTeste *);
 };
 
 class CmdIATesteDescadastrar : public CmdIATeste {
-    void executar(ISTeste*);
+    void executar(ISTeste *);
 };
 
 //--------------------------------------------------------------------------------------------
@@ -96,24 +97,24 @@ class CmdIACasoDeTeste {
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISCasoDeTeste*) = 0;
+    virtual void executar(ISCasoDeTeste *) = 0;
     virtual ~CmdIACasoDeTeste() {}
 };
 
 class CmdIACasoDeTesteVisualizar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+    void executar(ISCasoDeTeste *);
 };
 
 class CmdIACasoDeTesteCadastrar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+    void executar(ISCasoDeTeste *);
 };
 
 class CmdIACasoDeTesteEditar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+    void executar(ISCasoDeTeste *);
 };
 
 class CmdIACasoDeTesteDescadastrar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+    void executar(ISCasoDeTeste *);
 };
 
 #endif  // COMANDOS_APRESENTACAO_H_INCLUDED

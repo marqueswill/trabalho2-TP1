@@ -16,13 +16,13 @@ class StubISAutenticacao : public ISAutenticacao {
     const static bool FALHA = false;
 
     bool resultado;
-   public:
-   StubISAutenticacao() {
-    matriculaStub.setValor(VALOR_VALIDO_MATRICULA);
-    senhaStub.setValor(VALOR_VALIDO_SENHA);
 
-   }
-   bool autenticar(Matricula, Senha);
+   public:
+    StubISAutenticacao() {
+        matriculaStub.setValor(VALOR_VALIDO_MATRICULA);
+        senhaStub.setValor(VALOR_VALIDO_SENHA);
+    }
+    bool autenticar(Matricula, Senha);
 };
 
 //--------------------------------------------------------------------------------------------

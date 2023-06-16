@@ -42,11 +42,10 @@ void TelaInicial::selecionar(int *campo) {
 }
 
 //--------------------------------------------------------------------------------------------
-void TelaAutenticacao::autenticar(Matricula* matricula, Senha* senha) {
+void TelaAutenticacao::autenticar(Matricula *matricula, Senha *senha) {
     string titulo1 = "Preencha os seguintes campos.";
     vector<string> texto1{"Matricula",
-                          "Senha",
-                          };
+                          "Senha"};
     string textoErro = "Valor inválido para atributo ";
 
     initscr();
@@ -66,7 +65,6 @@ void TelaAutenticacao::autenticar(Matricula* matricula, Senha* senha) {
 
     mvprintw(linha / 4 + 2, coluna / 4 + texto1[0].size() + 1, " : ");
     getstr(senhaAutenticacao);
-
 
     noecho();
 

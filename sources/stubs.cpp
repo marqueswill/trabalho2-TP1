@@ -3,14 +3,14 @@
 //--------------------------------------------------------------------------------------------
 const string StubISAutenticacao::VALOR_VALIDO_SENHA = "abc123";
 const string StubISAutenticacao::VALOR_VALIDO_MATRICULA = "1234567";
+Senha StubISAutenticacao::senhaStub;
+Matricula StubISAutenticacao::matriculaStub;
 
-Senha StubISAutenticacao::senhaAutenticacao;
-Matricula StubISAutenticacao::matriculaAutenticacao;
-bool StubISAutenticacao::autenticar(Matricula matrciula, Senha senha) {
+bool StubISAutenticacao::autenticar(Matricula matricula, Senha senha) {
     if (matricula.getValor() == matriculaStub.getValor()) {
-        if (senha.getValor() == senhaStub.getValor()){
-            return SUCESSO
-                } else {
+        if (senha.getValor() == senhaStub.getValor()) {
+            return SUCESSO;
+        } else {
             return FALHA;
         }
     } else {
@@ -27,7 +27,6 @@ Senha StubISDesenvolvedor::senhaDesenvolvedor;
 Telefone StubISDesenvolvedor::telefoneDesenvolvedor;
 Matricula StubISDesenvolvedor::matriculaDesenvolvedor;
 Texto StubISDesenvolvedor::nomeDesenvolvedor;
-
 
 bool StubISDesenvolvedor::visualizar(Desenvolvedor* desenvolvedor) {
     if (desenvolvedor->getMatricula().getValor() == desenvolvedorStub.getMatricula().getValor()) {

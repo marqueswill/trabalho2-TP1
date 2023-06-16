@@ -55,12 +55,11 @@ class CtrlIAAutenticacao : public IAAutenticacao {
     CmdIAAutenticacao *comando;
 
    public:
-    bool autenticar(Matricula *);
+    bool executar(Matricula);
     void setCtrlISAutenticacao(ISAutenticacao *ctrlISAutenticacao);
-    
 };
 
- inline void CtrlIAAutenticacao::setCtrlISAutenticacao(ISAutenticacao *ctrlISAutenticacao) {
+inline void CtrlIAAutenticacao::setCtrlISAutenticacao(ISAutenticacao *ctrlISAutenticacao) {
     this->ctrlISAutenticacao = ctrlISAutenticacao;
 }
 

@@ -15,7 +15,7 @@ void CtrlIAInicializacao::executar() {
 
         switch (campo1) {
             case AUTENTICAR:
-                if (ctrlIAAutenticacao->autenticar(&matricula)) {  // Solicita autenticação.
+                if (ctrlIAAutenticacao->executar(matricula)) {  // Solicita autenticação.
 
                     bool apresentar = true;  // Controle de laço.
                     while (apresentar) {     // Apresenta tela de seleção de serviço.
@@ -65,11 +65,13 @@ void CtrlIAInicializacao::executar() {
 };
 
 //--------------------------------------------------------------------------------------------
-bool CtrlIAAutenticacao::autenticar(Matricula *) {
+bool CtrlIAAutenticacao::executar(Matricula) {
     bool resultado;
+
     comando = new CmdIAAutenticacaoAutenticar();
     resultado = comando->executar(ctrlISAutenticacao);
     delete comando;
+
     return resultado;
 }
 
