@@ -150,7 +150,7 @@ void DriverTestesModulos::executar() {
 
         switch (campo) {
             case AUTENTICACAO:
-                // testeAutenticacao.executar();
+                testeAutenticacao.executar();
                 break;
             case DESENVOLVEDOR:
                 testeDesenvolvedor.executar();

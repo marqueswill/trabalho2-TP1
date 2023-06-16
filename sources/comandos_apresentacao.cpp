@@ -1,6 +1,13 @@
 #include "../headers/comandos_apresentacao.h"
 
 //--------------------------------------------------------------------------------------------
+bool CmdIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {
+    telaAutenticacao.autenticar(&matricula, &senha);
+    resultado = ctrlISAutenticacao->autenticar(matricula, senha);
+    return resultado;
+}
+
+//--------------------------------------------------------------------------------------------
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.visualizar(&desenvolvedor);
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);

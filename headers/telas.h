@@ -36,6 +36,9 @@ class TelaUsuarioLogado : public Telas {
 
 //--------------------------------------------------------------------------------------------
 class TelaAutenticacao : public Telas {
+   private:
+    char matriculaAutenticacao[100] = "";
+    char senhaAutenticacao[100] = "";
    public:
     void autenticar(Matricula *, Senha *);
 };

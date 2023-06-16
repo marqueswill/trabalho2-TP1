@@ -82,7 +82,6 @@ class DriverTestesModulos : public Drivers {
 
 //--------------------------------------------------------------------------------------------
 class DriverTestesIntegracao : public Drivers {
-   private:
    public:
     void executar();
 };
