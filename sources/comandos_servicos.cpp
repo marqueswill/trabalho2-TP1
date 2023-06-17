@@ -273,7 +273,7 @@ ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
 //---------------------------------------------------------------------------
 // Implementacao para ComandoVisualizarTeste
 ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo){
-        comandoSQL = "SELECT * from casodetestes where codigo = ";
+        comandoSQL = "SELECT * from casodetestes where codigo2 = ";
         comandoSQL += codigo.getValor();
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);        
@@ -330,7 +330,7 @@ Codigo ComandoVisualizarTeste::getResultado(){
 //---------------------------------------------------------------------------
 // Implementacao para ComandoCadastrarCasoDeTeste
 ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
-        comandoSQL = "INSERT INTO casodetestes(nome,codigo,data,acao,resposta,resultado) VALUES (";
+        comandoSQL = "INSERT INTO casodetestes(nome,codigo2,data,acao,resposta,resultado) VALUES (";
         comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
         comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
         comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
@@ -352,7 +352,7 @@ ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
         comandoSQL += "', acao = '" + casoDeTeste.getAcao().getValor();
         comandoSQL += "', resposta = '" + casoDeTeste.getResposta().getValor();
         comandoSQL += "', resultado = '" + casoDeTeste.getResultado().getValor();
-        comandoSQL += "' WHERE codigo = " + casoDeTeste.getCodigo().getValor();
+        comandoSQL += "' WHERE codigo2 = " + casoDeTeste.getCodigo().getValor();
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
 
@@ -361,7 +361,7 @@ ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
 //---------------------------------------------------------------------------
 // Implementacao para ComandoDescadastrarCasoDeTeste
 ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
-        comandoSQL = "DELETE FROM casodetestes WHERE codigo = ";
+        comandoSQL = "DELETE FROM casodetestes WHERE codigo2 = ";
         comandoSQL += codigo.getValor();
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
