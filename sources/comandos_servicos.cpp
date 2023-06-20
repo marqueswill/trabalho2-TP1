@@ -369,9 +369,49 @@ ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
 
 ComandoListarTeste::ComandoListarTeste(Matricula matricula){
         Teste teste;
-        comandoSQL = "SELECT codigo FROM r_des_casos_testes WHERE desenvolvedores.PK = ";
+        comandoSQL = "SELECT codigo FROM r_des_casos_testes WHERE matricula.PK = ";
         comandoSQL += matricula.getValor();
         Comandosql = new ComandoSQL();
-        Comandosql-> executar(comandoSQL);
-        
+        Comandosql-> executar(comandoSQL);       
+}
+
+vector <Teste> ComandoListarTeste::getLista(){
+        ElementoResultado resultado;
+        Teste teste;
+        vector <Teste> testes;
+
+        // // Remover nome;
+        // if (listaResultado.empty())
+        //         throw EErroPersistencia("Lista de resultados vazia.");
+        // resultado = listaResultado.back();
+        // listaResultado.pop_back();
+        // teste->setNome.setValor(resultado.getValorColuna());
+        // desenvolvedor.setNome(texto);
+
+        // // Remover matricula;
+        // if (listaResultado.empty())
+        //         throw EErroPersistencia("Lista de resultados vazia.");
+        // resultado = listaResultado.back();
+        // listaResultado.pop_back();
+        // matricula.setValor(resultado.getValorColuna());
+        // desenvolvedor.setMatricula(matricula);
+
+        // // Remover senha;
+        // if (listaResultado.empty())
+        //         throw EErroPersistencia("Lista de resultados vazia.");
+        // resultado = listaResultado.back();
+        // listaResultado.pop_back();
+        // senha.setValor(resultado.getValorColuna());
+        // desenvolvedor.setSenha(senha);
+
+        // // Remover telefone;
+        // if (listaResultado.empty())
+        //         throw EErroPersistencia("Lista de resultados vazia.");
+        // resultado = listaResultado.back();
+        // listaResultado.pop_back();
+        // telefone.setValor(resultado.getValorColuna());
+        // desenvolvedor.setTelefone(telefone);
+
+        return testes;
+
 }

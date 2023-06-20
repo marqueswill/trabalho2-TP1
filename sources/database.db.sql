@@ -6,29 +6,23 @@ CREATE TABLE IF NOT EXISTS "desenvolvedores" (
 	"telefone"	TEXT,
 	PRIMARY KEY("matricula")
 );
-CREATE TABLE IF NOT EXISTS "casodetestes" (
-	"nome"	TEXT,
-	"codigo2"	TEXT,
-	"data"	TEXT,
-	"acao"	TEXT,
-	"resposta"	TEXT,
-	"resultado"	TEXT,
-	PRIMARY KEY("codigo2")
-);
 CREATE TABLE IF NOT EXISTS "testes" (
 	"nome"	TEXT,
 	"codigo"	TEXT,
 	"classe"	TEXT,
-	PRIMARY KEY("codigo")
+	"matricula"	TEXT,
+	PRIMARY KEY("codigo"),
+	FOREIGN KEY("matricula") REFERENCES "desenvolvedores"
 );
-CREATE TABLE IF NOT EXISTS "r_des_casos_testes" (
-	"SEQ_RELACIONAL"	INTEGER,
-	"matricula"	text,
-	"codigo2"	text,
-	"codigo"	text,
-	FOREIGN KEY("MATRICULA") REFERENCES "DESENVOLVEDORES"("MATRICULA"),
-	FOREIGN KEY("CODIGO") REFERENCES "TESTES"("CODIGO"),
-	FOREIGN KEY("CODIGO2") REFERENCES "CASODETESTES"("CODIGO2"),
-	PRIMARY KEY("SEQ_RELACIONAL")
+CREATE TABLE IF NOT EXISTS "casodetestes" (
+	"nome"	TEXT,
+	"codigo"	TEXT,
+	"data"	TEXT,
+	"acao"	TEXT,
+	"resposta"	TEXT,
+	"resultado"	TEXT,
+	"codigotestes"	TEXT,
+	PRIMARY KEY("codigo"),
+	FOREIGN KEY("codigotestes") REFERENCES "testes"("codigo")
 );
 COMMIT;

@@ -165,6 +165,9 @@ public:
         ComandoEditarCasoDeTeste(CasoDeTeste);
 };
 //---------------------------------------------------------------------------
+// Classe ComandoListarCasoDeTeste
+
+//---------------------------------------------------------------------------
 // Classe ComandoDescadastrarTeste
 class ComandoDescadastrarCasoDeTeste:public ComandoSQL {
 public:
