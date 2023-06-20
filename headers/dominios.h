@@ -2,6 +2,7 @@
 #define DOMINIOS_H_INCLUDED
 
 #include <iomanip>
+#include <list>
 #include <stdexcept>
 #include <string>
 #include <vector>

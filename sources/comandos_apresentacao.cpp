@@ -1,7 +1,7 @@
 #include "../headers/comandos_apresentacao.h"
 
 //--------------------------------------------------------------------------------------------
-bool CmdIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {
+bool ComandoIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {
     telaAutenticacao.autenticar(matricula, &senha);
     Matricula login = *matricula;
     resultado = ctrlISAutenticacao->autenticar(login, senha);
@@ -9,7 +9,7 @@ bool CmdIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {
 }
 
 //--------------------------------------------------------------------------------------------
-void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void ComandoIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     desenvolvedor.setMatricula(matricula);
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
@@ -19,7 +19,7 @@ void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor
     }
 }
 
-void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void ComandoIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.cadastrar(&desenvolvedor);
     resultado = ctrlISDesenvolvedor->cadastrar(desenvolvedor);
     if (resultado) {
@@ -29,7 +29,7 @@ void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor)
     }
 }
 
-void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void ComandoIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     telaDesenvolvedor.editar(&desenvolvedor);
     desenvolvedor.setMatricula(matricula);
     resultado = ctrlISDesenvolvedor->editar(desenvolvedor);
@@ -40,7 +40,7 @@ void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     }
 }
 
-void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void ComandoIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     Matricula matriculaConfirmacao;
     telaDesenvolvedor.descadastrar(&matriculaConfirmacao);
     if (matriculaConfirmacao.getValor() == matricula.getValor()) {
@@ -56,7 +56,7 @@ void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolved
 }
 
 //--------------------------------------------------------------------------------------------
-void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
+void ComandoIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
     telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
     if (resultado) {
@@ -66,7 +66,7 @@ void CmdIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
     }
 }
 
-void CmdIATesteCadastrar::executar(ISTeste* ctrlISTeste) {
+void ComandoIATesteCadastrar::executar(ISTeste* ctrlISTeste) {
     telaTeste.cadastrar(&teste);                // Solicita dados do teste ao usuário. .
     resultado = ctrlISTeste->cadastrar(teste);  // Registra no banco de dados.
     if (resultado) {
@@ -76,7 +76,7 @@ void CmdIATesteCadastrar::executar(ISTeste* ctrlISTeste) {
     }
 }
 
-void CmdIATesteEditar::executar(ISTeste* ctrlISTeste) {
+void ComandoIATesteEditar::executar(ISTeste* ctrlISTeste) {
     telaTeste.visualizar(&teste);                 // Obtém código do teste que será editado
     resultado = ctrlISTeste->visualizar(&teste);  // Verifica se está no banco de dados e coloca os valores.
 
@@ -93,7 +93,7 @@ void CmdIATesteEditar::executar(ISTeste* ctrlISTeste) {
     }
 }
 
-void CmdIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
+void ComandoIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
     telaTeste.descadastrar(&codigo);                // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->descadastrar(codigo);  // Socilita descadastramento do banco de dados.
     if (resultado) {
@@ -104,7 +104,7 @@ void CmdIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
 }
 
 //--------------------------------------------------------------------------------------------
-void CmdIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
+void ComandoIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     telaCasoDeTeste.visualizar(&casoDeTeste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISCasoDeTeste->visualizar(&casoDeTeste);  // Pesquisa no banco de dados e coloca os valores.
     if (resultado) {
@@ -114,7 +114,7 @@ void CmdIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     }
 }
 
-void CmdIACasoDeTesteCadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
+void ComandoIACasoDeTesteCadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     telaCasoDeTeste.cadastrar(&casoDeTeste);                // Solicita dados do teste ao usuário. .
     resultado = ctrlISCasoDeTeste->cadastrar(casoDeTeste);  // Registra no banco de dados.
     if (resultado) {
@@ -124,7 +124,7 @@ void CmdIACasoDeTesteCadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     }
 }
 
-void CmdIACasoDeTesteEditar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
+void ComandoIACasoDeTesteEditar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     telaCasoDeTeste.visualizar(&casoDeTeste);                 // Obtém código do teste que será editado
     resultado = ctrlISCasoDeTeste->visualizar(&casoDeTeste);  // Verifica se está no banco de dados e coloca os valores.
 
@@ -141,7 +141,7 @@ void CmdIACasoDeTesteEditar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     }
 }
 
-void CmdIACasoDeTesteDescadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
+void ComandoIACasoDeTesteDescadastrar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     telaCasoDeTeste.descadastrar(&codigo);                // Pede o código do teste ao usuário.
     resultado = ctrlISCasoDeTeste->descadastrar(codigo);  // Socilita descadastramento do banco de dados.
     if (resultado) {

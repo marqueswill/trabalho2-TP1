@@ -66,14 +66,14 @@ void CtrlIAInicializacao::executar() {
 
 //--------------------------------------------------------------------------------------------
 bool CtrlIAAutenticacao::executar(Matricula* matricula) {
-    comando = new CmdIAAutenticacaoAutenticar(matricula);
+    comando = new ComandoIAAutenticacaoAutenticar(matricula);
     return comando->executar(ctrlISAutenticacao);
     delete comando;
 }
 
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
-    comando = new CmdIADesenvolvedorCadastrar();
+    comando = new ComandoIADesenvolvedorCadastrar();
     comando->executar(ctrlISDesenvolvedor);
     delete comando;
 }
@@ -87,19 +87,19 @@ void CtrlIADesenvolvedor::executar(Matricula matricula) {
 
         switch (opcao) {
             case VISUALIZAR:
-                comando = new CmdIADesenvolvedorVisualizar(matricula);
+                comando = new ComandoIADesenvolvedorVisualizar(matricula);
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
 
             case EDITAR:
-                comando = new CmdIADesenvolvedorEditar(matricula);
+                comando = new ComandoIADesenvolvedorEditar(matricula);
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
 
             case DESCADASTRAR:
-                comando = new CmdIADesenvolvedorDescadastrar(matricula);
+                comando = new ComandoIADesenvolvedorDescadastrar(matricula);
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
@@ -127,25 +127,25 @@ void CtrlIATeste::executar(Matricula matricula) {
 
         switch (opcao) {
             case VISUALIZAR:
-                comando = new CmdIATesteVisualizar();
+                comando = new ComandoIATesteVisualizar();
                 comando->executar(ctrlISTeste);
                 delete comando;
                 break;
 
             case CADASTRAR:
-                comando = new CmdIATesteCadastrar();
+                comando = new ComandoIATesteCadastrar();
                 comando->executar(ctrlISTeste);
                 delete comando;
                 break;
 
             case EDITAR:
-                comando = new CmdIATesteEditar();
+                comando = new ComandoIATesteEditar();
                 comando->executar(ctrlISTeste);
                 delete comando;
                 break;
 
             case DESCADASTRAR:
-                comando = new CmdIATesteDescadastrar();
+                comando = new ComandoIATesteDescadastrar();
                 comando->executar(ctrlISTeste);
                 delete comando;
                 break;
@@ -174,25 +174,25 @@ void CtrlIACasoDeTeste::executar(Matricula matricula) {
 
         switch (opcao) {
             case VISUALIZAR:
-                comando = new CmdIACasoDeTesteVisualizar();
+                comando = new ComandoIACasoDeTesteVisualizar();
                 comando->executar(ctrlISCasoDeTeste);
                 delete comando;
                 break;
 
             case CADASTRAR:
-                comando = new CmdIACasoDeTesteCadastrar();
+                comando = new ComandoIACasoDeTesteCadastrar();
                 comando->executar(ctrlISCasoDeTeste);
                 delete comando;
                 break;
 
             case EDITAR:
-                comando = new CmdIACasoDeTesteEditar();
+                comando = new ComandoIACasoDeTesteEditar();
                 comando->executar(ctrlISCasoDeTeste);
                 delete comando;
                 break;
 
             case DESCADASTRAR:
-                comando = new CmdIACasoDeTesteDescadastrar();
+                comando = new ComandoIACasoDeTesteDescadastrar();
                 comando->executar(ctrlISCasoDeTeste);
                 delete comando;
                 break;

@@ -52,7 +52,7 @@ inline void CtrlIAInicializacao::setCtrlIACasoDeTeste(IACasoDeTeste *ctrlIACasoD
 class CtrlIAAutenticacao : public IAAutenticacao {
    private:
     ISAutenticacao *ctrlISAutenticacao;
-    CmdIAAutenticacao *comando;
+    ComandoIAAutenticacao *comando;
 
    public:
     bool executar(Matricula *);
@@ -72,7 +72,7 @@ class CtrlIADesenvolvedor : public IADesenvolvedor {
     const static int RETORNAR = 4;
 
     ISDesenvolvedor *ctrlISDesenvolvedor;
-    CmdIADesenvolvedor *comando;
+    ComandoIADesenvolvedor *comando;
 
    public:
     void setCtrlISDesenvolvedor(ISDesenvolvedor *);
@@ -94,7 +94,7 @@ class CtrlIATeste : public IATeste {
     const static int RETORNAR = 5;
 
     ISTeste *ctrlISTeste;
-    CmdIATeste *comando;
+    ComandoIATeste *comando;
 
    public:
     void executar(Matricula);
@@ -115,7 +115,7 @@ class CtrlIACasoDeTeste : public IACasoDeTeste {
     const static int RETORNAR = 5;
 
     ISCasoDeTeste *ctrlISCasoDeTeste;
-    CmdIACasoDeTeste *comando;
+    ComandoIACasoDeTeste *comando;
 
    public:
     void executar(Matricula);
