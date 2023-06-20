@@ -41,13 +41,17 @@ void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
 }
 
 void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    telaDesenvolvedor.descadastrar(&matricula);
-    desenvolvedor.setMatricula(matricula);
-    resultado = ctrlISDesenvolvedor->descadastrar(matricula);
-    if (resultado) {
-        telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
+    Matricula matriculaConfirmacao;
+    telaDesenvolvedor.descadastrar(&matriculaConfirmacao);
+    if (matriculaConfirmacao.getValor() == matricula.getValor()) {
+        resultado = ctrlISDesenvolvedor->descadastrar(matricula);
+        if (resultado) {
+            telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
+        } else {
+            telaMensagem.apresentar("Não foi possível descadastrar desenvolvedor. Pressione qualquer tecla para continuar.");
+        }
     } else {
-        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
+        telaMensagem.apresentar("Informe apenas matricula do desenvolvedor logado. Pressione qualquer tecla para continuar.");
     }
 }
 

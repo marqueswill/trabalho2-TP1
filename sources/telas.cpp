@@ -363,7 +363,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
 };
 
 void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
-    string titulo1 = "Confirme os dados para descadastramento.";
+    string titulo1 = "Confirme sua matricula para confirmar o descadastramento.";
     string texto1 = "Matricula";
     string textoErro = "Valor invalido para atributo ";
 
