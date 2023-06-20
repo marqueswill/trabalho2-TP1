@@ -3,7 +3,7 @@
 
 #include "dominios.h"
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 class Entidade {
    protected:
     Texto nome;
@@ -21,7 +21,7 @@ inline Texto Entidade::getNome() const {
     return nome;
 }
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 class Desenvolvedor : public Entidade {
    private:
     Matricula matricula;
@@ -33,10 +33,10 @@ class Desenvolvedor : public Entidade {
     Desenvolvedor(Matricula, Texto, Telefone, Senha);
 
     void setMatricula(const Matricula &);
-    void setSenha(const Senha &);
-    void setTelefone(const Telefone &);
     Matricula getMatricula() const;
+    void setSenha(const Senha &);
     Senha getSenha() const;
+    void setTelefone(const Telefone &);
     Telefone getTelefone() const;
 };
 
@@ -51,27 +51,27 @@ inline void Desenvolvedor::setMatricula(const Matricula &matricula) {
     this->matricula = matricula;
 }
 
-inline void Desenvolvedor::setSenha(const Senha &senha) {
-    this->senha = senha;
-}
-
-inline void Desenvolvedor::setTelefone(const Telefone &telefone) {
-    this->telefone = telefone;
-}
-
 inline Matricula Desenvolvedor::getMatricula() const {
     return matricula;
+}
+
+inline void Desenvolvedor::setSenha(const Senha &senha) {
+    this->senha = senha;
 }
 
 inline Senha Desenvolvedor::getSenha() const {
     return senha;
 }
 
+inline void Desenvolvedor::setTelefone(const Telefone &telefone) {
+    this->telefone = telefone;
+}
+
 inline Telefone Desenvolvedor::getTelefone() const {
     return telefone;
 }
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 class Teste : public Entidade {
    private:
     Codigo codigo;
@@ -82,8 +82,8 @@ class Teste : public Entidade {
     Teste(Codigo, Texto, Classe);
 
     void setCodigo(const Codigo &);
-    void setClasse(const Classe &);
     Codigo getCodigo() const;
+    void setClasse(const Classe &);
     Classe getClasse() const;
 };
 
@@ -97,18 +97,18 @@ inline void Teste::setCodigo(const Codigo &codigo) {
     this->codigo = codigo;
 }
 
-inline void Teste::setClasse(const Classe &classe) {
-    this->classe = classe;
-}
-
 inline Codigo Teste::getCodigo() const {
     return codigo;
+}
+
+inline void Teste::setClasse(const Classe &classe) {
+    this->classe = classe;
 }
 
 inline Classe Teste::getClasse() const {
     return classe;
 }
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 class CasoDeTeste : public Entidade {
    private:
     Codigo codigo;
@@ -122,14 +122,14 @@ class CasoDeTeste : public Entidade {
     CasoDeTeste(Codigo, Texto, Data, Texto, Texto, Resultado);
 
     void setCodigo(const Codigo &);
-    void setData(const Data &);
-    void setAcao(const Texto &);
-    void setResposta(const Texto &);
-    void setResultado(const Resultado &);
     Codigo getCodigo() const;
+    void setData(const Data &);
     Data getData() const;
+    void setAcao(const Texto &);
     Texto getAcao() const;
+    void setResposta(const Texto &);
     Texto getResposta() const;
+    void setResultado(const Resultado &);
 
     Resultado getResultado() const;
 };
@@ -146,36 +146,36 @@ inline void CasoDeTeste::setCodigo(const Codigo &codigo) {
     this->codigo = codigo;
 }
 
+inline Codigo CasoDeTeste::getCodigo() const {
+    return codigo;
+}
+
 inline void CasoDeTeste::setData(const Data &data) {
     this->data = data;
-}
-
-inline void CasoDeTeste::setAcao(const Texto &acao) {
-    this->acao = acao;
-}
-
-inline void CasoDeTeste::setResposta(const Texto &resposta) {
-    this->resposta = resposta;
-}
-
-inline void CasoDeTeste::setResultado(const Resultado &resultado) {
-    this->resultado = resultado;
 }
 
 inline Data CasoDeTeste::getData() const {
     return data;
 }
 
-inline Codigo CasoDeTeste::getCodigo() const {
-    return codigo;
+inline void CasoDeTeste::setAcao(const Texto &acao) {
+    this->acao = acao;
 }
 
 inline Texto CasoDeTeste::getAcao() const {
     return acao;
 }
 
+inline void CasoDeTeste::setResposta(const Texto &resposta) {
+    this->resposta = resposta;
+}
+
 inline Texto CasoDeTeste::getResposta() const {
     return resposta;
+}
+
+inline void CasoDeTeste::setResultado(const Resultado &resultado) {
+    this->resultado = resultado;
 }
 
 inline Resultado CasoDeTeste::getResultado() const {
@@ -184,4 +184,4 @@ inline Resultado CasoDeTeste::getResultado() const {
 
 #endif  // ENTIDADES_H_INCLUDED
 
-//---------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
