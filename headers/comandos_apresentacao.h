@@ -5,7 +5,7 @@
 #include "telas.h"
 
 //--------------------------------------------------------------------------------------------
-class CmdIAAutenticacao {
+class ComandoIAAutenticacao {
    protected:
     bool resultado;
     Matricula* matricula;
@@ -14,19 +14,19 @@ class CmdIAAutenticacao {
 
    public:
     virtual bool executar(ISAutenticacao *) = 0;
-    virtual ~CmdIAAutenticacao(){};
+    virtual ~ComandoIAAutenticacao(){};
 };
 
-class CmdIAAutenticacaoAutenticar : public CmdIAAutenticacao {
+class ComandoIAAutenticacaoAutenticar : public ComandoIAAutenticacao {
    public:
-    CmdIAAutenticacaoAutenticar(Matricula* matricula) {
+    ComandoIAAutenticacaoAutenticar(Matricula* matricula) {
         this->matricula = matricula;
     };
     bool executar(ISAutenticacao *);
 };
 
 //--------------------------------------------------------------------------------------------
-class CmdIADesenvolvedor {
+class ComandoIADesenvolvedor {
    protected:
     bool resultado;
     Desenvolvedor desenvolvedor;
@@ -38,37 +38,37 @@ class CmdIADesenvolvedor {
     virtual void executar(ISDesenvolvedor *) = 0;
 };
 
-class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorCadastrar : public ComandoIADesenvolvedor {
    public:
     void executar(ISDesenvolvedor *);
 };
 
-class CmdIADesenvolvedorVisualizar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorVisualizar : public ComandoIADesenvolvedor {
    public:
-    CmdIADesenvolvedorVisualizar(Matricula matricula) {
+    ComandoIADesenvolvedorVisualizar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISDesenvolvedor *);
 };
 
-class CmdIADesenvolvedorEditar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorEditar : public ComandoIADesenvolvedor {
    public:
-    CmdIADesenvolvedorEditar(Matricula matricula) {
+    ComandoIADesenvolvedorEditar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISDesenvolvedor *);
 };
 
-class CmdIADesenvolvedorDescadastrar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorDescadastrar : public ComandoIADesenvolvedor {
    public:
-    CmdIADesenvolvedorDescadastrar(Matricula matricula) {
+    ComandoIADesenvolvedorDescadastrar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISDesenvolvedor *);
 };
 
 //--------------------------------------------------------------------------------------------
-class CmdIATeste {
+class ComandoIATeste {
    protected:
     bool resultado;
     Teste teste;
@@ -78,28 +78,28 @@ class CmdIATeste {
 
    public:
     virtual void executar(ISTeste *) = 0;
-    virtual ~CmdIATeste() {}
+    virtual ~ComandoIATeste() {}
 };
 
-class CmdIATesteVisualizar : public CmdIATeste {
+class ComandoIATesteVisualizar : public ComandoIATeste {
    public:
     void executar(ISTeste *);
 };
 
-class CmdIATesteCadastrar : public CmdIATeste {
+class ComandoIATesteCadastrar : public ComandoIATeste {
     void executar(ISTeste *);
 };
 
-class CmdIATesteEditar : public CmdIATeste {
+class ComandoIATesteEditar : public ComandoIATeste {
     void executar(ISTeste *);
 };
 
-class CmdIATesteDescadastrar : public CmdIATeste {
+class ComandoIATesteDescadastrar : public ComandoIATeste {
     void executar(ISTeste *);
 };
 
 //--------------------------------------------------------------------------------------------
-class CmdIACasoDeTeste {
+class ComandoIACasoDeTeste {
    protected:
     bool resultado;
     CasoDeTeste casoDeTeste;
@@ -109,22 +109,22 @@ class CmdIACasoDeTeste {
 
    public:
     virtual void executar(ISCasoDeTeste *) = 0;
-    virtual ~CmdIACasoDeTeste() {}
+    virtual ~ComandoIACasoDeTeste() {}
 };
 
-class CmdIACasoDeTesteVisualizar : public CmdIACasoDeTeste {
+class ComandoIACasoDeTesteVisualizar : public ComandoIACasoDeTeste {
     void executar(ISCasoDeTeste *);
 };
 
-class CmdIACasoDeTesteCadastrar : public CmdIACasoDeTeste {
+class ComandoIACasoDeTesteCadastrar : public ComandoIACasoDeTeste {
     void executar(ISCasoDeTeste *);
 };
 
-class CmdIACasoDeTesteEditar : public CmdIACasoDeTeste {
+class ComandoIACasoDeTesteEditar : public ComandoIACasoDeTeste {
     void executar(ISCasoDeTeste *);
 };
 
-class CmdIACasoDeTesteDescadastrar : public CmdIACasoDeTeste {
+class ComandoIACasoDeTesteDescadastrar : public ComandoIACasoDeTeste {
     void executar(ISCasoDeTeste *);
 };
 
