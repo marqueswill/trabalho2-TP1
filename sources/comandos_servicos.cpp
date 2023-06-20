@@ -366,3 +366,12 @@ ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
 }
+
+ComandoListarTeste::ComandoListarTeste(Matricula matricula){
+        Teste teste;
+        comandoSQL = "SELECT codigo FROM r_des_casos_testes WHERE desenvolvedores.PK = ";
+        comandoSQL += matricula.getValor();
+        Comandosql = new ComandoSQL();
+        Comandosql-> executar(comandoSQL);
+        
+}

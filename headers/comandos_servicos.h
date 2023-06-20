@@ -113,6 +113,13 @@ public:
 };
 
 //---------------------------------------------------------------------------
+// Classe ComandoListarTeste
+class ComandoListarTeste: public ComandoSQL{
+        public:
+        ComandoListarTeste(Matricula);
+        vector <Teste> getLista();
+};
+//---------------------------------------------------------------------------
 // Classe ComandoVisualizarTeste
 
 class ComandoVisualizarTeste: public ComandoSQL {
