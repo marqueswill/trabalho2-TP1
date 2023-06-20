@@ -55,7 +55,7 @@ class CtrlIAAutenticacao : public IAAutenticacao {
     CmdIAAutenticacao *comando;
 
    public:
-    bool executar(Matricula);
+    bool executar(Matricula *);
     void setCtrlISAutenticacao(ISAutenticacao *ctrlISAutenticacao);
 };
 

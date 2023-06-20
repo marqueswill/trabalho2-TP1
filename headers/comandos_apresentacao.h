@@ -8,7 +8,7 @@
 class CmdIAAutenticacao {
    protected:
     bool resultado;
-    Matricula matricula;
+    Matricula* matricula;
     Senha senha;
     TelaAutenticacao telaAutenticacao;
 
@@ -19,6 +19,9 @@ class CmdIAAutenticacao {
 
 class CmdIAAutenticacaoAutenticar : public CmdIAAutenticacao {
    public:
+    CmdIAAutenticacaoAutenticar(Matricula* matricula) {
+        this->matricula = matricula;
+    };
     bool executar(ISAutenticacao *);
 };
 
@@ -33,7 +36,6 @@ class CmdIADesenvolvedor {
 
    public:
     virtual void executar(ISDesenvolvedor *) = 0;
-    virtual ~CmdIADesenvolvedor() {}
 };
 
 class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
@@ -43,16 +45,25 @@ class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
 
 class CmdIADesenvolvedorVisualizar : public CmdIADesenvolvedor {
    public:
+    CmdIADesenvolvedorVisualizar(Matricula matricula) {
+        this->matricula = matricula;
+    }
     void executar(ISDesenvolvedor *);
 };
 
 class CmdIADesenvolvedorEditar : public CmdIADesenvolvedor {
    public:
+    CmdIADesenvolvedorEditar(Matricula matricula) {
+        this->matricula = matricula;
+    }
     void executar(ISDesenvolvedor *);
 };
 
 class CmdIADesenvolvedorDescadastrar : public CmdIADesenvolvedor {
    public:
+    CmdIADesenvolvedorDescadastrar(Matricula matricula) {
+        this->matricula = matricula;
+    }
     void executar(ISDesenvolvedor *);
 };
 

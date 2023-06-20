@@ -18,7 +18,7 @@ class ISCasoDeTeste;
 
 class IAAutenticacao {
    public:
-    virtual bool executar(Matricula) = 0;
+    virtual bool executar(Matricula *) = 0;
     virtual void setCtrlISAutenticacao(ISAutenticacao *) = 0;
     virtual ~IAAutenticacao(){};
 };
