@@ -2,14 +2,15 @@
 
 //--------------------------------------------------------------------------------------------
 bool CmdIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {
-    telaAutenticacao.autenticar(&matricula, &senha);
-    resultado = ctrlISAutenticacao->autenticar(matricula, senha);
+    telaAutenticacao.autenticar(matricula, &senha);
+    Matricula login = *matricula;
+    resultado = ctrlISAutenticacao->autenticar(login, senha);
     return resultado;
 }
 
 //--------------------------------------------------------------------------------------------
 void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    telaDesenvolvedor.visualizar(&desenvolvedor);
+    desenvolvedor.setMatricula(matricula);
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);
@@ -24,7 +25,7 @@ void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor)
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
-        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
+        telaMensagem.apresentar("Nao foi possível cadastrar desenvolvedor. Pressione qualquer tecla para continuar.");
     }
 }
 
@@ -35,7 +36,7 @@ void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
-        telaMensagem.apresentar("Desenvolvedor informado não foi encontrado. Pressione qualquer tecla para continuar.");
+        telaMensagem.apresentar("Nao foi possivel editar dados de desenvolvedor. Pressione qualquer tecla para continuar.");
     }
 }
 

@@ -15,7 +15,7 @@ void CtrlIAInicializacao::executar() {
 
         switch (campo1) {
             case AUTENTICAR:
-                if (ctrlIAAutenticacao->executar(matricula)) {  // Solicita autenticação.
+                if (ctrlIAAutenticacao->executar(&matricula)) {  // Solicita autenticação e obtem a matricula.
 
                     bool apresentar = true;  // Controle de laço.
                     while (apresentar) {     // Apresenta tela de seleção de serviço.
@@ -65,14 +65,10 @@ void CtrlIAInicializacao::executar() {
 };
 
 //--------------------------------------------------------------------------------------------
-bool CtrlIAAutenticacao::executar(Matricula) {
-    bool resultado;
-
-    comando = new CmdIAAutenticacaoAutenticar();
-    resultado = comando->executar(ctrlISAutenticacao);
+bool CtrlIAAutenticacao::executar(Matricula* matricula) {
+    comando = new CmdIAAutenticacaoAutenticar(matricula);
+    return comando->executar(ctrlISAutenticacao);
     delete comando;
-
-    return resultado;
 }
 
 //--------------------------------------------------------------------------------------------
@@ -82,9 +78,8 @@ void CtrlIADesenvolvedor::cadastrar() {
     delete comando;
 }
 
-void CtrlIADesenvolvedor::executar(Matricula) {
+void CtrlIADesenvolvedor::executar(Matricula matricula) {
     int opcao;
-
     bool apresentar = true;
     while (apresentar) {
         TelaDesenvolvedor telaDesenvolvedor;
@@ -92,19 +87,19 @@ void CtrlIADesenvolvedor::executar(Matricula) {
 
         switch (opcao) {
             case VISUALIZAR:
-                comando = new CmdIADesenvolvedorVisualizar();
+                comando = new CmdIADesenvolvedorVisualizar(matricula);
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
 
             case EDITAR:
-                comando = new CmdIADesenvolvedorEditar();
+                comando = new CmdIADesenvolvedorEditar(matricula);
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
 
             case DESCADASTRAR:
-                comando = new CmdIADesenvolvedorDescadastrar();
+                comando = new CmdIADesenvolvedorDescadastrar(matricula);
                 comando->executar(ctrlISDesenvolvedor);
                 delete comando;
                 break;
@@ -168,7 +163,7 @@ void CtrlIATeste::executar(Matricula matricula) {
 };
 
 //--------------------------------------------------------------------------------------------
-void CtrlIACasoDeTeste::executar(Matricula) {
+void CtrlIACasoDeTeste::executar(Matricula matricula) {
     int opcao;  // Campo de entrada.
 
     bool apresentar = true;  // Controle de laço.

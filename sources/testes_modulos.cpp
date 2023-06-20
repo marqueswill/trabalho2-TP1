@@ -13,7 +13,7 @@ void TUIAAutenticacao::executar() {
     Matricula matricula;
     TelaMensagem telaMensagem;
 
-    if (ctrlIAAutenticacao->executar(matricula)) {
+    if (ctrlIAAutenticacao->executar(&matricula)) {
         telaMensagem.apresentar("Sucesso na autenticacao.");
     } else {
         telaMensagem.apresentar("Erro de autenticacao.");
@@ -34,6 +34,7 @@ void TUIADesenvolvedor::executar() {
     ctrlIADesenvolvedor->setCtrlISDesenvolvedor(stubISDesenvolvedor);
 
     Matricula matricula;
+    matricula.setValor("1234567");
     ctrlIADesenvolvedor->executar(matricula);
 
     delete ctrlIADesenvolvedor;
