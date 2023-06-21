@@ -264,7 +264,7 @@ ComandoEditarTeste::ComandoEditarTeste(Teste teste) {
 // Implementacao para ComandoDescadastrarTeste
 
 ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
-        comandoSQL += "DELETE FROM casodetestes where codigotestes = ";
+        comandoSQL += "DELETE FROM casodetestes WHERE codigotestes = ";
         comandoSQL += codigo.getValor() + "';";
         comandoSQL = "DELETE FROM testes WHERE codigo = ";
         comandoSQL += codigo.getValor() + "';";
