@@ -164,6 +164,8 @@ ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor desen
 // Implementacao para ComandoDescadastrarDesenvolvedor
 
 ComandoDescadastrarDesenvolvedor::ComandoDescadastrarDesenvolvedor(Matricula matricula) {
+        comandoSQL += "DELETE FROM testes WHERE matricula = ";
+        comandoSQL += matricula.getValor();
         comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
         comandoSQL += matricula.getValor();
         Comandosql = new ComandoSQL();
@@ -265,9 +267,9 @@ ComandoEditarTeste::ComandoEditarTeste(Teste teste) {
 
 ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
         comandoSQL += "DELETE FROM casodetestes WHERE codigotestes = ";
-        comandoSQL += codigo.getValor() + "';";
+        comandoSQL += codigo.getValor();
         comandoSQL = "DELETE FROM testes WHERE codigo = ";
-        comandoSQL += codigo.getValor() + "';";
+        comandoSQL += codigo.getValor();
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
 
