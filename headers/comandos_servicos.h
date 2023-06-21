@@ -130,5 +130,3 @@ class ComandoDescadastrarCasoDeTeste : public ComandoSQL {
 };
 
 #endif  // COMANDOS_SERVICOS_H_INCLUDED
-
-#endif  // COMANDOS_SERVICOS_H_INCLUDED
