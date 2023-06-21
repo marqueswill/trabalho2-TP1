@@ -210,6 +210,7 @@ string ComandoLerCodigo::getResultado(){
 ComandoVisualizarTeste::ComandoVisualizarTeste(Codigo codigo){
         comandoSQL = "SELECT * from testes where codigo = ";
         comandoSQL += codigo.getValor();
+        comandoSQL += "INNER JOIN matricula on testes.matricula = desenvolvedores.matricula";
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);        
 }
