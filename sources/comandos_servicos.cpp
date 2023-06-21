@@ -266,8 +266,10 @@ ComandoEditarTeste::ComandoEditarTeste(Teste teste) {
 ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
         comandoSQL = "DELETE FROM testes WHERE codigo = ";
         comandoSQL += codigo.getValor();
+        comandoSQL += "DELETE * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo";
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
+
 }
 
 //---------------------------------------------------------------------------
@@ -367,51 +369,51 @@ ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
         Comandosql->executar(comandoSQL);
 }
 
-ComandoListarTeste::ComandoListarTeste(Matricula matricula){
-        Teste teste;
-        comandoSQL = "SELECT codigo FROM r_des_casos_testes WHERE matricula.PK = ";
-        comandoSQL += matricula.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql-> executar(comandoSQL);       
-}
+// ComandoListarTeste::ComandoListarTeste(Matricula matricula){
+//         Teste teste;
+//         comandoSQL = "SELECT codigo FROM r_des_casos_testes WHERE matricula.PK = ";
+//         comandoSQL += matricula.getValor();
+//         Comandosql = new ComandoSQL();
+//         Comandosql-> executar(comandoSQL);       
+// }
 
-vector <Teste> ComandoListarTeste::getLista(){
-        ElementoResultado resultado;
-        Teste teste;
-        vector <Teste> testes;
+// vector <Teste> ComandoListarTeste::getLista(){
+//         ElementoResultado resultado;
+//         Teste teste;
+//         vector <Teste> testes;
 
-        // // Remover nome;
-        // if (listaResultado.empty())
-        //         throw EErroPersistencia("Lista de resultados vazia.");
-        // resultado = listaResultado.back();
-        // listaResultado.pop_back();
-        // teste->setNome.setValor(resultado.getValorColuna());
-        // desenvolvedor.setNome(texto);
+//         // // Remover nome;
+//         // if (listaResultado.empty())
+//         //         throw EErroPersistencia("Lista de resultados vazia.");
+//         // resultado = listaResultado.back();
+//         // listaResultado.pop_back();
+//         // teste->setNome.setValor(resultado.getValorColuna());
+//         // desenvolvedor.setNome(texto);
 
-        // // Remover matricula;
-        // if (listaResultado.empty())
-        //         throw EErroPersistencia("Lista de resultados vazia.");
-        // resultado = listaResultado.back();
-        // listaResultado.pop_back();
-        // matricula.setValor(resultado.getValorColuna());
-        // desenvolvedor.setMatricula(matricula);
+//         // // Remover matricula;
+//         // if (listaResultado.empty())
+//         //         throw EErroPersistencia("Lista de resultados vazia.");
+//         // resultado = listaResultado.back();
+//         // listaResultado.pop_back();
+//         // matricula.setValor(resultado.getValorColuna());
+//         // desenvolvedor.setMatricula(matricula);
 
-        // // Remover senha;
-        // if (listaResultado.empty())
-        //         throw EErroPersistencia("Lista de resultados vazia.");
-        // resultado = listaResultado.back();
-        // listaResultado.pop_back();
-        // senha.setValor(resultado.getValorColuna());
-        // desenvolvedor.setSenha(senha);
+//         // // Remover senha;
+//         // if (listaResultado.empty())
+//         //         throw EErroPersistencia("Lista de resultados vazia.");
+//         // resultado = listaResultado.back();
+//         // listaResultado.pop_back();
+//         // senha.setValor(resultado.getValorColuna());
+//         // desenvolvedor.setSenha(senha);
 
-        // // Remover telefone;
-        // if (listaResultado.empty())
-        //         throw EErroPersistencia("Lista de resultados vazia.");
-        // resultado = listaResultado.back();
-        // listaResultado.pop_back();
-        // telefone.setValor(resultado.getValorColuna());
-        // desenvolvedor.setTelefone(telefone);
+//         // // Remover telefone;
+//         // if (listaResultado.empty())
+//         //         throw EErroPersistencia("Lista de resultados vazia.");
+//         // resultado = listaResultado.back();
+//         // listaResultado.pop_back();
+//         // telefone.setValor(resultado.getValorColuna());
+//         // desenvolvedor.setTelefone(telefone);
 
-        return testes;
+//         return testes;
 
-}
+// }
