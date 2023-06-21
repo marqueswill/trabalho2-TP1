@@ -56,7 +56,7 @@ protected:
         string comandoSQL;
 public:
         ComandoSQL() {
-             nomeBancoDados = "testedb.db";                             // Nome do banco de dados.
+             nomeBancoDados = "database.db";                             // Nome do banco de dados.
         }
         ComandoSQL *Comandosql;
         void executar(string);
