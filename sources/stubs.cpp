@@ -1,6 +1,23 @@
 #include "../headers/stubs.h"
 
 //--------------------------------------------------------------------------------------------
+const string StubISAutenticacao::VALOR_VALIDO_SENHA = "abc123";
+const string StubISAutenticacao::VALOR_VALIDO_MATRICULA = "1234567";
+Senha StubISAutenticacao::senhaStub;
+Matricula StubISAutenticacao::matriculaStub;
+
+bool StubISAutenticacao::autenticar(Matricula matricula, Senha senha) {
+    if (matricula.getValor() == matriculaStub.getValor()) {
+        if (senha.getValor() == senhaStub.getValor()) {
+            return SUCESSO;
+        } else {
+            return FALHA;
+        }
+    } else {
+        return FALHA;
+    }
+}
+//--------------------------------------------------------------------------------------------
 const string StubISDesenvolvedor::VALOR_VALIDO_MATRICULA = "1234567";
 const string StubISDesenvolvedor::VALOR_VALIDO_NOME = "joazinho123";
 const string StubISDesenvolvedor::VALOR_VALIDO_SENHA = "abc123";

@@ -7,6 +7,8 @@
 // Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
 
 class CtrlMSAutenticacao : public ISAutenticacao {
+   public:
+    bool autenticar(Matricula, Senha);
 };
 
 //-----------------------------------------------------------------------------------

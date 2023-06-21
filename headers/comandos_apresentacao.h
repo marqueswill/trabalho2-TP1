@@ -5,14 +5,28 @@
 #include "telas.h"
 
 //--------------------------------------------------------------------------------------------
-class CmdIAAutenticacao {
+class ComandoIAAutenticacao {
+   protected:
+    bool resultado;
+    Matricula* matricula;
+    Senha senha;
+    TelaAutenticacao telaAutenticacao;
+
    public:
-    virtual void executar(ISAutenticacao*) = 0;
-    virtual ~CmdIAAutenticacao() {}
+    virtual bool executar(ISAutenticacao *) = 0;
+    virtual ~ComandoIAAutenticacao(){};
+};
+
+class ComandoIAAutenticacaoAutenticar : public ComandoIAAutenticacao {
+   public:
+    ComandoIAAutenticacaoAutenticar(Matricula* matricula) {
+        this->matricula = matricula;
+    };
+    bool executar(ISAutenticacao *);
 };
 
 //--------------------------------------------------------------------------------------------
-class CmdIADesenvolvedor {
+class ComandoIADesenvolvedor {
    protected:
     bool resultado;
     Desenvolvedor desenvolvedor;
@@ -21,32 +35,40 @@ class CmdIADesenvolvedor {
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISDesenvolvedor*) = 0;
-    virtual ~CmdIADesenvolvedor() {}
+    virtual void executar(ISDesenvolvedor *) = 0;
 };
 
-class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorCadastrar : public ComandoIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(ISDesenvolvedor *);
 };
 
-class CmdIADesenvolvedorVisualizar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorVisualizar : public ComandoIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    ComandoIADesenvolvedorVisualizar(Matricula matricula) {
+        this->matricula = matricula;
+    }
+    void executar(ISDesenvolvedor *);
 };
 
-class CmdIADesenvolvedorEditar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorEditar : public ComandoIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    ComandoIADesenvolvedorEditar(Matricula matricula) {
+        this->matricula = matricula;
+    }
+    void executar(ISDesenvolvedor *);
 };
 
-class CmdIADesenvolvedorDescadastrar : public CmdIADesenvolvedor {
+class ComandoIADesenvolvedorDescadastrar : public ComandoIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    ComandoIADesenvolvedorDescadastrar(Matricula matricula) {
+        this->matricula = matricula;
+    }
+    void executar(ISDesenvolvedor *);
 };
 
 //--------------------------------------------------------------------------------------------
-class CmdIATeste {
+class ComandoIATeste {
    protected:
     bool resultado;
     Teste teste;
@@ -55,29 +77,29 @@ class CmdIATeste {
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISTeste*) = 0;
-    virtual ~CmdIATeste() {}
+    virtual void executar(ISTeste *) = 0;
+    virtual ~ComandoIATeste() {}
 };
 
-class CmdIATesteVisualizar : public CmdIATeste {
+class ComandoIATesteVisualizar : public ComandoIATeste {
    public:
-    void executar(ISTeste*);
+    void executar(ISTeste *);
 };
 
-class CmdIATesteCadastrar : public CmdIATeste {
-    void executar(ISTeste*);
+class ComandoIATesteCadastrar : public ComandoIATeste {
+    void executar(ISTeste *);
 };
 
-class CmdIATesteEditar : public CmdIATeste {
-    void executar(ISTeste*);
+class ComandoIATesteEditar : public ComandoIATeste {
+    void executar(ISTeste *);
 };
 
-class CmdIATesteDescadastrar : public CmdIATeste {
-    void executar(ISTeste*);
+class ComandoIATesteDescadastrar : public ComandoIATeste {
+    void executar(ISTeste *);
 };
 
 //--------------------------------------------------------------------------------------------
-class CmdIACasoDeTeste {
+class ComandoIACasoDeTeste {
    protected:
     bool resultado;
     CasoDeTeste casoDeTeste;
@@ -86,24 +108,24 @@ class CmdIACasoDeTeste {
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISCasoDeTeste*) = 0;
-    virtual ~CmdIACasoDeTeste() {}
+    virtual void executar(ISCasoDeTeste *) = 0;
+    virtual ~ComandoIACasoDeTeste() {}
 };
 
-class CmdIACasoDeTesteVisualizar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+class ComandoIACasoDeTesteVisualizar : public ComandoIACasoDeTeste {
+    void executar(ISCasoDeTeste *);
 };
 
-class CmdIACasoDeTesteCadastrar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+class ComandoIACasoDeTesteCadastrar : public ComandoIACasoDeTeste {
+    void executar(ISCasoDeTeste *);
 };
 
-class CmdIACasoDeTesteEditar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+class ComandoIACasoDeTesteEditar : public ComandoIACasoDeTeste {
+    void executar(ISCasoDeTeste *);
 };
 
-class CmdIACasoDeTesteDescadastrar : public CmdIACasoDeTeste {
-    void executar(ISCasoDeTeste*);
+class ComandoIACasoDeTesteDescadastrar : public ComandoIACasoDeTeste {
+    void executar(ISCasoDeTeste *);
 };
 
 #endif  // COMANDOS_APRESENTACAO_H_INCLUDED

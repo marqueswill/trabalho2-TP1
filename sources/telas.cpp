@@ -19,7 +19,7 @@ void TelaMensagem::apresentar(string mensagem) {
 //--------------------------------------------------------------------------------------------
 void TelaInicial::selecionar(int *campo) {
     // Mensagens a serem apresentadas na tela inicial
-    string titulo1 = "Selecione um dos servicos : ";
+    string titulo1 = "Selecione um dos servicos.";
     vector<string> texto1 = {"1 - Acessar sistema.",
                              "2 - Cadastrar desenvolvedor.",
                              "3 - Encerrar execucao do sistema.",
@@ -42,8 +42,55 @@ void TelaInicial::selecionar(int *campo) {
 }
 
 //--------------------------------------------------------------------------------------------
+void TelaAutenticacao::autenticar(Matricula *matricula, Senha *senha) {
+    string titulo1 = "Preencha os seguintes campos.";
+    vector<string> texto1{"Matricula",
+                          "Senha"};
+    string textoErro = "Valor inválido para atributo ";
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    clear();
+
+    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+
+    for (int i = 0; i < texto1.size(); i++) {
+        mvprintw(linha / 4 + i + 1, coluna / 4, "%s", texto1[i].c_str());
+    }
+
+    echo();
+
+    mvprintw(linha / 4 + 1, coluna / 4 + texto1[0].size() + 1, " : ");
+    getstr(matriculaAutenticacao);
+
+    mvprintw(linha / 4 + 2, coluna / 4 + texto1[0].size() + 1, " : ");
+    getstr(senhaAutenticacao);
+
+    noecho();
+
+    int l = 4;
+    try {
+        matricula->setValor(matriculaAutenticacao);
+    } catch (invalid_argument &exp) {
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[0]).c_str());
+        l++;
+    }
+
+    try {
+        senha->setValor(senhaAutenticacao);
+    } catch (invalid_argument &exp) {
+        mvprintw(linha / 4 + l, coluna / 4, "%s", (textoErro + texto1[1]).c_str());
+        l++;
+    }
+
+    echo();
+    getch();
+    noecho();
+    endwin();
+}
+//--------------------------------------------------------------------------------------------
 void TelaUsuarioLogado::selecionar(int *campo) {
-    string titulo1 = "Selecione um dos servicos : ";
+    string titulo1 = "Selecione um dos servicos. ";
     vector<string> texto1{"1 - Servicos relacionados a desenvolvedor.",
                           "2 - Servicos relacionados a teste.",
                           "3 - Servicos relacionados a caso de teste.",
@@ -96,11 +143,11 @@ void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
 }
 
 void TelaDesenvolvedor::selecionar(int *campo) {
-    string titulo1 = "Selecione o servico desejado : ";
+    string titulo1 = "Selecione o servico desejado.";
     vector<string> texto1{"1 - Visualizar dados de desenvolvedor",
                           "2 - Editar dados de desenvolvedor",
                           "3 - Descadastrar desenvolvedor",
-                          "4 - Encerrar sessao.",
+                          "4 - Retornar.",
                           "Escolha uma opcao : "};
 
     initscr();
@@ -119,35 +166,35 @@ void TelaDesenvolvedor::selecionar(int *campo) {
     endwin();
 }
 
-void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
-    string titulo1 = "Informe matricula do desenvolvedor.";
-    string texto1 = "Matricula";
-    string textoErro = "Valor invalido para atributo ";
+// void TelaDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
+//     string titulo1 = "Informe matricula do desenvolvedor.";
+//     string texto1 = "Matricula";
+//     string textoErro = "Valor invalido para atributo ";
 
-    initscr();
-    getmaxyx(stdscr, linha, coluna);
-    clear();
+//     initscr();
+//     getmaxyx(stdscr, linha, coluna);
+//     clear();
 
-    mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
+//     mvprintw(linha / 4 + 0, coluna / 4, "%s", titulo1.c_str());
 
-    mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
+//     mvprintw(linha / 4 + 1, coluna / 4, "%s", (texto1 + " : ").c_str());
 
-    echo();
-    getstr(matriculaDesenvolvedor);
-    noecho();
+//     echo();
+//     getstr(matriculaDesenvolvedor);
+//     noecho();
 
-    try {
-        matricula.setValor(matriculaDesenvolvedor);
-        desenvolvedor->setMatricula(matricula);
-    } catch (invalid_argument &exp) {
-        mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
-    };
+//     try {
+//         matricula.setValor(matriculaDesenvolvedor);
+//         desenvolvedor->setMatricula(matricula);
+//     } catch (invalid_argument &exp) {
+//         mvprintw(linha / 4 + 3, coluna / 4, "%s", (textoErro + texto1).c_str());
+//     };
 
-    endwin();
-}
+//     endwin();
+// }
 
 void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
-    string titulo1 = "Por favor, preencha os espacos com os seus dados:";
+    string titulo1 = "Por favor, preencha os espacos com os seus dados.";
     vector<string> texto1{"Matricula",
                           "Nome",
                           "Telefone",
@@ -216,7 +263,7 @@ void TelaDesenvolvedor::cadastrar(Desenvolvedor *desenvolvedor) {
 }
 
 void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
-    string titulo1 = "Informe o campo do desenvolvedor para ser editado:";
+    string titulo1 = "Informe o campo do desenvolvedor para ser editado.";
     vector<string> texto1{"1 - Nome.",
                           "2 - Telefone.",
                           "3 - Senha.",
@@ -316,7 +363,7 @@ void TelaDesenvolvedor::editar(Desenvolvedor *desenvolvedor) {
 };
 
 void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
-    string titulo1 = "Preencha os seguintes campos: ";
+    string titulo1 = "Confirme sua matricula para confirmar o descadastramento.";
     string texto1 = "Matricula";
     string textoErro = "Valor invalido para atributo ";
 
@@ -370,12 +417,12 @@ void TelaTeste::mostrar(Teste teste) {
 }
 
 void TelaTeste::selecionar(int *campo) {
-    string titulo1 = "Selecione um dos servicos : ";
+    string titulo1 = "Selecione um dos servicos.";
     vector<string> texto1{"1 - Visualizar teste.",
                           "2 - Cadastrar teste.",
                           "3 - Editar teste.",
                           "4 - Descadastrar teste.",
-                          "5 - Encerrar sessao."};
+                          "5 - Retornar."};
     string texto2 = "Escolha uma opcao : ";
 
     initscr();
@@ -484,7 +531,7 @@ void TelaTeste::cadastrar(Teste *teste) {
 }
 
 void TelaTeste::editar(Teste *teste) {
-    string titulo1 = "Informe o campo do teste para ser editado:";
+    string titulo1 = "Informe o campo do teste para ser editado.";
     vector<string> texto1{"1 - Nome.",
                           "2 - Classe.",
                           "",
@@ -635,7 +682,7 @@ void TelaCasoDeTeste::selecionar(int *campo) {
                           "2 - Cadastrar caso de teste.",
                           "3 - Editar caso de teste.",
                           "4 - Descadastrar caso de teste.",
-                          "5 - Encerrar sessao.",
+                          "5 - Retornar.",
                           "Escolha uma opcao : "};
 
     initscr();
@@ -949,7 +996,7 @@ void TelaCasoDeTeste::descadastrar(Codigo *codigo) {
 void TelaDepuracao::selecionar(int *campo) {
     string titulo1 = "Selecione tipo de teste a ser executado : ";
     vector<string> texto1{"1 - Executar testes unitarios.",
-                          "2 - Executar testes de integracao.",
+                          "2 - Executar testes integracao.",
                           "3 - Executar testes fumaca.",
                           "4 - Executar testes sistema.",
                           "5 - Encerrar depuracao.",
@@ -1024,7 +1071,7 @@ void TelaTestesModulos::selecionar(int *campo) {
 
 void TelaTestesIntegracao::selecionar(int *campo) {
     string titulo1 = "Selecione teste integração :";
-    vector<string> textos{"1 - Integração entre modulos da camada de apresentacao.",
+    vector<string> textos{"1 - Integração entre modulos da camada de Apresentacao.",
                           "2 - Integração entre modulos do subsistema Desenvolvedor.",
                           "3 - Integração entre modulos do subsistema Teste.",
                           "4 - Integração entre modulos do subsistema CasoDeTeste.",
