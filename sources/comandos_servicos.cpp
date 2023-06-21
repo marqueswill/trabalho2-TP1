@@ -273,7 +273,7 @@ ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
 //---------------------------------------------------------------------------
 // Implementacao para ComandoVisualizarTeste
 ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo){
-        comandoSQL = "SELECT * from casodetestes where codigo2 = ";
+        comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigo2 = ";
         comandoSQL += codigo.getValor();
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);        
