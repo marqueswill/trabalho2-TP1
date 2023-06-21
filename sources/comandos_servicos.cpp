@@ -264,9 +264,10 @@ ComandoEditarTeste::ComandoEditarTeste(Teste teste) {
 // Implementacao para ComandoDescadastrarTeste
 
 ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
+        comandoSQL += "DELETE FROM casodetestes where codigotestes = ";
+        comandoSQL += codigo.getValor() + "';";
         comandoSQL = "DELETE FROM testes WHERE codigo = ";
-        comandoSQL += codigo.getValor();
-        comandoSQL += "DELETE * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo";
+        comandoSQL += codigo.getValor() + "';";
         Comandosql = new ComandoSQL();
         Comandosql->executar(comandoSQL);
 
