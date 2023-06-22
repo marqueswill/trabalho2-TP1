@@ -6,24 +6,6 @@
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 //--------------------------------------------------------------------------------------------
-EErroPersistencia::EErroPersistencia(string mensagem) {
-    this->mensagem = mensagem;
-}
-
-string EErroPersistencia::what() {
-    return mensagem;
-}
-
-//--------------------------------------------------------------------------------------------
-void ElementoResultado::setNomeColuna(const string &nomeColuna) {
-    this->nomeColuna = nomeColuna;
-}
-
-void ElementoResultado::setValorColuna(const string &valorColuna) {
-    this->valorColuna = valorColuna;
-}
-
-//--------------------------------------------------------------------------------------------
 void ComandoSQL::conectar() {
     rc = sqlite3_open(nomeBancoDados, &bd);
     if (rc != SQLITE_OK)
@@ -60,6 +42,26 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 }
 
 //--------------------------------------------------------------------------------------------
+ComandoLerSenha::ComandoLerSenha(Matricula matricula) {
+    comandoSQL = "SELECT senha FROM alunos WHERE matricula = ";
+    comandoSQL += matricula.getValor();
+}
+
+string ComandoLerSenha::getResultado() {
+    ElementoResultado resultado;
+    string senha;
+
+    // Remover senha;
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    senha = resultado.getValorColuna();
+
+    return senha;
+}
+
+//--------------------------------------------------------------------------------------------
 ComandoLerMatricula::ComandoLerMatricula(Matricula matricula) {
     comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
@@ -72,7 +74,6 @@ string ComandoLerMatricula::getResultado() {
     // Remover matricula;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
-    ;
     resultado = listaResultado.back();
     listaResultado.pop_back();
     matricula = resultado.getValorColuna();
@@ -92,7 +93,6 @@ string ComandoLerCodigo::getResultado() {
     // Remover matricula;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
-    ;
     resultado = listaResultado.back();
     listaResultado.pop_back();
     codigo = resultado.getValorColuna();
@@ -109,42 +109,33 @@ ComandoVisualizarDesenvolvedor::ComandoVisualizarDesenvolvedor(Matricula matricu
 Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
     ElementoResultado resultado;
     Desenvolvedor desenvolvedor;
-    Texto texto;
-    Matricula matricula;
-    Senha senha;
-    Telefone telefone;
-
     // Remover nome;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    texto.setValor(resultado.getValorColuna());
-    desenvolvedor.setNome(texto);
+    desenvolvedor.setNome(Texto(resultado.getValorColuna()));
 
     // Remover matricula;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    matricula.setValor(resultado.getValorColuna());
-    desenvolvedor.setMatricula(matricula);
+    desenvolvedor.setMatricula(Matricula(resultado.getValorColuna()));
 
     // Remover senha;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    senha.setValor(resultado.getValorColuna());
-    desenvolvedor.setSenha(senha);
+    desenvolvedor.setSenha(Senha(resultado.getValorColuna()));
 
     // Remover telefone;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    telefone.setValor(resultado.getValorColuna());
-    desenvolvedor.setTelefone(telefone);
+    desenvolvedor.setTelefone(Telefone(resultado.getValorColuna()));
 
     return desenvolvedor;
 }
@@ -179,23 +170,20 @@ ComandoVisualizarTeste::ComandoVisualizarTeste(Codigo codigo) {
 Codigo ComandoVisualizarTeste::getResultado() {
     ElementoResultado resultado;
     Teste teste;
-    Texto nome;
-    Classe classe;
+
     // Remover nome;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    nome.setValor(resultado.getValorColuna());
-    teste.setNome(nome);
+    teste.setNome(Texto(resultado.getValorColuna()));
 
     // Remover classe;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    classe.setValor(resultado.getValorColuna());
-    teste.setClasse(classe);
+    teste.setClasse(Classe(resultado.getValorColuna()));
 }
 
 ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
@@ -226,50 +214,41 @@ ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo) {
 Codigo ComandoVisualizarTeste::getResultado() {
     ElementoResultado resultado;
     CasoDeTeste casoDeTeste;
-    Texto nome;
-    Data data;
-    Texto acao;
-    Texto resposta;
-    Resultado resultadoct;
+
     // Remover nome;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    nome.setValor(resultado.getValorColuna());
-    casoDeTeste.setNome(nome);
+    casoDeTeste.setNome(Texto(resultado.getValorColuna()));
 
     // Remover data;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    data.setValor(resultado.getValorColuna());
-    casoDeTeste.setData(data);
+    casoDeTeste.setData(Data(resultado.getValorColuna()));
 
     // Remover acao;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    acao.setValor(resultado.getValorColuna());
-    casoDeTeste.setAcao(acao);
+    casoDeTeste.setAcao(Texto(resultado.getValorColuna()));
 
     // Remover resposta;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    resposta.setValor(resultado.getValorColuna());
-    casoDeTeste.setResposta(resposta);
+    casoDeTeste.setResposta(Texto(resultado.getValorColuna()));
 
     // Remover resultado;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
     listaResultado.pop_back();
-    resultadoct.setValor(resultado.getValorColuna());
-    casoDeTeste.setResultado(resultadoct);
+    casoDeTeste.setResultado(Resultado(resultado.getValorColuna()));
 }
 
 ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
