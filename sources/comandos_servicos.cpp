@@ -80,9 +80,10 @@ string ComandoLerMatricula::getResultado() {
 
     return matricula;
 }
+
 //--------------------------------------------------------------------------------------------
-ComandoLerCodigo::ComandoLerCodigo(Codigo codigo) {
-    comandoSQL = "SELECT codigo FROM testes WHERE codigo = ";
+ComandoLerCodigo::ComandoLerCodigo(Codigo codigo, int escolha) {
+    comandoSQL = "SELECT codigo FROM " + tabelas[escolha] + "WHERE codigo = ";
     comandoSQL += codigo.getValor();
 }
 

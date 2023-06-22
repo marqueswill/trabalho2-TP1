@@ -94,8 +94,11 @@ class ComandoLerMatricula : public ComandoSQL {
 };
 
 class ComandoLerCodigo : public ComandoSQL {
+   private:
+    vector<string> tabelas = {"testes", "casodetestes"};
+
    public:
-    ComandoLerCodigo(Codigo);
+    ComandoLerCodigo(Codigo, int);  // informar de qual banco
     string getResultado();
 };
 
