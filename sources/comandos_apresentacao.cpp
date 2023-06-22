@@ -10,7 +10,7 @@ bool ComandoIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticaca
 
 //--------------------------------------------------------------------------------------------
 void ComandoIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    desenvolvedor.setMatricula(matricula);
+    desenvolvedor.setMatricula(matricula);  // Já tem a matricula, desenvolvedor só pode visualizar os próprios dados
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);

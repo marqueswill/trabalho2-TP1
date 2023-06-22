@@ -17,6 +17,15 @@ class EErroPersistencia {
     string what();
 };
 
+inline EErroPersistencia::EErroPersistencia(string mensagem) {
+    this->mensagem = mensagem;
+}
+
+inline string EErroPersistencia::what() {
+    return mensagem;
+}
+
+//--------------------------------------------------------------------------------------------
 class ElementoResultado {
    private:
     string nomeColuna;
@@ -28,6 +37,22 @@ class ElementoResultado {
     void setValorColuna(const string &);
     string getValorColuna() const;
 };
+
+inline void ElementoResultado::setNomeColuna(const string &nomeColuna) {
+    this->nomeColuna = nomeColuna;
+}
+
+inline string ElementoResultado::getNomeColuna() const {
+    return nomeColuna;
+}
+
+inline string ElementoResultado::getValorColuna() const {
+    return valorColuna;
+}
+
+inline void ElementoResultado::setValorColuna(const string &valorColuna) {
+    this->valorColuna = valorColuna;
+}
 
 //--------------------------------------------------------------------------------------------
 class ComandoSQL {
@@ -46,12 +71,18 @@ class ComandoSQL {
 
    public:
     ComandoSQL() {
-        nomeBancoDados = "testedb.db";  // Nome do banco de dados.
+        nomeBancoDados = "testedb.db";  // Nome default para um banco de dados.
     }
     void executar();
 };
 
 //--------------------------------------------------------------------------------------------
+class ComandoLerSenha : public ComandoSQL {
+   public:
+    ComandoLerSenha(Matricula);
+    string getResultado();
+};
+
 class ComandoLerMatricula : public ComandoSQL {
    public:
     ComandoLerMatricula(Matricula);
@@ -59,8 +90,11 @@ class ComandoLerMatricula : public ComandoSQL {
 };
 
 class ComandoLerCodigo : public ComandoSQL {
+   private:
+    vector<string> tabelas = {"testes", "casodetestes"};
+
    public:
-    ComandoLerCodigo(Codigo);
+    ComandoLerCodigo(Codigo, int);  // informar de qual banco
     string getResultado();
 };
 
@@ -107,6 +141,7 @@ class ComandoDescadastrarTeste : public ComandoSQL {
    public:
     ComandoDescadastrarTeste(Codigo);
 };
+
 //--------------------------------------------------------------------------------------------
 class ComandoVisualizarCasoDeTeste : public ComandoSQL {
    public:
