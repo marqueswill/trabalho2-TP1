@@ -73,10 +73,6 @@ class ComandoSQL {
     ComandoSQL() {
         nomeBancoDados = "testedb.db";  // Nome default para um banco de dados.
     }
-
-    ComandoSQL(char *nomeBancoDados) {
-        this->nomeBancoDados = nomeBancoDados;
-    }
     void executar();
 };
 
