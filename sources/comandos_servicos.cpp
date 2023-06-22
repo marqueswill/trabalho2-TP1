@@ -43,7 +43,7 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 
 //--------------------------------------------------------------------------------------------
 ComandoLerSenha::ComandoLerSenha(Matricula matricula) {
-    comandoSQL = "SELECT senha FROM alunos WHERE matricula = ";
+    comandoSQL = "SELECT senha FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
 
