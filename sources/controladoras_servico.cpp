@@ -10,7 +10,23 @@ using namespace std;
 
 
 bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
+// bool StubISTeste::visualizar(Teste* teste) {                                  // Passado apenas com o código
+//     if (teste->getCodigo().getValor() == testeStub.getCodigo().getValor()) {  // Procura no BD e passa os valores pra cima
+//         teste->setCodigo(codigoTeste);
+//         teste->setNome(nomeTeste);
+//         teste->setClasse(classeTeste);
+//     } else {
+//         return FALHA;
+//     }
+
+//     return SUCESSO;
+// }
+ComandoLerMatricula *lerMatricula;
 Matricula matricula = desenvolvedor->getMatricula();
+if(lerMatricula->getResultado() == matricula.getValor()){
+    return false;
+}
+else{
 try{
     ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
 }
@@ -20,7 +36,7 @@ catch(EErroPersistencia exp){
 }
 
 return true;
-}
+}}
 
 bool CtrlMSDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor){
 
