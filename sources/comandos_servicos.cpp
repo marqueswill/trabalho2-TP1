@@ -73,8 +73,8 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 ComandoLerMatricula::ComandoLerMatricula(Matricula matricula) {
         comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
         comandoSQL += matricula.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
+        // Comandosql = new ComandoSQL();
+        // Comandosql->executar(comandoSQL);
 }
 
 string ComandoLerMatricula::getResultado() {
