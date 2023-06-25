@@ -2,7 +2,6 @@
 #define CONTROLADORAS_SERVICO_H_INCLUDED
 
 #include "interfaces.h"
-#include "comandos_servicos.h"
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
 

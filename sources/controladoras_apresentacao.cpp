@@ -71,7 +71,7 @@ void CtrlIAInicializacao::executar() {
 //--------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
     comando = new CmdIADesenvolvedorCadastrar();
-    comando->executar(ctrlISDesenvolvedor);
+    comando->executar(ctrlMSDesenvolvedor);
     delete comando;
 }
 
@@ -86,19 +86,19 @@ void CtrlIADesenvolvedor::executar(Matricula) {
         switch (opcao) {
             case VISUALIZAR:
                 comando = new CmdIADesenvolvedorVisualizar();
-                comando->executar(ctrlISDesenvolvedor);
+                comando->executar(ctrlMSDesenvolvedor);
                 delete comando;
                 break;
 
             case EDITAR:
                 comando = new CmdIADesenvolvedorEditar();
-                comando->executar(ctrlISDesenvolvedor);
+                comando->executar(ctrlMSDesenvolvedor);
                 delete comando;
                 break;
 
             case DESCADASTRAR:
                 comando = new CmdIADesenvolvedorDescadastrar();
-                comando->executar(ctrlISDesenvolvedor);
+                comando->executar(ctrlMSDesenvolvedor);
                 delete comando;
                 break;
 
