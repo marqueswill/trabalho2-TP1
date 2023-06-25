@@ -74,8 +74,6 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 ComandoLerMatricula::ComandoLerMatricula(Matricula matricula) {
         comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
         comandoSQL += matricula.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 
 string ComandoLerMatricula::getResultado() {
@@ -98,8 +96,6 @@ string ComandoLerMatricula::getResultado() {
 ComandoVisualizarDesenvolvedor::ComandoVisualizarDesenvolvedor(Matricula matricula) {
         comandoSQL = "SELECT * FROM desenvolvedores WHERE matricula = ";
         comandoSQL += matricula.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 
 Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
@@ -156,8 +152,7 @@ ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor desen
         comandoSQL += "'" + desenvolvedor.getSenha().getValor() + "', ";
         comandoSQL += "'" + desenvolvedor.getTelefone().getValor() + "', ";
         comandoSQL += ")";
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
+
 }
 
 //---------------------------------------------------------------------------
@@ -168,8 +163,6 @@ ComandoDescadastrarDesenvolvedor::ComandoDescadastrarDesenvolvedor(Matricula mat
         comandoSQL += matricula.getValor();
         comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
         comandoSQL += matricula.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 
 //---------------------------------------------------------------------------
@@ -181,16 +174,12 @@ ComandoEditarDesenvolvedor::ComandoEditarDesenvolvedor(Desenvolvedor desenvolved
         comandoSQL += "', senha = '" + desenvolvedor.getSenha().getValor();
         comandoSQL += "', telefone = '" + desenvolvedor.getTelefone().getValor();
         comandoSQL += "' WHERE matricula = " + desenvolvedor.getMatricula().getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 //---------------------------------------------------------------------------
 // Implementacao para ComandoLerCodigo
 ComandoLerCodigo::ComandoLerCodigo(Codigo codigo){
         comandoSQL = "SELECT codigo FROM testes WHERE codigo = ";
         comandoSQL += codigo.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 
 string ComandoLerCodigo::getResultado(){
@@ -211,9 +200,7 @@ string ComandoLerCodigo::getResultado(){
 
 ComandoVisualizarTeste::ComandoVisualizarTeste(Codigo codigo){
 comandoSQL = "SELECT * from testes INNER JOIN desenvolvedores on testes.matricula = desenvolvedores.matricula where codigo = ";
-        comandoSQL += codigo.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);        
+        comandoSQL += codigo.getValor();     
 }
 
 Codigo ComandoVisualizarTeste::getResultado(){
@@ -247,8 +234,6 @@ ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
         comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
         comandoSQL += "'" + teste.getClasse().getValor() + "', ";
         comandoSQL += ")";
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
         
 }
 
@@ -259,8 +244,6 @@ ComandoEditarTeste::ComandoEditarTeste(Teste teste) {
         comandoSQL += "SET nome = '" + teste.getNome().getValor();
         comandoSQL += "', classe = '" + teste.getClasse().getValor();
         comandoSQL += "' WHERE codigo = " + teste.getCodigo().getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 //---------------------------------------------------------------------------
 // Implementacao para ComandoDescadastrarTeste
@@ -270,8 +253,6 @@ ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
         comandoSQL += codigo.getValor();
         comandoSQL = "DELETE FROM testes WHERE codigo = ";
         comandoSQL += codigo.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 
 }
 
@@ -279,9 +260,7 @@ ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
 // Implementacao para ComandoVisualizarTeste
 ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo){
         comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigo2 = ";
-        comandoSQL += codigo.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);        
+        comandoSQL += codigo.getValor();      
 }
 
 Codigo ComandoVisualizarTeste::getResultado(){
@@ -343,8 +322,6 @@ ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste
         comandoSQL += "'" + casoDeTeste.getResposta().getValor();
         comandoSQL += "'" + casoDeTeste.getResultado().getValor();
         comandoSQL += ")";
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 
 //---------------------------------------------------------------------------
@@ -358,8 +335,6 @@ ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
         comandoSQL += "', resposta = '" + casoDeTeste.getResposta().getValor();
         comandoSQL += "', resultado = '" + casoDeTeste.getResultado().getValor();
         comandoSQL += "' WHERE codigo2 = " + casoDeTeste.getCodigo().getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 
 }
 
@@ -368,8 +343,6 @@ ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
 ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
         comandoSQL = "DELETE FROM casodetestes WHERE codigo2 = ";
         comandoSQL += codigo.getValor();
-        Comandosql = new ComandoSQL();
-        Comandosql->executar(comandoSQL);
 }
 
 // ComandoListarTeste::ComandoListarTeste(Matricula matricula){
