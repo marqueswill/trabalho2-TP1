@@ -2,6 +2,7 @@
 #define COMANDOS_APRESENTACAO_H_INCLUDED
 
 #include "interfaces.h"
+#include "controladoras_servico.h"
 #include "telas.h"
 
 //--------------------------------------------------------------------------------------------
@@ -21,28 +22,28 @@ class CmdIADesenvolvedor {
     TelaMensagem telaMensagem;
 
    public:
-    virtual void executar(ISDesenvolvedor*) = 0;
+    virtual void executar(CtrlMSDesenvolvedor*) = 0;
     virtual ~CmdIADesenvolvedor() {}
 };
 
 class CmdIADesenvolvedorCadastrar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(CtrlMSDesenvolvedor*);
 };
 
 class CmdIADesenvolvedorVisualizar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(CtrlMSDesenvolvedor*);
 };
 
 class CmdIADesenvolvedorEditar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(CtrlMSDesenvolvedor*);
 };
 
 class CmdIADesenvolvedorDescadastrar : public CmdIADesenvolvedor {
    public:
-    void executar(ISDesenvolvedor*);
+    void executar(CtrlMSDesenvolvedor*);
 };
 
 //--------------------------------------------------------------------------------------------

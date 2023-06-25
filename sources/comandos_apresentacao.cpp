@@ -1,9 +1,9 @@
 #include "../headers/comandos_apresentacao.h"
 
 //--------------------------------------------------------------------------------------------
-void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void CmdIADesenvolvedorVisualizar::executar(CtrlMSDesenvolvedor* ctrlMSDesenvolvedor) {
     telaDesenvolvedor.visualizar(&desenvolvedor);
-    resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
+    resultado = ctrlMSDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);
     } else {
@@ -11,9 +11,9 @@ void CmdIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor
     }
 }
 
-void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void CmdIADesenvolvedorCadastrar::executar(CtrlMSDesenvolvedor* ctrlMSDesenvolvedor) {
     telaDesenvolvedor.cadastrar(&desenvolvedor);
-    resultado = ctrlISDesenvolvedor->cadastrar(desenvolvedor);
+    resultado = ctrlMSDesenvolvedor->cadastrar(desenvolvedor);
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
@@ -21,10 +21,10 @@ void CmdIADesenvolvedorCadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor)
     }
 }
 
-void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void CmdIADesenvolvedorEditar::executar(CtrlMSDesenvolvedor* ctrlMSDesenvolvedor) {
     telaDesenvolvedor.editar(&desenvolvedor);
     desenvolvedor.setMatricula(matricula);
-    resultado = ctrlISDesenvolvedor->editar(desenvolvedor);
+    resultado = ctrlMSDesenvolvedor->editar(desenvolvedor);
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
@@ -32,10 +32,10 @@ void CmdIADesenvolvedorEditar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
     }
 }
 
-void CmdIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
+void CmdIADesenvolvedorDescadastrar::executar(CtrlMSDesenvolvedor* ctrlMSDesenvolvedor) {
     telaDesenvolvedor.descadastrar(&matricula);
     desenvolvedor.setMatricula(matricula);
-    resultado = ctrlISDesenvolvedor->descadastrar(matricula);
+    resultado = ctrlMSDesenvolvedor->descadastrar(matricula);
     if (resultado) {
         telaMensagem.apresentar("Operação realizada com sucesso. Pressione qualquer tecla para continuar.");
     } else {
