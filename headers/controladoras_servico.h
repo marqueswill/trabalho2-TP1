@@ -12,10 +12,6 @@ class CtrlMSAutenticacao : public ISAutenticacao {
 //-----------------------------------------------------------------------------------
 class CtrlMSDesenvolvedor : public ISDesenvolvedor {
    private:
-   ComandoCadastrarDesenvolvedor comandoCadastrar;
-   ComandoEditarDesenvolvedor comandoEditar;
-   ComandoVisualizarDesenvolvedor comandoVisualizar;
-   ComandoDescadastrarDesenvolvedor comandoDescadastrar;
    public:
     bool visualizar(Desenvolvedor *);
     bool cadastrar(Desenvolvedor);
@@ -26,10 +22,6 @@ class CtrlMSDesenvolvedor : public ISDesenvolvedor {
 //-----------------------------------------------------------------------------------
 class CtrlMSTeste : public ISTeste {
    private:
-   ComandoCadastrarTeste comandoCadastrar;
-   ComandoEditarTeste comandoEditar;
-   ComandoVisualizarTeste comandoVisualizar;
-   ComandoDescadastrarTeste comandoDescadastrar;
    public:
     bool visualizar(Teste *);
     bool cadastrar(Teste);
@@ -39,10 +31,6 @@ class CtrlMSTeste : public ISTeste {
 
 class CtrlMSCasoDeTeste : public ISCasoDeTeste {
    private:
-   ComandoCadastrarCasoDeTeste comandoCadastrar;
-   ComandoEditarCasoDeTeste comandoEditar;
-   ComandoVisualizarCasoDeTeste comandoVisualizar;
-   ComandoDescadastrarCasoDeTeste comandoDescadastrar;
    public:
     bool visualizar(CasoDeTeste *);
     bool cadastrar(CasoDeTeste);

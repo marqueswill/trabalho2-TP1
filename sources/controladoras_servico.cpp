@@ -10,16 +10,55 @@ using namespace std;
 
 
 bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
-
+Matricula matricula = desenvolvedor->getMatricula();
+try{
+    ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
 }
+
+catch(EErroPersistencia exp){
+    return false;
+}
+
+return true;
+}
+
 bool CtrlMSDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor){
 
+try{
+ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
 }
+
+catch(EErroPersistencia exp){
+    return false;
+}
+
+return true;
+}
+
 bool CtrlMSDesenvolvedor::editar(Desenvolvedor desenvolvedor){
 
+try{
+ComandoEditarDesenvolvedor comandoEditar(desenvolvedor);
 }
+
+catch(EErroPersistencia exp){
+    return false;
+}
+
+return true;
+}
+
 bool CtrlMSDesenvolvedor::descadastrar(Matricula matricula){
 
+try{
+ComandoDescadastrarDesenvolvedor comandoDescadastrar(matricula);
+}
+
+catch(EErroPersistencia exp){
+    return false;
+}
+
+return true;
 }
 //-----------------------------------------------------------------------------------------------
 bool CtrlMSTeste::cadastrar(Teste teste){
