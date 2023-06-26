@@ -9,8 +9,8 @@ using namespace std;
 // // Implementações dos métodos de classes controladoras da camada de serviço.
 
 bool CtrlMSAutenticacao::autenticar(Matricula matricula){
-ComandoLerMatricula *lerMatricula;
-if(lerMatricula->getResultado() == matricula.getValor()){
+ComandoLerMatricula lerMatricula(matricula);
+if(lerMatricula.getResultado() == matricula.getValor()){
     return false;
 }
 else{
@@ -31,7 +31,6 @@ bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
 //     return SUCESSO;
 // }
 Matricula matricula = desenvolvedor->getMatricula();
-
 try{
     ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
 }
@@ -44,16 +43,11 @@ return true;
 }
 
 bool CtrlMSDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor){
-
-try{
-ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
-}
-
-catch(EErroPersistencia exp){
-    return false;
-}
-
-return true;
+    CtrlMSAutenticacao ctrlAutenticacao;
+if(ctrlAutenticacao.autenticar(desenvolvedor.getMatricula()))
+    ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
+    return true;
+return false;
 }
 
 bool CtrlMSDesenvolvedor::editar(Desenvolvedor desenvolvedor){

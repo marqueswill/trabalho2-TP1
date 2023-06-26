@@ -61,6 +61,7 @@ public:
 // Classe ComandoLerMatricula.
 
 class ComandoLerMatricula:public ComandoSQL {
+private:
 public:
         ComandoLerMatricula(Matricula);
         string getResultado();

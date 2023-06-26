@@ -3,6 +3,8 @@
 //--------------------------------------------------------------------------------------------
 void CmdIADesenvolvedorVisualizar::executar(CtrlMSDesenvolvedor* ctrlMSDesenvolvedor) {
     telaDesenvolvedor.visualizar(&desenvolvedor);
+    // Comandosql = new ComandoSQL();
+    // Comandosql->executar(comandoSQL);
     resultado = ctrlMSDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);
