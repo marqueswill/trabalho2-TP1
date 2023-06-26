@@ -41,7 +41,7 @@ return true;
 
 bool CtrlMSDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor){
     CtrlMSAutenticacao ctrlAutenticacao;
-    if(ctrlAutenticacao.autenticar(desenvolvedor.getMatricula())){
+    if(ctrlAutenticacao.autenticar(desenvolvedor.getMatricula(), desenvolvedor.getSenha())){
         ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
         return true;
     }
