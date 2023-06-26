@@ -24,7 +24,6 @@
 #include "testes_entidades.cpp"
 #include "testes_integracao.cpp"
 #include "testes_modulos.cpp"
-#include "curses.h"
 #define TESTE
 // #define SISTEMA
 using namespace std;

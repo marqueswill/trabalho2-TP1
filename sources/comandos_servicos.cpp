@@ -1,6 +1,5 @@
 #include "../headers/comandos_servicos.h"
 
-#include "database.db"
 //---------------------------------------------------------------------------
 list<ElementoResultado> ComandoSQL::listaResultado;
 
