@@ -10,4 +10,24 @@ class TIApresentacao {
     void executar();
 };
 
+class TISubAutenticacao {
+   public:
+    void executar();
+};
+
+class TISubDesenvolvedor {
+   public:
+    void executar();
+};
+
+class TISubTeste {
+   public:
+    void executar();
+};
+
+class TISubCasoDeTeste {
+   public:
+    void executar();
+};
+
 #endif  // TESTES_INTEGRACAO_H_INCLUDED

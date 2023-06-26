@@ -84,12 +84,9 @@ class ComandoSQL {
 };
 
 //---------------------------------------------------------------------------
-// Classe ComandoLerMatricula.
-
-class ComandoLerMatricula : public ComandoSQL {
-   private:
+class ComandoLerSenha : public ComandoSQL {
    public:
-    ComandoLerMatricula(Matricula);
+    ComandoLerSenha(Matricula);
     string getResultado();
 };
 
@@ -100,11 +97,8 @@ class ComandoLerMatricula : public ComandoSQL {
 };
 
 class ComandoLerCodigo : public ComandoSQL {
-   private:
-    vector<string> tabelas = {"testes", "casodetestes"};
-
    public:
-    ComandoLerCodigo(Codigo, int);  // informar de qual banco
+    ComandoLerCodigo(Codigo);
     string getResultado();
 };
 
@@ -128,6 +122,28 @@ class ComandoEditarDesenvolvedor : public ComandoSQL {
 class ComandoDescadastrarDesenvolvedor : public ComandoSQL {
    public:
     ComandoDescadastrarDesenvolvedor(Matricula);
+};
+
+//--------------------------------------------------------------------------------------------
+class ComandoVisualizarTeste : public ComandoSQL {
+   public:
+    ComandoVisualizarTeste(Codigo);
+    Codigo getResultado();
+};
+
+class ComandoCadastrarTeste : public ComandoSQL {
+   public:
+    ComandoCadastrarTeste(Teste);
+};
+
+class ComandoEditarTeste : public ComandoSQL {
+   public:
+    ComandoEditarTeste(Teste);
+};
+
+class ComandoDescadastrarTeste : public ComandoSQL {
+   public:
+    ComandoDescadastrarTeste(Codigo);
 };
 
 class ComandoListarTeste : public ComandoSQL {
@@ -156,6 +172,12 @@ class ComandoEditarCasoDeTeste : public ComandoSQL {
 class ComandoDescadastrarCasoDeTeste : public ComandoSQL {
    public:
     ComandoDescadastrarCasoDeTeste(Codigo);
+};
+
+class ComandoListarCasoDeTeste : public ComandoSQL {
+   public:
+    ComandoListarCasoDeTeste(Matricula);
+    vector<CasoDeTeste> getLista();
 };
 
 #endif  // COMANDOS_SERVICOS_H_INCLUDED
