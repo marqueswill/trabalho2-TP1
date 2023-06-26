@@ -4,7 +4,7 @@
 #include "comandos_apresentacao.h"
 #include "interfaces.h"
 #include "telas.h"
-
+#include "comandos_servicos.h"
 // Declarações de classes controladoras da camada de apresentação e implementações de métodos inline.
 //-----------------------------------------------------------------------------------
 class CtrlIAInicializacao {

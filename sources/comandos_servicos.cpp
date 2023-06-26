@@ -55,6 +55,8 @@ void ComandoSQL::executar(string comandoSQL) {
     desconectar();
     throw EErroPersistencia("Erro na execucao do comando SQL");
 
+    throw EErroPersistencia("Erro na execucao do comando SQL");
+
     desconectar();
 }
 
@@ -112,11 +114,8 @@ string ComandoLerMatricula::getResultado() {
     return matricula;
 }
 
-//--------------------------------------------------------------------------------------------
-ComandoLerCodigo::ComandoLerCodigo(Codigo codigo) {
-    comandoSQL = "SELECT codigo FROM testes WHERE codigo = ";
-    comandoSQL += codigo.getValor();
-}
+//---------------------------------------------------------------------------
+// Implementacao para ComandoVisualizarDesenvolvedor
 
 string ComandoLerCodigo::getResultado() {
     ElementoResultado resultado;
