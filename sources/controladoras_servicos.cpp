@@ -22,6 +22,7 @@ bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
         return false;
     } else {
         ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
+        comandoCadastrar.executar();
         return true;
     }
 
@@ -45,6 +46,7 @@ bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
 bool CtrlISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
     try {
         ComandoEditarDesenvolvedor comandoEditar(desenvolvedor);
+        comandoEditar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
     }
@@ -55,6 +57,7 @@ bool CtrlISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
 bool CtrlISDesenvolvedor::descadastrar(Matricula matricula) {
     try {
         ComandoDescadastrarDesenvolvedor comandoDescadastrar(matricula);
+        comandoDescadastrar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
     }
