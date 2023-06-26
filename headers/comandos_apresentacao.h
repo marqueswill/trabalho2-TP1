@@ -1,15 +1,15 @@
 #ifndef COMANDOS_APRESENTACAO_H_INCLUDED
 #define COMANDOS_APRESENTACAO_H_INCLUDED
 
+#include "controladoras_servicos.h"
 #include "interfaces.h"
-#include "controladoras_servico.h"
 #include "telas.h"
 
 //--------------------------------------------------------------------------------------------
 class ComandoIAAutenticacao {
    protected:
     bool resultado;
-    Matricula* matricula;
+    Matricula *matricula;
     Senha senha;
     TelaAutenticacao telaAutenticacao;
 
@@ -20,7 +20,7 @@ class ComandoIAAutenticacao {
 
 class ComandoIAAutenticacaoAutenticar : public ComandoIAAutenticacao {
    public:
-    ComandoIAAutenticacaoAutenticar(Matricula* matricula) {
+    ComandoIAAutenticacaoAutenticar(Matricula *matricula) {
         this->matricula = matricula;
     };
     bool executar(ISAutenticacao *);

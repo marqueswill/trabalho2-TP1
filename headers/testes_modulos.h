@@ -1,5 +1,5 @@
-#ifndef TESTE_MODULOS_H_INCLUDED
-#define TESTE_MODULOS_H_INCLUDED
+#ifndef TESTES_MODULOS_H_INCLUDED
+#define TESTES_MODULOS_H_INCLUDED
 
 #include "controladoras_apresentacao.h"
 #include "stubs.h"
@@ -28,4 +28,4 @@ class TUIACasoDeTeste {
     void executar();
 };
 
-#endif  // TESTE_MODULOS_H_INCLUDED
+#endif  // TESTES_MODULOS_H_INCLUDED

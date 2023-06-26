@@ -1,7 +1,9 @@
-#ifndef CONTROLADORAS_SERVICO_H_INCLUDED
-#define CONTROLADORAS_SERVICO_H_INCLUDED
+#ifndef CONTROLADORAS_SERVICOS_H_INCLUDED
+#define CONTROLADORAS_SERVICOS_H_INCLUDED
 
+#include "comandos_servicos.h"
 #include "interfaces.h"
+
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
 
@@ -39,4 +41,4 @@ class CtrlISCasoDeTeste : public ISCasoDeTeste {
     bool descadastrar(Codigo);
 };
 
-#endif  // CONTROLADORAS_SERVICO_H_INCLUDED
+#endif  // CONTROLADORAS_SERVICOS_H_INCLUDED

@@ -4,9 +4,9 @@
 
 #include <algorithm>
 #include <iostream>
+#include <list>
 #include <string>
 #include <vector>
-
 //--------------------------------------------------------------------------------------------
 // VALIDAÇÃO DE CLASSE
 void Classe::validar(const string& classe) {

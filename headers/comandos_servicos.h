@@ -1,11 +1,12 @@
-// #include <conio.h>
-#include <stdio.h>
+#ifndef COMANDOS_SERVICOS_H_INCLUDED
+#define COMANDOS_SERVICOS_H_INCLUDED
 
-#include "../sources/database.db"
-#include "../sources/database.db.sql"
+// #include <conio.h>
+// #include <stdio.h>
+
 #include "dominios.h"
 #include "entidades.h"
-#include "sqlite3.h"  // Incluir cabe�alho da biblioteca SQLite.
+#include "sqlite3.h"
 
 using namespace std;
 
@@ -178,3 +179,5 @@ class ComandoDescadastrarCasoDeTeste : public ComandoSQL {
    public:
     ComandoDescadastrarCasoDeTeste(Codigo);
 };
+
+#endif  // COMANDOS_SERVICOS_H_INCLUDED

@@ -2,8 +2,8 @@
 #define TELAS_H_INCLUDED
 
 // Mudar o include quando for compilar
-//#include <ncurses.h>
-#include "curses.h"
+#include <ncurses.h>
+// #include "curses.h"
 
 #include "interfaces.h"
 
@@ -15,8 +15,6 @@ class Telas {
     int campo;
     int linha, coluna;
 };
-
-
 
 //--------------------------------------------------------------------------------------------
 class TelaMensagem : public Telas {
@@ -40,6 +38,7 @@ class TelaAutenticacao : public Telas {
    private:
     char matriculaAutenticacao[100] = "";
     char senhaAutenticacao[100] = "";
+
    public:
     void autenticar(Matricula *, Senha *);
 };

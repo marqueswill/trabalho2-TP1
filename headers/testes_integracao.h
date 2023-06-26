@@ -2,7 +2,7 @@
 #define TESTES_INTEGRACAO_H_INCLUDED
 
 #include "controladoras_apresentacao.h"
-#include "controladoras_servico.h"
+#include "controladoras_servicos.h"
 #include "stubs.h"
 
 class TIApresentacao {

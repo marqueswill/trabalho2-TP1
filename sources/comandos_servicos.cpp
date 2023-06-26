@@ -1,5 +1,7 @@
 #include "../headers/comandos_servicos.h"
 
+#include "database.db"
+#include "database.db.sql"
 //---------------------------------------------------------------------------
 list<ElementoResultado> ComandoSQL::listaResultado;
 
@@ -69,7 +71,7 @@ string ComandoLerSenha::getResultado() {
     ElementoResultado resultado;
     string senha;
 
-    // Remover matricula;
+    // Obter matricula;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     ;
@@ -90,10 +92,10 @@ string ComandoLerMatricula::getResultado() {
     ElementoResultado resultado;
     string matricula;
 
-    // Remover matricula;
-    if (listaResultado.empty())
+    // Obter matricula;
+    if (listaResultado.empty()) {
         throw EErroPersistencia("Lista de resultados vazia.");
-    ;
+    }
     resultado = listaResultado.back();
     listaResultado.pop_back();
     matricula = resultado.getValorColuna();
@@ -111,7 +113,7 @@ string ComandoLerCodigo::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
-    // Remover matricula;
+    // Obter matricula;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     ;
@@ -136,7 +138,7 @@ Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
     Senha senha;
     Telefone telefone;
 
-    // Remover nome;
+    // Obter nome;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -144,7 +146,7 @@ Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
     texto.setValor(resultado.getValorColuna());
     desenvolvedor.setNome(texto);
 
-    // Remover matricula;
+    // Obter matricula;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -152,7 +154,7 @@ Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
     matricula.setValor(resultado.getValorColuna());
     desenvolvedor.setMatricula(matricula);
 
-    // Remover senha;
+    // Obter senha;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -160,7 +162,7 @@ Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
     senha.setValor(resultado.getValorColuna());
     desenvolvedor.setSenha(senha);
 
-    // Remover telefone;
+    // Obter telefone;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -207,7 +209,7 @@ Codigo ComandoVisualizarTeste::getResultado() {
     Teste teste;
     Texto nome;
     Classe classe;
-    // Remover nome;
+    // Obter nome;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -215,7 +217,7 @@ Codigo ComandoVisualizarTeste::getResultado() {
     nome.setValor(resultado.getValorColuna());
     teste.setNome(nome);
 
-    // Remover classe;
+    // Obter classe;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -260,7 +262,7 @@ Codigo ComandoVisualizarTeste::getResultado() {
     Texto acao;
     Texto resposta;
     Resultado resultadoct;
-    // Remover nome;
+    // Obter nome;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -268,7 +270,7 @@ Codigo ComandoVisualizarTeste::getResultado() {
     nome.setValor(resultado.getValorColuna());
     casoDeTeste.setNome(nome);
 
-    // Remover data;
+    // Obter data;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -276,7 +278,7 @@ Codigo ComandoVisualizarTeste::getResultado() {
     data.setValor(resultado.getValorColuna());
     casoDeTeste.setData(data);
 
-    // Remover acao;
+    // Obter acao;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -284,7 +286,7 @@ Codigo ComandoVisualizarTeste::getResultado() {
     acao.setValor(resultado.getValorColuna());
     casoDeTeste.setAcao(acao);
 
-    // Remover resposta;
+    // Obter resposta;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -292,7 +294,7 @@ Codigo ComandoVisualizarTeste::getResultado() {
     resposta.setValor(resultado.getValorColuna());
     casoDeTeste.setResposta(resposta);
 
-    // Remover resultado;
+    // Obter resultado;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     resultado = listaResultado.back();
@@ -341,7 +343,7 @@ ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
 //         Teste teste;
 //         vector <Teste> testes;
 
-//         // // Remover nome;
+//         // // Obter nome;
 //         // if (listaResultado.empty())
 //         //         throw EErroPersistencia("Lista de resultados vazia.");
 //         // resultado = listaResultado.back();
@@ -349,7 +351,7 @@ ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
 //         // teste->setNome.setValor(resultado.getValorColuna());
 //         // desenvolvedor.setNome(texto);
 
-//         // // Remover matricula;
+//         // // Obter matricula;
 //         // if (listaResultado.empty())
 //         //         throw EErroPersistencia("Lista de resultados vazia.");
 //         // resultado = listaResultado.back();
@@ -357,7 +359,7 @@ ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
 //         // matricula.setValor(resultado.getValorColuna());
 //         // desenvolvedor.setMatricula(matricula);
 
-//         // // Remover senha;
+//         // // Obter senha;
 //         // if (listaResultado.empty())
 //         //         throw EErroPersistencia("Lista de resultados vazia.");
 //         // resultado = listaResultado.back();
@@ -365,7 +367,7 @@ ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
 //         // senha.setValor(resultado.getValorColuna());
 //         // desenvolvedor.setSenha(senha);
 
-//         // // Remover telefone;
+//         // // Obter telefone;
 //         // if (listaResultado.empty())
 //         //         throw EErroPersistencia("Lista de resultados vazia.");
 //         // resultado = listaResultado.back();
