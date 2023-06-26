@@ -8,45 +8,45 @@ void MADesenvolvedor::executar() {
     ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
     ctrlMSDesenvolvedor = new CtrlMSDesenvolvedor();
 
-    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(stubISDesenvolvedor);
+    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlMSDesenvolvedor);
 
     Matricula matricula;
     ctrlIADesenvolvedor->executar(matricula);
 
     delete ctrlIADesenvolvedor;
-    delete stubISDesenvolvedor;
+    delete ctrlMSDesenvolvedor;
 }
 
 //--------------------------------------------------------------------------------------------
-void TUIATeste::executar() {
-    IATeste *ctrlIATeste;
-    StubISTeste *stubISTeste;
+void MATeste::executar() {
+    CtrlIATeste *ctrlIATeste;
+    CtrlMSTeste *ctrlMSTeste;
 
     ctrlIATeste = new CtrlIATeste();
-    stubISTeste = new StubISTeste();
+    ctrlMSTeste = new CtrlMSTeste();
 
-    ctrlIATeste->setCtrlISTeste(stubISTeste);
+    ctrlIATeste->setCtrlISTeste(ctrlMSTeste);
 
     Matricula matricula;
     ctrlIATeste->executar(matricula);
 
     delete ctrlIATeste;
-    delete stubISTeste;
+    delete ctrlMSTeste;
 }
 
 //--------------------------------------------------------------------------------------------
-void TUIACasoDeTeste::executar() {
-    IACasoDeTeste *ctrlIACasoDeTeste;
-    StubISCasoDeTeste *stubISCasoDeTeste;
+void MACasoDeTeste::executar() {
+    CtrlIACasoDeTeste *ctrlIACasoDeTeste;
+    CtrlMSCasoDeTeste *ctrlMSCasoDeTeste;
 
     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
-    stubISCasoDeTeste = new StubISCasoDeTeste();
+    ctrlMSCasoDeTeste = new CtrlMSCasoDeTeste();
 
-    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(stubISCasoDeTeste);
+    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlMSCasoDeTeste);
 
     Matricula matricula;
     ctrlIACasoDeTeste->executar(matricula);
 
     delete ctrlIACasoDeTeste;
-    delete stubISCasoDeTeste;
+    delete ctrlMSCasoDeTeste;
 }
