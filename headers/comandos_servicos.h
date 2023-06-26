@@ -54,14 +54,14 @@ public:
              nomeBancoDados = "database.db";                             // Nome do banco de dados.
         }
         ComandoSQL *Comandosql;
-        void executar(string);
+        void executar();
 };
 //---------------------------------------------------------------------------
 // Classe ComandoLerSenha
 class ComandoLerSenha:public ComandoSQL {
 private:
 public:
-        ComandoLerSenha(Senha);
+        ComandoLerSenha(Matricula);
         string getResultado();
 };
 

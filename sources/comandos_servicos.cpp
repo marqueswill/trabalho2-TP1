@@ -44,7 +44,7 @@ void ComandoSQL::desconectar() {
         throw EErroPersistencia("Erro na desconexao ao banco de dados");
 }
 
-void ComandoSQL::executar(string comandoSQL) {
+void ComandoSQL::executar() {
         conectar();
         rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
         if(rc != SQLITE_OK){
@@ -66,7 +66,25 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
       }
       return 0;
 }
+//---------------------------------------------------------------------------
+// Implementacao para classe ComandoLerSenha
+ComandoLerSenha::ComandoLerSenha(Matricula matricula){
+        comandoSQL = "SELECT senha FROM desenvolvedores WHERE matricula = ";
+        comandoSQL += matricula.getValor();
+}
+string ComandoLerSenha::getResultado(){
+        ElementoResultado resultado;
+        string senha;
 
+        //Remover matricula;
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");;
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        senha = resultado.getValorColuna();
+
+        return senha;
+}
 //---------------------------------------------------------------------------
 // Implementacao para classe ComandoLerMatricula
 

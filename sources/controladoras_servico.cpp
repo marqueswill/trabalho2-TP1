@@ -10,10 +10,13 @@ using namespace std;
 
 bool CtrlMSAutenticacao::autenticar(Matricula matricula, Senha senha){
 ComandoLerMatricula lerMatricula(matricula);
+ComandoLerSenha lerSenha(matricula);
 if(lerMatricula.getResultado() == matricula.getValor()){
     return false;
 }
-
+if(lerSenha.getResultado() == senha.getValor());{
+    return true;
+}
 return true;
 
 }
@@ -21,8 +24,9 @@ return true;
 bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
 
 Matricula matricula = desenvolvedor->getMatricula();
+ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
 try{
-    ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
+   comandoVisualizar.executar();
     Desenvolvedor Dev;
     Dev = comandoVisualizar.getResultado();
     desenvolvedor = &Dev;
