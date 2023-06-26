@@ -13,9 +13,8 @@ ComandoLerMatricula lerMatricula(matricula);
 if(lerMatricula.getResultado() == matricula.getValor()){
     return false;
 }
-else{
-    return true;
-}
+return true;
+
 }
 //-----------------------------------------------------------------------------------------------
 bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
