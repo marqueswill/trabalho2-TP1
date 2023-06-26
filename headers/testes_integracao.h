@@ -3,5 +3,8 @@
 
 #include "controladoras_apresentacao.h"
 #include "controladoras_servico.h"
-
+class TIApresentacao{
+    public:
+        void executar();
+};
 #endif  // TESTES_INTEGRACAO_H_INCLUDED

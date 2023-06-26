@@ -6,10 +6,24 @@
 #include "telas.h"
 
 //--------------------------------------------------------------------------------------------
-class CmdIAAutenticacao {
+class ComandoIAAutenticacao {
+   protected:
+    bool resultado;
+    Matricula* matricula;
+    Senha senha;
+    TelaAutenticacao telaAutenticacao;
+
    public:
-    virtual void executar(ISAutenticacao*) = 0;
-    virtual ~CmdIAAutenticacao() {}
+    virtual bool executar(ISAutenticacao *) = 0;
+    virtual ~ComandoIAAutenticacao(){};
+};
+
+class ComandoIAAutenticacaoAutenticar : public ComandoIAAutenticacao {
+   public:
+    ComandoIAAutenticacaoAutenticar(Matricula* matricula) {
+        this->matricula = matricula;
+    };
+    bool executar(ISAutenticacao *);
 };
 
 //--------------------------------------------------------------------------------------------

@@ -1,16 +1,16 @@
 #include "../headers/testes_integracao.h"
 
 //--------------------------------------------------------------------------------------------
-void TIApresentacao::executar() {
+void ::executar() {
     IAAutenticacao *ctrlIAAutenticacao;
     IADesenvolvedor *ctrlIADesenvolvedor;
     IATeste *ctrlIATeste;
     IACasoDeTeste *ctrlIACasoDeTeste;
 
-    StubISAutenticacao *stubISAutenticacao;
-    StubISDesenvolvedor *stubISDesenvolvedor;
-    StubISTeste *stubISTeste;
-    StubISCasoDeTeste *stubISCasoDeTeste;
+    CtrlMSAutenticacao *ctrlMSAutenticacao;
+    CtrlMSDesenvolvedor *ctrlMSDesenvolvedor;
+    CtrlMSTeste *ctrlMSTeste;
+    CtrlMSCasoDeTeste *ctrlMSCasoDeTeste;
 
     CtrlIAInicializacao ctrlIAInicializacao;
     ctrlIAAutenticacao = new CtrlIAAutenticacao();
@@ -18,15 +18,15 @@ void TIApresentacao::executar() {
     ctrlIATeste = new CtrlIATeste();
     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
 
-    stubISAutenticacao = new StubISAutenticacao();
-    stubISDesenvolvedor = new StubISDesenvolvedor();
-    stubISTeste = new StubISTeste();
-    stubISCasoDeTeste = new StubISCasoDeTeste();
+    ctrlMSAutenticacao = new CtrlMSAutenticacao();
+    ctrlMSDesenvolvedor = new CtrlMSDesenvolvedor();
+    ctrlMSTeste = new CtrlMSTeste();
+    ctrlMSCasoDeTeste = new CtrlMSCasoDeTeste();
 
-    ctrlIAAutenticacao->setCtrlISAutenticacao(stubISAutenticacao);
-    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(stubISDesenvolvedor);
-    ctrlIATeste->setCtrlISTeste(stubISTeste);
-    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(stubISCasoDeTeste);
+    ctrlIAAutenticacao->setCtrlISAutenticacao(ctrlMSAutenticacao);
+    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlMSDesenvolvedor);
+    ctrlIATeste->setCtrlISTeste(ctrlMSTeste);
+    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlMSCasoDeTeste);
 
     ctrlIAInicializacao.setCtrlIAAutenticacao(ctrlIAAutenticacao);
     ctrlIAInicializacao.setCtrlIADesenvolvedor(ctrlIADesenvolvedor);

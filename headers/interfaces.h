@@ -19,6 +19,7 @@ class ISCasoDeTeste;
 class IAAutenticacao {
    public:
     virtual bool autenticar(Matricula *) = 0;
+    virtual void setCtrlISAutenticacao(ISAutenticacao *) = 0;
     virtual ~IAAutenticacao(){};
 };
 
@@ -48,6 +49,9 @@ class IACasoDeTeste {
 // Declarações das interfaces da camada de serviço.
 
 class ISAutenticacao {
+    public:
+        virtual bool autenticar(Matricula, Senha) = 0;
+        virtual ~ISAutenticacao(){};
 };
 
 class ISDesenvolvedor {
