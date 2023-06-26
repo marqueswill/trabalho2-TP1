@@ -1,7 +1,7 @@
 #include "../headers/testes_integracao.h"
 
 //--------------------------------------------------------------------------------------------
-void ::executar() {
+void TIApresentacao::executar() {
     IAAutenticacao *ctrlIAAutenticacao;
     IADesenvolvedor *ctrlIADesenvolvedor;
     IATeste *ctrlIATeste;
