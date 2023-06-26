@@ -56,6 +56,14 @@ public:
         ComandoSQL *Comandosql;
         void executar(string);
 };
+//---------------------------------------------------------------------------
+// Classe ComandoLerSenha
+class ComandoLerSenha:public ComandoSQL {
+private:
+public:
+        ComandoLerSenha(Senha);
+        string getResultado();
+};
 
 //---------------------------------------------------------------------------
 // Classe ComandoLerMatricula.
