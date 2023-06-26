@@ -10,22 +10,22 @@ class TIApresentacao {
     void executar();
 };
 
-class TISubAutenticacao {
+class TIAutenticacao {
    public:
     void executar();
 };
 
-class TISubDesenvolvedor {
+class TIDesenvolvedor {
    public:
     void executar();
 };
 
-class TISubTeste {
+class TITeste {
    public:
     void executar();
 };
 
-class TISubCasoDeTeste {
+class TICasoDeTeste {
    public:
     void executar();
 };

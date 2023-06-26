@@ -5,13 +5,13 @@
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
 
-class CtrlMSAutenticacao : public ISAutenticacao {
+class CtrlISAutenticacao : public ISAutenticacao {
    public:
     bool autenticar(Matricula, Senha);
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlMSDesenvolvedor : public ISDesenvolvedor {
+class CtrlISDesenvolvedor : public ISDesenvolvedor {
    private:
    public:
     bool visualizar(Desenvolvedor *);
@@ -21,7 +21,7 @@ class CtrlMSDesenvolvedor : public ISDesenvolvedor {
 };
 
 //-----------------------------------------------------------------------------------
-class CtrlMSTeste : public ISTeste {
+class CtrlISTeste : public ISTeste {
    private:
    public:
     bool visualizar(Teste *);
@@ -30,7 +30,7 @@ class CtrlMSTeste : public ISTeste {
     bool descadastrar(Codigo);
 };
 
-class CtrlMSCasoDeTeste : public ISCasoDeTeste {
+class CtrlISCasoDeTeste : public ISCasoDeTeste {
    private:
    public:
     bool visualizar(CasoDeTeste *);

@@ -82,10 +82,11 @@ class DriverTestesModulos : public Drivers {
 class DriverTestesIntegracao : public Drivers {
    private:
     const static int CAMADA_APRESENTACAO = 1;
-    const static int SUBSISTEMA_DESENVOLVEDOR = 2;
-    const static int SUBSISTEMA_TESTE = 3;
-    const static int SUBSISTEMA_CASODETESTE = 4;
-    const static int RETORNAR = 5;
+    const static int SUBSISTEMA_AUTENTICACAO = 2;
+    const static int SUBSISTEMA_DESENVOLVEDOR = 3;
+    const static int SUBSISTEMA_TESTE = 4;
+    const static int SUBSISTEMA_CASODETESTE = 5;
+    const static int RETORNAR = 6;
 
    public:
     void executar();

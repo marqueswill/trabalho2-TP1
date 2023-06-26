@@ -37,52 +37,52 @@ void TIApresentacao::executar() {
 }
 
 //--------------------------------------------------------------------------------------------
-void TISubDesenvolvedor::executar() {
+void TIDesenvolvedor::executar() {
     IADesenvolvedor *ctrlIADesenvolvedor;
-    ISDesenvolvedor *ctrlMSDesenvolvedor;
+    ISDesenvolvedor *ctrlISDesenvolvedor;
 
     ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
-    ctrlMSDesenvolvedor = new CtrlMSDesenvolvedor();
+    ctrlISDesenvolvedor = new CtrlISDesenvolvedor();
 
-    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlMSDesenvolvedor);
+    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);
 
     Matricula matricula;
     ctrlIADesenvolvedor->executar(matricula);
 
     delete ctrlIADesenvolvedor;
-    delete ctrlMSDesenvolvedor;
+    delete ctrlISDesenvolvedor;
 }
 
 //--------------------------------------------------------------------------------------------
-void TISubTeste::executar() {
+void TITeste::executar() {
     CtrlIATeste *ctrlIATeste;
-    CtrlMSTeste *ctrlMSTeste;
+    CtrlISTeste *ctrlISTeste;
 
     ctrlIATeste = new CtrlIATeste();
-    ctrlMSTeste = new CtrlMSTeste();
+    ctrlISTeste = new CtrlISTeste();
 
-    ctrlIATeste->setCtrlISTeste(ctrlMSTeste);
+    ctrlIATeste->setCtrlISTeste(ctrlISTeste);
 
     Matricula matricula;
     ctrlIATeste->executar(matricula);
 
     delete ctrlIATeste;
-    delete ctrlMSTeste;
+    delete ctrlISTeste;
 }
 
 //--------------------------------------------------------------------------------------------
-void TISubCasoDeTeste::executar() {
+void TICasoDeTeste::executar() {
     CtrlIACasoDeTeste *ctrlIACasoDeTeste;
-    CtrlMSCasoDeTeste *ctrlMSCasoDeTeste;
+    CtrlISCasoDeTeste *ctrlISCasoDeTeste;
 
     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
-    ctrlMSCasoDeTeste = new CtrlMSCasoDeTeste();
+    ctrlISCasoDeTeste = new CtrlISCasoDeTeste();
 
-    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlMSCasoDeTeste);
+    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlISCasoDeTeste);
 
     Matricula matricula;
     ctrlIACasoDeTeste->executar(matricula);
 
     delete ctrlIACasoDeTeste;
-    delete ctrlMSCasoDeTeste;
+    delete ctrlISCasoDeTeste;
 }

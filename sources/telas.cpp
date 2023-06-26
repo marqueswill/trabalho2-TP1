@@ -1072,10 +1072,11 @@ void TelaTestesModulos::selecionar(int *campo) {
 void TelaTestesIntegracao::selecionar(int *campo) {
     string titulo1 = "Selecione teste integração :";
     vector<string> textos{"1 - Integração entre modulos da camada de Apresentacao.",
-                          "2 - Integração entre modulos do subsistema Desenvolvedor.",
-                          "3 - Integração entre modulos do subsistema Teste.",
-                          "4 - Integração entre modulos do subsistema CasoDeTeste.",
-                          "5 - Retornar.",
+                          "2 - Integração entre modulos do subsistema Autenticacao.",
+                          "3 - Integração entre modulos do subsistema Desenvolvedor.",
+                          "4 - Integração entre modulos do subsistema Teste.",
+                          "5 - Integração entre modulos do subsistema CasoDeTeste.",
+                          "6 - Retornar.",
                           "Digite a opcao : "};
 
     initscr();

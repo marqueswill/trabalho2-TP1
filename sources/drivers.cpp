@@ -177,6 +177,10 @@ void DriverTestesModulos::executar() {
 //--------------------------------------------------------------------------------------------
 void DriverTestesIntegracao::executar() {
     TIApresentacao testeApresentacao;
+    TIAutenticacao testeAutenticacao;
+    TIDesenvolvedor testeDesenvolvedor;
+    TITeste testeTeste;
+    TICasoDeTeste testeCasoDeTeste;
 
     int campo;
     bool apresentar = true;
@@ -188,12 +192,17 @@ void DriverTestesIntegracao::executar() {
             case CAMADA_APRESENTACAO:
                 testeApresentacao.executar();
                 break;
+            case SUBSISTEMA_AUTENTICACAO:
+                testeAutenticacao.executar();
+                break;
             case SUBSISTEMA_DESENVOLVEDOR:
-                /* code */
+                testeDesenvolvedor.executar();
                 break;
             case SUBSISTEMA_TESTE:
+                testeTeste.executar();
                 break;
             case SUBSISTEMA_CASODETESTE:
+                testeCasoDeTeste.executar();
                 break;
             case RETORNAR:
                 apresentar = false;
