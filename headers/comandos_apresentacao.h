@@ -2,6 +2,7 @@
 #define COMANDOS_APRESENTACAO_H_INCLUDED
 
 #include "interfaces.h"
+#include "controladoras_servico.h"
 #include "telas.h"
 
 //--------------------------------------------------------------------------------------------

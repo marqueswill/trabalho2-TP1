@@ -1,6 +1,12 @@
 #ifndef COMANDOS_SERVICOS_H_INCLUDED
 #define COMANDOS_SERVICOS_H_INCLUDED
 
+// #include <conio.h>
+#include <stdio.h>
+
+#include <string>
+
+#include "../sources/database.db.sql"
 #include "dominios.h"
 #include "entidades.h"
 #include "sqlite3.h"
@@ -71,15 +77,19 @@ class ComandoSQL {
 
    public:
     ComandoSQL() {
-        nomeBancoDados = "testedb.db";  // Nome default para um banco de dados.
+        nomeBancoDados = "database.db";  // Nome do banco de dados.
     }
-    void executar();
+    ComandoSQL *Comandosql;
+    void executar(string);
 };
 
-//--------------------------------------------------------------------------------------------
-class ComandoLerSenha : public ComandoSQL {
+//---------------------------------------------------------------------------
+// Classe ComandoLerMatricula.
+
+class ComandoLerMatricula : public ComandoSQL {
+   private:
    public:
-    ComandoLerSenha(Matricula);
+    ComandoLerMatricula(Matricula);
     string getResultado();
 };
 
@@ -120,26 +130,10 @@ class ComandoDescadastrarDesenvolvedor : public ComandoSQL {
     ComandoDescadastrarDesenvolvedor(Matricula);
 };
 
-//--------------------------------------------------------------------------------------------
-class ComandoVisualizarTeste : public ComandoSQL {
+class ComandoListarTeste : public ComandoSQL {
    public:
-    ComandoVisualizarTeste(Codigo);
-    Codigo getResultado();
-};
-
-class ComandoCadastrarTeste : public ComandoSQL {
-   public:
-    ComandoCadastrarTeste(Teste);
-};
-
-class ComandoEditarTeste : public ComandoSQL {
-   public:
-    ComandoEditarTeste(Teste);
-};
-
-class ComandoDescadastrarTeste : public ComandoSQL {
-   public:
-    ComandoDescadastrarTeste(Codigo);
+    ComandoListarTeste(Matricula);
+    vector<Teste> getLista();
 };
 
 //--------------------------------------------------------------------------------------------

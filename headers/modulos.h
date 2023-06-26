@@ -2,28 +2,28 @@
 #define TESTE_MODULOS_H_INCLUDED
 
 #include "controladoras_apresentacao.h"
-#include "stubs.h"
+#include "controladoras_servico.h"
 // Aqui vão ficar os testes de cada um dos módulos de apresentação
 //-----------------------------------------------------------------------------------
-class TUIAAutenticacao {
+class MAAutenticacao {
    public:
     void executar();
 };
 
 //-----------------------------------------------------------------------------------
-class TUIADesenvolvedor {
+class MADesenvolvedor {
    public:
     void executar();
 };
 
 //-----------------------------------------------------------------------------------
-class TUIATeste {
+class MATeste {
    public:
     void executar();
 };
 
 //-----------------------------------------------------------------------------------
-class TUIACasoDeTeste {
+class MACasoDeTeste {
    public:
     void executar();
 };

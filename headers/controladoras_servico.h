@@ -2,7 +2,6 @@
 #define CONTROLADORAS_SERVICO_H_INCLUDED
 
 #include "interfaces.h"
-
 //-----------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
 
@@ -13,6 +12,7 @@ class CtrlMSAutenticacao : public ISAutenticacao {
 
 //-----------------------------------------------------------------------------------
 class CtrlMSDesenvolvedor : public ISDesenvolvedor {
+   private:
    public:
     bool visualizar(Desenvolvedor *);
     bool cadastrar(Desenvolvedor);
@@ -22,6 +22,7 @@ class CtrlMSDesenvolvedor : public ISDesenvolvedor {
 
 //-----------------------------------------------------------------------------------
 class CtrlMSTeste : public ISTeste {
+   private:
    public:
     bool visualizar(Teste *);
     bool cadastrar(Teste);
@@ -30,6 +31,7 @@ class CtrlMSTeste : public ISTeste {
 };
 
 class CtrlMSCasoDeTeste : public ISCasoDeTeste {
+   private:
    public:
     bool visualizar(CasoDeTeste *);
     bool cadastrar(CasoDeTeste);
