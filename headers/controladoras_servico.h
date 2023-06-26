@@ -7,7 +7,7 @@
 
 class CtrlMSAutenticacao : public ISAutenticacao {
     public:
-    bool autenticar(Matricula);
+    bool autenticar(Matricula, Senha);
 };
 
 //-----------------------------------------------------------------------------------

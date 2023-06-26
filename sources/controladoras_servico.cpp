@@ -8,11 +8,12 @@ using namespace std;
 // //--------------------------------------------------------------------------------------------
 // // Implementações dos métodos de classes controladoras da camada de serviço.
 
-bool CtrlMSAutenticacao::autenticar(Matricula matricula){
+bool CtrlMSAutenticacao::autenticar(Matricula matricula, Senha senha){
 ComandoLerMatricula lerMatricula(matricula);
 if(lerMatricula.getResultado() == matricula.getValor()){
     return false;
 }
+
 return true;
 
 }
