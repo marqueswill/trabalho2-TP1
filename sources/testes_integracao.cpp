@@ -35,3 +35,54 @@ void TIApresentacao::executar() {
 
     ctrlIAInicializacao.executar();
 }
+
+//--------------------------------------------------------------------------------------------
+void TISubDesenvolvedor::executar() {
+    IADesenvolvedor *ctrlIADesenvolvedor;
+    ISDesenvolvedor *ctrlMSDesenvolvedor;
+
+    ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
+    ctrlMSDesenvolvedor = new CtrlMSDesenvolvedor();
+
+    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlMSDesenvolvedor);
+
+    Matricula matricula;
+    ctrlIADesenvolvedor->executar(matricula);
+
+    delete ctrlIADesenvolvedor;
+    delete ctrlMSDesenvolvedor;
+}
+
+//--------------------------------------------------------------------------------------------
+void TISubTeste::executar() {
+    CtrlIATeste *ctrlIATeste;
+    CtrlMSTeste *ctrlMSTeste;
+
+    ctrlIATeste = new CtrlIATeste();
+    ctrlMSTeste = new CtrlMSTeste();
+
+    ctrlIATeste->setCtrlISTeste(ctrlMSTeste);
+
+    Matricula matricula;
+    ctrlIATeste->executar(matricula);
+
+    delete ctrlIATeste;
+    delete ctrlMSTeste;
+}
+
+//--------------------------------------------------------------------------------------------
+void TISubCasoDeTeste::executar() {
+    CtrlIACasoDeTeste *ctrlIACasoDeTeste;
+    CtrlMSCasoDeTeste *ctrlMSCasoDeTeste;
+
+    ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
+    ctrlMSCasoDeTeste = new CtrlMSCasoDeTeste();
+
+    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlMSCasoDeTeste);
+
+    Matricula matricula;
+    ctrlIACasoDeTeste->executar(matricula);
+
+    delete ctrlIACasoDeTeste;
+    delete ctrlMSCasoDeTeste;
+}
