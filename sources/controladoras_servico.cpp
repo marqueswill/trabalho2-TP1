@@ -20,7 +20,6 @@ return true;
 bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
 
 Matricula matricula = desenvolvedor->getMatricula();
-
 try{
     ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
     Desenvolvedor Dev;
