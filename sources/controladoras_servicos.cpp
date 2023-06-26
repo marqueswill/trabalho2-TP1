@@ -35,7 +35,9 @@ bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
     ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
     try {
         comandoVisualizar.executar();
-        desenvolvedor = &comandoVisualizar.getResultado();
+        Desenvolvedor dev;
+        dev = comandoVisualizar.getResultado();
+        desenvolvedor = &dev;
     } catch (EErroPersistencia &exp) {
         return false;
     }

@@ -253,7 +253,7 @@ ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo) {
     comandoSQL += codigo.getValor();
 }
 
-Codigo ComandoVisualizarTeste::getResultado() {
+Codigo ComandoVisualizarCasoDeTeste::getResultado() {
     ElementoResultado resultado;
     CasoDeTeste casoDeTeste;
     Texto nome;
