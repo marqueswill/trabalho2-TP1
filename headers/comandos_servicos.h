@@ -2,25 +2,12 @@
 #define COMANDOS_SERVICOS_H_INCLUDED
 
 // #include <conio.h>
-#include <stdio.h>
-
-#include <string>
 
 #include "../sources/database.db.sql"
+#include "../sources/dominios.cpp"
 #include "dominios.h"
 #include "entidades.h"
-#include "dominios.h"
-#include "../sources/dominios.cpp"
-
-
-#include <list>
-
-#include <iostream>
-#include <conio.h>
-#include <string>
-#include <stdio.h>
-#include "../headers/entidades.h"
-#include "sqlite3.h"            // Incluir cabe�alho da biblioteca SQLite.
+// #include <conio.h>
 
 using namespace std;
 
@@ -82,14 +69,15 @@ class ComandoSQL {
     void desconectar();
     static int callback(void *, int, char **, char **);
 
-protected:
-        static list<ElementoResultado> listaResultado;
-        string comandoSQL;
-public:
-        ComandoSQL() {
-             nomeBancoDados = "testedb.db";                             // Nome do banco de dados.
-        }
-        void executar();
+   protected:
+    static list<ElementoResultado> listaResultado;
+    string comandoSQL;
+
+   public:
+    ComandoSQL() {
+        nomeBancoDados = "testedb.db";  // Nome do banco de dados.
+    }
+    void executar();
 };
 
 //---------------------------------------------------------------------------
@@ -99,10 +87,10 @@ class ComandoLerSenha : public ComandoSQL {
     string getResultado();
 };
 
-class ComandoLerMatricula:public ComandoSQL {
-public:
-        ComandoLerMatricula(Matricula);
-        string getResultado();
+class ComandoLerMatricula : public ComandoSQL {
+   public:
+    ComandoLerMatricula(Matricula);
+    string getResultado();
 };
 
 class ComandoLerCodigo : public ComandoSQL {
@@ -133,19 +121,19 @@ class ComandoDescadastrarDesenvolvedor : public ComandoSQL {
     ComandoDescadastrarDesenvolvedor(Matricula);
 };
 
-class ComandoLerCodigo: public ComandoSQL {
-public:
-        ComandoLerCodigo(Codigo);
-        string getResultado();
+class ComandoLerCodigo : public ComandoSQL {
+   public:
+    ComandoLerCodigo(Codigo);
+    string getResultado();
 };
 
 //---------------------------------------------------------------------------
 // Classe ComandoVisualizarTeste
 
-class ComandoVisualizarTeste: public ComandoSQL {
-public:
-        ComandoVisualizarTeste(Codigo);
-        Codigo getResultado();
+class ComandoVisualizarTeste : public ComandoSQL {
+   public:
+    ComandoVisualizarTeste(Codigo);
+    Codigo getResultado();
 };
 
 class ComandoCadastrarTeste : public ComandoSQL {
@@ -187,9 +175,9 @@ class ComandoEditarCasoDeTeste : public ComandoSQL {
 };
 //---------------------------------------------------------------------------
 // Classe ComandoDescadastrarTeste
-class ComandoDescadastrarCasoDeTeste:public ComandoSQL {
-public:
-        ComandoDescadastrarCasoDeTeste(Codigo);
+class ComandoDescadastrarCasoDeTeste : public ComandoSQL {
+   public:
+    ComandoDescadastrarCasoDeTeste(Codigo);
 };
 
 class ComandoListarCasoDeTeste : public ComandoSQL {
