@@ -19,20 +19,14 @@ else{
 }
 //-----------------------------------------------------------------------------------------------
 bool CtrlMSDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor){
-// bool StubISTeste::visualizar(Teste* teste) {                                  // Passado apenas com o código
-//     if (teste->getCodigo().getValor() == testeStub.getCodigo().getValor()) {  // Procura no BD e passa os valores pra cima
-//         teste->setCodigo(codigoTeste);
-//         teste->setNome(nomeTeste);
-//         teste->setClasse(classeTeste);
-//     } else {
-//         return FALHA;
-//     }
 
-//     return SUCESSO;
-// }
 Matricula matricula = desenvolvedor->getMatricula();
+
 try{
     ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
+    Desenvolvedor Dev;
+    Dev = comandoVisualizar.getResultado();
+    desenvolvedor = &Dev;
 }
 
 catch(EErroPersistencia exp){
@@ -44,10 +38,11 @@ return true;
 
 bool CtrlMSDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor){
     CtrlMSAutenticacao ctrlAutenticacao;
-if(ctrlAutenticacao.autenticar(desenvolvedor.getMatricula()))
-    ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
-    return true;
-return false;
+    if(ctrlAutenticacao.autenticar(desenvolvedor.getMatricula())){
+        ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
+        return true;
+    }
+    return false;
 }
 
 bool CtrlMSDesenvolvedor::editar(Desenvolvedor desenvolvedor){
