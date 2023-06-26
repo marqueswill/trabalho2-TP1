@@ -7,10 +7,10 @@ void ::executar() {
     IATeste *ctrlIATeste;
     IACasoDeTeste *ctrlIACasoDeTeste;
 
-    CtrlMSAutenticacao *ctrlMSAutenticacao;
-    CtrlMSDesenvolvedor *ctrlMSDesenvolvedor;
-    CtrlMSTeste *ctrlMSTeste;
-    CtrlMSCasoDeTeste *ctrlMSCasoDeTeste;
+    ISAutenticacao *ctrlMSAutenticacao;
+    ISDesenvolvedor *ctrlMSDesenvolvedor;
+    ISTeste *ctrlMSTeste;
+    ISCasoDeTeste *ctrlMSCasoDeTeste;
 
     CtrlIAInicializacao ctrlIAInicializacao;
     ctrlIAAutenticacao = new CtrlIAAutenticacao();
