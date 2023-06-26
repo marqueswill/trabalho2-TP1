@@ -1,17 +1,17 @@
-#ifndef COMANDOS_SERVICOS_H_INCLUDED
-#define COMANDOS_SERVICOS_H_INCLUDED
-
 // #include <conio.h>
+#include <stdio.h>
 
+#include "../sources/database.db"
 #include "../sources/database.db.sql"
-#include "../sources/dominios.cpp"
 #include "dominios.h"
 #include "entidades.h"
-// #include <conio.h>
+#include "sqlite3.h"  // Incluir cabe�alho da biblioteca SQLite.
 
 using namespace std;
 
-//--------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+// Declara��o da classe EErroPersistencia.
+
 class EErroPersistencia {
    private:
     string mensagem;
@@ -21,15 +21,6 @@ class EErroPersistencia {
     string what();
 };
 
-inline EErroPersistencia::EErroPersistencia(string mensagem) {
-    this->mensagem = mensagem;
-}
-
-inline string EErroPersistencia::what() {
-    return mensagem;
-}
-
-//--------------------------------------------------------------------------------------------
 class ElementoResultado {
    private:
     string nomeColuna;
@@ -42,23 +33,9 @@ class ElementoResultado {
     string getValorColuna() const;
 };
 
-inline void ElementoResultado::setNomeColuna(const string &nomeColuna) {
-    this->nomeColuna = nomeColuna;
-}
+//---------------------------------------------------------------------------
+// Classe ComandoSQL.
 
-inline string ElementoResultado::getNomeColuna() const {
-    return nomeColuna;
-}
-
-inline string ElementoResultado::getValorColuna() const {
-    return valorColuna;
-}
-
-inline void ElementoResultado::setValorColuna(const string &valorColuna) {
-    this->valorColuna = valorColuna;
-}
-
-//--------------------------------------------------------------------------------------------
 class ComandoSQL {
    private:
     const char *nomeBancoDados;
@@ -75,51 +52,64 @@ class ComandoSQL {
 
    public:
     ComandoSQL() {
-        nomeBancoDados = "testedb.db";  // Nome do banco de dados.
+        nomeBancoDados = "database.db";  // Nome do banco de dados.
     }
+    ComandoSQL *Comandosql;
     void executar();
 };
-
 //---------------------------------------------------------------------------
+// Classe ComandoLerSenha
 class ComandoLerSenha : public ComandoSQL {
+   private:
    public:
     ComandoLerSenha(Matricula);
     string getResultado();
 };
 
+//---------------------------------------------------------------------------
+// Classe ComandoLerMatricula.
+
 class ComandoLerMatricula : public ComandoSQL {
+   private:
    public:
     ComandoLerMatricula(Matricula);
     string getResultado();
 };
 
-class ComandoLerCodigo : public ComandoSQL {
-   public:
-    ComandoLerCodigo(Codigo);
-    string getResultado();
-};
+//---------------------------------------------------------------------------
+// Classe ComandoVisualizarDesenvolvedor.
 
-//--------------------------------------------------------------------------------------------
 class ComandoVisualizarDesenvolvedor : public ComandoSQL {
    public:
     ComandoVisualizarDesenvolvedor(Matricula);
     Desenvolvedor getResultado();
 };
 
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarDesenvolvedor
+
 class ComandoCadastrarDesenvolvedor : public ComandoSQL {
    public:
     ComandoCadastrarDesenvolvedor(Desenvolvedor);
 };
+
+//---------------------------------------------------------------------------
+// Classe ComandoEditarDesenvolvedor
 
 class ComandoEditarDesenvolvedor : public ComandoSQL {
    public:
     ComandoEditarDesenvolvedor(Desenvolvedor);
 };
 
+//---------------------------------------------------------------------------
+// Classe ComandoDescadastrarDesenvolvedor
+
 class ComandoDescadastrarDesenvolvedor : public ComandoSQL {
    public:
     ComandoDescadastrarDesenvolvedor(Matricula);
 };
+//---------------------------------------------------------------------------
+// Classe ComandoLerCodigo
 
 class ComandoLerCodigo : public ComandoSQL {
    public:
@@ -127,6 +117,13 @@ class ComandoLerCodigo : public ComandoSQL {
     string getResultado();
 };
 
+//---------------------------------------------------------------------------
+// Classe ComandoListarTeste
+class ComandoListarTeste : public ComandoSQL {
+   public:
+    ComandoListarTeste(Matricula);
+    vector<Teste> getLista();
+};
 //---------------------------------------------------------------------------
 // Classe ComandoVisualizarTeste
 
@@ -135,55 +132,49 @@ class ComandoVisualizarTeste : public ComandoSQL {
     ComandoVisualizarTeste(Codigo);
     Codigo getResultado();
 };
-
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarTeste
 class ComandoCadastrarTeste : public ComandoSQL {
    public:
     ComandoCadastrarTeste(Teste);
 };
-
+//---------------------------------------------------------------------------
+// Classe ComandoEditarTeste
 class ComandoEditarTeste : public ComandoSQL {
    public:
     ComandoEditarTeste(Teste);
 };
-
+//---------------------------------------------------------------------------
+// Classe ComandoDescadastrarTeste
 class ComandoDescadastrarTeste : public ComandoSQL {
    public:
     ComandoDescadastrarTeste(Codigo);
 };
-
-class ComandoListarTeste : public ComandoSQL {
-   public:
-    ComandoListarTeste(Matricula);
-    vector<Teste> getLista();
-};
-
-//--------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+// Classe ComandoVisualizarCasoDeTeste
 class ComandoVisualizarCasoDeTeste : public ComandoSQL {
    public:
     ComandoVisualizarCasoDeTeste(Codigo);
     Codigo getResultado();
 };
-
+//---------------------------------------------------------------------------
+// Classe ComandoCadastrarCasoDeTeste
 class ComandoCadastrarCasoDeTeste : public ComandoSQL {
    public:
     ComandoCadastrarCasoDeTeste(CasoDeTeste);
 };
-
+//---------------------------------------------------------------------------
+// Classe ComandoEditarCasoDeTeste
 class ComandoEditarCasoDeTeste : public ComandoSQL {
    public:
     ComandoEditarCasoDeTeste(CasoDeTeste);
 };
+//---------------------------------------------------------------------------
+// Classe ComandoListarCasoDeTeste
+
 //---------------------------------------------------------------------------
 // Classe ComandoDescadastrarTeste
 class ComandoDescadastrarCasoDeTeste : public ComandoSQL {
    public:
     ComandoDescadastrarCasoDeTeste(Codigo);
 };
-
-class ComandoListarCasoDeTeste : public ComandoSQL {
-   public:
-    ComandoListarCasoDeTeste(Matricula);
-    vector<CasoDeTeste> getLista();
-};
-
-#endif  // COMANDOS_SERVICOS_H_INCLUDED
