@@ -6,7 +6,7 @@
 #include "interfaces.h"
 #include "telas.h"
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class CtrlIAInicializacao {
    private:
     IAAutenticacao *ctrlIAAutenticacao;
@@ -47,7 +47,7 @@ inline void CtrlIAInicializacao::setCtrlIACasoDeTeste(IACasoDeTeste *ctrlIACasoD
     this->ctrlIACasoDeTeste = ctrlIACasoDeTeste;
 }
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 class CtrlIAAutenticacao : public IAAutenticacao {
    private:
@@ -63,7 +63,7 @@ inline void CtrlIAAutenticacao::setCtrlISAutenticacao(ISAutenticacao *ctrlISAute
     this->ctrlISAutenticacao = ctrlISAutenticacao;
 }
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class CtrlIADesenvolvedor : public IADesenvolvedor {
    private:
     const static int VISUALIZAR = 1;
@@ -84,7 +84,7 @@ inline void CtrlIADesenvolvedor::setCtrlISDesenvolvedor(ISDesenvolvedor *ctrlISD
     this->ctrlISDesenvolvedor = ctrlISDesenvolvedor;
 }
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class CtrlIATeste : public IATeste {
    private:
     const static int VISUALIZAR = 1;
@@ -105,7 +105,7 @@ inline void CtrlIATeste::setCtrlISTeste(ISTeste *ctrlISTeste) {
     this->ctrlISTeste = ctrlISTeste;
 }
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class CtrlIACasoDeTeste : public IACasoDeTeste {
    private:
     const static int VISUALIZAR = 1;

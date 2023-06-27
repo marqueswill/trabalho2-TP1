@@ -1,6 +1,6 @@
 #include "../headers/telas.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaMensagem::apresentar(string mensagem) {
     initscr();
     getmaxyx(stdscr, linha, coluna);
@@ -16,7 +16,7 @@ void TelaMensagem::apresentar(string mensagem) {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaInicial::selecionar(int *campo) {
     // Mensagens a serem apresentadas na tela inicial
     string titulo1 = "Selecione um dos servicos.";
@@ -41,7 +41,7 @@ void TelaInicial::selecionar(int *campo) {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaAutenticacao::autenticar(Matricula *matricula, Senha *senha) {
     string titulo1 = "Preencha os seguintes campos.";
     vector<string> texto1{"Matricula",
@@ -88,7 +88,7 @@ void TelaAutenticacao::autenticar(Matricula *matricula, Senha *senha) {
     noecho();
     endwin();
 }
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaUsuarioLogado::selecionar(int *campo) {
     string titulo1 = "Selecione um dos servicos. ";
     vector<string> texto1{"1 - Servicos relacionados a desenvolvedor.",
@@ -113,7 +113,7 @@ void TelaUsuarioLogado::selecionar(int *campo) {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaDesenvolvedor::mostrar(Desenvolvedor desenvolvedor) {
     string titulo1 = "Valores atuais do desenvolvedor.";
     vector<string> texto1{"Matricula : ",
@@ -388,7 +388,7 @@ void TelaDesenvolvedor::descadastrar(Matricula *matricula) {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaTeste::mostrar(Teste teste) {
     string titulo1 = "Valores atuais do teste.";
     vector<string> texto1{"Codigo : ",
@@ -643,7 +643,7 @@ void TelaTeste::descadastrar(Codigo *codigo) {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaCasoDeTeste::mostrar(CasoDeTeste casoDeTeste) {
     string titulo1 = "Valores atuais do caso de teste.";
     vector<string> texto1{"Codigo    : ",
@@ -992,7 +992,7 @@ void TelaCasoDeTeste::descadastrar(Codigo *codigo) {
 
     endwin();
 }
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TelaDepuracao::selecionar(int *campo) {
     string titulo1 = "Selecione tipo de teste a ser executado : ";
     vector<string> texto1{"1 - Executar testes unitarios.",

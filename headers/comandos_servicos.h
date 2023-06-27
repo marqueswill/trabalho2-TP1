@@ -3,16 +3,14 @@
 
 // #include <conio.h>
 // #include <stdio.h>
-
+#include <stdlib.h>
 #include "dominios.h"
 #include "entidades.h"
 #include "sqlite3.h"
 
 using namespace std;
 
-//---------------------------------------------------------------------------
-// Declara��o da classe EErroPersistencia.
-
+//----------------------------------------------------------------------------------------------------------------------
 class EErroPersistencia {
    private:
     string mensagem;
@@ -22,6 +20,15 @@ class EErroPersistencia {
     string what();
 };
 
+inline EErroPersistencia::EErroPersistencia(string mensagem) {
+    this->mensagem = mensagem;
+}
+
+inline string EErroPersistencia::what() {
+    return mensagem;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 class ElementoResultado {
    private:
     string nomeColuna;
@@ -34,15 +41,22 @@ class ElementoResultado {
     string getValorColuna() const;
 };
 
-//---------------------------------------------------------------------------
-// Classe ComandoSQL.
+inline void ElementoResultado::setNomeColuna(const string &nomeColuna) {
+    this->nomeColuna = nomeColuna;
+}
 
+inline void ElementoResultado::setValorColuna(const string &valorColuna) {
+    this->valorColuna = valorColuna;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoSQL {
    private:
     const char *nomeBancoDados;
     sqlite3 *bd;
     char *mensagem;
     int rc;
+
     void conectar();
     void desconectar();
     static int callback(void *, int, char **, char **);
@@ -53,131 +67,143 @@ class ComandoSQL {
 
    public:
     ComandoSQL() {
-        nomeBancoDados = "database.db";  // Nome do banco de dados.
+        nomeBancoDados = "database.db";
     }
-    ComandoSQL *Comandosql;
     void executar();
 };
-//---------------------------------------------------------------------------
-// Classe ComandoLerSenha
-class ComandoLerSenha : public ComandoSQL {
+
+inline void ComandoSQL::conectar() {
+    rc = sqlite3_open(nomeBancoDados, &bd);
+    if (rc != SQLITE_OK)
+        throw EErroPersistencia("Erro na conexao ao banco de dados");
+}
+
+inline void ComandoSQL::desconectar() {
+    rc = sqlite3_close(bd);
+    if (rc != SQLITE_OK)
+        throw EErroPersistencia("Erro na desconexao ao banco de dados");
+}
+
+inline int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nomeColuna) {
+    NotUsed = 0;
+    ElementoResultado elemento;
+    int i;
+    for (i = 0; i < argc; i++) {
+        elemento.setNomeColuna(nomeColuna[i]);
+        elemento.setValorColuna(valorColuna[i] ? valorColuna[i] : "NULL");
+        listaResultado.push_front(elemento);
+    }
+    return 0;
+}
+
+inline void ComandoSQL::executar() {
+    conectar();
+    rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
+    if (rc != SQLITE_OK) {
+        sqlite3_free(mensagem);
+        desconectar();
+        throw EErroPersistencia("Erro na execucao do comando SQL");
+    }
+    desconectar();
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+class ComandoSQLLerSenha : public ComandoSQL {
    private:
    public:
-    ComandoLerSenha(Matricula);
+    ComandoSQLLerSenha(Matricula);
     string getResultado();
 };
 
-//---------------------------------------------------------------------------
-// Classe ComandoLerMatricula.
-
-class ComandoLerMatricula : public ComandoSQL {
+class ComandoSQLLerMatricula : public ComandoSQL {
    private:
    public:
-    ComandoLerMatricula(Matricula);
+    ComandoSQLLerMatricula(Matricula);
     string getResultado();
 };
 
-//---------------------------------------------------------------------------
-// Classe ComandoVisualizarDesenvolvedor.
-
-class ComandoVisualizarDesenvolvedor : public ComandoSQL {
+class ComandoSQLLerCodigoTeste : public ComandoSQL {
    public:
-    ComandoVisualizarDesenvolvedor(Matricula);
+    ComandoSQLLerCodigoTeste(Codigo);
+    string getResultado();
+};
+
+class ComandoSQLLerCodigoCasoDeTeste : public ComandoSQL {
+   public:
+    ComandoSQLLerCodigoCasoDeTeste(Codigo);
+    string getResultado();
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+class ComandoSQLVisualizarDesenvolvedor : public ComandoSQL {
+   public:
+    ComandoSQLVisualizarDesenvolvedor(Matricula);
     Desenvolvedor getResultado();
 };
 
-//---------------------------------------------------------------------------
-// Classe ComandoCadastrarDesenvolvedor
-
-class ComandoCadastrarDesenvolvedor : public ComandoSQL {
+class ComandoSQLCadastrarDesenvolvedor : public ComandoSQL {
    public:
-    ComandoCadastrarDesenvolvedor(Desenvolvedor);
+    ComandoSQLCadastrarDesenvolvedor(Desenvolvedor);
 };
 
-//---------------------------------------------------------------------------
-// Classe ComandoEditarDesenvolvedor
-
-class ComandoEditarDesenvolvedor : public ComandoSQL {
+class ComandoSQLEditarDesenvolvedor : public ComandoSQL {
    public:
-    ComandoEditarDesenvolvedor(Desenvolvedor);
+    ComandoSQLEditarDesenvolvedor(Desenvolvedor);
 };
 
-//---------------------------------------------------------------------------
-// Classe ComandoDescadastrarDesenvolvedor
-
-class ComandoDescadastrarDesenvolvedor : public ComandoSQL {
+class ComandoSQLDescadastrarDesenvolvedor : public ComandoSQL {
    public:
-    ComandoDescadastrarDesenvolvedor(Matricula);
-};
-//---------------------------------------------------------------------------
-// Classe ComandoLerCodigo
-
-class ComandoLerCodigo : public ComandoSQL {
-   public:
-    ComandoLerCodigo(Codigo);
-    string getResultado();
+    ComandoSQLDescadastrarDesenvolvedor(Matricula);
 };
 
-//---------------------------------------------------------------------------
-// Classe ComandoListarTeste
-class ComandoListarTeste : public ComandoSQL {
+//----------------------------------------------------------------------------------------------------------------------
+class ComandoSQLListarTeste : public ComandoSQL {
    public:
-    ComandoListarTeste(Matricula);
+    ComandoSQLListarTeste(Matricula);
     vector<Teste> getLista();
 };
-//---------------------------------------------------------------------------
-// Classe ComandoVisualizarTeste
 
-class ComandoVisualizarTeste : public ComandoSQL {
+class ComandoSQLVisualizarTeste : public ComandoSQL {
    public:
-    ComandoVisualizarTeste(Codigo);
-    Codigo getResultado();
+    ComandoSQLVisualizarTeste(Codigo);
+    Teste getResultado();
 };
-//---------------------------------------------------------------------------
-// Classe ComandoCadastrarTeste
-class ComandoCadastrarTeste : public ComandoSQL {
-   public:
-    ComandoCadastrarTeste(Teste);
-};
-//---------------------------------------------------------------------------
-// Classe ComandoEditarTeste
-class ComandoEditarTeste : public ComandoSQL {
-   public:
-    ComandoEditarTeste(Teste);
-};
-//---------------------------------------------------------------------------
-// Classe ComandoDescadastrarTeste
-class ComandoDescadastrarTeste : public ComandoSQL {
-   public:
-    ComandoDescadastrarTeste(Codigo);
-};
-//---------------------------------------------------------------------------
-// Classe ComandoVisualizarCasoDeTeste
-class ComandoVisualizarCasoDeTeste : public ComandoSQL {
-   public:
-    ComandoVisualizarCasoDeTeste(Codigo);
-    Codigo getResultado();
-};
-//---------------------------------------------------------------------------
-// Classe ComandoCadastrarCasoDeTeste
-class ComandoCadastrarCasoDeTeste : public ComandoSQL {
-   public:
-    ComandoCadastrarCasoDeTeste(CasoDeTeste);
-};
-//---------------------------------------------------------------------------
-// Classe ComandoEditarCasoDeTeste
-class ComandoEditarCasoDeTeste : public ComandoSQL {
-   public:
-    ComandoEditarCasoDeTeste(CasoDeTeste);
-};
-//---------------------------------------------------------------------------
-// Classe ComandoListarCasoDeTeste
 
-//---------------------------------------------------------------------------
-// Classe ComandoDescadastrarTeste
-class ComandoDescadastrarCasoDeTeste : public ComandoSQL {
+class ComandoSQLCadastrarTeste : public ComandoSQL {
    public:
-    ComandoDescadastrarCasoDeTeste(Codigo);
+    ComandoSQLCadastrarTeste(Teste);
+};
+
+class ComandoSQLEditarTeste : public ComandoSQL {
+   public:
+    ComandoSQLEditarTeste(Teste);
+};
+
+class ComandoSQLDescadastrarTeste : public ComandoSQL {
+   public:
+    ComandoSQLDescadastrarTeste(Codigo);
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+class ComandoSQLVisualizarCasoDeTeste : public ComandoSQL {
+   public:
+    ComandoSQLVisualizarCasoDeTeste(Codigo);
+    CasoDeTeste getResultado();
+};
+
+class ComandoSQLCadastrarCasoDeTeste : public ComandoSQL {
+   public:
+    ComandoSQLCadastrarCasoDeTeste(CasoDeTeste);
+};
+
+class ComandoSQLEditarCasoDeTeste : public ComandoSQL {
+   public:
+    ComandoSQLEditarCasoDeTeste(CasoDeTeste);
+};
+
+class ComandoSQLDescadastrarCasoDeTeste : public ComandoSQL {
+   public:
+    ComandoSQLDescadastrarCasoDeTeste(Codigo);
 };
 
 #endif  // COMANDOS_SERVICOS_H_INCLUDED

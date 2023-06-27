@@ -1,98 +1,39 @@
 #include "../headers/comandos_servicos.h"
 
-#include "database.db"
-#include "database.db.sql"
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 list<ElementoResultado> ComandoSQL::listaResultado;
 
-//---------------------------------------------------------------------------
-
-EErroPersistencia::EErroPersistencia(string mensagem) {
-    this->mensagem = mensagem;
-}
-string EErroPersistencia::what() {
-    return mensagem;
-}
-
-//---------------------------------------------------------------------------
-// Implmentacao para classe ElementoResultado
-
-void ElementoResultado::setNomeColuna(const string &nomeColuna) {
-    this->nomeColuna = nomeColuna;
-}
-
-void ElementoResultado::setValorColuna(const string &valorColuna) {
-    this->valorColuna = valorColuna;
-}
-
-//---------------------------------------------------------------------------
-
-void ComandoSQL::conectar() {
-    nomeBancoDados = "database.db";
-    rc = sqlite3_open(nomeBancoDados, &bd);
-    if (rc != SQLITE_OK)
-        throw EErroPersistencia("Erro na conexao ao banco de dados");
-}
-
-void ComandoSQL::desconectar() {
-    rc = sqlite3_close(bd);
-    if (rc != SQLITE_OK)
-        throw EErroPersistencia("Erro na desconexao ao banco de dados");
-}
-
-void ComandoSQL::executar() {
-    conectar();
-    rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
-    if (rc != SQLITE_OK) {
-        sqlite3_free(mensagem);
-        desconectar();
-        throw EErroPersistencia("Erro na execucao do comando SQL");
-    }
-    desconectar();
-}
-
-int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nomeColuna) {
-    NotUsed = 0;
-    ElementoResultado elemento;
-    int i;
-    for (i = 0; i < argc; i++) {
-        elemento.setNomeColuna(nomeColuna[i]);
-        elemento.setValorColuna(valorColuna[i] ? valorColuna[i] : "NULL");
-        listaResultado.push_front(elemento);
-    }
-    return 0;
-}
-//---------------------------------------------------------------------------
-ComandoLerSenha::ComandoLerSenha(Matricula matricula) {
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLLerSenha::ComandoSQLLerSenha(Matricula matricula) {
     comandoSQL = "SELECT senha FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
-string ComandoLerSenha::getResultado() {
+
+string ComandoSQLLerSenha::getResultado() {
     ElementoResultado resultado;
     string senha;
 
-    // Obter matricula;
-    if (listaResultado.empty())
+    if (listaResultado.empty()) {
         throw EErroPersistencia("Lista de resultados vazia.");
-    ;
+    }
+
     resultado = listaResultado.back();
     listaResultado.pop_back();
     senha = resultado.getValorColuna();
 
     return senha;
 }
-//---------------------------------------------------------------------------
 
-ComandoLerMatricula::ComandoLerMatricula(Matricula matricula) {
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLLerMatricula::ComandoSQLLerMatricula(Matricula matricula) {
     comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
 
-string ComandoLerMatricula::getResultado() {
+string ComandoSQLLerMatricula::getResultado() {
     ElementoResultado resultado;
     string matricula;
 
-    // Obter matricula;
     if (listaResultado.empty()) {
         throw EErroPersistencia("Lista de resultados vazia.");
     }
@@ -103,17 +44,16 @@ string ComandoLerMatricula::getResultado() {
     return matricula;
 }
 
-//---------------------------------------------------------------------------
-ComandoLerCodigo::ComandoLerCodigo(Codigo codigo) {
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLLerCodigoTeste::ComandoSQLLerCodigoTeste(Codigo codigo) {
     comandoSQL = "SELECT codigo FROM testes WHERE codigo = ";
     comandoSQL += codigo.getValor();
 }
 
-string ComandoLerCodigo::getResultado() {
+string ComandoSQLLerCodigoTeste::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
-    // Obter matricula;
     if (listaResultado.empty())
         throw EErroPersistencia("Lista de resultados vazia.");
     ;
@@ -123,57 +63,65 @@ string ComandoLerCodigo::getResultado() {
 
     return codigo;
 }
-//---------------------------------------------------------------------------
 
-ComandoVisualizarDesenvolvedor::ComandoVisualizarDesenvolvedor(Matricula matricula) {
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLLerCodigoCasoDeTeste::ComandoSQLLerCodigoCasoDeTeste(Codigo codigo) {
+    comandoSQL = "SELECT codigo FROM casodetestes WHERE codigotestes = ";
+    comandoSQL += codigo.getValor();
+}
+
+string ComandoSQLLerCodigoCasoDeTeste::getResultado() {
+    ElementoResultado resultado;
+    string codigo;
+
+    if (listaResultado.empty())
+        throw EErroPersistencia("Lista de resultados vazia.");
+    ;
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    codigo = resultado.getValorColuna();
+
+    return codigo;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLVisualizarDesenvolvedor::ComandoSQLVisualizarDesenvolvedor(Matricula matricula) {
     comandoSQL = "SELECT * FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
 
-Desenvolvedor ComandoVisualizarDesenvolvedor::getResultado() {
+Desenvolvedor ComandoSQLVisualizarDesenvolvedor::getResultado() {
     ElementoResultado resultado;
     Desenvolvedor desenvolvedor;
-    Texto texto;
-    Matricula matricula;
-    Senha senha;
-    Telefone telefone;
 
-    // Obter nome;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    texto.setValor(resultado.getValorColuna());
-    desenvolvedor.setNome(texto);
+    for (int i = 0; i < 4; i++) {
+        if (listaResultado.empty()) {
+            throw EErroPersistencia("Lista de resultados vazia.");
+        }
 
-    // Obter matricula;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    matricula.setValor(resultado.getValorColuna());
-    desenvolvedor.setMatricula(matricula);
+        resultado = listaResultado.back();  // obtem último elemento
+        listaResultado.pop_back();          // retira ele da lista
 
-    // Obter senha;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    senha.setValor(resultado.getValorColuna());
-    desenvolvedor.setSenha(senha);
-
-    // Obter telefone;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    telefone.setValor(resultado.getValorColuna());
-    desenvolvedor.setTelefone(telefone);
+        switch (i) {
+            case 3:
+                desenvolvedor.setNome(Texto(resultado.getValorColuna()));
+                break;
+            case 2:
+                desenvolvedor.setMatricula(Matricula(resultado.getValorColuna()));
+                break;
+            case 1:
+                desenvolvedor.setSenha(Senha(resultado.getValorColuna()));
+                break;
+            case 0:
+                desenvolvedor.setTelefone(Telefone(resultado.getValorColuna()));
+                break;
+        }
+    }
 
     return desenvolvedor;
 }
 
-ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor desenvolvedor) {
+ComandoSQLCadastrarDesenvolvedor::ComandoSQLCadastrarDesenvolvedor(Desenvolvedor desenvolvedor) {
     comandoSQL = "INSERT INTO desenvolvedores(nome,matricula,senha,telefone) VALUES (";
     comandoSQL += "'" + desenvolvedor.getNome().getValor() + "', ";
     comandoSQL += "'" + desenvolvedor.getMatricula().getValor() + "', ";
@@ -182,14 +130,7 @@ ComandoCadastrarDesenvolvedor::ComandoCadastrarDesenvolvedor(Desenvolvedor desen
     comandoSQL += ")";
 }
 
-ComandoDescadastrarDesenvolvedor::ComandoDescadastrarDesenvolvedor(Matricula matricula) {
-    comandoSQL += "DELETE FROM testes WHERE matricula = ";
-    comandoSQL += matricula.getValor();
-    comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
-    comandoSQL += matricula.getValor();
-}
-
-ComandoEditarDesenvolvedor::ComandoEditarDesenvolvedor(Desenvolvedor desenvolvedor) {
+ComandoSQLEditarDesenvolvedor::ComandoSQLEditarDesenvolvedor(Desenvolvedor desenvolvedor) {
     comandoSQL = "UPDATE desenvolvedores ";
     comandoSQL += "SET nome = '" + desenvolvedor.getNome().getValor();
     comandoSQL += "', senha = '" + desenvolvedor.getSenha().getValor();
@@ -197,36 +138,46 @@ ComandoEditarDesenvolvedor::ComandoEditarDesenvolvedor(Desenvolvedor desenvolved
     comandoSQL += "' WHERE matricula = " + desenvolvedor.getMatricula().getValor();
 }
 
-//---------------------------------------------------------------------------
+ComandoSQLDescadastrarDesenvolvedor::ComandoSQLDescadastrarDesenvolvedor(Matricula matricula) {
+    comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
+    comandoSQL += matricula.getValor();
+}
 
-ComandoVisualizarTeste::ComandoVisualizarTeste(Codigo codigo) {
-    comandoSQL = "SELECT * from testes INNER JOIN desenvolvedores on testes.matricula = desenvolvedores.matricula where codigo = ";
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLVisualizarTeste::ComandoSQLVisualizarTeste(Codigo codigo) {
+    comandoSQL = "SELECT * from testes INNER JOIN desenvolvedores on testes.matricula = desenvolvedores.matricula WHERE codigo = ";
     comandoSQL += codigo.getValor();
 }
 
-Codigo ComandoVisualizarTeste::getResultado() {
+Teste ComandoSQLVisualizarTeste::getResultado() {
+    if (listaResultado.empty()) {
+        throw EErroPersistencia("Lista de resultados vazia.");
+    }
+
     ElementoResultado resultado;
     Teste teste;
-    Texto nome;
-    Classe classe;
-    // Obter nome;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    nome.setValor(resultado.getValorColuna());
-    teste.setNome(nome);
 
-    // Obter classe;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    classe.setValor(resultado.getValorColuna());
-    teste.setClasse(classe);
+    for (int i = 0; i < 3; i++) {
+        resultado = listaResultado.back();  // obtem último elemento
+        listaResultado.pop_back();          // retira ele da lista
+
+        switch (i) {
+            case 2:
+                teste.setNome(Texto(resultado.getValorColuna()));
+                break;
+            case 1:
+                teste.setCodigo(Codigo(resultado.getValorColuna()));
+                break;
+            case 0:
+                teste.setClasse(Classe(resultado.getValorColuna()));
+                break;
+        }
+    }
+
+    return teste;
 }
 
-ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
+ComandoSQLCadastrarTeste::ComandoSQLCadastrarTeste(Teste teste) {
     comandoSQL = "INSERT INTO testes(nome,codigo,classe) VALUES (";
     comandoSQL += "'" + teste.getNome().getValor() + "', ";
     comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
@@ -234,77 +185,65 @@ ComandoCadastrarTeste::ComandoCadastrarTeste(Teste teste) {
     comandoSQL += ")";
 }
 
-ComandoEditarTeste::ComandoEditarTeste(Teste teste) {
+ComandoSQLEditarTeste::ComandoSQLEditarTeste(Teste teste) {
     comandoSQL = "UPDATE testes ";
     comandoSQL += "SET nome = '" + teste.getNome().getValor();
     comandoSQL += "', classe = '" + teste.getClasse().getValor();
     comandoSQL += "' WHERE codigo = " + teste.getCodigo().getValor();
 }
 
-ComandoDescadastrarTeste::ComandoDescadastrarTeste(Codigo codigo) {
+ComandoSQLDescadastrarTeste::ComandoSQLDescadastrarTeste(Codigo codigo) {
     comandoSQL += "DELETE FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
     comandoSQL = "DELETE FROM testes WHERE codigo = ";
     comandoSQL += codigo.getValor();
 }
 
-//---------------------------------------------------------------------------
-ComandoVisualizarCasoDeTeste::ComandoVisualizarCasoDeTeste(Codigo codigo) {
-    comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigo2 = ";
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLVisualizarCasoDeTeste::ComandoSQLVisualizarCasoDeTeste(Codigo codigo) {
+    comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
 
-Codigo ComandoVisualizarTeste::getResultado() {
+CasoDeTeste ComandoSQLVisualizarCasoDeTeste::getResultado() {
+    if (listaResultado.empty()) {
+        throw EErroPersistencia("Lista de resultados vazia.");
+    }
+
     ElementoResultado resultado;
     CasoDeTeste casoDeTeste;
-    Texto nome;
-    Data data;
-    Texto acao;
-    Texto resposta;
-    Resultado resultadoct;
-    // Obter nome;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    nome.setValor(resultado.getValorColuna());
-    casoDeTeste.setNome(nome);
 
-    // Obter data;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    data.setValor(resultado.getValorColuna());
-    casoDeTeste.setData(data);
+    for (int i = 0; i < 3; i++) {
+        resultado = listaResultado.back();  // obtem último elemento
+        listaResultado.pop_back();          // retira ele da lista
 
-    // Obter acao;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    acao.setValor(resultado.getValorColuna());
-    casoDeTeste.setAcao(acao);
+        switch (i) {
+            case 5:
+                casoDeTeste.setNome(Texto(resultado.getValorColuna()));
+                break;
+            case 4:
+                casoDeTeste.setCodigo(Codigo(resultado.getValorColuna()));
+                break;
+            case 3:
+                casoDeTeste.setData(Data(resultado.getValorColuna()));
+                break;
+            case 2:
+                casoDeTeste.setAcao(Texto(resultado.getValorColuna()));
+                break;
+            case 1:
+                casoDeTeste.setResposta(Texto(resultado.getValorColuna()));
+                break;
+            case 0:
+                casoDeTeste.setResultado(Resultado(resultado.getValorColuna()));
+                break;
+        }
 
-    // Obter resposta;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    resposta.setValor(resultado.getValorColuna());
-    casoDeTeste.setResposta(resposta);
-
-    // Obter resultado;
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    resultadoct.setValor(resultado.getValorColuna());
-    casoDeTeste.setResultado(resultadoct);
+        return casoDeTeste;
+    }
 }
 
-ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
-    comandoSQL = "INSERT INTO casodetestes(nome,codigo2,data,acao,resposta,resultado) VALUES (";
+ComandoSQLCadastrarCasoDeTeste::ComandoSQLCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
+    comandoSQL = "INSERT INTO casodetestes(nome,codigotestes,data,acao,resposta,resultado) VALUES (";
     comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
@@ -314,7 +253,7 @@ ComandoCadastrarCasoDeTeste::ComandoCadastrarCasoDeTeste(CasoDeTeste casoDeTeste
     comandoSQL += ")";
 }
 
-ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
+ComandoSQLEditarCasoDeTeste::ComandoSQLEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
     comandoSQL = "UPDATE casodetestes ";
     comandoSQL += "SET nome = '" + casoDeTeste.getNome().getValor();
     comandoSQL += "', senha = '" + casoDeTeste.getData().getValor();
@@ -322,59 +261,10 @@ ComandoEditarCasoDeTeste::ComandoEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
     comandoSQL += "', acao = '" + casoDeTeste.getAcao().getValor();
     comandoSQL += "', resposta = '" + casoDeTeste.getResposta().getValor();
     comandoSQL += "', resultado = '" + casoDeTeste.getResultado().getValor();
-    comandoSQL += "' WHERE codigo2 = " + casoDeTeste.getCodigo().getValor();
+    comandoSQL += "' WHERE codigotestes = " + casoDeTeste.getCodigo().getValor();
 }
 
-ComandoDescadastrarCasoDeTeste::ComandoDescadastrarCasoDeTeste(Codigo codigo) {
-    comandoSQL = "DELETE FROM casodetestes WHERE codigo2 = ";
+ComandoSQLDescadastrarCasoDeTeste::ComandoSQLDescadastrarCasoDeTeste(Codigo codigo) {
+    comandoSQL = "DELETE FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
-
-// ComandoListarTeste::ComandoListarTeste(Matricula matricula){
-//         Teste teste;
-//         comandoSQL = "SELECT codigo FROM r_des_casos_testes WHERE matricula.PK = ";
-//         comandoSQL += matricula.getValor();
-//         Comandosql = new ComandoSQL();
-//         Comandosql-> executar(comandoSQL);
-// }
-
-// vector <Teste> ComandoListarTeste::getLista(){
-//         ElementoResultado resultado;
-//         Teste teste;
-//         vector <Teste> testes;
-
-//         // // Obter nome;
-//         // if (listaResultado.empty())
-//         //         throw EErroPersistencia("Lista de resultados vazia.");
-//         // resultado = listaResultado.back();
-//         // listaResultado.pop_back();
-//         // teste->setNome.setValor(resultado.getValorColuna());
-//         // desenvolvedor.setNome(texto);
-
-//         // // Obter matricula;
-//         // if (listaResultado.empty())
-//         //         throw EErroPersistencia("Lista de resultados vazia.");
-//         // resultado = listaResultado.back();
-//         // listaResultado.pop_back();
-//         // matricula.setValor(resultado.getValorColuna());
-//         // desenvolvedor.setMatricula(matricula);
-
-//         // // Obter senha;
-//         // if (listaResultado.empty())
-//         //         throw EErroPersistencia("Lista de resultados vazia.");
-//         // resultado = listaResultado.back();
-//         // listaResultado.pop_back();
-//         // senha.setValor(resultado.getValorColuna());
-//         // desenvolvedor.setSenha(senha);
-
-//         // // Obter telefone;
-//         // if (listaResultado.empty())
-//         //         throw EErroPersistencia("Lista de resultados vazia.");
-//         // resultado = listaResultado.back();
-//         // listaResultado.pop_back();
-//         // telefone.setValor(resultado.getValorColuna());
-//         // desenvolvedor.setTelefone(telefone);
-
-//         return testes;
-
-// }

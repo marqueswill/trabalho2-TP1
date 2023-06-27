@@ -5,7 +5,7 @@
 #include "interfaces.h"
 #include "telas.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoIAAutenticacao {
    protected:
     bool resultado;
@@ -26,7 +26,7 @@ class ComandoIAAutenticacaoAutenticar : public ComandoIAAutenticacao {
     bool executar(ISAutenticacao *);
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoIADesenvolvedor {
    protected:
     bool resultado;
@@ -68,7 +68,7 @@ class ComandoIADesenvolvedorDescadastrar : public ComandoIADesenvolvedor {
     void executar(ISDesenvolvedor *);
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoIATeste {
    protected:
     bool resultado;
@@ -99,7 +99,7 @@ class ComandoIATesteDescadastrar : public ComandoIATeste {
     void executar(ISTeste *);
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoIACasoDeTeste {
    protected:
     bool resultado;

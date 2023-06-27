@@ -1,6 +1,6 @@
 #include "../headers/testes_integracao.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TIApresentacao::executar() {
     IAAutenticacao *ctrlIAAutenticacao;
     IADesenvolvedor *ctrlIADesenvolvedor;
@@ -36,7 +36,7 @@ void TIApresentacao::executar() {
     ctrlIAInicializacao.executar();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TIDesenvolvedor::executar() {
     IADesenvolvedor *ctrlIADesenvolvedor;
     ISDesenvolvedor *ctrlISDesenvolvedor;
@@ -53,7 +53,7 @@ void TIDesenvolvedor::executar() {
     delete ctrlISDesenvolvedor;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TITeste::executar() {
     CtrlIATeste *ctrlIATeste;
     CtrlISTeste *ctrlISTeste;
@@ -70,7 +70,7 @@ void TITeste::executar() {
     delete ctrlISTeste;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TICasoDeTeste::executar() {
     CtrlIACasoDeTeste *ctrlIACasoDeTeste;
     CtrlISCasoDeTeste *ctrlISCasoDeTeste;
