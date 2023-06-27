@@ -108,102 +108,102 @@ inline void ComandoSQL::executar() {
 }
 
 //---------------------------------------------------------------------------
-class ComandoISLerSenha : public ComandoSQL {
+class ComandoSQLLerSenha : public ComandoSQL {
    private:
    public:
-    ComandoISLerSenha(Matricula);
+    ComandoSQLLerSenha(Matricula);
     string getResultado();
 };
 
-class ComandoISLerMatricula : public ComandoSQL {
+class ComandoSQLLerMatricula : public ComandoSQL {
    private:
    public:
-    ComandoISLerMatricula(Matricula);
+    ComandoSQLLerMatricula(Matricula);
     string getResultado();
 };
 
-class ComandoISLerCodigoTeste : public ComandoSQL {
+class ComandoSQLLerCodigoTeste : public ComandoSQL {
    public:
-    ComandoISLerCodigoTeste(Codigo);
+    ComandoSQLLerCodigoTeste(Codigo);
     string getResultado();
 };
 
-class ComandoISLerCodigoCasoDeTeste : public ComandoSQL {
+class ComandoSQLLerCodigoCasoDeTeste : public ComandoSQL {
    public:
-    ComandoISLerCodigoCasoDeTeste(Codigo);
+    ComandoSQLLerCodigoCasoDeTeste(Codigo);
     string getResultado();
 };
 
 //---------------------------------------------------------------------------
-class ComandoISVisualizarDesenvolvedor : public ComandoSQL {
+class ComandoSQLVisualizarDesenvolvedor : public ComandoSQL {
    public:
-    ComandoISVisualizarDesenvolvedor(Matricula);
+    ComandoSQLVisualizarDesenvolvedor(Matricula);
     Desenvolvedor getResultado();
 };
 
-class ComandoISCadastrarDesenvolvedor : public ComandoSQL {
+class ComandoSQLCadastrarDesenvolvedor : public ComandoSQL {
    public:
-    ComandoISCadastrarDesenvolvedor(Desenvolvedor);
+    ComandoSQLCadastrarDesenvolvedor(Desenvolvedor);
 };
 
-class ComandoISEditarDesenvolvedor : public ComandoSQL {
+class ComandoSQLEditarDesenvolvedor : public ComandoSQL {
    public:
-    ComandoISEditarDesenvolvedor(Desenvolvedor);
+    ComandoSQLEditarDesenvolvedor(Desenvolvedor);
 };
 
-class ComandoISDescadastrarDesenvolvedor : public ComandoSQL {
+class ComandoSQLDescadastrarDesenvolvedor : public ComandoSQL {
    public:
-    ComandoISDescadastrarDesenvolvedor(Matricula);
+    ComandoSQLDescadastrarDesenvolvedor(Matricula);
 };
 
 //---------------------------------------------------------------------------
-class ComandoISListarTeste : public ComandoSQL {
+class ComandoSQLListarTeste : public ComandoSQL {
    public:
-    ComandoISListarTeste(Matricula);
+    ComandoSQLListarTeste(Matricula);
     vector<Teste> getLista();
 };
 
-class ComandoISVisualizarTeste : public ComandoSQL {
+class ComandoSQLVisualizarTeste : public ComandoSQL {
    public:
-    ComandoISVisualizarTeste(Codigo);
+    ComandoSQLVisualizarTeste(Codigo);
     Teste getResultado();
 };
 
-class ComandoISCadastrarTeste : public ComandoSQL {
+class ComandoSQLCadastrarTeste : public ComandoSQL {
    public:
-    ComandoISCadastrarTeste(Teste);
+    ComandoSQLCadastrarTeste(Teste);
 };
 
-class ComandoISEditarTeste : public ComandoSQL {
+class ComandoSQLEditarTeste : public ComandoSQL {
    public:
-    ComandoISEditarTeste(Teste);
+    ComandoSQLEditarTeste(Teste);
 };
 
-class ComandoISDescadastrarTeste : public ComandoSQL {
+class ComandoSQLDescadastrarTeste : public ComandoSQL {
    public:
-    ComandoISDescadastrarTeste(Codigo);
+    ComandoSQLDescadastrarTeste(Codigo);
 };
 
 //---------------------------------------------------------------------------
-class ComandoISVisualizarCasoDeTeste : public ComandoSQL {
+class ComandoSQLVisualizarCasoDeTeste : public ComandoSQL {
    public:
-    ComandoISVisualizarCasoDeTeste(Codigo);
+    ComandoSQLVisualizarCasoDeTeste(Codigo);
     CasoDeTeste getResultado();
 };
 
-class ComandoISCadastrarCasoDeTeste : public ComandoSQL {
+class ComandoSQLCadastrarCasoDeTeste : public ComandoSQL {
    public:
-    ComandoISCadastrarCasoDeTeste(CasoDeTeste);
+    ComandoSQLCadastrarCasoDeTeste(CasoDeTeste);
 };
 
-class ComandoISEditarCasoDeTeste : public ComandoSQL {
+class ComandoSQLEditarCasoDeTeste : public ComandoSQL {
    public:
-    ComandoISEditarCasoDeTeste(CasoDeTeste);
+    ComandoSQLEditarCasoDeTeste(CasoDeTeste);
 };
 
-class ComandoISDescadastrarCasoDeTeste : public ComandoSQL {
+class ComandoSQLDescadastrarCasoDeTeste : public ComandoSQL {
    public:
-    ComandoISDescadastrarCasoDeTeste(Codigo);
+    ComandoSQLDescadastrarCasoDeTeste(Codigo);
 };
 
 #endif  // COMANDOS_SERVICOS_H_INCLUDED

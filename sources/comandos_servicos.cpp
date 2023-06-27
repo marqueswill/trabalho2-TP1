@@ -6,12 +6,12 @@
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 //---------------------------------------------------------------------------
-ComandoISLerSenha::ComandoISLerSenha(Matricula matricula) {
+ComandoSQLLerSenha::ComandoSQLLerSenha(Matricula matricula) {
     comandoSQL = "SELECT senha FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
 
-string ComandoISLerSenha::getResultado() {
+string ComandoSQLLerSenha::getResultado() {
     ElementoResultado resultado;
     string senha;
 
@@ -27,12 +27,12 @@ string ComandoISLerSenha::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-ComandoISLerMatricula::ComandoISLerMatricula(Matricula matricula) {
+ComandoSQLLerMatricula::ComandoSQLLerMatricula(Matricula matricula) {
     comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
 
-string ComandoISLerMatricula::getResultado() {
+string ComandoSQLLerMatricula::getResultado() {
     ElementoResultado resultado;
     string matricula;
 
@@ -47,12 +47,12 @@ string ComandoISLerMatricula::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-ComandoISLerCodigoTeste::ComandoISLerCodigoTeste(Codigo codigo) {
+ComandoSQLLerCodigoTeste::ComandoSQLLerCodigoTeste(Codigo codigo) {
     comandoSQL = "SELECT codigo FROM testes WHERE codigo = ";
     comandoSQL += codigo.getValor();
 }
 
-string ComandoISLerCodigoTeste::getResultado() {
+string ComandoSQLLerCodigoTeste::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
@@ -67,12 +67,12 @@ string ComandoISLerCodigoTeste::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-ComandoISLerCodigoCasoDeTeste::ComandoISLerCodigoCasoDeTeste(Codigo codigo) {
+ComandoSQLLerCodigoCasoDeTeste::ComandoSQLLerCodigoCasoDeTeste(Codigo codigo) {
     comandoSQL = "SELECT codigo FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
 
-string ComandoISLerCodigoCasoDeTeste::getResultado() {
+string ComandoSQLLerCodigoCasoDeTeste::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
@@ -87,12 +87,12 @@ string ComandoISLerCodigoCasoDeTeste::getResultado() {
 }
 
 //---------------------------------------------------------------------------
-ComandoISVisualizarDesenvolvedor::ComandoISVisualizarDesenvolvedor(Matricula matricula) {
+ComandoSQLVisualizarDesenvolvedor::ComandoSQLVisualizarDesenvolvedor(Matricula matricula) {
     comandoSQL = "SELECT * FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
 
-Desenvolvedor ComandoISVisualizarDesenvolvedor::getResultado() {
+Desenvolvedor ComandoSQLVisualizarDesenvolvedor::getResultado() {
     ElementoResultado resultado;
     Desenvolvedor desenvolvedor;
 
@@ -123,7 +123,7 @@ Desenvolvedor ComandoISVisualizarDesenvolvedor::getResultado() {
     return desenvolvedor;
 }
 
-ComandoISCadastrarDesenvolvedor::ComandoISCadastrarDesenvolvedor(Desenvolvedor desenvolvedor) {
+ComandoSQLCadastrarDesenvolvedor::ComandoSQLCadastrarDesenvolvedor(Desenvolvedor desenvolvedor) {
     comandoSQL = "INSERT INTO desenvolvedores(nome,matricula,senha,telefone) VALUES (";
     comandoSQL += "'" + desenvolvedor.getNome().getValor() + "', ";
     comandoSQL += "'" + desenvolvedor.getMatricula().getValor() + "', ";
@@ -132,7 +132,7 @@ ComandoISCadastrarDesenvolvedor::ComandoISCadastrarDesenvolvedor(Desenvolvedor d
     comandoSQL += ")";
 }
 
-ComandoISEditarDesenvolvedor::ComandoISEditarDesenvolvedor(Desenvolvedor desenvolvedor) {
+ComandoSQLEditarDesenvolvedor::ComandoSQLEditarDesenvolvedor(Desenvolvedor desenvolvedor) {
     comandoSQL = "UPDATE desenvolvedores ";
     comandoSQL += "SET nome = '" + desenvolvedor.getNome().getValor();
     comandoSQL += "', senha = '" + desenvolvedor.getSenha().getValor();
@@ -140,18 +140,18 @@ ComandoISEditarDesenvolvedor::ComandoISEditarDesenvolvedor(Desenvolvedor desenvo
     comandoSQL += "' WHERE matricula = " + desenvolvedor.getMatricula().getValor();
 }
 
-ComandoISDescadastrarDesenvolvedor::ComandoISDescadastrarDesenvolvedor(Matricula matricula) {
+ComandoSQLDescadastrarDesenvolvedor::ComandoSQLDescadastrarDesenvolvedor(Matricula matricula) {
     comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
 }
 
 //---------------------------------------------------------------------------
-ComandoISVisualizarTeste::ComandoISVisualizarTeste(Codigo codigo) {
+ComandoSQLVisualizarTeste::ComandoSQLVisualizarTeste(Codigo codigo) {
     comandoSQL = "SELECT * from testes INNER JOIN desenvolvedores on testes.matricula = desenvolvedores.matricula WHERE codigo = ";
     comandoSQL += codigo.getValor();
 }
 
-Teste ComandoISVisualizarTeste::getResultado() {
+Teste ComandoSQLVisualizarTeste::getResultado() {
     if (listaResultado.empty()) {
         throw EErroPersistencia("Lista de resultados vazia.");
     }
@@ -179,7 +179,7 @@ Teste ComandoISVisualizarTeste::getResultado() {
     return teste;
 }
 
-ComandoISCadastrarTeste::ComandoISCadastrarTeste(Teste teste) {
+ComandoSQLCadastrarTeste::ComandoSQLCadastrarTeste(Teste teste) {
     comandoSQL = "INSERT INTO testes(nome,codigo,classe) VALUES (";
     comandoSQL += "'" + teste.getNome().getValor() + "', ";
     comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
@@ -187,14 +187,14 @@ ComandoISCadastrarTeste::ComandoISCadastrarTeste(Teste teste) {
     comandoSQL += ")";
 }
 
-ComandoISEditarTeste::ComandoISEditarTeste(Teste teste) {
+ComandoSQLEditarTeste::ComandoSQLEditarTeste(Teste teste) {
     comandoSQL = "UPDATE testes ";
     comandoSQL += "SET nome = '" + teste.getNome().getValor();
     comandoSQL += "', classe = '" + teste.getClasse().getValor();
     comandoSQL += "' WHERE codigo = " + teste.getCodigo().getValor();
 }
 
-ComandoISDescadastrarTeste::ComandoISDescadastrarTeste(Codigo codigo) {
+ComandoSQLDescadastrarTeste::ComandoSQLDescadastrarTeste(Codigo codigo) {
     comandoSQL += "DELETE FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
     comandoSQL = "DELETE FROM testes WHERE codigo = ";
@@ -202,12 +202,12 @@ ComandoISDescadastrarTeste::ComandoISDescadastrarTeste(Codigo codigo) {
 }
 
 //---------------------------------------------------------------------------
-ComandoISVisualizarCasoDeTeste::ComandoISVisualizarCasoDeTeste(Codigo codigo) {
+ComandoSQLVisualizarCasoDeTeste::ComandoSQLVisualizarCasoDeTeste(Codigo codigo) {
     comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
 
-CasoDeTeste ComandoISVisualizarCasoDeTeste::getResultado() {
+CasoDeTeste ComandoSQLVisualizarCasoDeTeste::getResultado() {
     if (listaResultado.empty()) {
         throw EErroPersistencia("Lista de resultados vazia.");
     }
@@ -244,7 +244,7 @@ CasoDeTeste ComandoISVisualizarCasoDeTeste::getResultado() {
     }
 }
 
-ComandoISCadastrarCasoDeTeste::ComandoISCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
+ComandoSQLCadastrarCasoDeTeste::ComandoSQLCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
     comandoSQL = "INSERT INTO casodetestes(nome,codigotestes,data,acao,resposta,resultado) VALUES (";
     comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
@@ -255,7 +255,7 @@ ComandoISCadastrarCasoDeTeste::ComandoISCadastrarCasoDeTeste(CasoDeTeste casoDeT
     comandoSQL += ")";
 }
 
-ComandoISEditarCasoDeTeste::ComandoISEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
+ComandoSQLEditarCasoDeTeste::ComandoSQLEditarCasoDeTeste(CasoDeTeste casoDeTeste) {
     comandoSQL = "UPDATE casodetestes ";
     comandoSQL += "SET nome = '" + casoDeTeste.getNome().getValor();
     comandoSQL += "', senha = '" + casoDeTeste.getData().getValor();
@@ -266,7 +266,7 @@ ComandoISEditarCasoDeTeste::ComandoISEditarCasoDeTeste(CasoDeTeste casoDeTeste) 
     comandoSQL += "' WHERE codigotestes = " + casoDeTeste.getCodigo().getValor();
 }
 
-ComandoISDescadastrarCasoDeTeste::ComandoISDescadastrarCasoDeTeste(Codigo codigo) {
+ComandoSQLDescadastrarCasoDeTeste::ComandoSQLDescadastrarCasoDeTeste(Codigo codigo) {
     comandoSQL = "DELETE FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }

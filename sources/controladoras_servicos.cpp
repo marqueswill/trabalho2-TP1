@@ -4,14 +4,14 @@ using namespace std;
 
 //--------------------------------------------------------------------------------------------
 bool CtrlISAutenticacao::autenticar(Matricula matricula, Senha senha) {
-    ComandoISLerMatricula comandoLerMatricula(matricula);
+    ComandoSQLLerMatricula comandoLerMatricula(matricula);
     comandoLerMatricula.executar();
 
-    if (comandoLerMatricula.getResultado() != matricula.getValor()) {
+    if (comandoLerMatricula.getResultado() != matricula.getValor()) {  // se não achar matricula informada
         return false;
     }
 
-    ComandoISLerSenha comandoLerSenha(matricula);
+    ComandoSQLLerSenha comandoLerSenha(matricula);
     comandoLerSenha.executar();
 
     return (comandoLerSenha.getResultado() == senha.getValor());
@@ -20,7 +20,7 @@ bool CtrlISAutenticacao::autenticar(Matricula matricula, Senha senha) {
 //-----------------------------------------------------------------------------------------------
 bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
     try {
-        ComandoISVisualizarDesenvolvedor comandoVisualizar(desenvolvedor->getMatricula());
+        ComandoSQLVisualizarDesenvolvedor comandoVisualizar(desenvolvedor->getMatricula());
         comandoVisualizar.executar();
         *desenvolvedor = comandoVisualizar.getResultado();
     } catch (EErroPersistencia &exp) {
@@ -32,14 +32,14 @@ bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
 
 bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
     try {
-        ComandoISLerMatricula comandoLerMatricula(desenvolvedor.getMatricula());
+        ComandoSQLLerMatricula comandoLerMatricula(desenvolvedor.getMatricula());
         comandoLerMatricula.executar();
 
         if (comandoLerMatricula.getResultado() != "NULL") {  // se matrícula já estiver cadastrada
             return false;
         }
 
-        ComandoISCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
+        ComandoSQLCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
         comandoCadastrar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
@@ -50,7 +50,7 @@ bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
 
 bool CtrlISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
     try {
-        ComandoISEditarDesenvolvedor comandoEditar(desenvolvedor);
+        ComandoSQLEditarDesenvolvedor comandoEditar(desenvolvedor);
         comandoEditar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
@@ -61,7 +61,7 @@ bool CtrlISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
 
 bool CtrlISDesenvolvedor::descadastrar(Matricula matricula) {
     try {
-        ComandoISDescadastrarDesenvolvedor comandoDescadastrar(matricula);
+        ComandoSQLDescadastrarDesenvolvedor comandoDescadastrar(matricula);
         comandoDescadastrar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
@@ -72,7 +72,7 @@ bool CtrlISDesenvolvedor::descadastrar(Matricula matricula) {
 //-----------------------------------------------------------------------------------------------
 bool CtrlISTeste::visualizar(Teste *teste) {
     try {
-        ComandoISVisualizarTeste comandoVisualizar(teste->getCodigo());
+        ComandoSQLVisualizarTeste comandoVisualizar(teste->getCodigo());
         comandoVisualizar.executar();
         *teste = comandoVisualizar.getResultado();
     } catch (EErroPersistencia &exp) {
@@ -84,14 +84,14 @@ bool CtrlISTeste::visualizar(Teste *teste) {
 
 bool CtrlISTeste::cadastrar(Teste teste) {
     try {
-        ComandoISLerCodigoTeste comandoLerCodigo(teste.getCodigo());
+        ComandoSQLLerCodigoTeste comandoLerCodigo(teste.getCodigo());
         comandoLerCodigo.executar();
 
         if (comandoLerCodigo.getResultado() != "NULL") {  // se matrícula já estiver cadastrada
             return false;
         }
 
-        ComandoISCadastrarTeste comandoCadastrar(teste);
+        ComandoSQLCadastrarTeste comandoCadastrar(teste);
         comandoCadastrar.executar();
 
     } catch (EErroPersistencia &exp) {
@@ -103,7 +103,7 @@ bool CtrlISTeste::cadastrar(Teste teste) {
 
 bool CtrlISTeste::editar(Teste teste) {
     try {
-        ComandoISEditarTeste comandoEditar(teste);
+        ComandoSQLEditarTeste comandoEditar(teste);
         comandoEditar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
@@ -114,7 +114,7 @@ bool CtrlISTeste::editar(Teste teste) {
 
 bool CtrlISTeste::descadastrar(Codigo codigo) {
     try {
-        ComandoISDescadastrarTeste comandoDescadastrar(codigo);
+        ComandoSQLDescadastrarTeste comandoDescadastrar(codigo);
         comandoDescadastrar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
@@ -126,7 +126,7 @@ bool CtrlISTeste::descadastrar(Codigo codigo) {
 //-----------------------------------------------------------------------------------------------
 bool CtrlISCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
     try {
-        ComandoISVisualizarCasoDeTeste comandoVisualizar(casoDeTeste->getCodigo());
+        ComandoSQLVisualizarCasoDeTeste comandoVisualizar(casoDeTeste->getCodigo());
         comandoVisualizar.executar();
         *casoDeTeste = comandoVisualizar.getResultado();
     } catch (EErroPersistencia &exp) {
@@ -138,14 +138,14 @@ bool CtrlISCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
 
 bool CtrlISCasoDeTeste::cadastrar(CasoDeTeste casoDeTeste) {
     try {
-        ComandoISLerCodigoCasoDeTeste comandoLerCodigo(casoDeTeste.getCodigo());
+        ComandoSQLLerCodigoCasoDeTeste comandoLerCodigo(casoDeTeste.getCodigo());
         comandoLerCodigo.executar();
 
         if (comandoLerCodigo.getResultado() != "NULL") {  // se matrícula já estiver cadastrada
             return false;
         }
 
-        ComandoISCadastrarCasoDeTeste comandoCadastrar(casoDeTeste);
+        ComandoSQLCadastrarCasoDeTeste comandoCadastrar(casoDeTeste);
         comandoCadastrar.executar();
 
     } catch (EErroPersistencia &exp) {
@@ -157,7 +157,7 @@ bool CtrlISCasoDeTeste::cadastrar(CasoDeTeste casoDeTeste) {
 
 bool CtrlISCasoDeTeste::editar(CasoDeTeste casoDeTeste) {
     try {
-        ComandoISEditarCasoDeTeste comandoEditar(casoDeTeste);
+        ComandoSQLEditarCasoDeTeste comandoEditar(casoDeTeste);
         comandoEditar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
@@ -168,7 +168,7 @@ bool CtrlISCasoDeTeste::editar(CasoDeTeste casoDeTeste) {
 
 bool CtrlISCasoDeTeste::descadastrar(Codigo codigo) {
     try {
-        ComandoISDescadastrarCasoDeTeste comandoDescadastrar(codigo);
+        ComandoSQLDescadastrarCasoDeTeste comandoDescadastrar(codigo);
         comandoDescadastrar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
