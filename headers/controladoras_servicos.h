@@ -1,7 +1,7 @@
 #ifndef CONTROLADORAS_SERVICOS_H_INCLUDED
 #define CONTROLADORAS_SERVICOS_H_INCLUDED
 
-#include "comandos_servicos.h"
+// #include "comandos_servicos.h"
 #include "interfaces.h"
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -30,6 +30,7 @@ class CtrlISTeste : public ISTeste {
     bool descadastrar(Codigo);
 };
 
+//----------------------------------------------------------------------------------------------------------------------
 class CtrlISCasoDeTeste : public ISCasoDeTeste {
    public:
     bool visualizar(CasoDeTeste *);
