@@ -1,9 +1,9 @@
 #include "../headers/comandos_servicos.h"
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 list<ElementoResultado> ComandoSQL::listaResultado;
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 ComandoSQLLerSenha::ComandoSQLLerSenha(Matricula matricula) {
     comandoSQL = "SELECT senha FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
@@ -24,7 +24,7 @@ string ComandoSQLLerSenha::getResultado() {
     return senha;
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 ComandoSQLLerMatricula::ComandoSQLLerMatricula(Matricula matricula) {
     comandoSQL = "SELECT matricula FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
@@ -44,7 +44,7 @@ string ComandoSQLLerMatricula::getResultado() {
     return matricula;
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 ComandoSQLLerCodigoTeste::ComandoSQLLerCodigoTeste(Codigo codigo) {
     comandoSQL = "SELECT codigo FROM testes WHERE codigo = ";
     comandoSQL += codigo.getValor();
@@ -64,7 +64,7 @@ string ComandoSQLLerCodigoTeste::getResultado() {
     return codigo;
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 ComandoSQLLerCodigoCasoDeTeste::ComandoSQLLerCodigoCasoDeTeste(Codigo codigo) {
     comandoSQL = "SELECT codigo FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
@@ -84,7 +84,7 @@ string ComandoSQLLerCodigoCasoDeTeste::getResultado() {
     return codigo;
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 ComandoSQLVisualizarDesenvolvedor::ComandoSQLVisualizarDesenvolvedor(Matricula matricula) {
     comandoSQL = "SELECT * FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
@@ -143,7 +143,7 @@ ComandoSQLDescadastrarDesenvolvedor::ComandoSQLDescadastrarDesenvolvedor(Matricu
     comandoSQL += matricula.getValor();
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 ComandoSQLVisualizarTeste::ComandoSQLVisualizarTeste(Codigo codigo) {
     comandoSQL = "SELECT * from testes INNER JOIN desenvolvedores on testes.matricula = desenvolvedores.matricula WHERE codigo = ";
     comandoSQL += codigo.getValor();
@@ -199,7 +199,7 @@ ComandoSQLDescadastrarTeste::ComandoSQLDescadastrarTeste(Codigo codigo) {
     comandoSQL += codigo.getValor();
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 ComandoSQLVisualizarCasoDeTeste::ComandoSQLVisualizarCasoDeTeste(Codigo codigo) {
     comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigotestes = ";
     comandoSQL += codigo.getValor();

@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//----------------------------------------------------------------------------------------------------------------------
 // TESTE DESENVOLVEDOR
 const string TUDesenvolvedor::VALOR_VALIDO_NOME = "joaozinho123";
 const string TUDesenvolvedor::VALOR_VALIDO_MATRICULA = "1234567";
@@ -47,6 +48,7 @@ void TUDesenvolvedor::testarValorValido() {
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 // Teste CasoDeTeste
 const string TUCasoDeTeste::VALOR_VALIDO_NOME = "mariazinha1";
 const string TUCasoDeTeste::VALOR_VALIDO_DATA = "14/AGO/2003";
@@ -100,6 +102,7 @@ void TUCasoDeTeste::testarValorValido() {
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 // Teste de Teste
 const string TUTeste::VALOR_VALIDO_CODIGO = "VSC021";
 const string TUTeste::VALOR_VALIDO_NOME = "Alexandre2";

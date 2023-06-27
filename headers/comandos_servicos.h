@@ -10,7 +10,7 @@
 
 using namespace std;
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class EErroPersistencia {
    private:
     string mensagem;
@@ -28,7 +28,7 @@ inline string EErroPersistencia::what() {
     return mensagem;
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ElementoResultado {
    private:
     string nomeColuna;
@@ -49,7 +49,7 @@ inline void ElementoResultado::setValorColuna(const string &valorColuna) {
     this->valorColuna = valorColuna;
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoSQL {
    private:
     const char *nomeBancoDados;
@@ -107,7 +107,7 @@ inline void ComandoSQL::executar() {
     desconectar();
 }
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoSQLLerSenha : public ComandoSQL {
    private:
    public:
@@ -134,7 +134,7 @@ class ComandoSQLLerCodigoCasoDeTeste : public ComandoSQL {
     string getResultado();
 };
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoSQLVisualizarDesenvolvedor : public ComandoSQL {
    public:
     ComandoSQLVisualizarDesenvolvedor(Matricula);
@@ -156,7 +156,7 @@ class ComandoSQLDescadastrarDesenvolvedor : public ComandoSQL {
     ComandoSQLDescadastrarDesenvolvedor(Matricula);
 };
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoSQLListarTeste : public ComandoSQL {
    public:
     ComandoSQLListarTeste(Matricula);
@@ -184,7 +184,7 @@ class ComandoSQLDescadastrarTeste : public ComandoSQL {
     ComandoSQLDescadastrarTeste(Codigo);
 };
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class ComandoSQLVisualizarCasoDeTeste : public ComandoSQL {
    public:
     ComandoSQLVisualizarCasoDeTeste(Codigo);

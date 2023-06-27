@@ -4,7 +4,7 @@
 #include "entidades.h"
 using namespace std;
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUEntidades {
    private:
     virtual void setUp() = 0;
@@ -27,7 +27,7 @@ inline bool TUEntidades::run() {
     return estado;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUDesenvolvedor : public TUEntidades {
    private:
     const static string VALOR_VALIDO_NOME;
@@ -40,7 +40,7 @@ class TUDesenvolvedor : public TUEntidades {
     Desenvolvedor *desenvolvedor;
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUTeste : public TUEntidades {
    private:
     const static string VALOR_VALIDO_CODIGO;
@@ -52,7 +52,7 @@ class TUTeste : public TUEntidades {
     Teste *teste;
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUCasoDeTeste : public TUEntidades {
    private:
     const static string VALOR_VALIDO_NOME;

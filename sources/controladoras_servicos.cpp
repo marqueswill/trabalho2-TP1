@@ -17,7 +17,7 @@ bool CtrlISAutenticacao::autenticar(Matricula matricula, Senha senha) {
     return (comandoLerSenha.getResultado() == senha.getValor());
 }
 
-//-----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
     try {
         ComandoSQLVisualizarDesenvolvedor comandoVisualizar(desenvolvedor->getMatricula());
@@ -69,7 +69,7 @@ bool CtrlISDesenvolvedor::descadastrar(Matricula matricula) {
 
     return true;
 }
-//-----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 bool CtrlISTeste::visualizar(Teste *teste) {
     try {
         ComandoSQLVisualizarTeste comandoVisualizar(teste->getCodigo());
@@ -123,7 +123,7 @@ bool CtrlISTeste::descadastrar(Codigo codigo) {
     return true;
 }
 
-//-----------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 bool CtrlISCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
     try {
         ComandoSQLVisualizarCasoDeTeste comandoVisualizar(casoDeTeste->getCodigo());

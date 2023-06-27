@@ -5,6 +5,7 @@
 #include "controladoras_servicos.h"
 #include "stubs.h"
 
+//----------------------------------------------------------------------------------------------------------------------
 class TIApresentacao {
    public:
     void executar();

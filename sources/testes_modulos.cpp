@@ -1,6 +1,6 @@
 #include "../headers/testes_modulos.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TUIAAutenticacao::executar() {
     IAAutenticacao *ctrlIAAutenticacao;
     StubISAutenticacao *stubISAutenticacao;
@@ -23,7 +23,7 @@ void TUIAAutenticacao::executar() {
     delete stubISAutenticacao;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TUIADesenvolvedor::executar() {
     IADesenvolvedor *ctrlIADesenvolvedor;
     StubISDesenvolvedor *stubISDesenvolvedor;
@@ -41,7 +41,7 @@ void TUIADesenvolvedor::executar() {
     delete stubISDesenvolvedor;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TUIATeste::executar() {
     IATeste *ctrlIATeste;
     StubISTeste *stubISTeste;
@@ -58,7 +58,7 @@ void TUIATeste::executar() {
     delete stubISTeste;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TUIACasoDeTeste::executar() {
     IACasoDeTeste *ctrlIACasoDeTeste;
     StubISCasoDeTeste *stubISCasoDeTeste;

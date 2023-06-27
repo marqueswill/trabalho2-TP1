@@ -4,7 +4,7 @@
 #include "comandos_servicos.h"
 #include "interfaces.h"
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 // Declarações de classes controladoras da camada de serviços e implementações de métodos inline.
 
 class CtrlISAutenticacao : public ISAutenticacao {
@@ -12,7 +12,7 @@ class CtrlISAutenticacao : public ISAutenticacao {
     bool autenticar(Matricula, Senha);
 };
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class CtrlISDesenvolvedor : public ISDesenvolvedor {
    public:
     bool visualizar(Desenvolvedor *);
@@ -21,7 +21,7 @@ class CtrlISDesenvolvedor : public ISDesenvolvedor {
     bool descadastrar(Matricula);
 };
 
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class CtrlISTeste : public ISTeste {
    public:
     bool visualizar(Teste *);
