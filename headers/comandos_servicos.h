@@ -166,7 +166,7 @@ class ComandoISListarTeste : public ComandoSQL {
 class ComandoISVisualizarTeste : public ComandoSQL {
    public:
     ComandoISVisualizarTeste(Codigo);
-    Codigo getResultado();
+    Teste getResultado();
 };
 
 class ComandoISCadastrarTeste : public ComandoSQL {
@@ -188,7 +188,7 @@ class ComandoISDescadastrarTeste : public ComandoSQL {
 class ComandoISVisualizarCasoDeTeste : public ComandoSQL {
    public:
     ComandoISVisualizarCasoDeTeste(Codigo);
-    Codigo getResultado();
+    CasoDeTeste getResultado();
 };
 
 class ComandoISCadastrarCasoDeTeste : public ComandoSQL {

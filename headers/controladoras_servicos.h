@@ -14,7 +14,6 @@ class CtrlISAutenticacao : public ISAutenticacao {
 
 //-----------------------------------------------------------------------------------
 class CtrlISDesenvolvedor : public ISDesenvolvedor {
-   private:
    public:
     bool visualizar(Desenvolvedor *);
     bool cadastrar(Desenvolvedor);
@@ -24,7 +23,6 @@ class CtrlISDesenvolvedor : public ISDesenvolvedor {
 
 //-----------------------------------------------------------------------------------
 class CtrlISTeste : public ISTeste {
-   private:
    public:
     bool visualizar(Teste *);
     bool cadastrar(Teste);
@@ -33,7 +31,6 @@ class CtrlISTeste : public ISTeste {
 };
 
 class CtrlISCasoDeTeste : public ISCasoDeTeste {
-   private:
    public:
     bool visualizar(CasoDeTeste *);
     bool cadastrar(CasoDeTeste);

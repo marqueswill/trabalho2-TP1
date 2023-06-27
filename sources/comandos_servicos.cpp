@@ -96,26 +96,26 @@ Desenvolvedor ComandoISVisualizarDesenvolvedor::getResultado() {
     ElementoResultado resultado;
     Desenvolvedor desenvolvedor;
 
-    if (listaResultado.empty()) {
-        throw EErroPersistencia("Lista de resultados vazia.");
-    }
-
     for (int i = 0; i < 4; i++) {
+        if (listaResultado.empty()) {
+            throw EErroPersistencia("Lista de resultados vazia.");
+        }
+
         resultado = listaResultado.back();  // obtem último elemento
         listaResultado.pop_back();          // retira ele da lista
 
         switch (i) {
-            case 0:
-                desenvolvedor.setTelefone(Telefone(resultado.getValorColuna()));
-                break;
-            case 1:
-                desenvolvedor.setSenha(Senha(resultado.getValorColuna()));
+            case 3:
+                desenvolvedor.setNome(Texto(resultado.getValorColuna()));
                 break;
             case 2:
                 desenvolvedor.setMatricula(Matricula(resultado.getValorColuna()));
                 break;
-            case 3:
-                desenvolvedor.setNome(Texto(resultado.getValorColuna()));
+            case 1:
+                desenvolvedor.setSenha(Senha(resultado.getValorColuna()));
+                break;
+            case 0:
+                desenvolvedor.setTelefone(Telefone(resultado.getValorColuna()));
                 break;
         }
     }
@@ -151,21 +151,32 @@ ComandoISVisualizarTeste::ComandoISVisualizarTeste(Codigo codigo) {
     comandoSQL += codigo.getValor();
 }
 
-Codigo ComandoISVisualizarTeste::getResultado() {
+Teste ComandoISVisualizarTeste::getResultado() {
+    if (listaResultado.empty()) {
+        throw EErroPersistencia("Lista de resultados vazia.");
+    }
+
     ElementoResultado resultado;
     Teste teste;
 
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    teste.setNome(Texto(resultado.getValorColuna()));
+    for (int i = 0; i < 3; i++) {
+        resultado = listaResultado.back();  // obtem último elemento
+        listaResultado.pop_back();          // retira ele da lista
 
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    teste.setClasse(Classe(resultado.getValorColuna()));
+        switch (i) {
+            case 2:
+                teste.setNome(Texto(resultado.getValorColuna()));
+                break;
+            case 1:
+                teste.setCodigo(Codigo(resultado.getValorColuna()));
+                break;
+            case 0:
+                teste.setClasse(Classe(resultado.getValorColuna()));
+                break;
+        }
+    }
+
+    return teste;
 }
 
 ComandoISCadastrarTeste::ComandoISCadastrarTeste(Teste teste) {
@@ -196,39 +207,41 @@ ComandoISVisualizarCasoDeTeste::ComandoISVisualizarCasoDeTeste(Codigo codigo) {
     comandoSQL += codigo.getValor();
 }
 
-Codigo ComandoISVisualizarTeste::getResultado() {
+CasoDeTeste ComandoISVisualizarCasoDeTeste::getResultado() {
+    if (listaResultado.empty()) {
+        throw EErroPersistencia("Lista de resultados vazia.");
+    }
+
     ElementoResultado resultado;
     CasoDeTeste casoDeTeste;
 
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    casoDeTeste.setNome(Texto(resultado.getValorColuna()));
+    for (int i = 0; i < 3; i++) {
+        resultado = listaResultado.back();  // obtem último elemento
+        listaResultado.pop_back();          // retira ele da lista
 
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    casoDeTeste.setData(Data(resultado.getValorColuna()));
+        switch (i) {
+            case 5:
+                casoDeTeste.setNome(Texto(resultado.getValorColuna()));
+                break;
+            case 4:
+                casoDeTeste.setCodigo(Codigo(resultado.getValorColuna()));
+                break;
+            case 3:
+                casoDeTeste.setData(Data(resultado.getValorColuna()));
+                break;
+            case 2:
+                casoDeTeste.setAcao(Texto(resultado.getValorColuna()));
+                break;
+            case 1:
+                casoDeTeste.setResposta(Texto(resultado.getValorColuna()));
+                break;
+            case 0:
+                casoDeTeste.setResultado(Resultado(resultado.getValorColuna()));
+                break;
+        }
 
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    casoDeTeste.setAcao(Texto(resultado.getValorColuna()));
-
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    casoDeTeste.setResposta(Texto(resultado.getValorColuna()));
-
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    casoDeTeste.setResultado(Resultado(resultado.getValorColuna()));
+        return casoDeTeste;
+    }
 }
 
 ComandoISCadastrarCasoDeTeste::ComandoISCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
