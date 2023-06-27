@@ -2,7 +2,7 @@
 #define COMANDOS_SERVICOS_H_INCLUDED
 
 // #include <conio.h>
-#include <stdio.h>
+// #include <stdio.h>
 #include <stdlib.h>
 #include "dominios.h"
 #include "entidades.h"
