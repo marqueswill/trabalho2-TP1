@@ -4,37 +4,43 @@ using namespace std;
 
 //--------------------------------------------------------------------------------------------
 bool CtrlISAutenticacao::autenticar(Matricula matricula, Senha senha) {
-    ComandoLerMatricula lerMatricula(matricula);
-    if (lerMatricula.getResultado() == matricula.getValor()) {
-        ComandoLerSenha lerSenha(matricula);
-        if (lerSenha.getResultado() == senha.getValor()) {
-            return true;
-        }
+    ComandoISLerMatricula comandoLerMatricula(matricula);
+    comandoLerMatricula.executar();
+
+    if (comandoLerMatricula.getResultado() != matricula.getValor()) {
+        return false;
     }
 
-    return false;
+    ComandoISLerSenha comandoLerSenha(matricula);
+    comandoLerSenha.executar();
+
+    return (comandoLerSenha.getResultado() == senha.getValor());
 }
 
 //-----------------------------------------------------------------------------------------------
-bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
-    ComandoLerMatricula lerMatricula(desenvolvedor.getMatricula());
-    if (lerMatricula.getResultado() == "") {
+bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
+    try {
+        ComandoISVisualizarDesenvolvedor comandoVisualizar(desenvolvedor->getMatricula());
+        comandoVisualizar.executar();
+        *desenvolvedor = comandoVisualizar.getResultado();
+    } catch (EErroPersistencia &exp) {
         return false;
-    } else {
-        ComandoCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
-        return true;
     }
 
-    return false;
+    return true;
 }
 
-bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
-    Matricula matricula = desenvolvedor->getMatricula();
-
-    ComandoVisualizarDesenvolvedor comandoVisualizar(matricula);
+bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
     try {
-        comandoVisualizar.executar();
-        desenvolvedor = &comandoVisualizar.getResultado();
+        ComandoISLerMatricula comandoLerMatricula(desenvolvedor.getMatricula());
+        comandoLerMatricula.executar();
+
+        if (comandoLerMatricula.getResultado() != "NULL") {  // se matrícula já estiver cadastrada
+            return false;
+        }
+
+        ComandoISCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
+        comandoCadastrar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
     }
@@ -44,7 +50,8 @@ bool CtrlISDesenvolvedor::visualizar(Desenvolvedor *desenvolvedor) {
 
 bool CtrlISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
     try {
-        ComandoEditarDesenvolvedor comandoEditar(desenvolvedor);
+        ComandoISEditarDesenvolvedor comandoEditar(desenvolvedor);
+        comandoEditar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
     }
@@ -54,7 +61,8 @@ bool CtrlISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
 
 bool CtrlISDesenvolvedor::descadastrar(Matricula matricula) {
     try {
-        ComandoDescadastrarDesenvolvedor comandoDescadastrar(matricula);
+        ComandoISDescadastrarDesenvolvedor comandoDescadastrar(matricula);
+        comandoDescadastrar.executar();
     } catch (EErroPersistencia &exp) {
         return false;
     }
@@ -62,20 +70,20 @@ bool CtrlISDesenvolvedor::descadastrar(Matricula matricula) {
     return true;
 }
 //-----------------------------------------------------------------------------------------------
+bool CtrlISTeste::visualizar(Teste *teste) {
+}
 bool CtrlISTeste::cadastrar(Teste teste) {
 }
 bool CtrlISTeste::editar(Teste teste) {
 }
-bool CtrlISTeste::visualizar(Teste *teste) {
-}
 bool CtrlISTeste::descadastrar(Codigo codigo) {
 }
 //-----------------------------------------------------------------------------------------------
+bool CtrlISCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
+}
 bool CtrlISCasoDeTeste::cadastrar(CasoDeTeste casoDeTeste) {
 }
 bool CtrlISCasoDeTeste::editar(CasoDeTeste casoDeTeste) {
-}
-bool CtrlISCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
 }
 bool CtrlISCasoDeTeste::descadastrar(Codigo codigo) {
 }
