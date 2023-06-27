@@ -68,7 +68,7 @@ string ComandoISLerCodigoTeste::getResultado() {
 
 //---------------------------------------------------------------------------
 ComandoISLerCodigoCasoDeTeste::ComandoISLerCodigoCasoDeTeste(Codigo codigo) {
-    comandoSQL = "SELECT codigo FROM casodetestes WHERE codigo2 = ";
+    comandoSQL = "SELECT codigo FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
 
@@ -203,7 +203,7 @@ ComandoISDescadastrarTeste::ComandoISDescadastrarTeste(Codigo codigo) {
 
 //---------------------------------------------------------------------------
 ComandoISVisualizarCasoDeTeste::ComandoISVisualizarCasoDeTeste(Codigo codigo) {
-    comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigo2 = ";
+    comandoSQL = "SELECT * from casodetestes INNER JOIN testes on casodetestes.codigo = testes.codigo  WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
 
@@ -245,7 +245,7 @@ CasoDeTeste ComandoISVisualizarCasoDeTeste::getResultado() {
 }
 
 ComandoISCadastrarCasoDeTeste::ComandoISCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
-    comandoSQL = "INSERT INTO casodetestes(nome,codigo2,data,acao,resposta,resultado) VALUES (";
+    comandoSQL = "INSERT INTO casodetestes(nome,codigotestes,data,acao,resposta,resultado) VALUES (";
     comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
@@ -263,10 +263,10 @@ ComandoISEditarCasoDeTeste::ComandoISEditarCasoDeTeste(CasoDeTeste casoDeTeste) 
     comandoSQL += "', acao = '" + casoDeTeste.getAcao().getValor();
     comandoSQL += "', resposta = '" + casoDeTeste.getResposta().getValor();
     comandoSQL += "', resultado = '" + casoDeTeste.getResultado().getValor();
-    comandoSQL += "' WHERE codigo2 = " + casoDeTeste.getCodigo().getValor();
+    comandoSQL += "' WHERE codigotestes = " + casoDeTeste.getCodigo().getValor();
 }
 
 ComandoISDescadastrarCasoDeTeste::ComandoISDescadastrarCasoDeTeste(Codigo codigo) {
-    comandoSQL = "DELETE FROM casodetestes WHERE codigo2 = ";
+    comandoSQL = "DELETE FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
