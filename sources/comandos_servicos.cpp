@@ -66,6 +66,7 @@ string ComandoSQLLerCodigoTeste::getResultado() {
 
 //----------------------------------------------------------------------------------------------------------------------
 ComandoSQLLerCodigoCasoDeTeste::ComandoSQLLerCodigoCasoDeTeste(Codigo codigo) {
+    //comandoSQL = "SELECT codigotestes FROM casodetestes WHERE codigo = ";
     comandoSQL = "SELECT codigo FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
@@ -243,7 +244,7 @@ CasoDeTeste ComandoSQLVisualizarCasoDeTeste::getResultado() {
 }
 
 ComandoSQLCadastrarCasoDeTeste::ComandoSQLCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
-    comandoSQL = "INSERT INTO casodetestes(nome,codigotestes,data,acao,resposta,resultado) VALUES (";
+    comandoSQL = "INSERT INTO casodetestes(nome,codigo,data,acao,resposta,resultado) VALUES (";
     comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
