@@ -1,6 +1,6 @@
 #include "../headers/comandos_apresentacao.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 bool ComandoIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {
     telaAutenticacao.autenticar(matricula, &senha);
     Matricula login = *matricula;
@@ -8,9 +8,9 @@ bool ComandoIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticaca
     return resultado;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void ComandoIADesenvolvedorVisualizar::executar(ISDesenvolvedor* ctrlISDesenvolvedor) {
-    desenvolvedor.setMatricula(matricula);
+    desenvolvedor.setMatricula(matricula);  // Já tem a matricula, desenvolvedor só pode visualizar os próprios dados
     resultado = ctrlISDesenvolvedor->visualizar(&desenvolvedor);
     if (resultado) {
         telaDesenvolvedor.mostrar(desenvolvedor);
@@ -55,7 +55,7 @@ void ComandoIADesenvolvedorDescadastrar::executar(ISDesenvolvedor* ctrlISDesenvo
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void ComandoIATesteVisualizar::executar(ISTeste* ctrlISTeste) {
     telaTeste.visualizar(&teste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISTeste->visualizar(&teste);  // Pesquisa no banco de dados e coloca os valores.
@@ -103,7 +103,7 @@ void ComandoIATesteDescadastrar::executar(ISTeste* ctrlISTeste) {
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void ComandoIACasoDeTesteVisualizar::executar(ISCasoDeTeste* ctrlISCasoDeTeste) {
     telaCasoDeTeste.visualizar(&casoDeTeste);                 // Pede o código do teste ao usuário.
     resultado = ctrlISCasoDeTeste->visualizar(&casoDeTeste);  // Pesquisa no banco de dados e coloca os valores.

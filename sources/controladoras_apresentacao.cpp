@@ -1,6 +1,6 @@
 #include "../headers/controladoras_apresentacao.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 // Implementações dos métodos de classes controladoras.
 
 void CtrlIAInicializacao::executar() {
@@ -64,14 +64,14 @@ void CtrlIAInicializacao::executar() {
     }
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 bool CtrlIAAutenticacao::executar(Matricula* matricula) {
     comando = new ComandoIAAutenticacaoAutenticar(matricula);
     return comando->executar(ctrlISAutenticacao);
     delete comando;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void CtrlIADesenvolvedor::cadastrar() {
     comando = new ComandoIADesenvolvedorCadastrar();
     comando->executar(ctrlISDesenvolvedor);
@@ -116,7 +116,7 @@ void CtrlIADesenvolvedor::executar(Matricula matricula) {
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void CtrlIATeste::executar(Matricula matricula) {
     int opcao;  // Campo de entrada.
 
@@ -162,7 +162,7 @@ void CtrlIATeste::executar(Matricula matricula) {
     }
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void CtrlIACasoDeTeste::executar(Matricula matricula) {
     int opcao;  // Campo de entrada.
 

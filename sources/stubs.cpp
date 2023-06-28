@@ -1,6 +1,6 @@
 #include "../headers/stubs.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 const string StubISAutenticacao::VALOR_VALIDO_SENHA = "abc123";
 const string StubISAutenticacao::VALOR_VALIDO_MATRICULA = "1234567";
 Senha StubISAutenticacao::senhaStub;
@@ -17,7 +17,7 @@ bool StubISAutenticacao::autenticar(Matricula matricula, Senha senha) {
         return FALHA;
     }
 }
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 const string StubISDesenvolvedor::VALOR_VALIDO_MATRICULA = "1234567";
 const string StubISDesenvolvedor::VALOR_VALIDO_NOME = "joazinho123";
 const string StubISDesenvolvedor::VALOR_VALIDO_SENHA = "abc123";
@@ -77,7 +77,7 @@ bool StubISDesenvolvedor::descadastrar(Matricula matricula) {
     return SUCESSO;  // Verificação dos dados já é feita nas telas
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 const string StubISTeste::VALOR_VALIDO_CODIGO = "UNB123";
 const string StubISTeste::VALOR_VALIDO_NOME = "Modulo Autenticar";
 const string StubISTeste::VALOR_VALIDO_CLASSE = "UNIDADE";
@@ -138,7 +138,7 @@ bool StubISTeste::descadastrar(Codigo codigo) {
     return SUCESSO;  // Verificação dos dados já é feita nas telas
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 const string StubISCasoDeTeste::VALOR_VALIDO_CODIGO = "UNB123";
 const string StubISCasoDeTeste::VALOR_VALIDO_NOME = "Metodo validar";
 const string StubISCasoDeTeste::VALOR_VALIDO_DATA = "14/AGO/2003";

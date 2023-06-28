@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -35,7 +35,7 @@ inline bool TUDominios::run() {
     return estado;
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUClasse : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -49,7 +49,7 @@ class TUClasse : public TUDominios {
     void testarValorInvalido();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUCodigo : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -63,7 +63,7 @@ class TUCodigo : public TUDominios {
     void testarValorInvalido();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUData : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -77,7 +77,7 @@ class TUData : public TUDominios {
     void testarValorInvalido();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUMatricula : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -91,7 +91,7 @@ class TUMatricula : public TUDominios {
     void testarValorInvalido();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUResultado : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -105,7 +105,7 @@ class TUResultado : public TUDominios {
     void testarValorInvalido();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUSenha : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -119,7 +119,7 @@ class TUSenha : public TUDominios {
     void testarValorInvalido();
 };
 
-//--------------------------------------------------------------------------------------------};
+//----------------------------------------------------------------------------------------------------------------------};
 class TUTelefone : public TUDominios {
    private:
     const static string VALOR_VALIDO;
@@ -133,7 +133,7 @@ class TUTelefone : public TUDominios {
     void testarValorInvalido();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class TUTexto : public TUDominios {
    private:
     const static string VALOR_VALIDO;

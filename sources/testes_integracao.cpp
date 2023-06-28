@@ -1,6 +1,6 @@
 #include "../headers/testes_integracao.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void TIApresentacao::executar() {
     IAAutenticacao *ctrlIAAutenticacao;
     IADesenvolvedor *ctrlIADesenvolvedor;
@@ -35,3 +35,54 @@ void TIApresentacao::executar() {
 
     ctrlIAInicializacao.executar();
 }
+
+// //----------------------------------------------------------------------------------------------------------------------
+// void TIDesenvolvedor::executar() {
+//     IADesenvolvedor *ctrlIADesenvolvedor;
+//     ISDesenvolvedor *ctrlISDesenvolvedor;
+
+//     ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
+//     ctrlISDesenvolvedor = new CtrlISDesenvolvedor();
+
+//     ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);
+
+//     Matricula matricula;
+//     ctrlIADesenvolvedor->executar(matricula);
+
+//     delete ctrlIADesenvolvedor;
+//     delete ctrlISDesenvolvedor;
+// }
+
+// //----------------------------------------------------------------------------------------------------------------------
+// void TITeste::executar() {
+//     CtrlIATeste *ctrlIATeste;
+//     CtrlISTeste *ctrlISTeste;
+
+//     ctrlIATeste = new CtrlIATeste();
+//     ctrlISTeste = new CtrlISTeste();
+
+//     ctrlIATeste->setCtrlISTeste(ctrlISTeste);
+
+//     Matricula matricula;
+//     ctrlIATeste->executar(matricula);
+
+//     delete ctrlIATeste;
+//     delete ctrlISTeste;
+// }
+
+// //----------------------------------------------------------------------------------------------------------------------
+// void TICasoDeTeste::executar() {
+//     CtrlIACasoDeTeste *ctrlIACasoDeTeste;
+//     CtrlISCasoDeTeste *ctrlISCasoDeTeste;
+
+//     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
+//     ctrlISCasoDeTeste = new CtrlISCasoDeTeste();
+
+//     ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlISCasoDeTeste);
+
+//     Matricula matricula;
+//     ctrlIACasoDeTeste->executar(matricula);
+
+//     delete ctrlIACasoDeTeste;
+//     delete ctrlISCasoDeTeste;
+// }

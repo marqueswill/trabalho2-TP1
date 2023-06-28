@@ -1,6 +1,6 @@
 #include "../headers/drivers.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void Drivers::showResult(bool resultado, string nome, int l) {
     string texto1 = "SUCESSO";
     string texto2 = "FALHA";
@@ -20,7 +20,7 @@ void Drivers::showResult(bool resultado, string nome, int l) {
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void DriverDepuracao::executar() {
     DriverTestesUnitarios testesUnitarios;
     DriverTestesIntegracao testesIntegracao;
@@ -54,7 +54,7 @@ void DriverDepuracao::executar() {
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void DriverTestesUnitarios::executar() {
     DriverTestesDominios testesDominios;
     DriverTestesEntidades testesEntidades;
@@ -87,7 +87,7 @@ void DriverTestesUnitarios::executar() {
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void DriverTestesDominios::executar() {
     int linha, coluna;
     string title = "DOMINIOS";
@@ -114,7 +114,7 @@ void DriverTestesDominios::executar() {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void DriverTestesEntidades::executar() {
     int linha, coluna;
     string title = "ENTIDADES";
@@ -137,7 +137,7 @@ void DriverTestesEntidades::executar() {
     endwin();
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void DriverTestesModulos::executar() {
     TUIAAutenticacao testeAutenticacao;
     TUIADesenvolvedor testeDesenvolvedor;
@@ -174,9 +174,13 @@ void DriverTestesModulos::executar() {
     }
 }
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 void DriverTestesIntegracao::executar() {
     TIApresentacao testeApresentacao;
+    // TIAutenticacao testeAutenticacao;
+    // TIDesenvolvedor testeDesenvolvedor;
+    // TITeste testeTeste;
+    // TICasoDeTeste testeCasoDeTeste;
 
     int campo;
     bool apresentar = true;
@@ -188,12 +192,17 @@ void DriverTestesIntegracao::executar() {
             case CAMADA_APRESENTACAO:
                 testeApresentacao.executar();
                 break;
+            case SUBSISTEMA_AUTENTICACAO:
+                // testeAutenticacao.executar();
+                break;
             case SUBSISTEMA_DESENVOLVEDOR:
-                /* code */
+                // testeDesenvolvedor.executar();
                 break;
             case SUBSISTEMA_TESTE:
+                // testeTeste.executar();
                 break;
             case SUBSISTEMA_CASODETESTE:
+                // testeCasoDeTeste.executar();
                 break;
             case RETORNAR:
                 apresentar = false;

@@ -6,14 +6,14 @@
 #include "testes_integracao.h"
 #include "testes_modulos.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class Drivers {
    public:
     void showResult(bool, string, int);
     virtual void executar() = 0;
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class DriverDepuracao {
    private:
     const static int TESTE_UNITARIO = 1;
@@ -26,7 +26,7 @@ class DriverDepuracao {
     void executar();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class DriverTestesUnitarios : public Drivers {
    private:
     const static int DOMINIOS = 1;
@@ -38,7 +38,7 @@ class DriverTestesUnitarios : public Drivers {
     void executar();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class DriverTestesDominios : public Drivers {
    private:
     TUClasse testeClasse;
@@ -54,7 +54,7 @@ class DriverTestesDominios : public Drivers {
     void executar();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class DriverTestesEntidades : public Drivers {
    private:
     TUDesenvolvedor testeDesenvolvedor;
@@ -65,7 +65,7 @@ class DriverTestesEntidades : public Drivers {
     void executar();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class DriverTestesModulos : public Drivers {
    private:
     const static int AUTENTICACAO = 1;
@@ -78,14 +78,15 @@ class DriverTestesModulos : public Drivers {
     void executar();
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class DriverTestesIntegracao : public Drivers {
    private:
     const static int CAMADA_APRESENTACAO = 1;
-    const static int SUBSISTEMA_DESENVOLVEDOR = 2;
-    const static int SUBSISTEMA_TESTE = 3;
-    const static int SUBSISTEMA_CASODETESTE = 4;
-    const static int RETORNAR = 5;
+    const static int SUBSISTEMA_AUTENTICACAO = 2;
+    const static int SUBSISTEMA_DESENVOLVEDOR = 3;
+    const static int SUBSISTEMA_TESTE = 4;
+    const static int SUBSISTEMA_CASODETESTE = 5;
+    const static int RETORNAR = 6;
 
    public:
     void executar();

@@ -3,7 +3,7 @@
 
 #include "interfaces.h"
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class StubISAutenticacao : public ISAutenticacao {
    private:
     static Matricula matriculaStub;
@@ -25,7 +25,7 @@ class StubISAutenticacao : public ISAutenticacao {
     bool autenticar(Matricula, Senha);
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class StubISDesenvolvedor : public ISDesenvolvedor {
    private:
     static Desenvolvedor desenvolvedorStub;
@@ -62,7 +62,7 @@ class StubISDesenvolvedor : public ISDesenvolvedor {
     bool descadastrar(Matricula);
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class StubISTeste : public ISTeste {
    private:
     static Teste testeStub;
@@ -97,7 +97,7 @@ class StubISTeste : public ISTeste {
     bool descadastrar(Codigo);
 };
 
-//--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 class StubISCasoDeTeste : public ISCasoDeTeste {
    private:
     static CasoDeTeste casoDeTesteStub;
