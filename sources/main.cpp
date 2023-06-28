@@ -27,8 +27,8 @@
 #include "testes_integracao.cpp"
 #include "testes_modulos.cpp"
 
-#define TESTE
-// #define SISTEMA
+// #define TESTE
+#define SISTEMA
 using namespace std;
 
 #ifdef TESTE
@@ -47,8 +47,8 @@ int main() {
     builder = new BuilderSistema();
 
     CtrlIAInicializacao *ctrlIAInicializao;
+    ctrlIAInicializao = builder->construir();
     ctrlIAInicializao->executar();
-
     delete builder;
 
     return 0;

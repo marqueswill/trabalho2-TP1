@@ -21,6 +21,7 @@ class BuilderSistema {
 
    public:
     CtrlIAInicializacao *construir();
+    void executar();
     ~BuilderSistema();
 };
 
