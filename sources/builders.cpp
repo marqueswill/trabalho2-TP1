@@ -2,15 +2,41 @@
 
 CtrlIAInicializacao *BuilderSistema::construir() {
     ctrlIAInicializacao = new CtrlIAInicializacao();
+
     ctrlIAAutenticacao = new CtrlIAAutenticacao();
     ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
     ctrlIATeste = new CtrlIATeste();
     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
 
-    ctrlISAutenticacao = new CtrlISAutenticacao();
-    ctrlISDesenvolvedor = new CtrlISDesenvolvedor();
-    ctrlISTeste = new CtrlISTeste();
-    ctrlISCasoDeTeste = new CtrlISCasoDeTeste();
+    ctrlISAutenticacao = new StubISAutenticacao();
+    ctrlISDesenvolvedor = new StubISDesenvolvedor();
+    ctrlISTeste = new StubISTeste();
+    ctrlISCasoDeTeste = new StubISCasoDeTeste();
+
+    ctrlIAInicializacao->setCtrlIAAutenticacao(ctrlIAAutenticacao);
+    ctrlIAInicializacao->setCtrlIADesenvolvedor(ctrlIADesenvolvedor);
+    ctrlIAInicializacao->setCtrlIATeste(ctrlIATeste);
+    ctrlIAInicializacao->setCtrlIACasoDeTeste(ctrlIACasoDeTeste);
+
+    ctrlIAAutenticacao->setCtrlISAutenticacao(ctrlISAutenticacao);
+    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);
+    ctrlIATeste->setCtrlISTeste(ctrlISTeste);
+    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlISCasoDeTeste);
+
+    return ctrlIAInicializacao;
+}
+
+void BuilderSistema::executar() {
+    ctrlIAInicializacao = new CtrlIAInicializacao();
+    ctrlIAAutenticacao = new CtrlIAAutenticacao();
+    ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
+    ctrlIATeste = new CtrlIATeste();
+    ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
+
+    ctrlISAutenticacao = new StubISAutenticacao();
+    ctrlISDesenvolvedor = new StubISDesenvolvedor();
+    ctrlISTeste = new StubISTeste();
+    ctrlISCasoDeTeste = new StubISCasoDeTeste();
 
     ctrlIAAutenticacao->setCtrlISAutenticacao(ctrlISAutenticacao);
     ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);
@@ -22,7 +48,8 @@ CtrlIAInicializacao *BuilderSistema::construir() {
     ctrlIAInicializacao->setCtrlIATeste(ctrlIATeste);
     ctrlIAInicializacao->setCtrlIACasoDeTeste(ctrlIACasoDeTeste);
 
-    return ctrlIAInicializacao;
+    ctrlIAInicializacao->executar();
+    delete ctrlIAInicializacao;
 }
 
 BuilderSistema::~BuilderSistema() {

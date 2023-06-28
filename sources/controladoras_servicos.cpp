@@ -4,17 +4,21 @@ using namespace std;
 
 //--------------------------------------------------------------------------------------------
 bool CtrlISAutenticacao::autenticar(Matricula matricula, Senha senha) {
-    ComandoSQLLerMatricula comandoLerMatricula(matricula);
-    comandoLerMatricula.executar();
+    try {
+        ComandoSQLLerMatricula comandoLerMatricula(matricula);
+        comandoLerMatricula.executar();
 
-    if (comandoLerMatricula.getResultado() != matricula.getValor()) {  // se não achar matricula informada
+        if (comandoLerMatricula.getResultado() != matricula.getValor()) {  // se não achar matricula informada
+            return false;
+        }
+
+        ComandoSQLLerSenha comandoLerSenha(matricula);
+        comandoLerSenha.executar();
+
+        return (comandoLerSenha.getResultado() == senha.getValor());
+    } catch (EErroPersistencia &exp) {
         return false;
     }
-
-    ComandoSQLLerSenha comandoLerSenha(matricula);
-    comandoLerSenha.executar();
-
-    return (comandoLerSenha.getResultado() == senha.getValor());
 }
 
 //----------------------------------------------------------------------------------------------------------------------

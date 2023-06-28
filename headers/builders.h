@@ -3,6 +3,7 @@
 
 #include "controladoras_apresentacao.h"
 #include "controladoras_servicos.h"
+#include "stubs.h"
 
 class BuilderSistema {
    private:
@@ -13,13 +14,14 @@ class BuilderSistema {
     IATeste *ctrlIATeste;
     IACasoDeTeste *ctrlIACasoDeTeste;
 
-    CtrlISAutenticacao *ctrlISAutenticacao;
-    CtrlISDesenvolvedor *ctrlISDesenvolvedor;
-    CtrlISTeste *ctrlISTeste;
-    CtrlISCasoDeTeste *ctrlISCasoDeTeste;
+    StubISAutenticacao *ctrlISAutenticacao;
+    StubISDesenvolvedor *ctrlISDesenvolvedor;
+    StubISTeste *ctrlISTeste;
+    StubISCasoDeTeste *ctrlISCasoDeTeste;
 
    public:
     CtrlIAInicializacao *construir();
+    void executar();
     ~BuilderSistema();
 };
 
