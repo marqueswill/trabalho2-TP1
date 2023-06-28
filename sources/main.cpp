@@ -1,6 +1,6 @@
 #include "../headers/builders.h"
 #include "../headers/comandos_apresentacao.h"
-#include "../headers/comandos_servicos.h"
+// #include "../headers/comandos_servicos.h"
 #include "../headers/controladoras_apresentacao.h"
 #include "../headers/controladoras_servicos.h"
 #include "../headers/dominios.h"
@@ -15,9 +15,9 @@
 #include "../headers/testes_modulos.h"
 #include "builders.cpp"
 #include "comandos_apresentacao.cpp"
-#include "comandos_servicos.cpp"
+// #include "comandos_servicos.cpp"
 #include "controladoras_apresentacao.cpp"
-#include "controladoras_servicos.cpp"
+// #include "controladoras_servicos.cpp"
 #include "dominios.cpp"
 #include "drivers.cpp"
 #include "stubs.cpp"
@@ -32,21 +32,25 @@
 using namespace std;
 
 #ifdef TESTE
-void main() {
+int main() {
     DriverDepuracao driverDepuracao;
     driverDepuracao.executar();
+
+    return 0;
 };
 #endif  // TESTE
 
 //----------------------------------------------------------------------------------------------------------------------
 #ifdef SISTEMA
-void main() {
+int main() {
     BuilderSistema *builder;
     builder = new BuilderSistema();
 
     CtrlIAInicializacao *ctrlIAInicializao;
+    ctrlIAInicializao = builder->construir();
     ctrlIAInicializao->executar();
-
     delete builder;
+
+    return 0;
 }
 #endif  // SISTEMA
