@@ -7,10 +7,10 @@ CtrlIAInicializacao *BuilderSistema::construir() {
     ctrlIATeste = new CtrlIATeste();
     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
 
-    ctrlISAutenticacao = new CtrlISAutenticacao();
-    ctrlISDesenvolvedor = new CtrlISDesenvolvedor();
-    ctrlISTeste = new CtrlISTeste();
-    ctrlISCasoDeTeste = new CtrlISCasoDeTeste();
+    ctrlISAutenticacao = new StubISAutenticacao();
+    ctrlISDesenvolvedor = new StubISDesenvolvedor();
+    ctrlISTeste = new StubISTeste();
+    ctrlISCasoDeTeste = new StubISCasoDeTeste();
 
     ctrlIAAutenticacao->setCtrlISAutenticacao(ctrlISAutenticacao);
     ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);

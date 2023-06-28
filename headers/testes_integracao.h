@@ -11,24 +11,24 @@ class TIApresentacao {
     void executar();
 };
 
-class TIAutenticacao {
-   public:
-    void executar();
-};
+// class TIAutenticacao {
+//    public:
+//     void executar();
+// };
 
-class TIDesenvolvedor {
-   public:
-    void executar();
-};
+// class TIDesenvolvedor {
+//    public:
+//     void executar();
+// };
 
-class TITeste {
-   public:
-    void executar();
-};
+// class TITeste {
+//    public:
+//     void executar();
+// };
 
-class TICasoDeTeste {
-   public:
-    void executar();
-};
+// class TICasoDeTeste {
+//    public:
+//     void executar();
+// };
 
 #endif  // TESTES_INTEGRACAO_H_INCLUDED

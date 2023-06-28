@@ -36,53 +36,53 @@ void TIApresentacao::executar() {
     ctrlIAInicializacao.executar();
 }
 
-//----------------------------------------------------------------------------------------------------------------------
-void TIDesenvolvedor::executar() {
-    IADesenvolvedor *ctrlIADesenvolvedor;
-    ISDesenvolvedor *ctrlISDesenvolvedor;
+// //----------------------------------------------------------------------------------------------------------------------
+// void TIDesenvolvedor::executar() {
+//     IADesenvolvedor *ctrlIADesenvolvedor;
+//     ISDesenvolvedor *ctrlISDesenvolvedor;
 
-    ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
-    ctrlISDesenvolvedor = new CtrlISDesenvolvedor();
+//     ctrlIADesenvolvedor = new CtrlIADesenvolvedor();
+//     ctrlISDesenvolvedor = new CtrlISDesenvolvedor();
 
-    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);
+//     ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);
 
-    Matricula matricula;
-    ctrlIADesenvolvedor->executar(matricula);
+//     Matricula matricula;
+//     ctrlIADesenvolvedor->executar(matricula);
 
-    delete ctrlIADesenvolvedor;
-    delete ctrlISDesenvolvedor;
-}
+//     delete ctrlIADesenvolvedor;
+//     delete ctrlISDesenvolvedor;
+// }
 
-//----------------------------------------------------------------------------------------------------------------------
-void TITeste::executar() {
-    CtrlIATeste *ctrlIATeste;
-    CtrlISTeste *ctrlISTeste;
+// //----------------------------------------------------------------------------------------------------------------------
+// void TITeste::executar() {
+//     CtrlIATeste *ctrlIATeste;
+//     CtrlISTeste *ctrlISTeste;
 
-    ctrlIATeste = new CtrlIATeste();
-    ctrlISTeste = new CtrlISTeste();
+//     ctrlIATeste = new CtrlIATeste();
+//     ctrlISTeste = new CtrlISTeste();
 
-    ctrlIATeste->setCtrlISTeste(ctrlISTeste);
+//     ctrlIATeste->setCtrlISTeste(ctrlISTeste);
 
-    Matricula matricula;
-    ctrlIATeste->executar(matricula);
+//     Matricula matricula;
+//     ctrlIATeste->executar(matricula);
 
-    delete ctrlIATeste;
-    delete ctrlISTeste;
-}
+//     delete ctrlIATeste;
+//     delete ctrlISTeste;
+// }
 
-//----------------------------------------------------------------------------------------------------------------------
-void TICasoDeTeste::executar() {
-    CtrlIACasoDeTeste *ctrlIACasoDeTeste;
-    CtrlISCasoDeTeste *ctrlISCasoDeTeste;
+// //----------------------------------------------------------------------------------------------------------------------
+// void TICasoDeTeste::executar() {
+//     CtrlIACasoDeTeste *ctrlIACasoDeTeste;
+//     CtrlISCasoDeTeste *ctrlISCasoDeTeste;
 
-    ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
-    ctrlISCasoDeTeste = new CtrlISCasoDeTeste();
+//     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
+//     ctrlISCasoDeTeste = new CtrlISCasoDeTeste();
 
-    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlISCasoDeTeste);
+//     ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlISCasoDeTeste);
 
-    Matricula matricula;
-    ctrlIACasoDeTeste->executar(matricula);
+//     Matricula matricula;
+//     ctrlIACasoDeTeste->executar(matricula);
 
-    delete ctrlIACasoDeTeste;
-    delete ctrlISCasoDeTeste;
-}
+//     delete ctrlIACasoDeTeste;
+//     delete ctrlISCasoDeTeste;
+// }

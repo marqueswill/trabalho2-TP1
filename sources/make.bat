@@ -1,1 +1,0 @@
-g++ main.cpp  D:\Programas\MINGW\PDCurses-master\wincon\pdcurses.a -o sistema                                                                  
