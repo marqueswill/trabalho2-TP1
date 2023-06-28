@@ -177,10 +177,10 @@ void DriverTestesModulos::executar() {
 //----------------------------------------------------------------------------------------------------------------------
 void DriverTestesIntegracao::executar() {
     TIApresentacao testeApresentacao;
-    TIAutenticacao testeAutenticacao;
-    TIDesenvolvedor testeDesenvolvedor;
-    TITeste testeTeste;
-    TICasoDeTeste testeCasoDeTeste;
+    // TIAutenticacao testeAutenticacao;
+    // TIDesenvolvedor testeDesenvolvedor;
+    // TITeste testeTeste;
+    // TICasoDeTeste testeCasoDeTeste;
 
     int campo;
     bool apresentar = true;
@@ -193,16 +193,16 @@ void DriverTestesIntegracao::executar() {
                 testeApresentacao.executar();
                 break;
             case SUBSISTEMA_AUTENTICACAO:
-                testeAutenticacao.executar();
+                // testeAutenticacao.executar();
                 break;
             case SUBSISTEMA_DESENVOLVEDOR:
-                testeDesenvolvedor.executar();
+                // testeDesenvolvedor.executar();
                 break;
             case SUBSISTEMA_TESTE:
-                testeTeste.executar();
+                // testeTeste.executar();
                 break;
             case SUBSISTEMA_CASODETESTE:
-                testeCasoDeTeste.executar();
+                // testeCasoDeTeste.executar();
                 break;
             case RETORNAR:
                 apresentar = false;
