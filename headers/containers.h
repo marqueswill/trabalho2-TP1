@@ -1,0 +1,6 @@
+#ifndef CONTAINERS_H_INCLUDED
+#define CONTAINERS_H_INCLUDED
+
+#include <map>
+
+#endif  // CONTAINERS_H_INCLUDED
