@@ -1,7 +1,7 @@
-#ifndef CONTROLADORAS_SERVICOS_H_INCLUDED
-#define CONTROLADORAS_SERVICOS_H_INCLUDED
+#ifndef CONTROLADORAS_SERVICO_H_INCLUDED
+#define CONTROLADORAS_SERVICO_H_INCLUDED
 
-// #include "comandos_servicos.h"
+#include "comandos_servico.h"
 #include "interfaces.h"
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -38,4 +38,4 @@ class CtrlISCasoDeTeste : public ISCasoDeTeste {
     bool descadastrar(Codigo);
 };
 
-#endif  // CONTROLADORAS_SERVICOS_H_INCLUDED
+#endif  // CONTROLADORAS_SERVICO_H_INCLUDED

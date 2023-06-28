@@ -2,7 +2,7 @@
 #define CONTROLADORAS_APRESENTACAO_H_INCLUDED
 
 #include "comandos_apresentacao.h"
-#include "controladoras_servicos.h"
+#include "controladoras_servico.h"
 #include "interfaces.h"
 #include "telas.h"
 
