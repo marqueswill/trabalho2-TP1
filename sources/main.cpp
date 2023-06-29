@@ -40,7 +40,7 @@ void main() {
 
 //----------------------------------------------------------------------------------------------------------------------
 #ifdef SISTEMA
-void main() {
+int main() {
     BuilderSistema *builder;
     builder = new BuilderSistema();
 
@@ -48,5 +48,7 @@ void main() {
     ctrlIAInicializao->executar();
 
     delete builder;
+
+    return 0;
 }
 #endif  // SISTEMA
