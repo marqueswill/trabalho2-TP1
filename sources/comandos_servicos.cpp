@@ -14,7 +14,7 @@ string ComandoSQLLerSenha::getResultado() {
     string senha;
 
     if (listaResultado.empty()) {
-        throw EErroPersistencia("Lista de resultados vazia.");
+        return "NULL";
     }
 
     resultado = listaResultado.back();
@@ -35,7 +35,7 @@ string ComandoSQLLerMatricula::getResultado() {
     string matricula;
 
     if (listaResultado.empty()) {
-        throw EErroPersistencia("Lista de resultados vazia.");
+        return "NULL";
     }
     resultado = listaResultado.back();
     listaResultado.pop_back();
@@ -54,9 +54,10 @@ string ComandoSQLLerCodigoTeste::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    ;
+    if (listaResultado.empty()) {
+        return "NULL";
+    }
+
     resultado = listaResultado.back();
     listaResultado.pop_back();
     codigo = resultado.getValorColuna();
@@ -75,9 +76,10 @@ string ComandoSQLLerCodigoCasoDeTeste::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
-    if (listaResultado.empty())
-        throw EErroPersistencia("Lista de resultados vazia.");
-    ;
+    if (listaResultado.empty()) {
+        return "NULL";
+    }
+
     resultado = listaResultado.back();
     listaResultado.pop_back();
     codigo = resultado.getValorColuna();

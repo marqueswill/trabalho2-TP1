@@ -18,7 +18,6 @@
 #include "comandos_servicos.cpp"
 #include "controladoras_apresentacao.cpp"
 #include "controladoras_servicos.cpp"
-#include "database.db"
 #include "dominios.cpp"
 #include "drivers.cpp"
 #include "stubs.cpp"
