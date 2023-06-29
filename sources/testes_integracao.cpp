@@ -37,6 +37,23 @@ void TIApresentacao::executar() {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+void TIAutenticacao::executar() {
+    IAAutenticacao *ctrlIAAutenticacao;
+    ISAutenticacao *ctrlISAutenticacao;
+
+    ctrlIAAutenticacao = new CtrlIAAutenticacao();
+    ctrlISAutenticacao = new CtrlISAutenticacao();
+
+    ctrlIAAutenticacao->setCtrlISAutenticacao(ctrlISAutenticacao);
+
+    Matricula matricula;
+    ctrlIAAutenticacao->executar(&matricula);
+
+    delete ctrlIAAutenticacao;
+    delete ctrlISAutenticacao;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 void TIDesenvolvedor::executar() {
     IADesenvolvedor *ctrlIADesenvolvedor;
     ISDesenvolvedor *ctrlISDesenvolvedor;

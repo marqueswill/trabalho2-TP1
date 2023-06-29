@@ -2,8 +2,8 @@
 #define COMANDOS_SERVICOS_H_INCLUDED
 
 // #include <conio.h>
-// #include <stdio.h>
 #include <sqlite3.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "dominios.h"
@@ -46,8 +46,16 @@ inline void ElementoResultado::setNomeColuna(const string &nomeColuna) {
     this->nomeColuna = nomeColuna;
 }
 
+inline string ElementoResultado::getNomeColuna() const {
+    return nomeColuna;
+}
+
 inline void ElementoResultado::setValorColuna(const string &valorColuna) {
     this->valorColuna = valorColuna;
+}
+
+inline string ElementoResultado::getValorColuna() const {
+    return valorColuna;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
