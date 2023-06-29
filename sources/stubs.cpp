@@ -1,4 +1,4 @@
-#include "../headers/stubs.h"
+#include "stubs.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 const string StubISAutenticacao::VALOR_VALIDO_SENHA = "abc123";

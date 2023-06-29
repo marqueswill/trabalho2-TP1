@@ -2,7 +2,6 @@
 #define TESTES_ENTIDADES_H_INCLUDED
 
 #include "entidades.h"
-
 using namespace std;
 
 //----------------------------------------------------------------------------------------------------------------------

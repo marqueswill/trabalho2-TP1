@@ -1,4 +1,4 @@
-#include "../headers/comandos_apresentacao.h"
+#include "comandos_apresentacao.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 bool ComandoIAAutenticacaoAutenticar::executar(ISAutenticacao* ctrlISAutenticacao) {

@@ -1,4 +1,4 @@
-#include "../headers/telas.h"
+#include "telas.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 void TelaMensagem::apresentar(string mensagem) {

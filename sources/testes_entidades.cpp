@@ -1,4 +1,4 @@
-#include "../headers/testes_entidades.h"
+#include "testes_entidades.h"
 
 using namespace std;
 

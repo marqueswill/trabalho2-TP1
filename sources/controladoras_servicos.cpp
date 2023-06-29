@@ -1,24 +1,18 @@
-#include "../headers/controladoras_servicos.h"
-
+#include "controladoras_servicos.h"
 using namespace std;
-
 //--------------------------------------------------------------------------------------------
 bool CtrlISAutenticacao::autenticar(Matricula matricula, Senha senha) {
-    try {
-        ComandoSQLLerMatricula comandoLerMatricula(matricula);
-        comandoLerMatricula.executar();
-
-        if (comandoLerMatricula.getResultado() != matricula.getValor()) {  // se não achar matricula informada
-            return false;
-        }
-
-        ComandoSQLLerSenha comandoLerSenha(matricula);
-        comandoLerSenha.executar();
-
-        return (comandoLerSenha.getResultado() == senha.getValor());
-    } catch (EErroPersistencia &exp) {
-        return false;
+    ComandoSQLLerMatricula comandoLerMatricula(matricula);
+    comandoLerMatricula.executar();
+    if (comandoLerMatricula.getResultado() != matricula.getValor()) {
+        // se não achar matricula informada
+        return true;
     }
+
+    ComandoSQLLerSenha comandoLerSenha(matricula);
+    comandoLerSenha.executar();
+
+    return (comandoLerSenha.getResultado() == senha.getValor());
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -39,12 +33,15 @@ bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
         ComandoSQLLerMatricula comandoLerMatricula(desenvolvedor.getMatricula());
         comandoLerMatricula.executar();
 
-        if (comandoLerMatricula.getResultado() != "NULL") {  // se matrícula já estiver cadastrada
+        if (comandoLerMatricula.getResultado() != "NULL") {
+
+        // se matrícula já estiver cadastrada
             return false;
         }
-
         ComandoSQLCadastrarDesenvolvedor comandoCadastrar(desenvolvedor);
         comandoCadastrar.executar();
+        printf("%s","arroz");
+        getch();
     } catch (EErroPersistencia &exp) {
         return false;
     }

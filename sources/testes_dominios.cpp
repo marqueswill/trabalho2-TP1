@@ -1,4 +1,4 @@
-#include "../headers/testes_dominios.h"
+#include "testes_dominios.h"
 
 using namespace std;
 

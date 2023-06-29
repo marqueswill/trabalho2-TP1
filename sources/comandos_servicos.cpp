@@ -1,5 +1,58 @@
-#include "../headers/comandos_servicos.h"
+#include "comandos_servicos.h"
 
+EErroPersistencia::EErroPersistencia(string mensagem) {
+    this->mensagem = mensagem;
+}
+
+ string EErroPersistencia::what() {
+    return mensagem;
+}
+
+void ElementoResultado::setNomeColuna(const string &nomeColuna) {
+    this->nomeColuna = nomeColuna;
+}
+
+ void ElementoResultado::setValorColuna(const string &valorColuna) {
+    this->valorColuna = valorColuna;
+}
+void ComandoSQL::conectar() {
+    rc = sqlite3_open(nomeBancoDados, &bd);
+    if (rc != SQLITE_OK)
+        throw EErroPersistencia("Erro na conexao ao banco de dados");
+}
+
+void ComandoSQL::desconectar() {
+    rc = sqlite3_close(bd);
+    if (rc != SQLITE_OK)
+        throw EErroPersistencia("Erro na desconexao ao banco de dados");
+}
+
+int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nomeColuna) {
+    NotUsed = 0;
+    ElementoResultado elemento;
+    int i;
+    for (i = 0; i < argc; i++) {
+        elemento.setNomeColuna(nomeColuna[i]);
+        elemento.setValorColuna(valorColuna[i] ? valorColuna[i] : "NULL");
+        listaResultado.push_front(elemento);
+    }
+    return 0;
+}
+
+void ComandoSQL::executar() {
+    conectar();
+    rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
+    if (rc != SQLITE_OK) {
+        printf("%s", mensagem);
+        printf("%s", comandoSQL.c_str());
+        printf("%d", callback);
+        getch();
+        sqlite3_free(mensagem);
+        desconectar();
+        throw EErroPersistencia("Erro na execucao do comando SQL");
+    }
+    desconectar();
+}
 //----------------------------------------------------------------------------------------------------------------------
 list<ElementoResultado> ComandoSQL::listaResultado;
 
@@ -12,7 +65,6 @@ ComandoSQLLerSenha::ComandoSQLLerSenha(Matricula matricula) {
 string ComandoSQLLerSenha::getResultado() {
     ElementoResultado resultado;
     string senha;
-
     if (listaResultado.empty()) {
         return "NULL";
     }
@@ -54,10 +106,9 @@ string ComandoSQLLerCodigoTeste::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
-    if (listaResultado.empty()) {
+    if (listaResultado.empty())
         return "NULL";
-    }
-
+    ;
     resultado = listaResultado.back();
     listaResultado.pop_back();
     codigo = resultado.getValorColuna();
@@ -67,7 +118,7 @@ string ComandoSQLLerCodigoTeste::getResultado() {
 
 //----------------------------------------------------------------------------------------------------------------------
 ComandoSQLLerCodigoCasoDeTeste::ComandoSQLLerCodigoCasoDeTeste(Codigo codigo) {
-    // comandoSQL = "SELECT codigotestes FROM casodetestes WHERE codigo = ";
+    //comandoSQL = "SELECT codigotestes FROM casodetestes WHERE codigo = ";
     comandoSQL = "SELECT codigo FROM casodetestes WHERE codigotestes = ";
     comandoSQL += codigo.getValor();
 }
@@ -76,10 +127,9 @@ string ComandoSQLLerCodigoCasoDeTeste::getResultado() {
     ElementoResultado resultado;
     string codigo;
 
-    if (listaResultado.empty()) {
+    if (listaResultado.empty())
         return "NULL";
-    }
-
+    ;
     resultado = listaResultado.back();
     listaResultado.pop_back();
     codigo = resultado.getValorColuna();
@@ -96,7 +146,10 @@ ComandoSQLVisualizarDesenvolvedor::ComandoSQLVisualizarDesenvolvedor(Matricula m
 Desenvolvedor ComandoSQLVisualizarDesenvolvedor::getResultado() {
     ElementoResultado resultado;
     Desenvolvedor desenvolvedor;
-
+    Texto nome;
+    Matricula matricula;
+    Senha senha;
+    Telefone telefone;
     for (int i = 0; i < 4; i++) {
         if (listaResultado.empty()) {
             throw EErroPersistencia("Lista de resultados vazia.");
@@ -107,20 +160,23 @@ Desenvolvedor ComandoSQLVisualizarDesenvolvedor::getResultado() {
 
         switch (i) {
             case 3:
-                desenvolvedor.setNome(Texto(resultado.getValorColuna()));
+                telefone.setValor(resultado.getValorColuna());
                 break;
             case 2:
-                desenvolvedor.setMatricula(Matricula(resultado.getValorColuna()));
+                senha.setValor(resultado.getValorColuna());
                 break;
             case 1:
-                desenvolvedor.setSenha(Senha(resultado.getValorColuna()));
+                matricula.setValor(resultado.getValorColuna());
                 break;
             case 0:
-                desenvolvedor.setTelefone(Telefone(resultado.getValorColuna()));
+                nome.setValor(resultado.getValorColuna());
                 break;
         }
     }
-
+    desenvolvedor.setNome(nome);
+    desenvolvedor.setMatricula(matricula);
+    desenvolvedor.setSenha(senha);
+    desenvolvedor.setTelefone(telefone);
     return desenvolvedor;
 }
 
@@ -129,7 +185,7 @@ ComandoSQLCadastrarDesenvolvedor::ComandoSQLCadastrarDesenvolvedor(Desenvolvedor
     comandoSQL += "'" + desenvolvedor.getNome().getValor() + "', ";
     comandoSQL += "'" + desenvolvedor.getMatricula().getValor() + "', ";
     comandoSQL += "'" + desenvolvedor.getSenha().getValor() + "', ";
-    comandoSQL += "'" + desenvolvedor.getTelefone().getValor() + "', ";
+    comandoSQL += "'" + desenvolvedor.getTelefone().getValor() + "'";
     comandoSQL += ")";
 }
 
@@ -144,8 +200,18 @@ ComandoSQLEditarDesenvolvedor::ComandoSQLEditarDesenvolvedor(Desenvolvedor desen
 ComandoSQLDescadastrarDesenvolvedor::ComandoSQLDescadastrarDesenvolvedor(Matricula matricula) {
     comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
+    comandoSQL += "DELETE FROM testes WHERE matricula = ";
+
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+ComandoSQLContarCasoDeTeste::ComandoSQLContarCasoDeTeste(Codigo codigo){
+    comandoSQL = "COUNT from casodetestes where codigo = ";
+    comandoSQL += codigo.getValor();
+}
+int ComandoSQLContarCasoDeTeste::getResultado(){
+
+}
 //----------------------------------------------------------------------------------------------------------------------
 ComandoSQLVisualizarTeste::ComandoSQLVisualizarTeste(Codigo codigo) {
     comandoSQL = "SELECT * from testes INNER JOIN desenvolvedores on testes.matricula = desenvolvedores.matricula WHERE codigo = ";
@@ -159,6 +225,9 @@ Teste ComandoSQLVisualizarTeste::getResultado() {
 
     ElementoResultado resultado;
     Teste teste;
+    Texto nome;
+    Codigo codigo;
+    Classe classe;
 
     for (int i = 0; i < 3; i++) {
         resultado = listaResultado.back();  // obtem último elemento
@@ -166,17 +235,19 @@ Teste ComandoSQLVisualizarTeste::getResultado() {
 
         switch (i) {
             case 2:
-                teste.setNome(Texto(resultado.getValorColuna()));
+                classe.setValor(resultado.getValorColuna());
                 break;
             case 1:
-                teste.setCodigo(Codigo(resultado.getValorColuna()));
+                codigo.setValor(resultado.getValorColuna());
                 break;
             case 0:
-                teste.setClasse(Classe(resultado.getValorColuna()));
+                nome.setValor(resultado.getValorColuna());
                 break;
         }
     }
-
+    teste.setClasse(classe);
+    teste.setCodigo(codigo);
+    teste.setNome(nome);
     return teste;
 }
 
@@ -184,7 +255,7 @@ ComandoSQLCadastrarTeste::ComandoSQLCadastrarTeste(Teste teste) {
     comandoSQL = "INSERT INTO testes(nome,codigo,classe) VALUES (";
     comandoSQL += "'" + teste.getNome().getValor() + "', ";
     comandoSQL += "'" + teste.getCodigo().getValor() + "', ";
-    comandoSQL += "'" + teste.getClasse().getValor() + "', ";
+    comandoSQL += "'" + teste.getClasse().getValor() + "' ";
     comandoSQL += ")";
 }
 
@@ -215,34 +286,44 @@ CasoDeTeste ComandoSQLVisualizarCasoDeTeste::getResultado() {
 
     ElementoResultado resultado;
     CasoDeTeste casoDeTeste;
-
-    for (int i = 0; i < 3; i++) {
+    Texto nome;
+    Codigo codigo;
+    Data data;
+    Texto acao;
+    Texto resposta;
+    Resultado resultados;
+    for (int i = 0; i < 5; i++) {
         resultado = listaResultado.back();  // obtem último elemento
         listaResultado.pop_back();          // retira ele da lista
 
         switch (i) {
             case 5:
-                casoDeTeste.setNome(Texto(resultado.getValorColuna()));
+                resultados.setValor(resultado.getValorColuna());
                 break;
             case 4:
-                casoDeTeste.setCodigo(Codigo(resultado.getValorColuna()));
+                resposta.setValor(resultado.getValorColuna());
                 break;
             case 3:
-                casoDeTeste.setData(Data(resultado.getValorColuna()));
+                acao.setValor(resultado.getValorColuna());
                 break;
             case 2:
-                casoDeTeste.setAcao(Texto(resultado.getValorColuna()));
+                data.setValor(resultado.getValorColuna());
                 break;
             case 1:
-                casoDeTeste.setResposta(Texto(resultado.getValorColuna()));
+                codigo.setValor(resultado.getValorColuna());
                 break;
             case 0:
-                casoDeTeste.setResultado(Resultado(resultado.getValorColuna()));
+                nome.setValor(resultado.getValorColuna());
                 break;
         }
+        casoDeTeste.setAcao(acao);
+        casoDeTeste.setCodigo(codigo);
+        casoDeTeste.setData(data);
+        casoDeTeste.setNome(nome);
+        casoDeTeste.setResposta(resposta);
+        casoDeTeste.setResultado(resultados);
+        return casoDeTeste;
     }
-
-    return casoDeTeste;
 }
 
 ComandoSQLCadastrarCasoDeTeste::ComandoSQLCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
@@ -250,9 +331,9 @@ ComandoSQLCadastrarCasoDeTeste::ComandoSQLCadastrarCasoDeTeste(CasoDeTeste casoD
     comandoSQL += "'" + casoDeTeste.getNome().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getCodigo().getValor() + "', ";
     comandoSQL += "'" + casoDeTeste.getData().getValor() + "', ";
-    comandoSQL += "'" + casoDeTeste.getAcao().getValor();
-    comandoSQL += "'" + casoDeTeste.getResposta().getValor();
-    comandoSQL += "'" + casoDeTeste.getResultado().getValor();
+    comandoSQL += "'" + casoDeTeste.getAcao().getValor() + "', ";
+    comandoSQL += "'" + casoDeTeste.getResposta().getValor() + "', ";
+    comandoSQL += "'" + casoDeTeste.getResultado().getValor() + "' ";
     comandoSQL += ")";
 }
 

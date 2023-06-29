@@ -1,4 +1,4 @@
-#include "../headers/testes_integracao.h"
+#include "testes_integracao.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 void TIApresentacao::executar() {
@@ -7,10 +7,10 @@ void TIApresentacao::executar() {
     IATeste *ctrlIATeste;
     IACasoDeTeste *ctrlIACasoDeTeste;
 
-    StubISAutenticacao *stubISAutenticacao;
-    StubISDesenvolvedor *stubISDesenvolvedor;
-    StubISTeste *stubISTeste;
-    StubISCasoDeTeste *stubISCasoDeTeste;
+    CtrlISAutenticacao *ctrlISAutenticacao;
+    CtrlISDesenvolvedor *ctrlISDesenvolvedor;
+    CtrlISTeste *ctrlISTeste;
+    CtrlISCasoDeTeste *ctrlISCasoDeTeste;
 
     CtrlIAInicializacao ctrlIAInicializacao;
     ctrlIAAutenticacao = new CtrlIAAutenticacao();
@@ -18,15 +18,15 @@ void TIApresentacao::executar() {
     ctrlIATeste = new CtrlIATeste();
     ctrlIACasoDeTeste = new CtrlIACasoDeTeste();
 
-    stubISAutenticacao = new StubISAutenticacao();
-    stubISDesenvolvedor = new StubISDesenvolvedor();
-    stubISTeste = new StubISTeste();
-    stubISCasoDeTeste = new StubISCasoDeTeste();
+    ctrlISAutenticacao = new CtrlISAutenticacao();
+    ctrlISDesenvolvedor = new CtrlISDesenvolvedor();
+    ctrlISTeste = new CtrlISTeste();
+    ctrlISCasoDeTeste = new CtrlISCasoDeTeste();
 
-    ctrlIAAutenticacao->setCtrlISAutenticacao(stubISAutenticacao);
-    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(stubISDesenvolvedor);
-    ctrlIATeste->setCtrlISTeste(stubISTeste);
-    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(stubISCasoDeTeste);
+    ctrlIAAutenticacao->setCtrlISAutenticacao(ctrlISAutenticacao);
+    ctrlIADesenvolvedor->setCtrlISDesenvolvedor(ctrlISDesenvolvedor);
+    ctrlIATeste->setCtrlISTeste(ctrlISTeste);
+    ctrlIACasoDeTeste->setCtrlISCasoDeTeste(ctrlISCasoDeTeste);
 
     ctrlIAInicializacao.setCtrlIAAutenticacao(ctrlIAAutenticacao);
     ctrlIAInicializacao.setCtrlIADesenvolvedor(ctrlIADesenvolvedor);
@@ -35,9 +35,7 @@ void TIApresentacao::executar() {
 
     ctrlIAInicializacao.executar();
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-void TIAutenticacao::executar() {
+void TIAutenticacao::executar(){
     IAAutenticacao *ctrlIAAutenticacao;
     ISAutenticacao *ctrlISAutenticacao;
 
@@ -45,14 +43,13 @@ void TIAutenticacao::executar() {
     ctrlISAutenticacao = new CtrlISAutenticacao();
 
     ctrlIAAutenticacao->setCtrlISAutenticacao(ctrlISAutenticacao);
-
-    Matricula matricula;
-    ctrlIAAutenticacao->executar(&matricula);
-
+    Matricula *matricula;
+    matricula = new Matricula();
+    ctrlIAAutenticacao->executar(matricula);
     delete ctrlIAAutenticacao;
     delete ctrlISAutenticacao;
+    delete matricula;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 void TIDesenvolvedor::executar() {
     IADesenvolvedor *ctrlIADesenvolvedor;

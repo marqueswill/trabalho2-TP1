@@ -4,7 +4,6 @@
 // Mudar o include quando for compilar
 // #include <ncurses.h>
 #include "curses.h"
-
 #include "interfaces.h"
 
 class TelaMensagem;

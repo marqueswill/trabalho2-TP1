@@ -135,7 +135,7 @@ class CasoDeTeste : public Entidade {
     Resultado getResultado() const;
 };
 
-CasoDeTeste::CasoDeTeste(Codigo codigo, Texto nome, Data data, Texto acao, Texto resposta, Resultado resultado) {
+inline CasoDeTeste::CasoDeTeste(Codigo codigo, Texto nome, Data data, Texto acao, Texto resposta, Resultado resultado) {
     this->codigo = codigo;
     this->data = data;
     this->acao = acao;

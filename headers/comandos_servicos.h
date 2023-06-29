@@ -2,12 +2,14 @@
 #define COMANDOS_SERVICOS_H_INCLUDED
 
 // #include <conio.h>
-#include <sqlite3.h>
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+
+#include <list>
 
 #include "dominios.h"
 #include "entidades.h"
+#include "sqlite3.h"
 
 using namespace std;
 
@@ -20,14 +22,6 @@ class EErroPersistencia {
     EErroPersistencia(string);
     string what();
 };
-
-inline EErroPersistencia::EErroPersistencia(string mensagem) {
-    this->mensagem = mensagem;
-}
-
-inline string EErroPersistencia::what() {
-    return mensagem;
-}
 
 //----------------------------------------------------------------------------------------------------------------------
 class ElementoResultado {
@@ -42,22 +36,13 @@ class ElementoResultado {
     string getValorColuna() const;
 };
 
-inline void ElementoResultado::setNomeColuna(const string &nomeColuna) {
-    this->nomeColuna = nomeColuna;
-}
-
 inline string ElementoResultado::getNomeColuna() const {
     return nomeColuna;
-}
-
-inline void ElementoResultado::setValorColuna(const string &valorColuna) {
-    this->valorColuna = valorColuna;
 }
 
 inline string ElementoResultado::getValorColuna() const {
     return valorColuna;
 }
-
 //----------------------------------------------------------------------------------------------------------------------
 class ComandoSQL {
    private:
@@ -77,44 +62,11 @@ class ComandoSQL {
    public:
     ComandoSQL() {
         nomeBancoDados = "database.db";
+        // criartabelas();
     }
+    void criartabelas();
     void executar();
 };
-
-inline void ComandoSQL::conectar() {
-    rc = sqlite3_open(nomeBancoDados, &bd);
-    if (rc != SQLITE_OK)
-        throw EErroPersistencia("Erro na conexao ao banco de dados");
-}
-
-inline void ComandoSQL::desconectar() {
-    rc = sqlite3_close(bd);
-    if (rc != SQLITE_OK)
-        throw EErroPersistencia("Erro na desconexao ao banco de dados");
-}
-
-inline int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nomeColuna) {
-    NotUsed = 0;
-    ElementoResultado elemento;
-    int i;
-    for (i = 0; i < argc; i++) {
-        elemento.setNomeColuna(nomeColuna[i]);
-        elemento.setValorColuna(valorColuna[i] ? valorColuna[i] : "NULL");
-        listaResultado.push_front(elemento);
-    }
-    return 0;
-}
-
-inline void ComandoSQL::executar() {
-    conectar();
-    rc = sqlite3_exec(bd, comandoSQL.c_str(), callback, 0, &mensagem);
-    if (rc != SQLITE_OK) {
-        sqlite3_free(mensagem);
-        desconectar();
-        throw EErroPersistencia("Erro na execucao do comando SQL");
-    }
-    desconectar();
-}
 
 //----------------------------------------------------------------------------------------------------------------------
 class ComandoSQLLerSenha : public ComandoSQL {
@@ -166,10 +118,10 @@ class ComandoSQLDescadastrarDesenvolvedor : public ComandoSQL {
 };
 
 //----------------------------------------------------------------------------------------------------------------------
-class ComandoSQLListarTeste : public ComandoSQL {
+class ComandoSQLContarCasoDeTeste : public ComandoSQL {
    public:
-    ComandoSQLListarTeste(Matricula);
-    vector<Teste> getLista();
+    ComandoSQLContarCasoDeTeste(Codigo);
+    int getResultado();
 };
 
 class ComandoSQLVisualizarTeste : public ComandoSQL {

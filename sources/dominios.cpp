@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 // BIBLIOTECAS
-#include "../headers/dominios.h"
+#include "dominios.h"
 
 #include <algorithm>
 #include <iostream>

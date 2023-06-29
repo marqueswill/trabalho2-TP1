@@ -1,4 +1,4 @@
-#include "../headers/testes_modulos.h"
+#include "testes_modulos.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 void TUIAAutenticacao::executar() {
