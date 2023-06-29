@@ -1,12 +1,9 @@
 #ifndef COMANDOS_SERVICOS_H_INCLUDED
 #define COMANDOS_SERVICOS_H_INCLUDED
-
-// #include <conio.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <list>
-
 #include "dominios.h"
 #include "entidades.h"
 #include "sqlite3.h"
@@ -37,11 +34,11 @@ class ElementoResultado {
 };
 
 inline string ElementoResultado::getNomeColuna() const {
-    return nomeColuna;
+        return nomeColuna;
 }
 
 inline string ElementoResultado::getValorColuna() const {
-    return valorColuna;
+        return valorColuna;
 }
 //----------------------------------------------------------------------------------------------------------------------
 class ComandoSQL {
@@ -62,11 +59,12 @@ class ComandoSQL {
    public:
     ComandoSQL() {
         nomeBancoDados = "database.db";
-        // criartabelas();
+        //criartabelas();
     }
     void criartabelas();
     void executar();
 };
+
 
 //----------------------------------------------------------------------------------------------------------------------
 class ComandoSQLLerSenha : public ComandoSQL {
