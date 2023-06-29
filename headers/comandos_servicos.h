@@ -3,10 +3,11 @@
 
 // #include <conio.h>
 // #include <stdio.h>
+#include <sqlite3.h>
 #include <stdlib.h>
+
 #include "dominios.h"
 #include "entidades.h"
-#include "sqlite3.h"
 
 using namespace std;
 
