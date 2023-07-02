@@ -3,7 +3,9 @@
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #include <list>
+
 #include "dominios.h"
 #include "entidades.h"
 #include "sqlite3.h"
@@ -34,11 +36,11 @@ class ElementoResultado {
 };
 
 inline string ElementoResultado::getNomeColuna() const {
-        return nomeColuna;
+    return nomeColuna;
 }
 
 inline string ElementoResultado::getValorColuna() const {
-        return valorColuna;
+    return valorColuna;
 }
 //----------------------------------------------------------------------------------------------------------------------
 class ComandoSQL {
@@ -59,12 +61,11 @@ class ComandoSQL {
    public:
     ComandoSQL() {
         nomeBancoDados = "database.db";
-        //criartabelas();
+        // criartabelas();
     }
     void criartabelas();
     void executar();
 };
-
 
 //----------------------------------------------------------------------------------------------------------------------
 class ComandoSQLLerSenha : public ComandoSQL {
@@ -121,16 +122,16 @@ class ComandoSQLContarTeste : public ComandoSQL {
     ComandoSQLContarTeste(Matricula);
     int getResultado();
 };
-class ComandoSQLAutenticarTeste: public ComandoSQL{
-    public:
+class ComandoSQLAutenticarTeste : public ComandoSQL {
+   public:
     ComandoSQLAutenticarTeste(Matricula);
-    list <string> getResultado();
+    list<string> getResultado();
 };
-class ComandoSQLAutenticarCasoDeTeste: public ComandoSQL{
-    public:
+class ComandoSQLAutenticarCasoDeTeste : public ComandoSQL {
+   public:
     ComandoSQLAutenticarCasoDeTeste(Matricula);
     ComandoSQLAutenticarCasoDeTeste(Codigo);
-    list <string> getResultado();
+    list<string> getResultado();
 };
 // class ComandoSQLAutenticarAssociacoesTeste: public ComandoSQL{
 //     public:
@@ -164,24 +165,24 @@ class ComandoSQLDescadastrarTeste : public ComandoSQL {
    public:
     ComandoSQLDescadastrarTeste(Codigo);
 };
-class ComandoSQLDeletarTeste: public ComandoSQL{
-    public:
-        ComandoSQLDeletarTeste(Matricula);
+class ComandoSQLDeletarTeste : public ComandoSQL {
+   public:
+    ComandoSQLDeletarTeste(Matricula);
 };
-class ComandoSQLListarTeste: public ComandoSQL {
-    public:
+class ComandoSQLListarTeste : public ComandoSQL {
+   public:
     ComandoSQLListarTeste(Codigo);
-    list <Codigo> getResultado();
+    list<Codigo> getResultado();
 };
 
 //----------------------------------------------------------------------------------------------------------------------
-class ComandoSQLListarCasoDeTeste: public ComandoSQL {
-    public:
+class ComandoSQLListarCasoDeTeste : public ComandoSQL {
+   public:
     ComandoSQLListarCasoDeTeste(Codigo);
-    list <Codigo> getResultado();
+    list<Codigo> getResultado();
 };
-class ComandoSQLDeletarCasoDeTeste: public ComandoSQL{
-    public:
+class ComandoSQLDeletarCasoDeTeste : public ComandoSQL {
+   public:
     ComandoSQLDeletarCasoDeTeste(Codigo);
     ComandoSQLDeletarCasoDeTeste(Matricula);
 };
@@ -205,6 +206,5 @@ class ComandoSQLDescadastrarCasoDeTeste : public ComandoSQL {
    public:
     ComandoSQLDescadastrarCasoDeTeste(Codigo);
 };
-
 
 #endif  // COMANDOS_SERVICOS_H_INCLUDED

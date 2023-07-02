@@ -95,7 +95,7 @@ void CtrlIADesenvolvedor::executar(Matricula matricula) {
             case EDITAR:
                 comando = new ComandoIADesenvolvedorEditar(matricula);
                 comando->executar(ctrlISDesenvolvedor);
-delete comando;
+                delete comando;
                 break;
 
             case DESCADASTRAR:

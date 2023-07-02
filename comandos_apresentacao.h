@@ -100,25 +100,24 @@ class ComandoIATesteVisualizar : public ComandoIATeste {
 };
 
 class ComandoIATesteCadastrar : public ComandoIATeste {
-    public:
-    ComandoIATesteCadastrar(Matricula matricula){
+   public:
+    ComandoIATesteCadastrar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISTeste *);
-
 };
 
 class ComandoIATesteEditar : public ComandoIATeste {
-    public:
-    ComandoIATesteEditar(Matricula matricula){
+   public:
+    ComandoIATesteEditar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISTeste *);
 };
 
 class ComandoIATesteDescadastrar : public ComandoIATeste {
-    public:
-    ComandoIATesteDescadastrar(Matricula matricula){
+   public:
+    ComandoIATesteDescadastrar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISTeste *);
@@ -141,16 +140,16 @@ class ComandoIACasoDeTeste {
 };
 
 class ComandoIACasoDeTesteVisualizar : public ComandoIACasoDeTeste {
-    public:
-    ComandoIACasoDeTesteVisualizar(Matricula matricula){
+   public:
+    ComandoIACasoDeTesteVisualizar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISCasoDeTeste *);
 };
 
 class ComandoIACasoDeTesteCadastrar : public ComandoIACasoDeTeste {
-    public:
-    ComandoIACasoDeTesteCadastrar(Matricula matricula){
+   public:
+    ComandoIACasoDeTesteCadastrar(Matricula matricula) {
         this->matricula = matricula;
     }
 
@@ -158,16 +157,16 @@ class ComandoIACasoDeTesteCadastrar : public ComandoIACasoDeTeste {
 };
 
 class ComandoIACasoDeTesteEditar : public ComandoIACasoDeTeste {
-    public:
-    ComandoIACasoDeTesteEditar(Matricula matricula){
+   public:
+    ComandoIACasoDeTesteEditar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISCasoDeTeste *);
 };
 
 class ComandoIACasoDeTesteDescadastrar : public ComandoIACasoDeTeste {
-    public:
-    ComandoIACasoDeTesteDescadastrar(Matricula matricula){
+   public:
+    ComandoIACasoDeTesteDescadastrar(Matricula matricula) {
         this->matricula = matricula;
     }
     void executar(ISCasoDeTeste *);

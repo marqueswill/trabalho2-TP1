@@ -35,7 +35,7 @@ void TIApresentacao::executar() {
 
     ctrlIAInicializacao.executar();
 }
-void TIAutenticacao::executar(){
+void TIAutenticacao::executar() {
     IAAutenticacao *ctrlIAAutenticacao;
     ISAutenticacao *ctrlISAutenticacao;
 

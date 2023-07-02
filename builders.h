@@ -3,7 +3,6 @@
 
 #include "controladoras_apresentacao.h"
 
-
 class BuilderSistema {
    private:
     CtrlIAInicializacao *ctrlIAInicializacao;
