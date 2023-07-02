@@ -77,6 +77,7 @@ class Teste : public Entidade {
     Codigo codigo;
     Classe classe;
     Matricula matricula;
+
    public:
     Teste(){};
     Teste(Codigo, Texto, Classe, Matricula);
@@ -128,9 +129,10 @@ class CasoDeTeste : public Entidade {
     Resultado resultado;
     Codigo codigotestes;
     Matricula matricula;
+
    public:
     CasoDeTeste(){};
-    CasoDeTeste(Codigo , Texto, Data, Texto, Texto, Resultado, Codigo, Matricula);
+    CasoDeTeste(Codigo, Texto, Data, Texto, Texto, Resultado, Codigo, Matricula);
 
     void setCodigo(const Codigo &);
     Codigo getCodigo() const;

@@ -1,5 +1,5 @@
 #include "controladoras_servicos.h"
-#include <iostream>
+
 using namespace std;
 //--------------------------------------------------------------------------------------------
 bool CtrlISAutenticacao::autenticar(Matricula matricula, Senha senha) {
@@ -35,15 +35,14 @@ bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
         comandoLerMatricula.executar();
 
         if (comandoLerMatricula.getResultado() != "NULL") {
-        // se matrícula já estiver cadastrada
+            // se matrícula já estiver cadastrada
             return false;
         }
-        if(
+        if (
             desenvolvedor.getMatricula().getValor().empty() or
             desenvolvedor.getNome().getValor().empty() or
             desenvolvedor.getSenha().getValor().empty() or
-            desenvolvedor.getTelefone().getValor().empty()
-        ){
+            desenvolvedor.getTelefone().getValor().empty()) {
             return false;
         }
 
@@ -52,18 +51,17 @@ bool CtrlISDesenvolvedor::cadastrar(Desenvolvedor desenvolvedor) {
     } catch (EErroPersistencia &exp) {
         return false;
     }
-//
+    //
     return true;
 }
 
 bool CtrlISDesenvolvedor::editar(Desenvolvedor desenvolvedor) {
     try {
-         if(
+        if (
             desenvolvedor.getMatricula().getValor().empty() or
             desenvolvedor.getNome().getValor().empty() or
             desenvolvedor.getSenha().getValor().empty() or
-            desenvolvedor.getTelefone().getValor().empty()
-        ){
+            desenvolvedor.getTelefone().getValor().empty()) {
             return false;
         }
         ComandoSQLEditarDesenvolvedor comandoEditar(desenvolvedor);
@@ -83,16 +81,15 @@ bool CtrlISDesenvolvedor::descadastrar(Matricula matricula) {
         ComandoSQLDeletarTeste deletarTeste(matricula);
         ComandoSQLDeletarCasoDeTeste deletarCasoDeTeste(matricula);
         contarTeste.executar();
-        if(contarTeste.getResultado()>0){
+        if (contarTeste.getResultado() > 0) {
             contarCasoDeTeste.executar();
-            if(contarCasoDeTeste.getResultado()>0){
+            if (contarCasoDeTeste.getResultado() > 0) {
                 deletarCasoDeTeste.executar();
             }
             deletarTeste.executar();
             comandoDescadastrar.executar();
-        }
-        else{
-        comandoDescadastrar.executar();
+        } else {
+            comandoDescadastrar.executar();
         }
     } catch (EErroPersistencia &exp) {
         return false;
@@ -105,28 +102,28 @@ bool CtrlISTeste::visualizar(Teste *teste) {
     try {
         ComandoSQLLerCodigoTeste lerCodigo(teste->getCodigo());
         lerCodigo.executar();
-        if(lerCodigo.getResultado() == "NULL"){
+        if (lerCodigo.getResultado() == "NULL") {
             return false;
         }
         Matricula matricula_confirmacao = teste->getMatricula();
         ComandoSQLAutenticarTeste autenticarTeste(matricula_confirmacao);
-         autenticarTeste.executar();
-         list <string> testes = autenticarTeste.getResultado();
-         if(testes.empty()){
+        autenticarTeste.executar();
+        list<string> testes = autenticarTeste.getResultado();
+        if (testes.empty()) {
             return false;
-         }
+        }
         string codigo;
         bool erro = true;
-        while(!testes.empty()){
+        while (!testes.empty()) {
             codigo = testes.back();
             testes.pop_back();
             Codigo codigoteste = teste->getCodigo();
-            if(codigo==codigoteste.getValor()){
+            if (codigo == codigoteste.getValor()) {
                 erro = false;
                 break;
             }
         }
-        if(erro){
+        if (erro) {
             return false;
         }
 
@@ -141,45 +138,42 @@ bool CtrlISTeste::visualizar(Teste *teste) {
 }
 
 bool CtrlISTeste::cadastrar(Teste teste) {
-     try {
-     if(
+    try {
+        if (
             teste.getClasse().getValor().empty() or
             teste.getNome().getValor().empty() or
             teste.getMatricula().getValor().empty() or
-            teste.getCodigo().getValor().empty()
-        ){
+            teste.getCodigo().getValor().empty()) {
             return false;
         }
-    ComandoSQLLerCodigoTeste comandoLerCodigo(teste.getCodigo());
-    comandoLerCodigo.executar();
-    if (comandoLerCodigo.getResultado() != "NULL") {
-        // se não achar codigo informado
-        return false;
-    }
+        ComandoSQLLerCodigoTeste comandoLerCodigo(teste.getCodigo());
+        comandoLerCodigo.executar();
+        if (comandoLerCodigo.getResultado() != "NULL") {
+            // se não achar codigo informado
+            return false;
+        }
         ComandoSQLCadastrarTeste comandoCadastrarTeste(teste);
         comandoCadastrarTeste.executar();
 
-     } catch (EErroPersistencia &exp) {
-         return false;
-     }
+    } catch (EErroPersistencia &exp) {
+        return false;
+    }
 
     return true;
-
 }
 
 bool CtrlISTeste::editar(Teste teste) {
     try {
-        if(
+        if (
             teste.getClasse().getValor().empty() or
             teste.getNome().getValor().empty() or
             teste.getMatricula().getValor().empty() or
-            teste.getCodigo().getValor().empty()
-        ){
+            teste.getCodigo().getValor().empty()) {
             return false;
         }
         ComandoSQLLerCodigoTeste lerCodigo(teste.getCodigo());
         lerCodigo.executar();
-        if(lerCodigo.getResultado() == "NULL"){
+        if (lerCodigo.getResultado() == "NULL") {
             return false;
         }
 
@@ -198,12 +192,11 @@ bool CtrlISTeste::descadastrar(Codigo codigo) {
         ComandoSQLDescadastrarTeste comandoDescadastrar(codigo);
         ComandoSQLDeletarCasoDeTeste deletarCasoDeTeste(codigo);
         contarCasoDeTeste.executar();
-        if(contarCasoDeTeste.getResultado() > 0){
+        if (contarCasoDeTeste.getResultado() > 0) {
             deletarCasoDeTeste.executar();
             comandoDescadastrar.executar();
-        }
-        else{
-        comandoDescadastrar.executar();
+        } else {
+            comandoDescadastrar.executar();
         }
     } catch (EErroPersistencia &exp) {
         return false;
@@ -217,27 +210,27 @@ bool CtrlISCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
     try {
         ComandoSQLLerCodigoCasoDeTeste lerCodigo(casoDeTeste->getCodigo());
         lerCodigo.executar();
-        if(lerCodigo.getResultado() == "NULL"){
+        if (lerCodigo.getResultado() == "NULL") {
             return false;
         }
         ComandoSQLAutenticarCasoDeTeste autenticar(casoDeTeste->getMatricula());
         autenticar.executar();
-         list <string> casotestes = autenticar.getResultado();
-         if(casotestes.empty()){
+        list<string> casotestes = autenticar.getResultado();
+        if (casotestes.empty()) {
             return false;
-         }
+        }
         string codigo;
         bool erro = true;
-        while(!casotestes.empty()){
+        while (!casotestes.empty()) {
             codigo = casotestes.back();
             casotestes.pop_back();
             Codigo codigoteste = casoDeTeste->getCodigo();
-            if(codigo==codigoteste.getValor()){
+            if (codigo == codigoteste.getValor()) {
                 erro = false;
                 break;
             }
         }
-        if(erro){
+        if (erro) {
             return false;
         }
         ComandoSQLVisualizarCasoDeTeste comandoVisualizar(casoDeTeste->getCodigo());
@@ -252,7 +245,7 @@ bool CtrlISCasoDeTeste::visualizar(CasoDeTeste *casoDeTeste) {
 
 bool CtrlISCasoDeTeste::cadastrar(CasoDeTeste casoDeTeste) {
     try {
-        if(
+        if (
             casoDeTeste.getAcao().getValor().empty() or
             casoDeTeste.getNome().getValor().empty() or
             casoDeTeste.getMatricula().getValor().empty() or
@@ -260,38 +253,37 @@ bool CtrlISCasoDeTeste::cadastrar(CasoDeTeste casoDeTeste) {
             casoDeTeste.getData().getValor().empty() or
             casoDeTeste.getCodigoTestes().getValor().empty() or
             casoDeTeste.getResposta().getValor().empty() or
-            casoDeTeste.getResultado().getValor().empty()
-        ){
+            casoDeTeste.getResultado().getValor().empty()) {
             return false;
         }
-         ComandoSQLLerCodigoCasoDeTeste lerCodigo(casoDeTeste.getCodigo());
-         ComandoSQLAutenticarTeste autenticarTeste(casoDeTeste.getMatricula());
-         ComandoSQLContarCasoDeTeste comandoSQLContarCasoDeTeste(casoDeTeste.getCodigoTestes());
-         autenticarTeste.executar();
-         list <string> testes = autenticarTeste.getResultado();
-         if(testes.empty()){
+        ComandoSQLLerCodigoCasoDeTeste lerCodigo(casoDeTeste.getCodigo());
+        ComandoSQLAutenticarTeste autenticarTeste(casoDeTeste.getMatricula());
+        ComandoSQLContarCasoDeTeste comandoSQLContarCasoDeTeste(casoDeTeste.getCodigoTestes());
+        autenticarTeste.executar();
+        list<string> testes = autenticarTeste.getResultado();
+        if (testes.empty()) {
             return false;
-         }
+        }
         string codigo;
         bool erro = true;
-        while(!testes.empty()){
+        while (!testes.empty()) {
             codigo = testes.back();
             testes.pop_back();
-            if(codigo==casoDeTeste.getCodigoTestes().getValor()){
+            if (codigo == casoDeTeste.getCodigoTestes().getValor()) {
                 erro = false;
                 break;
             }
         }
-        if(erro){
+        if (erro) {
             return false;
         }
         comandoSQLContarCasoDeTeste.executar();
         int contagem = comandoSQLContarCasoDeTeste.getResultado();
-        if(contagem > 9){
+        if (contagem > 9) {
             return false;
-          }
+        }
         lerCodigo.executar();
-        if(lerCodigo.getResultado() != "NULL"){
+        if (lerCodigo.getResultado() != "NULL") {
             return false;
         }
         ComandoSQLCadastrarCasoDeTeste comandoCadastrar(casoDeTeste);
@@ -308,7 +300,7 @@ bool CtrlISCasoDeTeste::editar(CasoDeTeste casoDeTeste) {
     try {
         ComandoSQLLerCodigoCasoDeTeste lerCodigo(casoDeTeste.getCodigo());
         lerCodigo.executar();
-        if(lerCodigo.getResultado() == "NULL"){
+        if (lerCodigo.getResultado() == "NULL") {
             return false;
         }
 

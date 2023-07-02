@@ -1,5 +1,5 @@
 #include "comandos_servicos.h"
-#include <iostream>
+
 EErroPersistencia::EErroPersistencia(string mensagem) {
     this->mensagem = mensagem;
 }
@@ -12,7 +12,7 @@ void ElementoResultado::setNomeColuna(const string &nomeColuna) {
     this->nomeColuna = nomeColuna;
 }
 
- void ElementoResultado::setValorColuna(const string &valorColuna) {
+void ElementoResultado::setValorColuna(const string &valorColuna) {
     this->valorColuna = valorColuna;
 }
 void ComandoSQL::conectar() {
@@ -62,7 +62,7 @@ ComandoSQLLerSenha::ComandoSQLLerSenha(Matricula matricula) {
 string ComandoSQLLerSenha::getResultado() {
     ElementoResultado resultado;
     string senha;
-    if (listaResultado.empty()){
+    if (listaResultado.empty()) {
         return "NULL";
     }
 
@@ -73,19 +73,19 @@ string ComandoSQLLerSenha::getResultado() {
     return senha;
 }
 
-ComandoSQLAutenticarTeste::ComandoSQLAutenticarTeste(Matricula matricula){
+ComandoSQLAutenticarTeste::ComandoSQLAutenticarTeste(Matricula matricula) {
     comandoSQL = "SELECT codigo FROM testes WHERE matricula = '";
     comandoSQL += matricula.getValor();
     comandoSQL += "'";
 }
-list <string> ComandoSQLAutenticarTeste::getResultado() {
+list<string> ComandoSQLAutenticarTeste::getResultado() {
     ElementoResultado resultado;
-    list <string> lista;
-    if (listaResultado.empty()){
+    list<string> lista;
+    if (listaResultado.empty()) {
         return lista;
     }
 
-    while(!listaResultado.empty()){
+    while (!listaResultado.empty()) {
         resultado = listaResultado.back();
         listaResultado.pop_back();
         lista.push_back(resultado.getValorColuna());
@@ -94,26 +94,25 @@ list <string> ComandoSQLAutenticarTeste::getResultado() {
     return lista;
 }
 
-
-ComandoSQLAutenticarCasoDeTeste::ComandoSQLAutenticarCasoDeTeste(Codigo codigotestes){
+ComandoSQLAutenticarCasoDeTeste::ComandoSQLAutenticarCasoDeTeste(Codigo codigotestes) {
     comandoSQL = "SELECT codigo FROM casodetestes WHERE codigotestes = '";
     comandoSQL += codigotestes.getValor();
     comandoSQL += "'";
 }
 
-ComandoSQLAutenticarCasoDeTeste::ComandoSQLAutenticarCasoDeTeste(Matricula matricula){
+ComandoSQLAutenticarCasoDeTeste::ComandoSQLAutenticarCasoDeTeste(Matricula matricula) {
     comandoSQL = "SELECT codigo FROM casodetestes WHERE matricula = '";
     comandoSQL += matricula.getValor();
     comandoSQL += "'";
 }
-list <string> ComandoSQLAutenticarCasoDeTeste::getResultado() {
+list<string> ComandoSQLAutenticarCasoDeTeste::getResultado() {
     ElementoResultado resultado;
-    list <string> lista;
-    if (listaResultado.empty()){
+    list<string> lista;
+    if (listaResultado.empty()) {
         return lista;
     }
 
-    while(!listaResultado.empty()){
+    while (!listaResultado.empty()) {
         resultado = listaResultado.back();
         listaResultado.pop_back();
         lista.push_back(resultado.getValorColuna());
@@ -121,7 +120,6 @@ list <string> ComandoSQLAutenticarCasoDeTeste::getResultado() {
     listaResultado.clear();
     return lista;
 }
-
 
 //----------------------------------------------------------------------------------------------------------------------
 ComandoSQLLerMatricula::ComandoSQLLerMatricula(Matricula matricula) {
@@ -134,7 +132,7 @@ string ComandoSQLLerMatricula::getResultado() {
     ElementoResultado resultado;
     string matricula;
 
-    if (listaResultado.empty()){
+    if (listaResultado.empty()) {
         return "NULL";
     }
     resultado = listaResultado.back();
@@ -248,24 +246,22 @@ ComandoSQLEditarDesenvolvedor::ComandoSQLEditarDesenvolvedor(Desenvolvedor desen
 ComandoSQLDescadastrarDesenvolvedor::ComandoSQLDescadastrarDesenvolvedor(Matricula matricula) {
     comandoSQL = "DELETE FROM desenvolvedores WHERE matricula = ";
     comandoSQL += matricula.getValor();
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-ComandoSQLContarCasoDeTeste::ComandoSQLContarCasoDeTeste(Matricula matricula){
+ComandoSQLContarCasoDeTeste::ComandoSQLContarCasoDeTeste(Matricula matricula) {
     comandoSQL = "SELECT COUNT(codigo) from casodetestes where matricula = '";
     comandoSQL += matricula.getValor();
     comandoSQL += "'";
 }
 //-----------------------------------------------------------------------------------------------------------------------
 
-
-ComandoSQLContarTeste::ComandoSQLContarTeste(Matricula matricula){
+ComandoSQLContarTeste::ComandoSQLContarTeste(Matricula matricula) {
     comandoSQL = "SELECT COUNT(codigo) from testes where matricula = '";
     comandoSQL += matricula.getValor();
     comandoSQL += "'";
 }
-int ComandoSQLContarTeste::getResultado(){
+int ComandoSQLContarTeste::getResultado() {
     if (listaResultado.empty()) {
         return 0;
     }
@@ -278,63 +274,60 @@ int ComandoSQLContarTeste::getResultado(){
     listaResultado.clear();
     return valor;
 }
-ComandoSQLListarTeste::ComandoSQLListarTeste(Codigo codigo){
+ComandoSQLListarTeste::ComandoSQLListarTeste(Codigo codigo) {
     comandoSQL = "SELECT codigo from testes where matricula = '";
     comandoSQL += codigo.getValor();
     comandoSQL += "'";
 }
-list <Codigo> ComandoSQLListarTeste::getResultado(){
-    list <Codigo> testes;
+list<Codigo> ComandoSQLListarTeste::getResultado() {
+    list<Codigo> testes;
     Codigo codigo;
     if (listaResultado.empty()) {
         return testes;
     }
 
     ElementoResultado resultado;
-    for(int i = 0; i <10; i++){
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    codigo.setValor(resultado.getValorColuna());
-    testes.push_back(codigo);
+    for (int i = 0; i < 10; i++) {
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        codigo.setValor(resultado.getValorColuna());
+        testes.push_back(codigo);
     }
     listaResultado.clear();
     return testes;
-
-    }
-ComandoSQLListarCasoDeTeste::ComandoSQLListarCasoDeTeste(Codigo codigo){
+}
+ComandoSQLListarCasoDeTeste::ComandoSQLListarCasoDeTeste(Codigo codigo) {
     comandoSQL = "SELECT codigo from casodetestes where codigotestes = '";
     comandoSQL += codigo.getValor();
     comandoSQL += "'";
 }
-list <Codigo> ComandoSQLListarCasoDeTeste::getResultado(){
-    list <Codigo> casosdeteste;
+list<Codigo> ComandoSQLListarCasoDeTeste::getResultado() {
+    list<Codigo> casosdeteste;
     Codigo codigo;
     if (listaResultado.empty()) {
         return casosdeteste;
     }
 
     ElementoResultado resultado;
-    for(int i = 0; i <10; i++){
-    resultado = listaResultado.back();
-    listaResultado.pop_back();
-    codigo.setValor(resultado.getValorColuna());
-    casosdeteste.push_back(codigo);
+    for (int i = 0; i < 10; i++) {
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        codigo.setValor(resultado.getValorColuna());
+        casosdeteste.push_back(codigo);
     }
     listaResultado.clear();
     return casosdeteste;
+}
 
-    }
-
-
-ComandoSQLContarCasoDeTeste::ComandoSQLContarCasoDeTeste(Codigo codigo){
+ComandoSQLContarCasoDeTeste::ComandoSQLContarCasoDeTeste(Codigo codigo) {
     comandoSQL = "SELECT COUNT(codigo) from casodetestes where codigotestes = '";
     comandoSQL += codigo.getValor();
     comandoSQL += "'";
 }
 //-----------------------------------------------------------------------------------------------------------------------
-int ComandoSQLContarCasoDeTeste::getResultado(){
+int ComandoSQLContarCasoDeTeste::getResultado() {
     if (listaResultado.empty()) {
-       return 0;
+        return 0;
     }
 
     ElementoResultado resultado;
@@ -461,17 +454,16 @@ CasoDeTeste ComandoSQLVisualizarCasoDeTeste::getResultado() {
                 break;
         }
     }
-        casoDeTeste.setAcao(acao);
-        casoDeTeste.setCodigo(codigo);
-        casoDeTeste.setData(data);
-        casoDeTeste.setNome(nome);
-        casoDeTeste.setResposta(resposta);
-        casoDeTeste.setResultado(resultados);
-        casoDeTeste.setCodigoTestes(codigotestes);
-        casoDeTeste.setMatricula(matricula);
-        listaResultado.clear();
-        return casoDeTeste;
-
+    casoDeTeste.setAcao(acao);
+    casoDeTeste.setCodigo(codigo);
+    casoDeTeste.setData(data);
+    casoDeTeste.setNome(nome);
+    casoDeTeste.setResposta(resposta);
+    casoDeTeste.setResultado(resultados);
+    casoDeTeste.setCodigoTestes(codigotestes);
+    casoDeTeste.setMatricula(matricula);
+    listaResultado.clear();
+    return casoDeTeste;
 }
 
 ComandoSQLCadastrarCasoDeTeste::ComandoSQLCadastrarCasoDeTeste(CasoDeTeste casoDeTeste) {
@@ -503,19 +495,18 @@ ComandoSQLDescadastrarCasoDeTeste::ComandoSQLDescadastrarCasoDeTeste(Codigo codi
     comandoSQL += codigo.getValor();
     comandoSQL += "'";
 }
-ComandoSQLDeletarCasoDeTeste::ComandoSQLDeletarCasoDeTeste(Codigo codigo){
+ComandoSQLDeletarCasoDeTeste::ComandoSQLDeletarCasoDeTeste(Codigo codigo) {
     comandoSQL = "DELETE FROM casodetestes WHERE codigotestes = '";
     comandoSQL += codigo.getValor();
     comandoSQL += "'";
 }
-ComandoSQLDeletarTeste::ComandoSQLDeletarTeste(Matricula matricula){
+ComandoSQLDeletarTeste::ComandoSQLDeletarTeste(Matricula matricula) {
     comandoSQL = "DELETE FROM testes WHERE matricula = '";
     comandoSQL += matricula.getValor();
     comandoSQL += "'";
 }
-ComandoSQLDeletarCasoDeTeste::ComandoSQLDeletarCasoDeTeste(Matricula matricula){
+ComandoSQLDeletarCasoDeTeste::ComandoSQLDeletarCasoDeTeste(Matricula matricula) {
     comandoSQL = "DELETE FROM casodetestes WHERE matricula = '";
     comandoSQL += matricula.getValor();
     comandoSQL += "'";
 }
-
