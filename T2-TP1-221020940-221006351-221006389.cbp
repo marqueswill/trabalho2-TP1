@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="T2-TP1-221020940-221006351-221006389" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/T2-TP1-221020940-221006351-221006389" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-std=c++14" />
+					<Add option="-g" />
+					<Add directory="C:/Users/User/Desktop/Trabalho 2/T2-TP1-221020940-221006351-221006389/sqlite/sqlite-amalgamation-3350500/sqlite-amalgamation-3350500" />
+					<Add directory="C:/Users/User/Desktop/Trabalho 2/T2-TP1-221020940-221006351-221006389" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/Users/User/Desktop/Trabalho 2/T2-TP1-221020940-221006351-221006389" />
+					<Add directory="D:/Programas/MINGW/PDCurses-master" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="C:/Users/User/Desktop/Trabalho 2/T2-TP1-221020940-221006351-221006389/libT2-TP1-221020940-221006351-221006389.a" />
+					<Add library="D:/Programas/MINGW/PDCurses-master/wincon/pdcurses.a" />
+					<Add directory="D:/Programas/MINGW/PDCurses-master/wincon" />
+					<Add directory="C:/Users/User/Desktop/Trabalho 2/T2-TP1-221020940-221006351-221006389" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/T2-TP1-221020940-221006351-221006389" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add directory="D:/Programas/MINGW/PDCurses-master" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="D:/Programas/MINGW/PDCurses-master/wincon/pdcurses.a" />
+					<Add directory="D:/Programas/MINGW/PDCurses-master/wincon" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="builders.cpp" />
+		<Unit filename="builders.h" />
+		<Unit filename="comandos_apresentacao.cpp" />
+		<Unit filename="comandos_apresentacao.h" />
+		<Unit filename="comandos_servicos.cpp" />
+		<Unit filename="comandos_servicos.h" />
+		<Unit filename="controladoras_apresentacao.cpp" />
+		<Unit filename="controladoras_apresentacao.h" />
+		<Unit filename="controladoras_servicos.cpp" />
+		<Unit filename="controladoras_servicos.h" />
+		<Unit filename="curses.h" />
+		<Unit filename="database.db" />
+		<Unit filename="dominios.cpp" />
+		<Unit filename="dominios.h" />
+		<Unit filename="drivers.cpp" />
+		<Unit filename="drivers.h" />
+		<Unit filename="entidades.h" />
+		<Unit filename="interfaces.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="sqlite3.h" />
+		<Unit filename="sqlite/sqlite-amalgamation-3350500/sqlite-amalgamation-3350500/shell.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="sqlite/sqlite-amalgamation-3350500/sqlite-amalgamation-3350500/sqlite3.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="sqlite/sqlite-amalgamation-3350500/sqlite-amalgamation-3350500/sqlite3.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="sqlite/sqlite-amalgamation-3350500/sqlite-amalgamation-3350500/sqlite3ext.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="stubs.cpp" />
+		<Unit filename="stubs.h" />
+		<Unit filename="telas.cpp" />
+		<Unit filename="telas.h" />
+		<Unit filename="testes_dominios.cpp" />
+		<Unit filename="testes_dominios.h" />
+		<Unit filename="testes_entidades.cpp" />
+		<Unit filename="testes_entidades.h" />
+		<Unit filename="testes_integracao.cpp" />
+		<Unit filename="testes_integracao.h" />
+		<Unit filename="testes_modulos.cpp" />
+		<Unit filename="testes_modulos.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

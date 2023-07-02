@@ -1,0 +1,335 @@
+# depslib dependency file v1.0
+1688071847 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\builders.cpp
+	"builders.h"
+
+1688064092 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\builders.h
+	"controladoras_apresentacao.h"
+
+1688061542 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\controladoras_apresentacao.h
+	"comandos_apresentacao.h"
+	"controladoras_servicos.h"
+	"interfaces.h"
+	"telas.h"
+
+1688296409 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\comandos_apresentacao.h
+	"controladoras_servicos.h"
+	"interfaces.h"
+	"telas.h"
+
+1688088349 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\controladoras_servicos.h
+	"comandos_servicos.h"
+	"interfaces.h"
+
+1688297491 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\comandos_servicos.h
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<list>
+	"dominios.h"
+	"entidades.h"
+	"sqlite3.h"
+
+1687907324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\dominios.h
+	<iomanip>
+	<list>
+	<stdexcept>
+	<string>
+	<vector>
+
+1688238859 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\entidades.h
+	"dominios.h"
+
+1687872538 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\sqlite3.h
+	<stdarg.h>
+
+1688088324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\interfaces.h
+	"dominios.h"
+	"entidades.h"
+
+1688159934 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\telas.h
+	"curses.h"
+	"interfaces.h"
+
+1687907324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+	<stdbool.h>
+
+1688298178 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\comandos_apresentacao.cpp
+	"comandos_apresentacao.h"
+	<iostream>
+
+1688297578 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\comandos_servicos.cpp
+	"comandos_servicos.h"
+	<iostream>
+
+1688296427 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\controladoras_apresentacao.cpp
+	"controladoras_apresentacao.h"
+
+1688298356 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\controladoras_servicos.cpp
+	"controladoras_servicos.h"
+	<iostream>
+
+1688256086 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\dominios.cpp
+	"dominios.h"
+	<algorithm>
+	<iostream>
+	<list>
+	<string>
+	<vector>
+
+1687913508 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\drivers.cpp
+	"drivers.h"
+
+1687907324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\drivers.h
+	"testes_dominios.h"
+	"testes_entidades.h"
+	"testes_integracao.h"
+	"testes_modulos.h"
+
+1687907324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_dominios.h
+	"dominios.h"
+
+1687907324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_entidades.h
+	"entidades.h"
+
+1687907324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_integracao.h
+	"controladoras_apresentacao.h"
+	"controladoras_servicos.h"
+	"stubs.h"
+
+1688088482 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\stubs.h
+	"interfaces.h"
+
+1687907324 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_modulos.h
+	"controladoras_apresentacao.h"
+	"stubs.h"
+
+1688064661 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\main.cpp
+	"comandos_apresentacao.h"
+	"comandos_servicos.h"
+	"controladoras_apresentacao.h"
+	"controladoras_servicos.h"
+	"dominios.h"
+	"drivers.h"
+	"entidades.h"
+	"interfaces.h"
+	"telas.h"
+	"testes_dominios.h"
+	"testes_entidades.h"
+	"testes_integracao.h"
+	"testes_modulos.h"
+	"builders.h"
+	"sqlite3.h"
+
+1688064406 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\sqlite\sqlite-amalgamation-3350500\sqlite-amalgamation-3350500\shell.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<assert.h>
+	"sqlite3.h"
+	"sqlite3userauth.h"
+	<ctype.h>
+	<stdarg.h>
+	<signal.h>
+	<pwd.h>
+	<unistd.h>
+	<dirent.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<readline/readline.h>
+	<readline/history.h>
+	<editline/readline.h>
+	"linenoise.h"
+	<io.h>
+	<fcntl.h>
+	<intrin.h>
+	<windows.h>
+	<sys/time.h>
+	<sys/resource.h>
+	"windows.h"
+	<stdio.h>
+	<stdlib.h>
+	<errno.h>
+	<io.h>
+	<limits.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<assert.h>
+	<string.h>
+	<stdarg.h>
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<dirent.h>
+	<utime.h>
+	<sys/time.h>
+	"windows.h"
+	<io.h>
+	<direct.h>
+	<time.h>
+	<errno.h>
+	<assert.h>
+	<string.h>
+	<ctype.h>
+	<string.h>
+	<assert.h>
+	<assert.h>
+	<string.h>
+	<stdio.h>
+	<assert.h>
+	<string.h>
+	<ctype.h>
+	<assert.h>
+	<string.h>
+	<ctype.h>
+	<stdlib.h>
+	<assert.h>
+	<string.h>
+	<assert.h>
+	<string.h>
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	<zlib.h>
+	<zlib.h>
+	<assert.h>
+	<assert.h>
+	<string.h>
+	<stdio.h>
+	<string.h>
+	<assert.h>
+
+1687872538 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\sqlite\sqlite-amalgamation-3350500\sqlite-amalgamation-3350500\sqlite3.h
+	<stdarg.h>
+
+1687872538 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\sqlite\sqlite-amalgamation-3350500\sqlite-amalgamation-3350500\sqlite3.c
+	"config.h"
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	<ctype.h>
+	"sqlite3rtree.h"
+	<ctype.h>
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<math.h>
+
+1688088516 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\stubs.cpp
+	"stubs.h"
+
+1688265211 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\telas.cpp
+	"telas.h"
+	<iostream>
+
+1687912092 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_dominios.cpp
+	"testes_dominios.h"
+
+1687912092 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_entidades.cpp
+	"testes_entidades.h"
+
+1688040867 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_integracao.cpp
+	"testes_integracao.h"
+
+1688072151 source:c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_modulos.cpp
+	"testes_modulos.h"
+
+1688048841 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\builders.cpp
+	"builders.h"
+
+1688048093 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\comandos_apresentacao.cpp
+	"comandos_apresentacao.h"
+	<iostream>
+
+1688046220 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\comandos_servicos.cpp
+	"comandos_servicos.h"
+
+1687912092 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\controladoras_apresentacao.cpp
+	"controladoras_apresentacao.h"
+
+1688044299 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\controladoras_servicos.cpp
+	"controladoras_servicos.h"
+
+1687912092 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\dominios.cpp
+	"dominios.h"
+	<algorithm>
+	<iostream>
+	<list>
+	<string>
+	<vector>
+
+1687913508 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\drivers.cpp
+	"drivers.h"
+
+1687912092 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\stubs.cpp
+	"stubs.h"
+
+1688047816 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\telas.cpp
+	"telas.h"
+	<iostream>
+
+1687912092 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_dominios.cpp
+	"testes_dominios.h"
+
+1687912092 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_entidades.cpp
+	"testes_entidades.h"
+
+1688040867 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_integracao.cpp
+	"testes_integracao.h"
+
+1687915034 c:\users\user\desktop\trabalho 2\t2-tp1-221020940-221006351-221006389\testes_modulos.cpp
+	"testes_modulos.h"
+
